@@ -6,7 +6,8 @@
 
 ```python
 import requests
-from requests_ip_rotator import ApiGatewaywith ApiGateway("https://site.com") as g:
+from requests_ip_rotator import ApiGatewaywith
+with ApiGateway("https://site.com") as g:
     session = requests.Session()
     session.mount("https://site.com", g)
     response = session.get("https://site.com/index.php")
