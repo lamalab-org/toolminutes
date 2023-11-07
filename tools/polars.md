@@ -1,4 +1,4 @@
-![1699366260298](image/polars/1699366260298.png)
+![](image/polars/pandas_vs_polars.png "Polars vs pandas")
 
 ## An alternative to pandas
 
