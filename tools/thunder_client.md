@@ -4,7 +4,7 @@
 
 You can use it to test your API endpoints.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/AbCTlemwZ1k?si=1r6A5OBaqk_GiwOD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+For an example, see [this video](https://www.youtube.com/embed/AbCTlemwZ1k?si=1r6A5OBaqk_GiwO).
 
 
 ## Installation
