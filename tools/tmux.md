@@ -41,3 +41,5 @@ tmux attach -t myprocess
 ### Panes
 
 You can split your terminal into panes. This is useful if you want to run multiple processes in the same terminal. You can split the terminal vertically by pressing `Ctrl+b` and then `"` or horizontally by pressing `Ctrl+b` and then `%`.
+
+To move panes around, you can use `Ctrl+b` and then `o` to cycle through the panes.
