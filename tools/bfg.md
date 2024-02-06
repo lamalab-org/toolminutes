@@ -23,3 +23,9 @@ java -jar ~/Downloads/bfg-1.14.0.jar --strip-blobs-bigger-than 100M --no-blob-pr
 to remove large files. 
 
 Note that this here uses `--no-blob-protection` as BFG defaults to not touching the last commit. 
+
+After the BFG run, it will prompt you to run something like 
+
+```
+git reflog expire --expire=now --all && git gc --prune=now --aggressive
+```
