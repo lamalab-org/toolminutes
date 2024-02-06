@@ -1,0 +1,25 @@
+# BFG Repo-Cleaner
+
+If you did not take with your `.gitignore` or just used `git add .` you might have by accident committed large files. 
+This might lead to an error like 
+
+```
+remote: error: See https://gh.io/lfs for more information.
+remote: error: File reports/gemini-pro/.langchain.db is 123.01 MB; this exceeds GitHub's file size limit of 100.00 MB
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+To github.com:lamalab-org/chem-bench.git
+ ! [remote rejected]     kjappelbaum/issue258 -> kjappelbaum/issue258 (pre-receive hook declined)
+error: failed to push some refs to 'github.com:lamalab-org/chem-bench.git'
+```
+
+To fix this, you need to remove the large files. A convenient tool for doing this is [BFG](https://rtyley.github.io/bfg-repo-cleaner/).
+
+Once you download the file you can run it using something like
+
+```
+java -jar ~/Downloads/bfg-1.14.0.jar --strip-blobs-bigger-than 100M --no-blob-protection
+```
+
+to remove large files. 
+
+Note that this here uses `--no-blob-protection` as BFG defaults to not touching the last commit. 
