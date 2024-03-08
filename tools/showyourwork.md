@@ -1,0 +1,9 @@
+## Show your work
+
+showyourwork : https://github.com/showyourwork is a framework for building reproducible papers.
+The package works on a combination of Tex and Python code, where you can on the fly modify your plots.
+
+The pre-requisites are:
+  1. define a conda environment with the packages are that necessary for plotting
+  2. use the `\script{}`, `\variable{}` and other commands to link your figures/tables to a Python script.
+  3. compile the paper
