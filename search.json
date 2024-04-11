@@ -1,0 +1,86 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Lamalab Tool and Paper Notes",
+    "section": "",
+    "text": "In our group seminars, we have a tradition of dedicating a few minutes to showcase tools/software/tricks/methods that we find useful. This repository is a collection of these tool minutes."
+  },
+  {
+    "objectID": "tools/hydra.html#getting-started",
+    "href": "tools/hydra.html#getting-started",
+    "title": "Hydra",
+    "section": "Getting started",
+    "text": "Getting started\nHydra is an open-source Python framework that simplifies the development of research and other complex applications. The key feature is the ability to dynamically create a hierarchical configuration by composition and override it through config files and the command line. The name Hydra comes from its ability to run multiple similar jobs - much like a Hydra with multiple heads.\n\nKey features:\n\nHierarchical configuration composable from multiple sources\nConfiguration can be specified or overridden from the command line\nDynamic command line tab completion\nRun your application locally or launch it to run remotely\nRun multiple jobs with different arguments with a single command\n\n\n\nInstallation\npip install hydra-core --upgrade\n\n\nBasic example\nConfig, e.g., in conf/config.yaml:\ndb:\ndriver: mysql\nuser: omry\npass: secret"
+  },
+  {
+    "objectID": "tools/ip_rotator.html#github-repository",
+    "href": "tools/ip_rotator.html#github-repository",
+    "title": "IP Rotator",
+    "section": "GitHub repository",
+    "text": "GitHub repository\niq-requests-rotator\n\nExample usage:\nimport requests\nfrom requests_ip_rotator import ApiGatewaywith ApiGateway(\"https://site.com\") as g:\n    session = requests.Session()\n    session.mount(\"https://site.com\", g)    response = session.get(\"https://site.com/index.php\")\n    print(response.status_code)"
+  },
+  {
+    "objectID": "tools/polars.html#an-alternative-to-pandas",
+    "href": "tools/polars.html#an-alternative-to-pandas",
+    "title": "Polars",
+    "section": "An alternative to pandas",
+    "text": "An alternative to pandas\nThe advantages of polars can be directly seen in the image above. It is clear from the graph that Polars perform faster than Pandas for most operations. This is particularly true for the GroupBy operation, where Polars is nearly 20 times faster than Pandas. The Filter operation is also significantly faster in Polars, while Create operations are somewhat faster in Pandas. Overall, Polars seems to be a more performant library for data manipulation, particularly for large datasets."
+  },
+  {
+    "objectID": "tools/polars.html#syntax-example",
+    "href": "tools/polars.html#syntax-example",
+    "title": "Polars",
+    "section": "Syntax example",
+    "text": "Syntax example\nimport polars as pl\n\nq = (\n    pl.scan_csv(\"docs/data/iris.csv\")\n    .filter(pl.col(\"sepal_length\") > 5)\n    .group_by(\"species\")\n    .agg(pl.all().sum())\n)\n\ndf = q.collect()"
+  },
+  {
+    "objectID": "tools/thunder_client.html#installation",
+    "href": "tools/thunder_client.html#installation",
+    "title": "Thunder Client",
+    "section": "Installation",
+    "text": "Installation\nInstall the Thunder client extension from the marketplace."
+  },
+  {
+    "objectID": "tools/tmux.html#installation",
+    "href": "tools/tmux.html#installation",
+    "title": "tmux",
+    "section": "Installation",
+    "text": "Installation\nsudo apt install tmux\nor on Mac\nbrew install tmux"
+  },
+  {
+    "objectID": "tools/tmux.html#usage",
+    "href": "tools/tmux.html#usage",
+    "title": "tmux",
+    "section": "Usage",
+    "text": "Usage\nLet’s assume you are via ssh on a remote server and you want to run a long running process. You can use tmux to run the process in a session and then detach from it. You can then log out and log back in later to check on the process. Your process will still be running, even if your ssh session is closed.\n\nOn the remote server\ntmux new -s myprocess\nThen run your process. When you are done, detach from the session by pressing Ctrl+b and then d.\n\n\nOn the remote server later\ntmux ls\nThis will list all the sessions. You can then reattach to the session you want by typing:\ntmux attach -t myprocess\n\n\nPanes\nYou can split your terminal into panes. This is useful if you want to run multiple processes in the same terminal. You can split the terminal vertically by pressing Ctrl+b and then \" or horizontally by pressing Ctrl+b and then %.\nTo move panes around, you can use Ctrl+b and then o to cycle through the panes."
+  },
+  {
+    "objectID": "tools/trimean.html",
+    "href": "tools/trimean.html",
+    "title": "Robust statistics and Trimean",
+    "section": "",
+    "text": "from scipy.stats import skewnorm\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nLet’s generate some data that might be something we find in the real world.\n\nskew_magnitude = -6\narr = skewnorm.rvs(skew_magnitude, loc=0, scale=1000, size=100000)\n\n(The skew is a third-order moment.)\n\nplt.hist(arr, bins=100, density=True)\nplt.show()\n\n\n\n\nLet’s get a very common measure of central tendency:\n\nnp.mean(arr)\n\n-789.5809069979605\n\n\nThe mean overstates the central tendency because of the skew.\nThe mean is defined as\n\\[\\bar{x} = \\frac{1}{n} \\sum_{i=1}^n x_i\\]\nand treats all numbers equally. No matter how big or small.\nOne can “fix” this by looking at “robust” statistics that are often rank based. Rank based means that we sort the data and then base our statistics on the rank of the data. In this way, they are no longer sensitive to outliers.\n\ndef interquartile_range(arr):\n    q1 = np.percentile(arr, 25)\n    q3 = np.percentile(arr, 75)\n    return q3 - q1\n\nprint(\"Median\", np.percentile(arr, 50))\nprint(\"Interquartile Range\", interquartile_range(arr))\nprint(\"Mean\", arr.mean())\nprint(\"Standard Deviation\", arr.std())\n\nMedian -679.7024551978025\nInterquartile Range 834.2816858677052\nMean -789.5809069979605\nStandard Deviation 614.9363837309692\n\n\nA very nice measure of centrality is the so-called trimean.\n\n“An advantage of the trimean as a measure of the center (of a distribution) is that it combines the median’s emphasis on center values with the midhinge’s attention to the extremes.”\n— Herbert F. Weisberg, Central Tendency and Variability\n\nIt is defined as\n\\[\n\\text{trimean} = \\frac{Q_1 + 2Q_2 + Q_3}{4}\n\\]\nwhere \\(Q_1\\) is the first quartile, \\(Q_2\\) is the median, and \\(Q_3\\) is the third quartile.\n\ndef trimean(arr):\n    q1 = np.percentile(arr, 25)\n    q3 = np.percentile(arr, 75)\n    median = np.percentile(arr, 50)\n    return (q1 + 2*median + q3)/4\n\nprint(\"Trimean\", trimean(arr))\n\nTrimean -708.4430042323374"
+  },
+  {
+    "objectID": "tools/pandarallel.html",
+    "href": "tools/pandarallel.html",
+    "title": "Easy fast .apply for pandas",
+    "section": "",
+    "text": "apply in pandas is slow. This is the case because it does not take advantage of vectorization. That means, in general, if you have something for which there is a built-in pandas (or numpy) function, you should use that instead of apply, because those functions will be optimized and typically vectorized.\nThe pandarallel package allows you to parallelize apply on a pandas DataFrame or Series object. It does this by using multiprocessing. However, since it uses multiple processes, it will use more memory than a simple apply.\nIf your data just barley fits in memory, you should not use pandarallel. However, if it does fit in memory, and you have a lot of cores, then pandarallel can speed up your code significantly with just changing one line of code.\n\nfrom pandarallel import pandarallel\n\npandarallel.initialize(progress_bar=True)\n\n# df.apply(func)\ndf.parallel_apply(func)"
+  },
+  {
+    "objectID": "tools/bfg.html",
+    "href": "tools/bfg.html",
+    "title": "BFG Repo-Cleaner",
+    "section": "",
+    "text": "If you did not take with your .gitignore or just used git add . you might have by accident committed large files. This might lead to an error like\nremote: error: See https://gh.io/lfs for more information.\nremote: error: File reports/gemini-pro/.langchain.db is 123.01 MB; this exceeds GitHub's file size limit of 100.00 MB\nremote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.\nTo github.com:lamalab-org/chem-bench.git\n ! [remote rejected]     kjappelbaum/issue258 -> kjappelbaum/issue258 (pre-receive hook declined)\nerror: failed to push some refs to 'github.com:lamalab-org/chem-bench.git'\nTo fix this, you need to remove the large files. A convenient tool for doing this is BFG.\nOnce you download the file you can run it using something like\njava -jar ~/Downloads/bfg-1.14.0.jar --strip-blobs-bigger-than 100M --no-blob-protection\nto remove large files.\nNote that this here uses --no-blob-protection as BFG defaults to not touching the last commit.\nAfter the BFG run, it will prompt you to run something like\ngit reflog expire --expire=now --all && git gc --prune=now --aggressive"
+  },
+  {
+    "objectID": "tools/showyourwork.html",
+    "href": "tools/showyourwork.html",
+    "title": "showyourwork",
+    "section": "",
+    "text": "showyourwork : https://github.com/showyourwork is a framework for building reproducible papers. The package works on a combination of Tex and Python code, where you can on the fly modify your plots.\nThe pre-requisites are: 1. define a conda environment with the packages are that necessary for plotting 2. use the \\script{}, \\variable{} and other commands to link your figures/tables to a Python script. 3. compile the paper"
+  }
+]
