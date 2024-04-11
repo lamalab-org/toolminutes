@@ -1,3 +1,8 @@
+---
+author: Adrian Mirza
+---
+# Polars
+
 ![](image/polars/pandas_vs_polars.png "Polars vs pandas")
 
 ## An alternative to pandas

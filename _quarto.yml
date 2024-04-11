@@ -1,0 +1,33 @@
+project:
+  type: book
+
+book:
+  title: "Lamalab Tool and Paper Notes"
+  author: "LamaLab"
+  date: "4/11/2024"
+  chapters:
+    - index.qmd
+    - references.qmd
+    - part: Tools
+      chapters:
+        - tools/hydra.qmd
+        - tools/ip_rotator.qmd
+        - tools/polars.qmd
+        - tools/thunder_client.qmd
+        - tools/tmux.qmd
+        - tools/trimean.ipynb
+        - tools/pandarallel.ipynb
+        - tools/bfg.qmd
+        - tools/showyourwork.qmd
+
+bibliography: references.bib
+csl: nature.csl
+
+format:
+  html:
+    theme: cosmo
+    number-sections: false
+  pdf:
+    documentclass: scrreprt
+
+

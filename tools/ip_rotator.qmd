@@ -1,3 +1,9 @@
+---
+author: Adrian Mirza
+---
+
+# IP Rotator 
+
 ## GitHub repository
 
 [iq-requests-rotator](https://github.com/Ge0rg3/requests-ip-rotator/blob/e0b493853883fa7fbfdc4b8c1341aeb5760e2a0a/requests_ip_rotator/ip_rotator.py#L31)
@@ -8,7 +14,6 @@
 import requests
 from requests_ip_rotator import ApiGatewaywith ApiGateway("https://site.com") as g:
     session = requests.Session()
-    session.mount("https://site.com", g)
-    response = session.get("https://site.com/index.php")
+    session.mount("https://site.com", g)    response = session.get("https://site.com/index.php")
     print(response.status_code)
 ```

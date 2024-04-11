@@ -1,3 +1,7 @@
+---
+author: Nawaf Alampara
+---
+
 # Thunder Client 
 
 [Thunder Client](https://www.thunderclient.com/) is a lightweight alternative to [Postman](https://www.postman.com/) that can be used directly from VSCode. 
