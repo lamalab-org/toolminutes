@@ -7,7 +7,6 @@ book:
   date: "4/11/2024"
   chapters:
     - index.qmd
-    - references.qmd
     - part: Tools
       chapters:
         - tools/hydra.qmd
@@ -19,6 +18,9 @@ book:
         - tools/pandarallel.ipynb
         - tools/bfg.qmd
         - tools/showyourwork.qmd
+    - part: Papers
+      chapters:
+        - papers/chem_yield_prediction_2024.md
 
 bibliography: references.bib
 csl: nature.csl
