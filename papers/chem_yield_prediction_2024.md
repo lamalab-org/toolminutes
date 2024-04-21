@@ -9,7 +9,7 @@ bibliography: ../references.bib
 
 ## Why discussing this paper? 
 
-I chose Chen et al.'s paper @Chen_2024 for our journal club because 
+I chose Chen et al.'s paper [@Chen_2024] for our journal club because 
 
 - An important and interesting problem in chemistry
 - Uses many of the techniques we care about in our group
@@ -22,7 +22,7 @@ Predicting the yield of chemical reactions is a crucial task in organic chemistr
 
 ### Ahneman et al. (2018)
 
-Ahneman et al.[@Ahneman_2018] reported in _Science_ a random forest model that predicts the yield of chemical reactions in a high-throughput dataset (palladium-catalyzed Buchwald-Hartwig cross-coupling reactions). For this, the authors created a set of features using computational techniques.
+Ahneman et al. [@Ahneman_2018] reported in _Science_ a random forest model that predicts the yield of chemical reactions in a high-throughput dataset (palladium-catalyzed Buchwald-Hartwig cross-coupling reactions). For this, the authors created a set of features using computational techniques.
 
 A very interesting aspect of this work is the subsequent exchange with Chuang and Keiser [@Chuang_2018] who point out that the chemical features used in the work by Ahneman et al. perform not distinguishably better than non-meaningful features.
 
@@ -30,19 +30,19 @@ A very interesting aspect of this work is the subsequent exchange with Chuang an
 
 ### Schwaller et al. (2020, 2021)
 
-Schwaller et al.[@schwaller2020data; @schwaller2021prediction] utilized BERT models with a regression head to predict yields based on reaction SMILES.
+Schwaller et al. [@schwaller2020data; @schwaller2021prediction] utilized BERT models with a regression head to predict yields based on reaction SMILES.
 
 They observed multiple interesting effects: 
 
 - The performance on high-throughput datasets is good, on USPTO datasets the models are not predictive ($R^2$ on a random split of 0.117 for the gram scale)
 - The yield distribution depends on the scale, which might be due to reaction at larger scale being better optimized
 
-![Figure taken from Schwaller et al.[@schwaller2021prediction]   illustrating the distribution of yields on different scales.](chen_yield_pred_2024_images/yield_scales.jpg)
+![Figure taken from Schwaller et al. [@schwaller2021prediction]   illustrating the distribution of yields on different scales.](chen_yield_pred_2024_images/yield_scales.jpg)
 
 
 ### Kwon et al. (2022)
-
-Kwon et al.[@Kwon_2022], in contrast, used graph neural networks to predict yields. They pass reactants and products through a graph neural network and concatenate the embeddings to predict the yield. They train on a similar loss as the work at hand (but use also use dropout Monte-Carlo [@gal2016dropout] to estimate the epistemic uncertainty).
+ 
+Kwon et al. [@Kwon_2022], in contrast, used graph neural networks to predict yields. They pass reactants and products through a graph neural network and concatenate the embeddings to predict the yield. They train on a similar loss as the work at hand (but use also use dropout Monte-Carlo [@gal2016dropout] to estimate the epistemic uncertainty).
 
 ## Problem setting
 
@@ -56,7 +56,7 @@ Additionally, the authors propose that the previous representations might not be
 
 The authors propose to fuse multiple features. In addition, they also use a special loss function and a mixture of experts (MoE) model used to transform human-designed features.
 
-![Overview of the model architecture. Figure taken from Chem et al.[@Chen_2024]](chen_yield_pred_2024_images/approach.png)
+![Overview of the model architecture. Figure taken from Chem et al. [@Chen_2024]](chen_yield_pred_2024_images/approach.png)
 
 ### Graph encoder and SMILES encoder
 

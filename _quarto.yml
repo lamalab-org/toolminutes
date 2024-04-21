@@ -23,7 +23,7 @@ book:
         - papers/chem_yield_prediction_2024.md
 
 bibliography: references.bib
-csl: nature.csl
+# csl: nature.csl
 
 format:
   html:
