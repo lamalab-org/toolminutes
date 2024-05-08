@@ -101,7 +101,7 @@ Two set of models
     
   A(Composition)--> B(MatBERT)
 
-1. Uses Both composition and structure
+2. Uses Both composition and structure
 `Baseline: CrystalNN Fingerprint`
 
   A(Material)--> B(RoboCrystallographer)--> C(MatBERT)
