@@ -21,7 +21,7 @@ book:
     - part: Papers
       chapters:
         - papers/chem_yield_prediction_2024.md
-        - papers/Jiaxing_leverage_LLM4mat.md
+        - papers/Jiaxing_leverage_LLM4mat.qmd
 
 bibliography: references.bib
 # csl: nature.csl
