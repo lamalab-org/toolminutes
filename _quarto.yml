@@ -20,7 +20,7 @@ book:
         - tools/showyourwork.qmd
     - part: Papers
       chapters:
-        - papers/jiaxing_llm4mat.qmd
+        - papers/llm4mat.qmd
         - papers/chem_yield_prediction_2024.md
 
 bibliography: references.bib

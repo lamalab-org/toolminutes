@@ -59,7 +59,7 @@ The authors propose a two-step funnel based approach
 - 2. RANKING - Based on functional properties rank the recalled materials
 
 
-![ Funnel based recommender framework [@Chen_2024]](Jiaxing_leverage_LLM4mat_images/recommender.png)
+![Funnel based recommender framework](Jiaxing_leverage_LLM4mat_images/recommender.png)
 
 
 
