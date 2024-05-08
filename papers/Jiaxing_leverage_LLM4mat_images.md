@@ -20,11 +20,11 @@ I chose Jiaxing et al.'s paper for our journal club because
 
 - Material space is not completely explored. And there is possibility of finding better materials in many applications.
 
-- ML recommender systems for exploring material spaces are already there but not many using "LLMS"
+- ML recommender systems for exploring material spaces are already there but not many using "LLMs"
 
 - LLM framework for recommending prototype crystal structures and later validate through first-principles calculations and experiments
 
-- Why LLMS ? - Universal task agnostic representations
+- Why LLMs? - Universal task agnostic representations
 
 
 ## Some Previous LLM Models
@@ -47,13 +47,13 @@ Mat2Vec was trained similarly as Word2vec training through skip-gram with negati
 - Additional contexts are also very useful. for eg: (doping, temperature, synthesis conditions)
 
 - In materials exploration and discovery context: 
-(i) effective representations of both chemical and structural complexity,(ii) successful recall of relevant candidates to property of interest
+(i) effective representations of both chemical and structural complexity, (ii) successful recall of relevant candidates to property of interest
 (iii) accurate candidate ranking based on multiple desired functional properties.
 
 
 ## Approach
 
-The authors propose a two step funnel based approach
+The authors propose a two-step funnel based approach
 
 - 1. RECALL - Given a material finding similar material from a set of materials
 - 2. RANKING - Based on functional properties rank the recalled materials
@@ -80,9 +80,9 @@ The authors use Robocrystallographer representation to describe the material. En
 
 Based on multiple properties the recalled materials are ranked.
 
-Usually for any application, and in this paper, for thermoelectric material as well many properties are important hence a ranker based on perfomance on different functional aspects.
+Usually for any application, and in this paper, for thermoelectric material as well many properties are important hence a ranker based on performance on different functional aspects.
 
-- Author train a Multitask Mixture of Expert Model (MMoEM), using multi task learning to rank the materials.
+- Author train a Multitask Mixture of Expert Model (MMoEM), using multitask learning to rank the materials.
 
 ![ Rank material based on cosine similarity](Jiaxing_leverage_LLM4mat_images/rank.png)
 
@@ -124,7 +124,7 @@ For further evaluation, authors  evaluated material embedding performance on dow
 
  The task models were multi-layer perceptrons (MLPs) with meanabsolute-error (MAE) training loss. 
  
- The tasks consisted of band gap, energy per atom, bulk modulus, shear modulus, Debye temperature, and coefficient of thermal expansion from AFLOW dataset33.
+ The tasks consisted of band gap, energy per atom, bulk modulus, shear modulus, Debye temperature, and coefficient of thermal expansion from AFLOW dataset.
 
 ![ Property prediction using embeddings from different representations](Jiaxing_leverage_LLM4mat_images/property_prediction_1.png)
 
@@ -143,7 +143,7 @@ Starting with known materials with favorable properties for TEs such as PbTe, we
 Learning from multiple related tasks provides superior performance over single-task learning by modeling task-specific objectives and cross-task relationships.
 
 
-In addition to the embeddings derived from language models, Aunthors added further information based on context (one hot encoded temperature)
+In addition to the embeddings derived from language models, the authors added further information based on context (one hot encoded temperature)
 
 
 
