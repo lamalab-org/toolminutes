@@ -261,5 +261,93 @@
       "Papers",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>Uncertainty-Aware Yield Prediction with Multimodal Molecular Features</span>"
     ]
+  },
+  {
+    "objectID": "papers/Jiaxing_leverage_LLM4mat_images.html",
+    "href": "papers/Jiaxing_leverage_LLM4mat_images.html",
+    "title": "Leveraging language representation for materials exploration and discovery",
+    "section": "",
+    "text": "Why discussing this paper?\nI chose Jiaxing et al.’s paper for our journal club because",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
+    ]
+  },
+  {
+    "objectID": "papers/Jiaxing_leverage_LLM4mat_images.html#why-discussing-this-paper",
+    "href": "papers/Jiaxing_leverage_LLM4mat_images.html#why-discussing-this-paper",
+    "title": "Leveraging language representation for materials exploration and discovery",
+    "section": "",
+    "text": "LLMs successfully applied in other domain, interesting to see what can be done in material science\nOne among the few paper where LLMs are applied in materials science for actual material discovery.\nNice embedding figures",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
+    ]
+  },
+  {
+    "objectID": "papers/Jiaxing_leverage_LLM4mat_images.html#context",
+    "href": "papers/Jiaxing_leverage_LLM4mat_images.html#context",
+    "title": "Leveraging language representation for materials exploration and discovery",
+    "section": "Context",
+    "text": "Context\n\nMaterial space is not completely explored. And there is possibility of finding better materials in many applications.\nML recommender systems for exploring material spaces are already there but not many using “LLMS”\nLLM framework for recommending prototype crystal structures and later validate through first-principles calculations and experiments\nWhy LLMS ? - Universal task agnostic representations",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
+    ]
+  },
+  {
+    "objectID": "papers/Jiaxing_leverage_LLM4mat_images.html#some-previous-llm-models",
+    "href": "papers/Jiaxing_leverage_LLM4mat_images.html#some-previous-llm-models",
+    "title": "Leveraging language representation for materials exploration and discovery",
+    "section": "Some Previous LLM Models",
+    "text": "Some Previous LLM Models\n\nMatSciBERT\nMatsciBERT was pretrained on whole sections of more than 1 million materials science articles with masked language modelling.\n\n\nMatBERT\nMatBERT was trained by sampling 50 million paragraphs from 2 million articles masked language modelling.\n\n\nWord2Vec\nMat2Vec was trained similarly as Word2vec training through skip-gram with negative sampling. Each word is embedded into a 200-dimensional vector.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
+    ]
+  },
+  {
+    "objectID": "papers/Jiaxing_leverage_LLM4mat_images.html#problem-setting",
+    "href": "papers/Jiaxing_leverage_LLM4mat_images.html#problem-setting",
+    "title": "Leveraging language representation for materials exploration and discovery",
+    "section": "Problem setting",
+    "text": "Problem setting\n\nHand-crafted features and specialized structural models have limitations in providing universal and task-agnostic representations within the vast material space.\nAdditional contexts are also very useful. for eg: (doping, temperature, synthesis conditions)\nIn materials exploration and discovery context:\n\n\neffective representations of both chemical and structural complexity,(ii) successful recall of relevant candidates to property of interest\naccurate candidate ranking based on multiple desired functional properties.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
+    ]
+  },
+  {
+    "objectID": "papers/Jiaxing_leverage_LLM4mat_images.html#approach",
+    "href": "papers/Jiaxing_leverage_LLM4mat_images.html#approach",
+    "title": "Leveraging language representation for materials exploration and discovery",
+    "section": "Approach",
+    "text": "Approach\nThe authors propose a two step funnel based approach\n\n\nRECALL - Given a material finding similar material from a set of materials\n\n\nRANKING - Based on functional properties rank the recalled materials\n\n\n\n\n\nFunnel based recommender framework (Chen et al. 2024)\n\n\n\nRecalling similar materials\nThe authors use Robocrystallographer representation to describe the material. Encode the material description using pretrained MatBERT (compared other encoders as well), and use this as a feature vector\n\nUse a Query material (a well studied known material with property of interest).\nEncode all material in database and Query material (Robocrystallographer + MatBERT)\nLook at cosine similarity of feature vectors (material in database with Query material)\n\n\n\n\nRecall material based on cosine similarity\n\n\n\n\nRanking potential materials\nBased on multiple properties the recalled materials are ranked.\nUsually for any application, and in this paper, for thermoelectric material as well many properties are important hence a ranker based on perfomance on different functional aspects.\n\nAuthor train a Multitask Mixture of Expert Model (MMoEM), using multi task learning to rank the materials.\n\n\n\n\nRank material based on cosine similarity",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
+    ]
+  },
+  {
+    "objectID": "papers/Jiaxing_leverage_LLM4mat_images.html#results",
+    "href": "papers/Jiaxing_leverage_LLM4mat_images.html#results",
+    "title": "Leveraging language representation for materials exploration and discovery",
+    "section": "Results",
+    "text": "Results\nThe authors perform ablations to understand the importance of the different components of their model. While there are some differences, the differences are not drastic.\n\nAblation on Representation suitable for RECALL step\nTwo set of models 1. Uses only composition of materials Baseline: Mat2Vec\n(Composition)–&gt; (MatBERT)\n\nUses Both composition and structure Baseline: CrystalNN Fingerprint\n\n(Material)–&gt; B(RoboCrystallographer)–&gt; (MatBERT)\n\nEmbeddings from composition only and Composition + Structure\nStructure level representations exhibit more distinct separation (well-defined domains) by material groups\n\n\n\nUMAP of embeddings from different representations\n\n\nFor further evaluation, authors evaluated material embedding performance on downstream property prediction tasks.\nThe task models were multi-layer perceptrons (MLPs) with meanabsolute-error (MAE) training loss.\nThe tasks consisted of band gap, energy per atom, bulk modulus, shear modulus, Debye temperature, and coefficient of thermal expansion from AFLOW dataset33.\n\n\n\nProperty prediction using embeddings from different representations\n\n\n\n\n\nFinding similar materials\nStarting with known materials with favorable properties for TEs such as PbTe, we analyzed the top recalled candidates and found significantly different predicted figure-of-merit zT distributions from selected baseline representations.\n\n\n\nDistributions of predicted zT of the top-100 recalled candidates for PbTe as the query material predicted by MatBERT\n\n\n\n\nRanking potential materials\nLearning from multiple related tasks provides superior performance over single-task learning by modeling task-specific objectives and cross-task relationships.\nIn addition to the embeddings derived from language models, Aunthors added further information based on context (one hot encoded temperature)\n\n\n\nMulti-task learning framework for material property prediction.\n\n\n\n\n\nPerformance for 6 material property prediction tasks between single-task models and MMoE using composition or structure embeddings.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
+    ]
+  },
+  {
+    "objectID": "papers/Jiaxing_leverage_LLM4mat_images.html#takeaways",
+    "href": "papers/Jiaxing_leverage_LLM4mat_images.html#takeaways",
+    "title": "Leveraging language representation for materials exploration and discovery",
+    "section": "Takeaways",
+    "text": "Takeaways\n\nMight not need a Language model for this task\nGood to see that some of the materials where later tested in lab\nComposition vs Composition + structure not convincing.\n\n\n\n\n\nChen, Jiayuan, Kehan Guo, Zhen Liu, Olexandr Isayev, and Xiangliang Zhang. 2024. “Uncertainty-Aware Yield Prediction with Multimodal Molecular Features.” Proceedings of the AAAI Conference on Artificial Intelligence 38 (8): 8274–82. https://doi.org/10.1609/aaai.v38i8.28668.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
+    ]
   }
 ]
