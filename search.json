@@ -4,139 +4,350 @@
     "href": "index.html",
     "title": "Lamalab Tool and Paper Notes",
     "section": "",
-    "text": "In our group seminars, we have a tradition of dedicating a few minutes to showcase tools/software/tricks/methods that we find useful. This repository is a collection of these tool minutes."
+    "text": "In our group seminars, we have a tradition of dedicating a few minutes to showcase tools/software/tricks/methods that we find useful. This repository is a collection of these tool minutes.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Tool and paper minutes</span>"
+    ]
+  },
+  {
+    "objectID": "tools/hydra.html",
+    "href": "tools/hydra.html",
+    "title": "Hydra",
+    "section": "",
+    "text": "Getting started\nHydra is an open-source Python framework that simplifies the development of research and other complex applications. The key feature is the ability to dynamically create a hierarchical configuration by composition and override it through config files and the command line. The name Hydra comes from its ability to run multiple similar jobs - much like a Hydra with multiple heads.",
+    "crumbs": [
+      "Tools",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Hydra</span>"
+    ]
   },
   {
     "objectID": "tools/hydra.html#getting-started",
     "href": "tools/hydra.html#getting-started",
     "title": "Hydra",
-    "section": "Getting started",
-    "text": "Getting started\nHydra is an open-source Python framework that simplifies the development of research and other complex applications. The key feature is the ability to dynamically create a hierarchical configuration by composition and override it through config files and the command line. The name Hydra comes from its ability to run multiple similar jobs - much like a Hydra with multiple heads.\n\nKey features:\n\nHierarchical configuration composable from multiple sources\nConfiguration can be specified or overridden from the command line\nDynamic command line tab completion\nRun your application locally or launch it to run remotely\nRun multiple jobs with different arguments with a single command\n\n\n\nInstallation\npip install hydra-core --upgrade\n\n\nBasic example\nConfig, e.g., in conf/config.yaml:\ndb:\ndriver: mysql\nuser: omry\npass: secret"
+    "section": "",
+    "text": "Key features:\n\nHierarchical configuration composable from multiple sources\nConfiguration can be specified or overridden from the command line\nDynamic command line tab completion\nRun your application locally or launch it to run remotely\nRun multiple jobs with different arguments with a single command\n\n\n\nInstallation\npip install hydra-core --upgrade\n\n\nBasic example\nConfig, e.g., in conf/config.yaml:\ndb:\ndriver: mysql\nuser: omry\npass: secret",
+    "crumbs": [
+      "Tools",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Hydra</span>"
+    ]
+  },
+  {
+    "objectID": "tools/ip_rotator.html",
+    "href": "tools/ip_rotator.html",
+    "title": "IP Rotator",
+    "section": "",
+    "text": "GitHub repository\niq-requests-rotator",
+    "crumbs": [
+      "Tools",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>IP Rotator</span>"
+    ]
   },
   {
     "objectID": "tools/ip_rotator.html#github-repository",
     "href": "tools/ip_rotator.html#github-repository",
     "title": "IP Rotator",
-    "section": "GitHub repository",
-    "text": "GitHub repository\niq-requests-rotator\n\nExample usage:\nimport requests\nfrom requests_ip_rotator import ApiGatewaywith ApiGateway(\"https://site.com\") as g:\n    session = requests.Session()\n    session.mount(\"https://site.com\", g)    response = session.get(\"https://site.com/index.php\")\n    print(response.status_code)"
+    "section": "",
+    "text": "Example usage:\nimport requests\nfrom requests_ip_rotator import ApiGatewaywith ApiGateway(\"https://site.com\") as g:\n    session = requests.Session()\n    session.mount(\"https://site.com\", g)    response = session.get(\"https://site.com/index.php\")\n    print(response.status_code)",
+    "crumbs": [
+      "Tools",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>IP Rotator</span>"
+    ]
   },
   {
-    "objectID": "tools/polars.html#an-alternative-to-pandas",
-    "href": "tools/polars.html#an-alternative-to-pandas",
+    "objectID": "tools/polars.html",
+    "href": "tools/polars.html",
     "title": "Polars",
-    "section": "An alternative to pandas",
-    "text": "An alternative to pandas\nThe advantages of polars can be directly seen in the image above. It is clear from the graph that Polars perform faster than Pandas for most operations. This is particularly true for the GroupBy operation, where Polars is nearly 20 times faster than Pandas. The Filter operation is also significantly faster in Polars, while Create operations are somewhat faster in Pandas. Overall, Polars seems to be a more performant library for data manipulation, particularly for large datasets."
+    "section": "",
+    "text": "An alternative to pandas\nThe advantages of polars can be directly seen in the image above. It is clear from the graph that Polars perform faster than Pandas for most operations. This is particularly true for the GroupBy operation, where Polars is nearly 20 times faster than Pandas. The Filter operation is also significantly faster in Polars, while Create operations are somewhat faster in Pandas. Overall, Polars seems to be a more performant library for data manipulation, particularly for large datasets.",
+    "crumbs": [
+      "Tools",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Polars</span>"
+    ]
   },
   {
     "objectID": "tools/polars.html#syntax-example",
     "href": "tools/polars.html#syntax-example",
     "title": "Polars",
     "section": "Syntax example",
-    "text": "Syntax example\nimport polars as pl\n\nq = (\n    pl.scan_csv(\"docs/data/iris.csv\")\n    .filter(pl.col(\"sepal_length\") > 5)\n    .group_by(\"species\")\n    .agg(pl.all().sum())\n)\n\ndf = q.collect()"
+    "text": "Syntax example\nimport polars as pl\n\nq = (\n    pl.scan_csv(\"docs/data/iris.csv\")\n    .filter(pl.col(\"sepal_length\") &gt; 5)\n    .group_by(\"species\")\n    .agg(pl.all().sum())\n)\n\ndf = q.collect()",
+    "crumbs": [
+      "Tools",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Polars</span>"
+    ]
   },
   {
-    "objectID": "tools/thunder_client.html#installation",
-    "href": "tools/thunder_client.html#installation",
+    "objectID": "tools/thunder_client.html",
+    "href": "tools/thunder_client.html",
     "title": "Thunder Client",
-    "section": "Installation",
-    "text": "Installation\nInstall the Thunder client extension from the marketplace."
+    "section": "",
+    "text": "Installation\nInstall the Thunder client extension from the marketplace.",
+    "crumbs": [
+      "Tools",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Thunder Client</span>"
+    ]
+  },
+  {
+    "objectID": "tools/tmux.html",
+    "href": "tools/tmux.html",
+    "title": "tmux",
+    "section": "",
+    "text": "Installation\nor on Mac",
+    "crumbs": [
+      "Tools",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>tmux</span>"
+    ]
   },
   {
     "objectID": "tools/tmux.html#installation",
     "href": "tools/tmux.html#installation",
     "title": "tmux",
-    "section": "Installation",
-    "text": "Installation\nsudo apt install tmux\nor on Mac\nbrew install tmux"
+    "section": "",
+    "text": "sudo apt install tmux\n\nbrew install tmux",
+    "crumbs": [
+      "Tools",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>tmux</span>"
+    ]
   },
   {
     "objectID": "tools/tmux.html#usage",
     "href": "tools/tmux.html#usage",
     "title": "tmux",
     "section": "Usage",
-    "text": "Usage\nLet’s assume you are via ssh on a remote server and you want to run a long running process. You can use tmux to run the process in a session and then detach from it. You can then log out and log back in later to check on the process. Your process will still be running, even if your ssh session is closed.\n\nOn the remote server\ntmux new -s myprocess\nThen run your process. When you are done, detach from the session by pressing Ctrl+b and then d.\n\n\nOn the remote server later\ntmux ls\nThis will list all the sessions. You can then reattach to the session you want by typing:\ntmux attach -t myprocess\n\n\nPanes\nYou can split your terminal into panes. This is useful if you want to run multiple processes in the same terminal. You can split the terminal vertically by pressing Ctrl+b and then \" or horizontally by pressing Ctrl+b and then %.\nTo move panes around, you can use Ctrl+b and then o to cycle through the panes."
+    "text": "Usage\nLet’s assume you are via ssh on a remote server and you want to run a long running process. You can use tmux to run the process in a session and then detach from it. You can then log out and log back in later to check on the process. Your process will still be running, even if your ssh session is closed.\n\nOn the remote server\ntmux new -s myprocess\nThen run your process. When you are done, detach from the session by pressing Ctrl+b and then d.\n\n\nOn the remote server later\ntmux ls\nThis will list all the sessions. You can then reattach to the session you want by typing:\ntmux attach -t myprocess\n\n\nPanes\nYou can split your terminal into panes. This is useful if you want to run multiple processes in the same terminal. You can split the terminal vertically by pressing Ctrl+b and then \" or horizontally by pressing Ctrl+b and then %.\nTo move panes around, you can use Ctrl+b and then o to cycle through the panes.",
+    "crumbs": [
+      "Tools",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>tmux</span>"
+    ]
   },
   {
     "objectID": "tools/trimean.html",
     "href": "tools/trimean.html",
     "title": "Robust statistics and Trimean",
     "section": "",
-    "text": "from scipy.stats import skewnorm\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nLet’s generate some data that might be something we find in the real world.\n\nskew_magnitude = -6\narr = skewnorm.rvs(skew_magnitude, loc=0, scale=1000, size=100000)\n\n(The skew is a third-order moment.)\n\nplt.hist(arr, bins=100, density=True)\nplt.show()\n\n\n\n\nLet’s get a very common measure of central tendency:\n\nnp.mean(arr)\n\n-789.5809069979605\n\n\nThe mean overstates the central tendency because of the skew.\nThe mean is defined as\n\\[\\bar{x} = \\frac{1}{n} \\sum_{i=1}^n x_i\\]\nand treats all numbers equally. No matter how big or small.\nOne can “fix” this by looking at “robust” statistics that are often rank based. Rank based means that we sort the data and then base our statistics on the rank of the data. In this way, they are no longer sensitive to outliers.\n\ndef interquartile_range(arr):\n    q1 = np.percentile(arr, 25)\n    q3 = np.percentile(arr, 75)\n    return q3 - q1\n\nprint(\"Median\", np.percentile(arr, 50))\nprint(\"Interquartile Range\", interquartile_range(arr))\nprint(\"Mean\", arr.mean())\nprint(\"Standard Deviation\", arr.std())\n\nMedian -679.7024551978025\nInterquartile Range 834.2816858677052\nMean -789.5809069979605\nStandard Deviation 614.9363837309692\n\n\nA very nice measure of centrality is the so-called trimean.\n\n“An advantage of the trimean as a measure of the center (of a distribution) is that it combines the median’s emphasis on center values with the midhinge’s attention to the extremes.”\n— Herbert F. Weisberg, Central Tendency and Variability\n\nIt is defined as\n\\[\n\\text{trimean} = \\frac{Q_1 + 2Q_2 + Q_3}{4}\n\\]\nwhere \\(Q_1\\) is the first quartile, \\(Q_2\\) is the median, and \\(Q_3\\) is the third quartile.\n\ndef trimean(arr):\n    q1 = np.percentile(arr, 25)\n    q3 = np.percentile(arr, 75)\n    median = np.percentile(arr, 50)\n    return (q1 + 2*median + q3)/4\n\nprint(\"Trimean\", trimean(arr))\n\nTrimean -708.4430042323374"
+    "text": "from scipy.stats import skewnorm\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nLet’s generate some data that might be something we find in the real world.\n\nskew_magnitude = -6\narr = skewnorm.rvs(skew_magnitude, loc=0, scale=1000, size=100000)\n\n(The skew is a third-order moment.)\n\nplt.hist(arr, bins=100, density=True)\nplt.show()\n\n\n\n\n\n\n\n\nLet’s get a very common measure of central tendency:\n\nnp.mean(arr)\n\n-789.5809069979605\n\n\nThe mean overstates the central tendency because of the skew.\nThe mean is defined as\n\\[\\bar{x} = \\frac{1}{n} \\sum_{i=1}^n x_i\\]\nand treats all numbers equally. No matter how big or small.\nOne can “fix” this by looking at “robust” statistics that are often rank based. Rank based means that we sort the data and then base our statistics on the rank of the data. In this way, they are no longer sensitive to outliers.\n\ndef interquartile_range(arr):\n    q1 = np.percentile(arr, 25)\n    q3 = np.percentile(arr, 75)\n    return q3 - q1\n\nprint(\"Median\", np.percentile(arr, 50))\nprint(\"Interquartile Range\", interquartile_range(arr))\nprint(\"Mean\", arr.mean())\nprint(\"Standard Deviation\", arr.std())\n\nMedian -679.7024551978025\nInterquartile Range 834.2816858677052\nMean -789.5809069979605\nStandard Deviation 614.9363837309692\n\n\nA very nice measure of centrality is the so-called trimean.\n\n“An advantage of the trimean as a measure of the center (of a distribution) is that it combines the median’s emphasis on center values with the midhinge’s attention to the extremes.”\n— Herbert F. Weisberg, Central Tendency and Variability\n\nIt is defined as\n\\[\n\\text{trimean} = \\frac{Q_1 + 2Q_2 + Q_3}{4}\n\\]\nwhere \\(Q_1\\) is the first quartile, \\(Q_2\\) is the median, and \\(Q_3\\) is the third quartile.\n\ndef trimean(arr):\n    q1 = np.percentile(arr, 25)\n    q3 = np.percentile(arr, 75)\n    median = np.percentile(arr, 50)\n    return (q1 + 2*median + q3)/4\n\nprint(\"Trimean\", trimean(arr))\n\nTrimean -708.4430042323374",
+    "crumbs": [
+      "Tools",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Robust statistics and Trimean</span>"
+    ]
   },
   {
     "objectID": "tools/pandarallel.html",
     "href": "tools/pandarallel.html",
     "title": "Easy fast .apply for pandas",
     "section": "",
-    "text": "apply in pandas is slow. This is the case because it does not take advantage of vectorization. That means, in general, if you have something for which there is a built-in pandas (or numpy) function, you should use that instead of apply, because those functions will be optimized and typically vectorized.\nThe pandarallel package allows you to parallelize apply on a pandas DataFrame or Series object. It does this by using multiprocessing. However, since it uses multiple processes, it will use more memory than a simple apply.\nIf your data just barley fits in memory, you should not use pandarallel. However, if it does fit in memory, and you have a lot of cores, then pandarallel can speed up your code significantly with just changing one line of code.\n\nfrom pandarallel import pandarallel\n\npandarallel.initialize(progress_bar=True)\n\n# df.apply(func)\ndf.parallel_apply(func)"
+    "text": "apply in pandas is slow. This is the case because it does not take advantage of vectorization. That means, in general, if you have something for which there is a built-in pandas (or numpy) function, you should use that instead of apply, because those functions will be optimized and typically vectorized.\nThe pandarallel package allows you to parallelize apply on a pandas DataFrame or Series object. It does this by using multiprocessing. However, since it uses multiple processes, it will use more memory than a simple apply.\nIf your data just barley fits in memory, you should not use pandarallel. However, if it does fit in memory, and you have a lot of cores, then pandarallel can speed up your code significantly with just changing one line of code.\n\nfrom pandarallel import pandarallel\n\npandarallel.initialize(progress_bar=True)\n\n# df.apply(func)\ndf.parallel_apply(func)",
+    "crumbs": [
+      "Tools",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Easy fast `.apply` for pandas</span>"
+    ]
   },
   {
     "objectID": "tools/bfg.html",
     "href": "tools/bfg.html",
     "title": "BFG Repo-Cleaner",
     "section": "",
-    "text": "If you did not take with your .gitignore or just used git add . you might have by accident committed large files. This might lead to an error like\nremote: error: See https://gh.io/lfs for more information.\nremote: error: File reports/gemini-pro/.langchain.db is 123.01 MB; this exceeds GitHub's file size limit of 100.00 MB\nremote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.\nTo github.com:lamalab-org/chem-bench.git\n ! [remote rejected]     kjappelbaum/issue258 -> kjappelbaum/issue258 (pre-receive hook declined)\nerror: failed to push some refs to 'github.com:lamalab-org/chem-bench.git'\nTo fix this, you need to remove the large files. A convenient tool for doing this is BFG.\nOnce you download the file you can run it using something like\njava -jar ~/Downloads/bfg-1.14.0.jar --strip-blobs-bigger-than 100M --no-blob-protection\nto remove large files.\nNote that this here uses --no-blob-protection as BFG defaults to not touching the last commit.\nAfter the BFG run, it will prompt you to run something like\ngit reflog expire --expire=now --all && git gc --prune=now --aggressive"
+    "text": "If you did not take with your .gitignore or just used git add . you might have by accident committed large files. This might lead to an error like\nremote: error: See https://gh.io/lfs for more information.\nremote: error: File reports/gemini-pro/.langchain.db is 123.01 MB; this exceeds GitHub's file size limit of 100.00 MB\nremote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.\nTo github.com:lamalab-org/chem-bench.git\n ! [remote rejected]     kjappelbaum/issue258 -&gt; kjappelbaum/issue258 (pre-receive hook declined)\nerror: failed to push some refs to 'github.com:lamalab-org/chem-bench.git'\nTo fix this, you need to remove the large files. A convenient tool for doing this is BFG.\nOnce you download the file you can run it using something like\njava -jar ~/Downloads/bfg-1.14.0.jar --strip-blobs-bigger-than 100M --no-blob-protection\nto remove large files.\nNote that this here uses --no-blob-protection as BFG defaults to not touching the last commit.\nAfter the BFG run, it will prompt you to run something like\ngit reflog expire --expire=now --all && git gc --prune=now --aggressive",
+    "crumbs": [
+      "Tools",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>BFG Repo-Cleaner</span>"
+    ]
   },
   {
     "objectID": "tools/showyourwork.html",
     "href": "tools/showyourwork.html",
     "title": "showyourwork",
     "section": "",
-    "text": "showyourwork : https://github.com/showyourwork is a framework for building reproducible papers. The package works on a combination of Tex and Python code, where you can on the fly modify your plots.\nThe pre-requisites are: 1. define a conda environment with the packages are that necessary for plotting 2. use the \\script{}, \\variable{} and other commands to link your figures/tables to a Python script. 3. compile the paper"
+    "text": "showyourwork : https://github.com/showyourwork is a framework for building reproducible papers. The package works on a combination of Tex and Python code, where you can on the fly modify your plots.\nThe pre-requisites are: 1. define a conda environment with the packages are that necessary for plotting 2. use the \\script{}, \\variable{} and other commands to link your figures/tables to a Python script. 3. compile the paper",
+    "crumbs": [
+      "Tools",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>showyourwork</span>"
+    ]
+  },
+  {
+    "objectID": "papers/chem_yield_prediction_2024.html",
+    "href": "papers/chem_yield_prediction_2024.html",
+    "title": "Uncertainty-Aware Yield Prediction with Multimodal Molecular Features",
+    "section": "",
+    "text": "Why discussing this paper?\nI chose Chen et al.’s paper (Chen et al. 2024) for our journal club because",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Uncertainty-Aware Yield Prediction with Multimodal Molecular Features</span>"
+    ]
   },
   {
     "objectID": "papers/chem_yield_prediction_2024.html#why-discussing-this-paper",
     "href": "papers/chem_yield_prediction_2024.html#why-discussing-this-paper",
     "title": "Uncertainty-Aware Yield Prediction with Multimodal Molecular Features",
-    "section": "Why discussing this paper?",
-    "text": "Why discussing this paper?\nI chose Chen et al.’s paper (Chen et al. 2024) for our journal club because\n\nAn important and interesting problem in chemistry\nUses many of the techniques we care about in our group"
+    "section": "",
+    "text": "An important and interesting problem in chemistry\nUses many of the techniques we care about in our group",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Uncertainty-Aware Yield Prediction with Multimodal Molecular Features</span>"
+    ]
   },
   {
     "objectID": "papers/chem_yield_prediction_2024.html#context",
     "href": "papers/chem_yield_prediction_2024.html#context",
     "title": "Uncertainty-Aware Yield Prediction with Multimodal Molecular Features",
     "section": "Context",
-    "text": "Context\nPredicting the yield of chemical reactions is a crucial task in organic chemistry. It can help to optimize the synthesis of new molecules, reduce the number of experiments needed, and save time and resources. However, predicting the yield of a reaction is challenging due to the complexity of chemical reactions and the large number of factors that can influence the outcome."
+    "text": "Context\nPredicting the yield of chemical reactions is a crucial task in organic chemistry. It can help to optimize the synthesis of new molecules, reduce the number of experiments needed, and save time and resources. However, predicting the yield of a reaction is challenging due to the complexity of chemical reactions and the large number of factors that can influence the outcome.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Uncertainty-Aware Yield Prediction with Multimodal Molecular Features</span>"
+    ]
   },
   {
     "objectID": "papers/chem_yield_prediction_2024.html#prior-work",
     "href": "papers/chem_yield_prediction_2024.html#prior-work",
     "title": "Uncertainty-Aware Yield Prediction with Multimodal Molecular Features",
     "section": "Prior work",
-    "text": "Prior work\n\nAhneman et al. (2018)\nAhneman et al. (Ahneman et al. 2018) reported in Science a random forest model that predicts the yield of chemical reactions in a high-throughput dataset (palladium-catalyzed Buchwald-Hartwig cross-coupling reactions). For this, the authors created a set of features using computational techniques.\nA very interesting aspect of this work is the subsequent exchange with Chuang and Keiser (Chuang and Keiser 2018) who point out that the chemical features used in the work by Ahneman et al. perform not distinguishably better than non-meaningful features.\n\n\n\nFigure taken from Chuang and Keiser’s paper(Chuang and Keiser 2018) illustrating models trained with various featurization approaches.\n\n\n\n\nSchwaller et al. (2020, 2021)\nSchwaller et al. (Schwaller et al. 2020, 2021) utilized BERT models with a regression head to predict yields based on reaction SMILES.\nThey observed multiple interesting effects:\n\nThe performance on high-throughput datasets is good, on USPTO datasets the models are not predictive (\\(R^2\\) on a random split of 0.117 for the gram scale)\nThe yield distribution depends on the scale, which might be due to reaction at larger scale being better optimized\n\n\n\n\nFigure taken from Schwaller et al. (Schwaller et al. 2021) illustrating the distribution of yields on different scales.\n\n\n\n\nKwon et al. (2022)\nKwon et al. (Kwon et al. 2022), in contrast, used graph neural networks to predict yields. They pass reactants and products through a graph neural network and concatenate the embeddings to predict the yield. They train on a similar loss as the work at hand (but use also use dropout Monte-Carlo (Gal and Ghahramani 2016) to estimate the epistemic uncertainty)."
+    "text": "Prior work\n\nAhneman et al. (2018)\nAhneman et al. (Ahneman et al. 2018) reported in Science a random forest model that predicts the yield of chemical reactions in a high-throughput dataset (palladium-catalyzed Buchwald-Hartwig cross-coupling reactions). For this, the authors created a set of features using computational techniques.\nA very interesting aspect of this work is the subsequent exchange with Chuang and Keiser (Chuang and Keiser 2018) who point out that the chemical features used in the work by Ahneman et al. perform not distinguishably better than non-meaningful features.\n\n\n\nFigure taken from Chuang and Keiser’s paper(Chuang and Keiser 2018) illustrating models trained with various featurization approaches.\n\n\n\n\nSchwaller et al. (2020, 2021)\nSchwaller et al. (Schwaller et al. 2020, 2021) utilized BERT models with a regression head to predict yields based on reaction SMILES.\nThey observed multiple interesting effects:\n\nThe performance on high-throughput datasets is good, on USPTO datasets the models are not predictive (\\(R^2\\) on a random split of 0.117 for the gram scale)\nThe yield distribution depends on the scale, which might be due to reaction at larger scale being better optimized\n\n\n\n\nFigure taken from Schwaller et al. (Schwaller et al. 2021) illustrating the distribution of yields on different scales.\n\n\n\n\nKwon et al. (2022)\nKwon et al. (Kwon et al. 2022), in contrast, used graph neural networks to predict yields. They pass reactants and products through a graph neural network and concatenate the embeddings to predict the yield. They train on a similar loss as the work at hand (but use also use dropout Monte-Carlo (Gal and Ghahramani 2016) to estimate the epistemic uncertainty).",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Uncertainty-Aware Yield Prediction with Multimodal Molecular Features</span>"
+    ]
   },
   {
     "objectID": "papers/chem_yield_prediction_2024.html#problem-setting",
     "href": "papers/chem_yield_prediction_2024.html#problem-setting",
     "title": "Uncertainty-Aware Yield Prediction with Multimodal Molecular Features",
     "section": "Problem setting",
-    "text": "Problem setting\n\nprior works perform well on high-throughput datasets but not on real-world datasets\nthis is partially due to a lot of noise in datasets\nof course, reaction conditions are important, too\n\nAdditionally, the authors propose that the previous representations might not be “rich” enough to capture the complexity of chemical reactions."
+    "text": "Problem setting\n\nprior works perform well on high-throughput datasets but not on real-world datasets\nthis is partially due to a lot of noise in datasets\nof course, reaction conditions are important, too\n\nAdditionally, the authors propose that the previous representations might not be “rich” enough to capture the complexity of chemical reactions.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Uncertainty-Aware Yield Prediction with Multimodal Molecular Features</span>"
+    ]
   },
   {
     "objectID": "papers/chem_yield_prediction_2024.html#approach",
     "href": "papers/chem_yield_prediction_2024.html#approach",
     "title": "Uncertainty-Aware Yield Prediction with Multimodal Molecular Features",
     "section": "Approach",
-    "text": "Approach\nThe authors propose to fuse multiple features. In addition, they also use a special loss function and a mixture of experts (MoE) model used to transform human-designed features.\n\n\n\nOverview of the model architecture. Figure taken from Chem et al. (Chen et al. 2024)\n\n\n\nGraph encoder and SMILES encoder\nThe authors pretrain the graph and SMILES encoders using a contrastive loss. The graph encoder is a GNN, the SMILES encoder is a transformer.\n\nGraph convolutional neural network\nTheir graph encoder is basically a message graph convolutional neural network. The authors use the DGL library to implement this.\nThe forward pass looks like this:\nfor _ in range(self.num_step_message_passing):\n    node_feats = self.activation(self.gnn_layer(g, node_feats, edge_feats)).unsqueeze(0)\n    node_feats, hidden_feats = self.gru(node_feats, hidden_feats)\n    node_feats = node_feats.squeeze(0)\nWhere the GNN layer performs a simple operation such as\n\\[\n\\mathbf{x}_i^{\\prime}=\\boldsymbol{\\Theta}^{\\top} \\sum_{j \\in \\mathcal{N}(i) \\cup\\{i\\}} \\frac{e_{j, i}}{\\sqrt{\\hat{d}_j \\hat{d}_i}} \\mathbf{x}_j\n\\]\nwhere \\(\\hat{d}_i\\) is the degree of node \\(i\\) and \\(\\boldsymbol{\\Theta}\\) is a learnable weight matrix. \\(\\mathcal{N}(i)\\) is the set of neighbors of node \\(i\\). \\(\\mathbf{x}_i\\) is the node embedding of node \\(i\\), \\(e_{j, i}\\) is the edge feature between node \\(i\\) and \\(j\\).\nThe node embeddings are then aggregated using Set2Set pooling (Vinyals, Bengio, and Kudlur 2016).\n\n\nSMILES encoder\nFor encoding SMILES, the use a transformer model. In their code, they seem to pass through only one transformer layer.\nThe forward pass looks like this:\nx = self.token_embedding(text)\nx = x + self.positional_embedding\nx = x.permute(1, 0, 2)  # NLD -> LND\nx = self.transformer(x)\nx = x.permute(1, 0, 2)  # LND -> NLD\nx = self.ln_final(x)\nx = self.pooler(x[:,0,:])\nThey take the first token of the sequence and pass it through a linear layer to get the final representation.\n\n\nContrastive training\nThe authors use a contrastive loss to train the encoders.\n\\[\n\\mathcal{L}_c=-\\frac{1}{2} \\log \\frac{e^{\\left\\langle f_G^j, f_S^j\\right\\rangle / \\tau}}{\\sum_{k=1}^N e^{\\left\\langle f_G^j, f_S^k\\right\\rangle / \\tau}}-\\frac{1}{2} \\log \\frac{e^{\\left\\langle f_G^j, f_S^j\\right\\rangle / \\tau}}{\\sum_{k=1}^N e^{\\left\\langle f_G^k, f_S^j\\right\\rangle / \\tau}},\n\\]\nIn contrastive training, we try to maximize the similarity between positive pairs and minimize the similarity between negative pairs. In the equation above, \\(f_G^j\\) and \\(f_S^j\\) are the representations of the graph and SMILES of the same reaction, respectively. \\(\\tau\\) is a temperature parameter.\nSuch contrastive training allows to pretrain the encoders on a large dataset without labels.\n\n\n\n\n\n\nNote\n\n\n\nContrastive learning is one of the most popular methods in self-supervised learning. A good overview can be found in Lilian Weng’s amazing blog.\n\n\n\n\n\nHuman-features encoder\nThe authors also encode additional features with feedforward networks in a mixture of experts (MoE) model. The key idea behind MoE is that we replace “conventional layers” with “MoE layers” which are copies of the same layer. A gating network decides, based on the input, which layer to use. This is powerful if we sparsely select the experts-then only a subset of all weights are used in a given forward pass.\n\\[\n\\operatorname{MoE}\\left(x_H\\right)=\\sum_{i=1}^t \\mathcal{G}\\left(x_H\\right)_i \\cdot E_i\\left(x_H\\right)\n\\]\nThis is a mixture of experts model. The authors use a gating network \\(\\mathcal{G}\\) to decide which expert to use. The experts \\(E_i\\) are simple feedforward networks. The gating network might be a simple softmax layer:\n\\[\nG_\\sigma(x)=\\operatorname{Softmax}\\left(x \\cdot W_g\\right)\n\\]\nin practice, one can improve that by adding sparsity (e.g. selecting top-k).\n\n\n\n\n\n\nNote\n\n\n\nMoE (Shazeer et al. 2017) has become popular recently as a way to scale LLMs. You might have across model names like Mixtral-8x7B (Jiang et al. 2024), which indicates that the model is a mixture of 8 experts, each of which is a 7B parameter model. The total number of parameters is 47B parameters, but the inference cost is similar to the one of a 14B parameter model. (Note however, that memory consumption is still high as all experts need to be loaded into memory.)\nThis blog by Cameron Wolfe gives a good overview. You might also find Yannic Kilcher’s video about Mixtral of Experts useful.\n\n\n\n\nFusion\nThe fusion of the different features is done by concatenating them\nThe complete forward pass looks like this:\nr_graph_feats = torch.sum(torch.stack([self.clme.mpnn(mol) for mol in rmols]), 0)\np_graph_feats = self.clme.mpnn(pmols)\nfeats, a_loss = self.mlp(input_feats)\nseq_feats = self.clme.transformer(smiles)\nconcat_feats = torch.cat([r_graph_feats, p_graph_feats, feats, seq_feats], 1)\nout = self.predict(concat_feats)\nwhere the mpnn method is the graph encoder, the transformer method is the SMILES encoder, and the mlp method is the human-features encoder.\n\n\nUncertainty (quantification)\nThe authors define the prediction as\n\\[\n\\hat{y}=\\mu(\\boldsymbol{x})+\\epsilon * \\sigma(\\boldsymbol{x})\n\\]\nwhere \\(\\mu(\\boldsymbol{x})\\) is the prediction, \\(\\sigma(\\boldsymbol{x})\\) is the uncertainty, and \\(\\epsilon\\) is a random variable sampled from a normal distribution.\nThe model is trained with a loss function that includes the uncertainty:\n\\[\n\\mathcal{L}_u=\\frac{1}{N} \\sum_{i=1}^N\\left[\\frac{1}{\\sigma\\left(\\boldsymbol{x}_i\\right)^2}\\left\\|y_i-\\mu\\left(\\boldsymbol{x}_i\\right)\\right\\|^2+\\log \\sigma\\left(\\boldsymbol{x}_i\\right)^2\\right]\n\\]\nThe \\(\\sigma\\) term is capturing observation noise (aleatoric uncertainty).\n\n\n\n\n\n\nNote\n\n\n\nThis loss comes from the idea of variational inference.\n\\[\n\\mathcal{L}(\\boldsymbol{\\lambda})=-\\mathbb{E}_{q(\\boldsymbol{\\theta} ; \\boldsymbol{\\lambda})}[\\log p(\\mathbf{y} \\mid \\mathbf{x}, \\boldsymbol{\\theta})]+\\mathrm{KL}(q(\\boldsymbol{\\theta} ; \\boldsymbol{\\lambda}) \\| p(\\boldsymbol{\\theta}))\n\\]\nIn this equation, the first term is the negative log-likelihood, and the second term is the KL divergence between the approximate posterior \\(q(\\boldsymbol{\\theta} ; \\boldsymbol{\\lambda})\\) and the prior \\(p(\\boldsymbol{\\theta})\\). The KL divergence is a measure of how much the approximate posterior diverges from the prior. The idea is to minimize the negative log-likelihood while keeping the approximate posterior close to the prior. This is a way to quantify the uncertainty in the model.\nThe idea comes from Bayesian inference, where we want to estimate the posterior distribution over the parameters of the model. In practice, this is intractable, so we use variational inference to approximate the posterior with a simpler distribution. The posterior (which quantifies uncertainty) is typically computationally expensive to compute, so we use variational inference to approximate it with a simpler distribution, this is called variational inference. Since during training, we do some sampling, we need to perform a reparametrization trick (Kingma, Salimans, and Welling 2015) to make the gradients flow through the sampling operation."
+    "text": "Approach\nThe authors propose to fuse multiple features. In addition, they also use a special loss function and a mixture of experts (MoE) model used to transform human-designed features.\n\n\n\nOverview of the model architecture. Figure taken from Chem et al. (Chen et al. 2024)\n\n\n\nGraph encoder and SMILES encoder\nThe authors pretrain the graph and SMILES encoders using a contrastive loss. The graph encoder is a GNN, the SMILES encoder is a transformer.\n\nGraph convolutional neural network\nTheir graph encoder is basically a message graph convolutional neural network. The authors use the DGL library to implement this.\nThe forward pass looks like this:\nfor _ in range(self.num_step_message_passing):\n    node_feats = self.activation(self.gnn_layer(g, node_feats, edge_feats)).unsqueeze(0)\n    node_feats, hidden_feats = self.gru(node_feats, hidden_feats)\n    node_feats = node_feats.squeeze(0)\nWhere the GNN layer performs a simple operation such as\n\\[\n\\mathbf{x}_i^{\\prime}=\\boldsymbol{\\Theta}^{\\top} \\sum_{j \\in \\mathcal{N}(i) \\cup\\{i\\}} \\frac{e_{j, i}}{\\sqrt{\\hat{d}_j \\hat{d}_i}} \\mathbf{x}_j\n\\]\nwhere \\(\\hat{d}_i\\) is the degree of node \\(i\\) and \\(\\boldsymbol{\\Theta}\\) is a learnable weight matrix. \\(\\mathcal{N}(i)\\) is the set of neighbors of node \\(i\\). \\(\\mathbf{x}_i\\) is the node embedding of node \\(i\\), \\(e_{j, i}\\) is the edge feature between node \\(i\\) and \\(j\\).\nThe node embeddings are then aggregated using Set2Set pooling (Vinyals, Bengio, and Kudlur 2016).\n\n\nSMILES encoder\nFor encoding SMILES, the use a transformer model. In their code, they seem to pass through only one transformer layer.\nThe forward pass looks like this:\nx = self.token_embedding(text)\nx = x + self.positional_embedding\nx = x.permute(1, 0, 2)  # NLD -&gt; LND\nx = self.transformer(x)\nx = x.permute(1, 0, 2)  # LND -&gt; NLD\nx = self.ln_final(x)\nx = self.pooler(x[:,0,:])\nThey take the first token of the sequence and pass it through a linear layer to get the final representation.\n\n\nContrastive training\nThe authors use a contrastive loss to train the encoders.\n\\[\n\\mathcal{L}_c=-\\frac{1}{2} \\log \\frac{e^{\\left\\langle f_G^j, f_S^j\\right\\rangle / \\tau}}{\\sum_{k=1}^N e^{\\left\\langle f_G^j, f_S^k\\right\\rangle / \\tau}}-\\frac{1}{2} \\log \\frac{e^{\\left\\langle f_G^j, f_S^j\\right\\rangle / \\tau}}{\\sum_{k=1}^N e^{\\left\\langle f_G^k, f_S^j\\right\\rangle / \\tau}},\n\\]\nIn contrastive training, we try to maximize the similarity between positive pairs and minimize the similarity between negative pairs. In the equation above, \\(f_G^j\\) and \\(f_S^j\\) are the representations of the graph and SMILES of the same reaction, respectively. \\(\\tau\\) is a temperature parameter.\nSuch contrastive training allows to pretrain the encoders on a large dataset without labels.\n\n\n\n\n\n\nNote\n\n\n\nContrastive learning is one of the most popular methods in self-supervised learning. A good overview can be found in Lilian Weng’s amazing blog.\n\n\n\n\n\nHuman-features encoder\nThe authors also encode additional features with feedforward networks in a mixture of experts (MoE) model. The key idea behind MoE is that we replace “conventional layers” with “MoE layers” which are copies of the same layer. A gating network decides, based on the input, which layer to use. This is powerful if we sparsely select the experts-then only a subset of all weights are used in a given forward pass.\n\\[\n\\operatorname{MoE}\\left(x_H\\right)=\\sum_{i=1}^t \\mathcal{G}\\left(x_H\\right)_i \\cdot E_i\\left(x_H\\right)\n\\]\nThis is a mixture of experts model. The authors use a gating network \\(\\mathcal{G}\\) to decide which expert to use. The experts \\(E_i\\) are simple feedforward networks. The gating network might be a simple softmax layer:\n\\[\nG_\\sigma(x)=\\operatorname{Softmax}\\left(x \\cdot W_g\\right)\n\\]\nin practice, one can improve that by adding sparsity (e.g. selecting top-k).\n\n\n\n\n\n\nNote\n\n\n\nMoE (Shazeer et al. 2017) has become popular recently as a way to scale LLMs. You might have across model names like Mixtral-8x7B (Jiang et al. 2024), which indicates that the model is a mixture of 8 experts, each of which is a 7B parameter model. The total number of parameters is 47B parameters, but the inference cost is similar to the one of a 14B parameter model. (Note however, that memory consumption is still high as all experts need to be loaded into memory.)\nThis blog by Cameron Wolfe gives a good overview. You might also find Yannic Kilcher’s video about Mixtral of Experts useful.\n\n\n\n\nFusion\nThe fusion of the different features is done by concatenating them\nThe complete forward pass looks like this:\nr_graph_feats = torch.sum(torch.stack([self.clme.mpnn(mol) for mol in rmols]), 0)\np_graph_feats = self.clme.mpnn(pmols)\nfeats, a_loss = self.mlp(input_feats)\nseq_feats = self.clme.transformer(smiles)\nconcat_feats = torch.cat([r_graph_feats, p_graph_feats, feats, seq_feats], 1)\nout = self.predict(concat_feats)\nwhere the mpnn method is the graph encoder, the transformer method is the SMILES encoder, and the mlp method is the human-features encoder.\n\n\nUncertainty (quantification)\nThe authors define the prediction as\n\\[\n\\hat{y}=\\mu(\\boldsymbol{x})+\\epsilon * \\sigma(\\boldsymbol{x})\n\\]\nwhere \\(\\mu(\\boldsymbol{x})\\) is the prediction, \\(\\sigma(\\boldsymbol{x})\\) is the uncertainty, and \\(\\epsilon\\) is a random variable sampled from a normal distribution.\nThe model is trained with a loss function that includes the uncertainty:\n\\[\n\\mathcal{L}_u=\\frac{1}{N} \\sum_{i=1}^N\\left[\\frac{1}{\\sigma\\left(\\boldsymbol{x}_i\\right)^2}\\left\\|y_i-\\mu\\left(\\boldsymbol{x}_i\\right)\\right\\|^2+\\log \\sigma\\left(\\boldsymbol{x}_i\\right)^2\\right]\n\\]\nThe \\(\\sigma\\) term is capturing observation noise (aleatoric uncertainty).\n\n\n\n\n\n\nNote\n\n\n\nThis loss comes from the idea of variational inference.\n\\[\n\\mathcal{L}(\\boldsymbol{\\lambda})=-\\mathbb{E}_{q(\\boldsymbol{\\theta} ; \\boldsymbol{\\lambda})}[\\log p(\\mathbf{y} \\mid \\mathbf{x}, \\boldsymbol{\\theta})]+\\mathrm{KL}(q(\\boldsymbol{\\theta} ; \\boldsymbol{\\lambda}) \\| p(\\boldsymbol{\\theta}))\n\\]\nIn this equation, the first term is the negative log-likelihood, and the second term is the KL divergence between the approximate posterior \\(q(\\boldsymbol{\\theta} ; \\boldsymbol{\\lambda})\\) and the prior \\(p(\\boldsymbol{\\theta})\\). The KL divergence is a measure of how much the approximate posterior diverges from the prior. The idea is to minimize the negative log-likelihood while keeping the approximate posterior close to the prior. This is a way to quantify the uncertainty in the model.\nThe idea comes from Bayesian inference, where we want to estimate the posterior distribution over the parameters of the model. In practice, this is intractable, so we use variational inference to approximate the posterior with a simpler distribution. The posterior (which quantifies uncertainty) is typically computationally expensive to compute, so we use variational inference to approximate it with a simpler distribution, this is called variational inference. Since during training, we do some sampling, we need to perform a reparametrization trick (Kingma, Salimans, and Welling 2015) to make the gradients flow through the sampling operation.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Uncertainty-Aware Yield Prediction with Multimodal Molecular Features</span>"
+    ]
   },
   {
     "objectID": "papers/chem_yield_prediction_2024.html#results",
     "href": "papers/chem_yield_prediction_2024.html#results",
     "title": "Uncertainty-Aware Yield Prediction with Multimodal Molecular Features",
     "section": "Results",
-    "text": "Results\nAs in most ML papers, we have tables with bold numbers, e.g. for a dataset with amide coupling reactions:\n\n\n\n\n\n\n\n\n\nModel\nMAE \\(\\downarrow\\)\nRMSE \\(\\downarrow\\)\n\\(R^2 \\uparrow\\)\n\n\n\n\nMordred\n\\(15.99 \\pm 0.14\\)\n\\(21.08 \\pm 0.16\\)\n\\(0.168 \\pm 0.010\\)\n\n\nYieldBert\n\\(16.52 \\pm 0.20\\)\n\\(21.12 \\pm 0.13\\)\n\\(0.172 \\pm 0.016\\)\n\n\nYieldGNN\n\\(\\underline{15.27 \\pm 0.18}\\)\n\\(\\underline{19.82} \\pm 0.08\\)\n\\(\\underline{0.216} \\pm 0.013\\)\n\n\nMPNN\n\\(16.31 \\pm 0.22\\)\n\\(20.86 \\pm 0.27\\)\n\\(0.188 \\pm 0.021\\)\n\n\nOurs\n\\(\\mathbf{1 4 . 7 6} \\pm \\mathbf{0 . 1 5}\\)\n\\(\\mathbf{1 9 . 3 3} \\pm \\mathbf{0 . 1 0}\\)\n\\(\\mathbf{0 . 2 6 2} \\pm \\mathbf{0 . 0 0 9}\\)\n\n\n\nHere, their model outperforms the baselines. But it is also interesting to see how well the Mordred baseline performs compared to much more complex models.\nThe pattern of their model being bold in tables is persistent across datasets.\n\nAblations\nThe authors perform ablations to understand the importance of the different components of their model. While there are some differences, the differences are not drastic (partially overlapping errorbars).\n\n\n\n\n\n\n\n\n\nModel\nMAE \\(\\downarrow\\)\nRMSE \\(\\downarrow\\)\n\\(R^2 \\uparrow\\)\n\n\n\n\nOurs\n\\(14.76 \\pm 0.15\\)\n\\(19.33 \\pm 0.10\\)\n\\(0.262 \\pm 0.009\\)\n\n\nw/o UQ\n\\(15.08 \\pm 0.13\\)\n\\(19.63 \\pm 0.09\\)\n\\(0.249 \\pm 0.009\\)\n\n\nw/o \\(\\mathcal{L}_r\\)\n\\(14.80 \\pm 0.16\\)\n\\(19.51 \\pm 0.10\\)\n\\(0.261 \\pm 0.010\\)\n\n\nw/o MoE\n\\(15.12 \\pm 0.18\\)\n\\(20.03 \\pm 0.13\\)\n\\(0.230 \\pm 0.012\\)\n\n\nw/o Seq.\n\\(14.97 \\pm 0.16\\)\n\\(19.55 \\pm 0.11\\)\n\\(0.261 \\pm 0.010\\)\n\n\nw/o Graph\n\\(15.06 \\pm 0.15\\)\n\\(19.59 \\pm 0.10\\)\n\\(0.260 \\pm 0.009\\)\n\n\nw/o H.\n\\(15.83 \\pm 0.20\\)\n\\(20.46 \\pm 0.18\\)\n\\(0.212 \\pm 0.016\\)"
+    "text": "Results\nAs in most ML papers, we have tables with bold numbers, e.g. for a dataset with amide coupling reactions:\n\n\n\n\n\n\n\n\n\nModel\nMAE \\(\\downarrow\\)\nRMSE \\(\\downarrow\\)\n\\(R^2 \\uparrow\\)\n\n\n\n\nMordred\n\\(15.99 \\pm 0.14\\)\n\\(21.08 \\pm 0.16\\)\n\\(0.168 \\pm 0.010\\)\n\n\nYieldBert\n\\(16.52 \\pm 0.20\\)\n\\(21.12 \\pm 0.13\\)\n\\(0.172 \\pm 0.016\\)\n\n\nYieldGNN\n\\(\\underline{15.27 \\pm 0.18}\\)\n\\(\\underline{19.82} \\pm 0.08\\)\n\\(\\underline{0.216} \\pm 0.013\\)\n\n\nMPNN\n\\(16.31 \\pm 0.22\\)\n\\(20.86 \\pm 0.27\\)\n\\(0.188 \\pm 0.021\\)\n\n\nOurs\n\\(\\mathbf{1 4 . 7 6} \\pm \\mathbf{0 . 1 5}\\)\n\\(\\mathbf{1 9 . 3 3} \\pm \\mathbf{0 . 1 0}\\)\n\\(\\mathbf{0 . 2 6 2} \\pm \\mathbf{0 . 0 0 9}\\)\n\n\n\nHere, their model outperforms the baselines. But it is also interesting to see how well the Mordred baseline performs compared to much more complex models.\nThe pattern of their model being bold in tables is persistent across datasets.\n\nAblations\nThe authors perform ablations to understand the importance of the different components of their model. While there are some differences, the differences are not drastic (partially overlapping errorbars).\n\n\n\n\n\n\n\n\n\nModel\nMAE \\(\\downarrow\\)\nRMSE \\(\\downarrow\\)\n\\(R^2 \\uparrow\\)\n\n\n\n\nOurs\n\\(14.76 \\pm 0.15\\)\n\\(19.33 \\pm 0.10\\)\n\\(0.262 \\pm 0.009\\)\n\n\nw/o UQ\n\\(15.08 \\pm 0.13\\)\n\\(19.63 \\pm 0.09\\)\n\\(0.249 \\pm 0.009\\)\n\n\nw/o \\(\\mathcal{L}_r\\)\n\\(14.80 \\pm 0.16\\)\n\\(19.51 \\pm 0.10\\)\n\\(0.261 \\pm 0.010\\)\n\n\nw/o MoE\n\\(15.12 \\pm 0.18\\)\n\\(20.03 \\pm 0.13\\)\n\\(0.230 \\pm 0.012\\)\n\n\nw/o Seq.\n\\(14.97 \\pm 0.16\\)\n\\(19.55 \\pm 0.11\\)\n\\(0.261 \\pm 0.010\\)\n\n\nw/o Graph\n\\(15.06 \\pm 0.15\\)\n\\(19.59 \\pm 0.10\\)\n\\(0.260 \\pm 0.009\\)\n\n\nw/o H.\n\\(15.83 \\pm 0.20\\)\n\\(20.46 \\pm 0.18\\)\n\\(0.212 \\pm 0.016\\)",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Uncertainty-Aware Yield Prediction with Multimodal Molecular Features</span>"
+    ]
   },
   {
     "objectID": "papers/chem_yield_prediction_2024.html#take-aways",
     "href": "papers/chem_yield_prediction_2024.html#take-aways",
     "title": "Uncertainty-Aware Yield Prediction with Multimodal Molecular Features",
     "section": "Take aways",
-    "text": "Take aways\n\nA lot of machinery, but not a drastic improvement\nIt is the data, stupid! 😉 (It is not really clear how this is even supposed to work with information about the conditions)\nInterestingly, they didn’t test USPTO or other datasets\nTheir approach with frozen encoders is interesting, it would have been interesting to see learning curves to better understand the data efficiency of the approach"
+    "text": "Take aways\n\nA lot of machinery, but not a drastic improvement\nIt is the data, stupid! 😉 (It is not really clear how this is even supposed to work with information about the conditions)\nInterestingly, they didn’t test USPTO or other datasets\nTheir approach with frozen encoders is interesting, it would have been interesting to see learning curves to better understand the data efficiency of the approach",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Uncertainty-Aware Yield Prediction with Multimodal Molecular Features</span>"
+    ]
   },
   {
     "objectID": "papers/chem_yield_prediction_2024.html#references",
     "href": "papers/chem_yield_prediction_2024.html#references",
     "title": "Uncertainty-Aware Yield Prediction with Multimodal Molecular Features",
     "section": "References",
-    "text": "References\n\n\nAhneman, Derek T., Jesús G. Estrada, Shishi Lin, Spencer D. Dreher, and\nAbigail G. Doyle. 2018. “Predicting Reaction Performance in c–n\nCross-Coupling Using Machine Learning.” Science 360\n(6385): 186–90. https://doi.org/10.1126/science.aar5169.\n\n\nChen, Jiayuan, Kehan Guo, Zhen Liu, Olexandr Isayev, and Xiangliang\nZhang. 2024. “Uncertainty-Aware Yield Prediction with Multimodal\nMolecular Features.” Proceedings of the AAAI Conference on\nArtificial Intelligence 38 (8): 8274–82. https://doi.org/10.1609/aaai.v38i8.28668.\n\n\nChuang, Kangway V., and Michael J. Keiser. 2018. “Comment on\n‘Predicting Reaction Performance in c–n Cross-Coupling Using\nMachine Learning’.” Science 362 (6416). https://doi.org/10.1126/science.aat8603.\n\n\nGal, Yarin, and Zoubin Ghahramani. 2016. “Dropout as a Bayesian\nApproximation: Representing Model Uncertainty in Deep Learning.”\nIn International Conference on Machine Learning, 1050–59. PMLR.\n\n\nJiang, Albert Q., Alexandre Sablayrolles, Antoine Roux, Arthur Mensch,\nBlanche Savary, Chris Bamford, Devendra Singh Chaplot, et al. 2024.\n“Mixtral of Experts.” https://arxiv.org/abs/2401.04088.\n\n\nKingma, Diederik P., Tim Salimans, and Max Welling. 2015.\n“Variational Dropout and the Local Reparameterization\nTrick.” https://arxiv.org/abs/1506.02557.\n\n\nKwon, Youngchun, Dongseon Lee, Youn-Suk Choi, and Seokho Kang. 2022.\n“Uncertainty-Aware Prediction of Chemical Reaction Yields with\nGraph Neural Networks.” Journal of Cheminformatics 14\n(1). https://doi.org/10.1186/s13321-021-00579-z.\n\n\nSchwaller, Philippe, Alain C Vaucher, Teodoro Laino, and Jean-Louis\nReymond. 2020. “Data Augmentation Strategies to Improve Reaction\nYield Predictions and Estimate Uncertainty.” Chemrxiv\nPreprint.\n\n\n———. 2021. “Prediction of Chemical Reaction Yields Using Deep\nLearning.” Machine Learning: Science and Technology 2\n(1): 015016.\n\n\nShazeer, Noam, Azalia Mirhoseini, Krzysztof Maziarz, Andy Davis, Quoc\nLe, Geoffrey Hinton, and Jeff Dean. 2017. “Outrageously Large\nNeural Networks: The Sparsely-Gated Mixture-of-Experts Layer.” https://arxiv.org/abs/1701.06538.\n\n\nVinyals, Oriol, Samy Bengio, and Manjunath Kudlur. 2016. “Order\nMatters: Sequence to Sequence for Sets.” https://arxiv.org/abs/1511.06391."
+    "text": "References\n\n\nAhneman, Derek T., Jesús G. Estrada, Shishi Lin, Spencer D. Dreher, and\nAbigail G. Doyle. 2018. “Predicting Reaction Performance in c–n\nCross-Coupling Using Machine Learning.” Science 360\n(6385): 186–90. https://doi.org/10.1126/science.aar5169.\n\n\nChen, Jiayuan, Kehan Guo, Zhen Liu, Olexandr Isayev, and Xiangliang\nZhang. 2024. “Uncertainty-Aware Yield Prediction with Multimodal\nMolecular Features.” Proceedings of the AAAI Conference on\nArtificial Intelligence 38 (8): 8274–82. https://doi.org/10.1609/aaai.v38i8.28668.\n\n\nChuang, Kangway V., and Michael J. Keiser. 2018. “Comment on\n‘Predicting Reaction Performance in c–n Cross-Coupling Using\nMachine Learning’.” Science 362 (6416). https://doi.org/10.1126/science.aat8603.\n\n\nGal, Yarin, and Zoubin Ghahramani. 2016. “Dropout as a Bayesian\nApproximation: Representing Model Uncertainty in Deep Learning.”\nIn International Conference on Machine Learning, 1050–59. PMLR.\n\n\nGanose, Alex M, and Anubhav Jain. 2019. “Robocrystallographer:\nAutomated Crystal Structure Text Descriptions and Analysis.”\nMRS Communications 9 (3): 874–81.\n\n\nGupta, Tanishq, Mohd Zaki, NM Anoop Krishnan, and Mausam. 2022.\n“MatSciBERT: A Materials Domain Language Model for Text Mining and\nInformation Extraction.” Npj Computational Materials 8\n(1): 102.\n\n\nJiang, Albert Q., Alexandre Sablayrolles, Antoine Roux, Arthur Mensch,\nBlanche Savary, Chris Bamford, Devendra Singh Chaplot, et al. 2024.\n“Mixtral of Experts.” https://arxiv.org/abs/2401.04088.\n\n\nKingma, Diederik P., Tim Salimans, and Max Welling. 2015.\n“Variational Dropout and the Local Reparameterization\nTrick.” https://arxiv.org/abs/1506.02557.\n\n\nKwon, Youngchun, Dongseon Lee, Youn-Suk Choi, and Seokho Kang. 2022.\n“Uncertainty-Aware Prediction of Chemical Reaction Yields with\nGraph Neural Networks.” Journal of Cheminformatics 14\n(1). https://doi.org/10.1186/s13321-021-00579-z.\n\n\nSchwaller, Philippe, Alain C Vaucher, Teodoro Laino, and Jean-Louis\nReymond. 2020. “Data Augmentation Strategies to Improve Reaction\nYield Predictions and Estimate Uncertainty.” Chemrxiv\nPreprint.\n\n\n———. 2021. “Prediction of Chemical Reaction Yields Using Deep\nLearning.” Machine Learning: Science and Technology 2\n(1): 015016.\n\n\nShazeer, Noam, Azalia Mirhoseini, Krzysztof Maziarz, Andy Davis, Quoc\nLe, Geoffrey Hinton, and Jeff Dean. 2017. “Outrageously Large\nNeural Networks: The Sparsely-Gated Mixture-of-Experts Layer.” https://arxiv.org/abs/1701.06538.\n\n\nTshitoyan, Vahe, John Dagdelen, Leigh Weston, Alexander Dunn, Ziqin\nRong, Olga Kononova, Kristin A Persson, Gerbrand Ceder, and Anubhav\nJain. 2019. “Unsupervised Word Embeddings Capture Latent Knowledge\nfrom Materials Science Literature.” Nature 571 (7763):\n95–98.\n\n\nVinyals, Oriol, Samy Bengio, and Manjunath Kudlur. 2016. “Order\nMatters: Sequence to Sequence for Sets.” https://arxiv.org/abs/1511.06391.\n\n\nWalker, Nicholas, Amalie Trewartha, Haoyan Huo, Sanghoon Lee, Kevin\nCruse, John Dagdelen, Alexander Dunn, Kristin Persson, Gerbrand Ceder,\nand Anubhav Jain. 2021. “The Impact of Domain-Specific\nPre-Training on Named Entity Recognition Tasks in Materials\nScience.” Available at SSRN 3950755.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Uncertainty-Aware Yield Prediction with Multimodal Molecular Features</span>"
+    ]
+  },
+  {
+    "objectID": "papers/Jiaxing_leverage_LLM4mat_images.html",
+    "href": "papers/Jiaxing_leverage_LLM4mat_images.html",
+    "title": "Leveraging language representation for materials exploration and discovery",
+    "section": "",
+    "text": "Why discussing this paper?\nI chose Jiaxing et al.’s paper for our journal club because",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
+    ]
+  },
+  {
+    "objectID": "papers/Jiaxing_leverage_LLM4mat_images.html#why-discussing-this-paper",
+    "href": "papers/Jiaxing_leverage_LLM4mat_images.html#why-discussing-this-paper",
+    "title": "Leveraging language representation for materials exploration and discovery",
+    "section": "",
+    "text": "LLMs successfully applied in other domain, interesting to see what can be done in material science\nOne among the few paper where LLMs are applied in materials science for actual material discovery.\nNice embedding figures",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
+    ]
+  },
+  {
+    "objectID": "papers/Jiaxing_leverage_LLM4mat_images.html#context",
+    "href": "papers/Jiaxing_leverage_LLM4mat_images.html#context",
+    "title": "Leveraging language representation for materials exploration and discovery",
+    "section": "Context",
+    "text": "Context\n\nMaterial space is not completely explored. And there is possibility of finding better materials in many applications.\nML recommender systems for exploring material spaces are already there but not many using “LLMS”\nLLM framework for recommending prototype crystal structures and later validate through first-principles calculations and experiments\nWhy LLMS ? - Universal task agnostic representations",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
+    ]
+  },
+  {
+    "objectID": "papers/Jiaxing_leverage_LLM4mat_images.html#some-previous-llm-models",
+    "href": "papers/Jiaxing_leverage_LLM4mat_images.html#some-previous-llm-models",
+    "title": "Leveraging language representation for materials exploration and discovery",
+    "section": "Some Previous LLM Models",
+    "text": "Some Previous LLM Models\n\nRobocrystallographer\nTool to generate text description of the material structure with information related to their space group, symmetry.(Ganose and Jain 2019) eg: Robocrystallographer description of PbTe- “PbTe is Halite, Rock Salt structured and crystallizes in the cubic Fm3-m space group…”\n\n\nMatSciBERT\nMatsciBERT was pretrained on whole sections of more than 1 million materials science articles with masked language modelling.(Gupta et al. 2022)\n\n\n\nMethodology for training MatSciBERT\n\n\n\n\nMatBERT\nMatBERT was trained by sampling 50 million paragraphs from 2 million articles masked language modelling. (Walker et al. 2021)\n\n\nMat2Vec\nMat2Vec was trained similarly as Word2vec training through skip-gram with negative sampling. Each word is embedded into a 200-dimensional vector. (Tshitoyan et al. 2019)\nWord2Vec is a popular algorithm used to generate word embeddings. These word embeddings capture semantic relationships between words, such as similarity. Skipgram: In skip-gram, the goal is to predict the context words (words that appear nearby) given a target word.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
+    ]
+  },
+  {
+    "objectID": "papers/Jiaxing_leverage_LLM4mat_images.html#problem-setting",
+    "href": "papers/Jiaxing_leverage_LLM4mat_images.html#problem-setting",
+    "title": "Leveraging language representation for materials exploration and discovery",
+    "section": "Problem setting",
+    "text": "Problem setting\n\nHand-crafted features and specialized structural models have limitations in providing universal and task-agnostic representations within the vast material space.\nAdditional contexts are also very useful. for eg: (doping, temperature, synthesis conditions)\nIn materials exploration and discovery context:\n\n\neffective representations of both chemical and structural complexity,(ii) successful recall of relevant candidates to property of interest\naccurate candidate ranking based on multiple desired functional properties.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
+    ]
+  },
+  {
+    "objectID": "papers/Jiaxing_leverage_LLM4mat_images.html#approach",
+    "href": "papers/Jiaxing_leverage_LLM4mat_images.html#approach",
+    "title": "Leveraging language representation for materials exploration and discovery",
+    "section": "Approach",
+    "text": "Approach\nThe authors propose a two step funnel based approach\n\n\nRECALL - Given a material finding similar material from a set of materials\n\n\nRANKING - Based on functional properties rank the recalled materials\n\n\n\n\n\nFunnel based recommender framework (Chen et al. 2024)\n\n\n\nRecalling similar materials\nThe authors use Robocrystallographer representation to describe the material. Encode the material description using pretrained MatBERT (compared other encoders as well), and use this as a feature vector\n\nUse a Query material (a well studied known material with property of interest).\nEncode all material in database and Query material (Robocrystallographer + MatBERT)\nLook at cosine similarity of feature vectors (material in database with Query material)\n\n\n\n\nRecall material based on cosine similarity\n\n\n\n\nRanking potential materials\nBased on multiple properties the recalled materials are ranked.\nUsually for any application, and in this paper, for thermoelectric material as well many properties are important hence a ranker based on perfomance on different functional aspects.\n\nAuthor train a Multitask Mixture of Expert Model (MMoEM), using multi task learning to rank the materials.\n\n\n\n\nRank material based multiple property",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
+    ]
+  },
+  {
+    "objectID": "papers/Jiaxing_leverage_LLM4mat_images.html#results",
+    "href": "papers/Jiaxing_leverage_LLM4mat_images.html#results",
+    "title": "Leveraging language representation for materials exploration and discovery",
+    "section": "Results",
+    "text": "Results\nThe authors perform ablations to understand the importance of the different components of their model. While there are some differences, the differences are not drastic.\n\nAblation on Representation suitable for RECALL step\nTwo set of models 1. Uses only composition of materials Baseline: Mat2Vec\n(Composition)–&gt; (MatBERT)\n\nUses Both composition and structure Baseline: CrystalNN Fingerprint\n\n(Material)–&gt; B(RoboCrystallographer)–&gt; (MatBERT)\n\nEmbeddings from composition only and Composition + Structure\nStructure level representations exhibit more distinct separation (well-defined domains) by material groups\n\n\n\nUMAP of embeddings from different representations\n\n\nFor further evaluation, authors evaluated material embedding performance on downstream property prediction tasks.\nThe task models were multi-layer perceptrons (MLPs) with meanabsolute-error (MAE) training loss.\nThe tasks consisted of band gap, energy per atom, bulk modulus, shear modulus, Debye temperature, and coefficient of thermal expansion from AFLOW dataset33.\n\n\n\nProperty prediction using embeddings from different representations\n\n\n\n\n\nFinding similar materials\nStarting with known materials with favorable properties for TEs such as PbTe, we analyzed the top recalled candidates and found significantly different predicted figure-of-merit zT distributions from selected baseline representations.\n\n\n\nDistributions of predicted zT of the top-100 recalled candidates for PbTe as the query material predicted by MatBERT\n\n\n\n\nRanking potential materials\nLearning from multiple related tasks provides superior performance over single-task learning by modeling task-specific objectives and cross-task relationships.\nIn addition to the embeddings derived from language models, Aunthors added further information based on context (one hot encoded temperature)\n\n\n\nMulti-task learning framework for material property prediction.\n\n\n\n\n\nPerformance for 6 material property prediction tasks between single-task models and MMoE using composition or structure embeddings.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
+    ]
+  },
+  {
+    "objectID": "papers/Jiaxing_leverage_LLM4mat_images.html#takeaways",
+    "href": "papers/Jiaxing_leverage_LLM4mat_images.html#takeaways",
+    "title": "Leveraging language representation for materials exploration and discovery",
+    "section": "Takeaways",
+    "text": "Takeaways\n\nMight not need a Language model for this task\nGood to see that some of the materials where later tested in lab\nComposition vs Composition + structure not convincing.\n\n\n\n\n\nChen, Jiayuan, Kehan Guo, Zhen Liu, Olexandr Isayev, and Xiangliang Zhang. 2024. “Uncertainty-Aware Yield Prediction with Multimodal Molecular Features.” Proceedings of the AAAI Conference on Artificial Intelligence 38 (8): 8274–82. https://doi.org/10.1609/aaai.v38i8.28668.\n\n\nGanose, Alex M, and Anubhav Jain. 2019. “Robocrystallographer: Automated Crystal Structure Text Descriptions and Analysis.” MRS Communications 9 (3): 874–81.\n\n\nGupta, Tanishq, Mohd Zaki, NM Anoop Krishnan, and Mausam. 2022. “MatSciBERT: A Materials Domain Language Model for Text Mining and Information Extraction.” Npj Computational Materials 8 (1): 102.\n\n\nTshitoyan, Vahe, John Dagdelen, Leigh Weston, Alexander Dunn, Ziqin Rong, Olga Kononova, Kristin A Persson, Gerbrand Ceder, and Anubhav Jain. 2019. “Unsupervised Word Embeddings Capture Latent Knowledge from Materials Science Literature.” Nature 571 (7763): 95–98.\n\n\nWalker, Nicholas, Amalie Trewartha, Haoyan Huo, Sanghoon Lee, Kevin Cruse, John Dagdelen, Alexander Dunn, Kristin Persson, Gerbrand Ceder, and Anubhav Jain. 2021. “The Impact of Domain-Specific Pre-Training on Named Entity Recognition Tasks in Materials Science.” Available at SSRN 3950755.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
+    ]
   }
 ]

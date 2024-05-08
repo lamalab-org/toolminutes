@@ -258,9 +258,10 @@ background-size: cover;
   <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
   <li><a href="#some-previous-llm-models" id="toc-some-previous-llm-models" class="nav-link" data-scroll-target="#some-previous-llm-models">Some Previous LLM Models</a>
   <ul class="collapse">
+  <li><a href="#robocrystallographer" id="toc-robocrystallographer" class="nav-link" data-scroll-target="#robocrystallographer">Robocrystallographer</a></li>
   <li><a href="#matscibert" id="toc-matscibert" class="nav-link" data-scroll-target="#matscibert">MatSciBERT</a></li>
   <li><a href="#matbert" id="toc-matbert" class="nav-link" data-scroll-target="#matbert">MatBERT</a></li>
-  <li><a href="#word2vec" id="toc-word2vec" class="nav-link" data-scroll-target="#word2vec">Word2Vec</a></li>
+  <li><a href="#mat2vec" id="toc-mat2vec" class="nav-link" data-scroll-target="#mat2vec">Mat2Vec</a></li>
   </ul></li>
   <li><a href="#problem-setting" id="toc-problem-setting" class="nav-link" data-scroll-target="#problem-setting">Problem setting</a></li>
   <li><a href="#approach" id="toc-approach" class="nav-link" data-scroll-target="#approach">Approach</a>
@@ -305,17 +306,28 @@ background-size: cover;
 </section>
 <section id="some-previous-llm-models" class="level2">
 <h2 class="anchored" data-anchor-id="some-previous-llm-models">Some Previous LLM Models</h2>
+<section id="robocrystallographer" class="level3">
+<h3 class="anchored" data-anchor-id="robocrystallographer">Robocrystallographer</h3>
+<p>Tool to generate text description of the material structure with information related to their space group, symmetry.<span class="citation" data-cites="ganose2019robocrystallographer">(<a href="chem_yield_prediction_2024.html#ref-ganose2019robocrystallographer" role="doc-biblioref">Ganose and Jain 2019</a>)</span> eg: Robocrystallographer description of PbTe- “PbTe is Halite, Rock Salt structured and crystallizes in the cubic Fm3-m space group…”</p>
+</section>
 <section id="matscibert" class="level3">
 <h3 class="anchored" data-anchor-id="matscibert">MatSciBERT</h3>
-<p>MatsciBERT was pretrained on whole sections of more than 1 million materials science articles with masked language modelling.</p>
+<p>MatsciBERT was pretrained on whole sections of more than 1 million materials science articles with masked language modelling.<span class="citation" data-cites="gupta2022matscibert">(<a href="chem_yield_prediction_2024.html#ref-gupta2022matscibert" role="doc-biblioref">Gupta et al. 2022</a>)</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Jiaxing_leverage_LLM4mat_images/matscibert.png" class="img-fluid figure-img"></p>
+<figcaption>Methodology for training MatSciBERT</figcaption>
+</figure>
+</div>
 </section>
 <section id="matbert" class="level3">
 <h3 class="anchored" data-anchor-id="matbert">MatBERT</h3>
-<p>MatBERT was trained by sampling 50 million paragraphs from 2 million articles masked language modelling.</p>
+<p>MatBERT was trained by sampling 50 million paragraphs from 2 million articles masked language modelling. <span class="citation" data-cites="walker2021impact">(<a href="chem_yield_prediction_2024.html#ref-walker2021impact" role="doc-biblioref">Walker et al. 2021</a>)</span></p>
 </section>
-<section id="word2vec" class="level3">
-<h3 class="anchored" data-anchor-id="word2vec">Word2Vec</h3>
-<p>Mat2Vec was trained similarly as Word2vec training through skip-gram with negative sampling. Each word is embedded into a 200-dimensional vector.</p>
+<section id="mat2vec" class="level3">
+<h3 class="anchored" data-anchor-id="mat2vec">Mat2Vec</h3>
+<p>Mat2Vec was trained similarly as Word2vec training through skip-gram with negative sampling. Each word is embedded into a 200-dimensional vector. <span class="citation" data-cites="tshitoyan2019unsupervised">(<a href="chem_yield_prediction_2024.html#ref-tshitoyan2019unsupervised" role="doc-biblioref">Tshitoyan et al. 2019</a>)</span></p>
+<p>Word2Vec is a popular algorithm used to generate word embeddings. These word embeddings capture semantic relationships between words, such as similarity. Skipgram: In skip-gram, the goal is to predict the context words (words that appear nearby) given a target word.</p>
 </section>
 </section>
 <section id="problem-setting" class="level2">
@@ -372,7 +384,7 @@ background-size: cover;
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Jiaxing_leverage_LLM4mat_images/rank.png" class="img-fluid figure-img"></p>
-<figcaption>Rank material based on cosine similarity</figcaption>
+<figcaption>Rank material based multiple property</figcaption>
 </figure>
 </div>
 </section>
@@ -448,6 +460,18 @@ background-size: cover;
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-Chen_2024" class="csl-entry" role="listitem">
 Chen, Jiayuan, Kehan Guo, Zhen Liu, Olexandr Isayev, and Xiangliang Zhang. 2024. <span>“Uncertainty-Aware Yield Prediction with Multimodal Molecular Features.”</span> <em>Proceedings of the AAAI Conference on Artificial Intelligence</em> 38 (8): 8274–82. <a href="https://doi.org/10.1609/aaai.v38i8.28668">https://doi.org/10.1609/aaai.v38i8.28668</a>.
+</div>
+<div id="ref-ganose2019robocrystallographer" class="csl-entry" role="listitem">
+Ganose, Alex M, and Anubhav Jain. 2019. <span>“Robocrystallographer: Automated Crystal Structure Text Descriptions and Analysis.”</span> <em>MRS Communications</em> 9 (3): 874–81.
+</div>
+<div id="ref-gupta2022matscibert" class="csl-entry" role="listitem">
+Gupta, Tanishq, Mohd Zaki, NM Anoop Krishnan, and Mausam. 2022. <span>“MatSciBERT: A Materials Domain Language Model for Text Mining and Information Extraction.”</span> <em>Npj Computational Materials</em> 8 (1): 102.
+</div>
+<div id="ref-tshitoyan2019unsupervised" class="csl-entry" role="listitem">
+Tshitoyan, Vahe, John Dagdelen, Leigh Weston, Alexander Dunn, Ziqin Rong, Olga Kononova, Kristin A Persson, Gerbrand Ceder, and Anubhav Jain. 2019. <span>“Unsupervised Word Embeddings Capture Latent Knowledge from Materials Science Literature.”</span> <em>Nature</em> 571 (7763): 95–98.
+</div>
+<div id="ref-walker2021impact" class="csl-entry" role="listitem">
+Walker, Nicholas, Amalie Trewartha, Haoyan Huo, Sanghoon Lee, Kevin Cruse, John Dagdelen, Alexander Dunn, Kristin Persson, Gerbrand Ceder, and Anubhav Jain. 2021. <span>“The Impact of Domain-Specific Pre-Training on Named Entity Recognition Tasks in Materials Science.”</span> <em>Available at SSRN 3950755</em>.
 </div>
 </div>
 </section>
