@@ -99,18 +99,12 @@ Two set of models
 1. Uses only composition of materials 
 `Baseline: Mat2Vec`
     
-```{mermaid}
-flowchart LR
   A(Composition)--> B(MatBERT)
-```
 
-2. Uses Both composition and structure
+1. Uses Both composition and structure
 `Baseline: CrystalNN Fingerprint`
 
-```{mermaid}
-flowchart LR
   A(Material)--> B(RoboCrystallographer)--> C(MatBERT)
-```
 
 #### Embeddings from composition only and Composition + Structure 
 
