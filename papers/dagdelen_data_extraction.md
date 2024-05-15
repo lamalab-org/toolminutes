@@ -2,7 +2,7 @@
 author: Martiño Ríos-García
 date: 2024-05-14
 title-block-banner: dagdelen_data_extraction_2024_images/ai_banner.webp
-bibliography: ../references.bib
+bibliography: ./references_dagdelen_data.bib
 ---
 
 # Structured information extraction from scientific text with large language models
@@ -65,18 +65,18 @@ They proposed to fine-tune two models, one open-source Llama-2 70B model and a c
 
 The results showed first of all that both models performed similar for the tasks. For the exact match, GPT-3 performed slightly better than the Llama-2 model, with overall results for both models around 50% considering all the tasks.
 
-| Task  | Relation | E.M. F1 GPT-3 | E.M. Llama-3 |
-| :---: | :------: | :-----------: | :----------: |
-| Doping | host-dopant | 0.726 | **0.821** |
-| General | formula-name | **0.456** | 0.367 |
-| General | formula-acronym | **0.333** | 0.286 |
-| General | formula-structure/phase | **0.482** | 0.47|
-| General | formula-application | **0.537** | 0.516 |
-| General | formula-description | **0.354** | 0.340 |
-| MOFs | name-formula | **0.483** | 0.276 |
-| MOFs | name-guest specie | **0.616** | 0.408 |
-| MOFs | name-application | **0.573** | 0.531 |
-| MOFs | name-description | **0.404** | 0.389 |
+| Task    | Relation                | E.M. F1 GPT-3 | E.M. Llama-3 |
+| :---:   | :------:                | :-----------: | :----------: |
+| Doping  | host-dopant             | 0.726         | **0.821**    |
+| General | formula-name            | **0.456**     | 0.367        |
+| General | formula-acronym         | **0.333**     | 0.286        |
+| General | formula-structure/phase | **0.482**     | 0.470        |
+| General | formula-application     | **0.537**     | 0.516        |
+| General | formula-description     | **0.354**     | 0.340        |
+| MOFs    | name-formula            | **0.483**     | 0.276        |
+| MOFs    | name-guest specie       | **0.616**     | 0.408        |
+| MOFs    | name-application        | **0.573**     | 0.531        |
+| MOFs    | name-description        | **0.404**     | 0.389        |
 
 ::: {.column-margin}
 
@@ -103,6 +103,17 @@ The difference between *DopingEnglish* and *DopingExtra-English* is that the las
 
 The results showed that the Llama-2 model return the best results for this task, which are slightly better than the GPT-3 ones. Both LLMs improved by far the other two models.
 
+| Model   | Schema              | E.M. Precision | E.M. Recall | E.M. F1   |
+| :---:   | :----:              | :------------: | :---------: | :-----:   |
+| MatBERT | n/a                 | 0.377          | 0.403       | 0.390     |
+| Seq2rel | n/a                 | 0.420          | 0.605       | 0.496     |
+| GPT-3   | Doping-JSON         | 0.772          | 0.684       | 0.725     |
+| GPT-3   | Doping-English      | 0.803          | 0.754       | 0.778     |
+| GPT-3   | DopingExtra-English | 0.820          | 0.798       | 0.809     |
+| Llama-2 | Doping-JSON         | **0.836**      | 0.807       | **0.821** |
+| Llama-2 | Doping-English      | 0.787          | **0.842**   | 0.814     |
+| Llama-2 | DopingExtra-English | 0.694          | 0.815       | 0.750     |
+
 A limitation of the method could be that for each of the three extractions tasks, they have to annotate between 100 and 500 text passages. This can be a tedious work. However, to overcome this limitation, they proposed to include human-in-the-loop annotation.
 
 ### Human-in-the-loop
@@ -121,9 +132,4 @@ By using this annotation method they greatly improve the annotation time solving
 
 - Open source models with proper tuning can yield high-quality results similar to those of closed source models.
 - Despite some labeled data is needed, the process is simplified a lot with the use of LLMs.
-- With the continuous fast development of the current models, maybe fine-tuning for a simple task such as data extraction is no furhter needed.
-
-## References
-
-::: {#refs}
-:::
+- With the fasst and continuous development of the current models, maybe fine-tuning for a simpler task such as data extraction is no furhter needed.
