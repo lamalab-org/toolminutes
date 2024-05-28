@@ -2,7 +2,9 @@
 author: Martiño Ríos-García
 date: 2024-05-14
 title-block-banner: dagdelen_data_extraction_2024_images/ai_banner.webp
-bibliography: ./references_dagdelen_data.bib
+bibliography: ../references.bib
+reference-location: margin
+citation-location: margin
 ---
 
 # Structured information extraction from scientific text with large language models
@@ -120,11 +122,11 @@ A limitation of the method could be that for each of the three extractions tasks
 
 To overcome the limitation of having to manually annotate all the data needed for the fine-tuning process, they sucesfully implemented human-in-the-loop annotation. For that, they fine-tune the model with a small amount of manually labelled data. Then the model is asked to extract data from the other text passages. The returned data by the model is corrected by an human annotator and is feed into the model to further fine-tune it.
 
-![Figure showing the process used to implement human-in-the-loop annotation.](dagdelen_data_extraction_2024_images/ceder_annotation_schema.webp)
+![Figure showing the process used to implement human-in-the-loop annotation.](dagdelen_data_extraction_2024_images/ceder_annotation_schema.png)
 
 By using this technique, they greatly reduce the amount of time needed to annotate the last pieces of text compared with the first ones.
 
-![Figure showing the time reduction across the process of annotation using the human-in-the-loop technique.](dagdelen_data_extraction_2024_images/ceder_annotation.webp)
+![Figure showing the time reduction across the process of annotation using the human-in-the-loop technique.](dagdelen_data_extraction_2024_images/ceder_annotation.png)
 
 By using this annotation method they greatly improve the annotation time solving one of the main drawbacks of fine-tuning an LLM. This great limitation can be seen in another works such as the one by Guo el al. [@Guo2021] in which they employed 13 graduate and postdoc students to annotate about chemical reactions. After that, they have to even check all the annotation. They estimate that this process took them almost 300 hours.
 
