@@ -25,7 +25,7 @@ The authors used a large unlabeled dataset with 10 million unique molecule SMILE
 ## Main idea behind contrastive learning
 The aim of contrastive representation learning is to develop an embedding space where similar samples are positioned closely together, whereas dissimilar samples are kept distant from each other.
 
-![Figure taken from the blog post by Ekin Tiu illustrating the idea behind contrastive learning.](MolCLR_2024_images/Constrative learning .png)
+![Figure taken from the blog post by Ekin Tiu illustrating the idea behind contrastive learning.](MolCLR_2024_images/Constrative_learning.png)
 
 ## NT-Xent loss
 
@@ -56,7 +56,7 @@ To get more understanding, [@le2020contrastive] is a review paper on contrastive
 
 - The goal is to score the agreement between positive pairs higher than that of negative pairs. For a given graph, its positive pair is constructed using data augmentations, while all other graphs in the batch constitute negative pairs.
 
-![Overview figure for the MolCLR framework](MolCLR_2024_images/Overview figure MolCLR.png)
+![Overview figure for the MolCLR framework](MolCLR_2024_images/Overview_figure_MolCLR.png)
 
 For more information about GNNs and their applications, check out this review paper [zhou2020graph].
 
@@ -65,11 +65,11 @@ The authors tested the performance of MolCLR framework on seven benchmarks for c
 
 The authors claim that on classification tasks with other self-supervised learning or pre-training strategies, their MolCLR framework achieves the best performance on five out of seven benchmarks, with an average improvement of 4.0 percent in (ROC-AUC (%)).
 
-![Table 1 shows the test performance on seven benchmarks on classifiaction task](MolCLR_2024_images/classifion benchmark.png) 
+![Table 1 shows the test performance on seven benchmarks on classifiaction task](MolCLR_2024_images/classifion_benchmark.png) 
 
 The authors also claim that on regression tasks, MolCLR surpasses other pre-training baselines in five out of six benchmarks and achieves almost the same performance on the remaining ESOL benchmark. For the QM9 dataset, MolCLR does not have comparable performancee with SchNet and MGCN supervised models.
 
-![Table 2 shows the test performance on seven benchmarks on classifiaction task](MolCLR_2024_images/regression benchmark.png)
+![Table 2 shows the test performance on seven benchmarks on classifiaction task](MolCLR_2024_images/regression_benchmark.png)
 
 ## Analysis of molecule graph augmentations
 The authors employed four augmentation strategies on the classification benchmarks. Out of four augmentations, sub-graph removal with probability 0.25 achieved good (ROC-AUC %) on all of the classification benchmarks except in the BBBP benchmark as shown in the figure 2.
@@ -77,12 +77,12 @@ The reason might be that model structures are sensitive in BBBP benchmark.
 
 They also tested GIN supervised models with and without molecular graph augmentations. With augmentations (sub-graph removal with a probability of 0.25), the model achieved superior performance compared to without augmentations.
 
-![Figure 2 shows the investigation of molecule graph augmentations on classification benchmarks](MolCLR_2024_images/Augmentation analysis.png)
+![Figure 2 shows the investigation of molecule graph augmentations on classification benchmarks](MolCLR_2024_images/Augmentation_analysis.png)
 
 ## Investigation of MOlCLR representation
 The authors examined the representations learned by pretrained MOlCLR using t-SNE embedding. This method groups similar chemicals together in two-dimensional space. In Figure 3, they show a picture of 100,000 molecules from the validation set of PubChem database showing similar/dissimilar molecules learned by MolCLR pretraining. 
 
-![Figure 3 Visualization of molecular representations learned by MolClr via t-SNe](MolCLR_2024_images/T-SNE visualization.png)
+![Figure 3 Visualization of molecular representations learned by MolClr via t-sne](MolCLR_2024_images/T-SNE_visualization.png)
 
 For instance, the three molecules on the top possess carbonyl groups connected with aryls. The two molecules on the bottom left have similar structures, where a halogen atom (fluorine or chlorine) is connected to benzene.
 
@@ -92,7 +92,7 @@ In addition to this, the authors also query molecule from the PubcChem with ID 4
 
 More examples of query molecules can be found in supplementary information of this paper.
 
-![Figure shows Comparison of MolCLR-learned representations and conventional FPs using the query molecule (PubChem ID 42953211)](MolCLR_2024_images/Query molecule.png)
+![Figure shows Comparison of MolCLR-learned representations and conventional FPs using the query molecule (PubChem ID 42953211)](MolCLR_2024_images/Query_molecule.png)
 
 ## Take aways 
 
