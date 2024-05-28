@@ -10,15 +10,17 @@ bibliography: ./references_MolCLR.bib
 
 I chose Wang's et al.'s paper [@wang2022molecular] for our journal club because
 
-- Labelled datasets are hard to acquire since conducting experiments is expensive and time-consuming.
-- Labelled datasets are limited, if we train the model on the limited datasets, we might overfit the models and does not generalizable.
-- The authors propose a framework to learn better representations with unlabelled datasets during pretraining, the pretained model is plugged in for the downstream tasks.
+- Supervised learning relies heavily on labeled training data, which can be expensive and time-consuming to obtain.
+- Labeled datasets are limited; training models on such datasets might lead to overfitting and poor generalization.
+- Self-Supervised Learning (SSL) provides a promising alternative. It enables learning from unlabeled data, which is much easier to acquire in real-world applications and is part of a large research effort.
+- SSL learns the inherent structure and patterns in unlabeled data. By doing so, self-supervised models can acquire rich representations and knowledge that can be transferred to downstream tasks, even with limited labeled data.
+- Contrastive self-supervised learning, as the name implies, is a self-supervised method that learns representations by contrasting positive and negative pairs.
 
 ## Context
 
-The paper introduces MolCLR, a self-supervised learning framework that uses graph encoders to enhance molecular representations effectively.
+The paper introduces MolCLR, a self-supervised learning framework that uses graph encoders to learn effective molecular representations.
 
-They considered a large unlabelled dataset with 10 million unique molecules SMILES from ChemBERTa and PubChem. This framework has two important steps. First, in the pre-training phase, they build molecule graphs and develop graph neural network encoders to learn differentiable representations. Second, the pretrained GNN backbone is used for the supervised learning tasks.
+The authors used a large unlabeled dataset with 10 million unique molecule SMILES from ChemBERTa and PubChem. This framework involves two important steps. First, in the pre-training phase, they build molecule graphs and develop graph neural network (GNN) encoders to learn differentiable representations. Second, the pretrained GNN backbone is used for supervised learning tasks.
 
 ## Main idea behind contrastive learning
 The aim of contrastive representation learning is to develop an embedding space where similar samples are positioned closely together, whereas dissimilar samples are kept distant from each other.
@@ -38,42 +40,42 @@ $$
 - `sim(⋅)`: Function measuring the similarity between two vectors.
 - `τ`: The temperature parameter, used to scale the similarity measures in the function.
 
-To get more understanding, there is literature paper on contrastive learning one shoould read [@le2020contrastive].
+To get more understanding, [@le2020contrastive] is a review paper on contrastive learning.
 
 ## Overview of MolCLR framework
 
-- The SMILES are converted into graphs in a batch. The graphs consists of nodes and edges. Nodes represents atoms and edges represents chemical bonds of a molecule.
+- The SMILES are converted into graphs in a batch. The graphs consist of nodes and edges. Nodes represent atoms, and edges represent the chemical bonds of a molecule.
 
-- The authors studied three types of augmentations like atom masking, bond deletion and sub-graph removal.
+- The authors studied three types of augmentations: atom masking, bond deletion, and sub-graph removal. These augmentations introduce variance to the model, allowing it to learn different substructures/topologies of the same molecule and generalize well to unseen molecules.
 
-- In the current work, they used sub-removal with some probability 0.25. Now, the model tries to learn hidden patterns of the molecule within the remaining subgraphs.
+- The GNNs operate based on a message-passing framework. At each node, the local neighborhood information is aggregated and updated iteratively, resulting in node embeddings of the molecule.
 
-- The GNNs works on message passing framework, which means at each node the local neighborhood information is aggregated and updated iteratively. Finally, we obtain embeddings that poses every information about the molecule.
+- These embeddings are fed into a Multi-Layer Perceptron (MLP) with hidden units to obtain a latent representation of the molecule. The MLP serves as a projection head, mapping the high-dimensional representations from the encoder (GNN) to a lower-dimensional latent space. This projection helps in learning more compact and discriminative representations for the contrastive loss.
 
-- This embeddings are fed forwarded to the MLP (Multi Layer preceptron) with hidden units to get latent representation of the molecule.
+- The key difference between supervised GNNs and self-supervised contrastive GNNs is the training objective. In a supervised setup, where we have access to ground truth labels, we can train the network to optimize standard loss functions such as Binary Cross Entropy (BCE) for classification or Mean Absolute Error/Mean Squared Error (MAE/MSE) for regression. In self-supervised contrastive learning, we aim to learn a latent space where positive pairs are closer and negative pairs are further apart.
 
-- The loss for the similar representations should be minimized and maximized for the disimilar representations.
+- The goal is to score the agreement between positive pairs higher than that of negative pairs. For a given graph, its positive pair is constructed using data augmentations, while all other graphs in the batch constitute negative pairs.
 
 ![Overview figure for the MolCLR framework](MolCLR_2024_images/Overview figure MolCLR.png)
 
-For more information about GNNs and its applications check out this review paper [zhou2020graph].
+For more information about GNNs and their applications, check out this review paper [zhou2020graph].
 
 ## Results
-The authors tested the performance of MolCLR framework on seven benchmarks for classification task and six benchmarks for regression task.
+The authors tested the performance of MolCLR framework on seven benchmarks for classification tasks and six benchmarks for regression tasks.
 
-The authors claim that on classification task with other self-supervised learning or pre-training strategies, their MolCLR framework achieves the best performance on five out of seven benchmarks, with an average improvement of 4.0 percentage.
+The authors claim that on classification tasks with other self-supervised learning or pre-training strategies, their MolCLR framework achieves the best performance on five out of seven benchmarks, with an average improvement of 4.0 percent in (ROC-AUC (%)).
 
 ![Table 1 shows the test performance on seven benchmarks on classifiaction task](MolCLR_2024_images/classifion benchmark.png) 
 
-The authors also claim that on regression tasks, MolCLR surpasses other pre-training baselines in five out of six benchmarks and achieves almost the same performance on the remaining ESOL benchmark. For QM9 dataset, MolCLR does not have comparable performable with SchNet and MGCN. As these two models are specifically designed for quantum interaction and make use of extra 3D positional information.
+The authors also claim that on regression tasks, MolCLR surpasses other pre-training baselines in five out of six benchmarks and achieves almost the same performance on the remaining ESOL benchmark. For the QM9 dataset, MolCLR does not have comparable performancee with SchNet and MGCN supervised models.
 
 ![Table 2 shows the test performance on seven benchmarks on classifiaction task](MolCLR_2024_images/regression benchmark.png)
 
 ## Analysis of molecule graph augmentations
-The authors employed four augmentation strategies on the classification benchamarks. In four of the augmentations, subgraph removal with probability 0.25 has better performance in (ROC-AUC %) all of the benchmarks except in BBBP benchmark.
+The authors employed four augmentation strategies on the classification benchmarks. Out of four augmentations, sub-graph removal with probability 0.25 achieved good (ROC-AUC %) on all of the classification benchmarks except in the BBBP benchmark as shown in the figure 2.
 The reason might be that model structures are sensitive in BBBP benchmark.
 
-They also tested MolCLR framework on the same classification benchmark using GIN model with and without augmentation. With augmentations the model achieves superior performance than without augmentations.
+They also tested GIN supervised models with and without molecular graph augmentations. With augmentations (sub-graph removal with a probability of 0.25), the model achieved superior performance compared to without augmentations.
 
 ![Figure 2 shows the investigation of molecule graph augmentations on classification benchmarks](MolCLR_2024_images/Augmentation analysis.png)
 
@@ -82,18 +84,20 @@ The authors examined the representations learned by pretrained MOlCLR using t-SN
 
 ![Figure 3 Visualization of molecular representations learned by MolClr via t-SNe](MolCLR_2024_images/T-SNE visualization.png)
 
-For instance, the three molecules shown on the top possess carbonyl groups connected with aryls. The two molecules shown on the bottom left have similar structures, where a halogen atom (fluorine or chlorine) is connected to benzene.
+For instance, the three molecules on the top possess carbonyl groups connected with aryls. The two molecules on the bottom left have similar structures, where a halogen atom (fluorine or chlorine) is connected to benzene.
 
-Therefore, leaerned representations are not random but they are meaningful representations without the label information.
+Therefore, learned representations are not random but they are meaningful.
 
 In addition to this, the authors also query molecule from the PubcChem with ID 42953211 and the closest nine similar molecules are retrevied along with RDKFP and ECFP similarities labelled. It is observed that these selected molecules share the same functional groups, including alkyl halides (chlorine), tertiary amines, ketones and aromatics. A thiophene structure can also be found in all the molecules.
+
+More examples of query molecules can be found in supplementary information of this paper.
 
 ![Figure shows Comparison of MolCLR-learned representations and conventional FPs using the query molecule (PubChem ID 42953211)](MolCLR_2024_images/Query molecule.png)
 
 ## Take aways 
 
 - Good molecular representations are important for better predictions
-- Self-supervised learning would be an advantage for generalizable machine learning over supervised learning
+- Self-supervised contrastive learning would be an advantage for generalizable machine learning over supervised learning
 
 ## References
 
