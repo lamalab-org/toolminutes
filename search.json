@@ -437,5 +437,126 @@
       "Papers",
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>Structured information extraction from scientific text with large language models</span>"
     ]
+  },
+  {
+    "objectID": "papers/MolCLR_2024.html",
+    "href": "papers/MolCLR_2024.html",
+    "title": "Molecular contrastive learning of representations (MolCLR) via graph neural networks",
+    "section": "",
+    "text": "Why discussing this paper?\nI chose Wang’s et al.’s paper (Wang et al. 2022) for our journal club because",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Molecular contrastive learning of representations (MolCLR) via graph neural networks</span>"
+    ]
+  },
+  {
+    "objectID": "papers/MolCLR_2024.html#why-discussing-this-paper",
+    "href": "papers/MolCLR_2024.html#why-discussing-this-paper",
+    "title": "Molecular contrastive learning of representations (MolCLR) via graph neural networks",
+    "section": "",
+    "text": "Supervised learning relies heavily on labeled training data, which can be expensive and time-consuming to obtain.\nLabeled datasets are limited; training models on such datasets might lead to overfitting and poor generalization.\nSelf-Supervised Learning (SSL) provides a promising alternative. It enables learning from unlabeled data, which is much easier to acquire in real-world applications and is part of a large research effort.\nSSL learns the inherent structure and patterns in unlabeled data. By doing so, self-supervised models can acquire rich representations and knowledge that can be transferred to downstream tasks, even with limited labeled data.\nContrastive self-supervised learning, as the name implies, is a self-supervised method that learns representations by contrasting positive and negative pairs.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Molecular contrastive learning of representations (MolCLR) via graph neural networks</span>"
+    ]
+  },
+  {
+    "objectID": "papers/MolCLR_2024.html#context",
+    "href": "papers/MolCLR_2024.html#context",
+    "title": "Molecular contrastive learning of representations (MolCLR) via graph neural networks",
+    "section": "Context",
+    "text": "Context\nThe paper introduces MolCLR, a self-supervised learning framework that uses graph encoders to learn effective molecular representations.\nThe authors used a large unlabeled dataset with 10 million unique molecule SMILES from ChemBERTa and PubChem. This framework involves two important steps. First, in the pre-training phase, they build molecule graphs and develop graph neural network (GNN) encoders to learn differentiable representations. Second, the pretrained GNN backbone is used for supervised learning tasks.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Molecular contrastive learning of representations (MolCLR) via graph neural networks</span>"
+    ]
+  },
+  {
+    "objectID": "papers/MolCLR_2024.html#main-idea-behind-contrastive-learning",
+    "href": "papers/MolCLR_2024.html#main-idea-behind-contrastive-learning",
+    "title": "Molecular contrastive learning of representations (MolCLR) via graph neural networks",
+    "section": "Main idea behind contrastive learning",
+    "text": "Main idea behind contrastive learning\nThe aim of contrastive representation learning is to develop an embedding space where similar samples are positioned closely together, whereas dissimilar samples are kept distant from each other.\n\n\n\nFigure taken from the blog post by Ekin Tiu illustrating the idea behind contrastive learning.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Molecular contrastive learning of representations (MolCLR) via graph neural networks</span>"
+    ]
+  },
+  {
+    "objectID": "papers/MolCLR_2024.html#nt-xent-loss",
+    "href": "papers/MolCLR_2024.html#nt-xent-loss",
+    "title": "Molecular contrastive learning of representations (MolCLR) via graph neural networks",
+    "section": "NT-Xent loss",
+    "text": "NT-Xent loss\nThe authors use a NT-Xent loss to train the graph encoders.\n\\[\nL_{ij} = -\\log \\left( \\frac{\\exp(\\text{sim}(z_i, z_j)/\\tau)}{\\sum_{k=1}^{2N} \\mathbf{1}_{\\{k \\neq i\\}} \\exp(\\text{sim}(z_i, z_k)/\\tau)} \\right)\n\\]\n\nz_i and z_j: Latent vectors extracted from a positive data pair.\nN: Batch size, indicating the number of data pairs used.\nsim(⋅): Function measuring the similarity between two vectors.\nτ: The temperature parameter, used to scale the similarity measures in the function.\n\nTo get more understanding, (Le-Khac, Healy, and Smeaton 2020) is a review paper on contrastive learning.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Molecular contrastive learning of representations (MolCLR) via graph neural networks</span>"
+    ]
+  },
+  {
+    "objectID": "papers/MolCLR_2024.html#overview-of-molclr-framework",
+    "href": "papers/MolCLR_2024.html#overview-of-molclr-framework",
+    "title": "Molecular contrastive learning of representations (MolCLR) via graph neural networks",
+    "section": "Overview of MolCLR framework",
+    "text": "Overview of MolCLR framework\n\nThe SMILES are converted into graphs in a batch. The graphs consist of nodes and edges. Nodes represent atoms, and edges represent the chemical bonds of a molecule.\nThe authors studied three types of augmentations: atom masking, bond deletion, and sub-graph removal. These augmentations introduce variance to the model, allowing it to learn different substructures/topologies of the same molecule and generalize well to unseen molecules.\nThe GNNs operate based on a message-passing framework. At each node, the local neighborhood information is aggregated and updated iteratively, resulting in node embeddings of the molecule.\nThese embeddings are fed into a Multi-Layer Perceptron (MLP) with hidden units to obtain a latent representation of the molecule. The MLP serves as a projection head, mapping the high-dimensional representations from the encoder (GNN) to a lower-dimensional latent space. This projection helps in learning more compact and discriminative representations for the contrastive loss.\nThe key difference between supervised GNNs and self-supervised contrastive GNNs is the training objective. In a supervised setup, where we have access to ground truth labels, we can train the network to optimize standard loss functions such as Binary Cross Entropy (BCE) for classification or Mean Absolute Error/Mean Squared Error (MAE/MSE) for regression. In self-supervised contrastive learning, we aim to learn a latent space where positive pairs are closer and negative pairs are further apart.\nThe goal is to score the agreement between positive pairs higher than that of negative pairs. For a given graph, its positive pair is constructed using data augmentations, while all other graphs in the batch constitute negative pairs.\n\n\n\n\nOverview figure for the MolCLR framework\n\n\nFor more information about GNNs and their applications, check out this review paper [zhou2020graph].",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Molecular contrastive learning of representations (MolCLR) via graph neural networks</span>"
+    ]
+  },
+  {
+    "objectID": "papers/MolCLR_2024.html#results",
+    "href": "papers/MolCLR_2024.html#results",
+    "title": "Molecular contrastive learning of representations (MolCLR) via graph neural networks",
+    "section": "Results",
+    "text": "Results\nThe authors tested the performance of MolCLR framework on seven benchmarks for classification tasks and six benchmarks for regression tasks.\nThe authors claim that on classification tasks with other self-supervised learning or pre-training strategies, their MolCLR framework achieves the best performance on five out of seven benchmarks, with an average improvement of 4.0 percent in (ROC-AUC (%)).\n\n\n\nTable 1 shows the test performance on seven benchmarks on classifiaction task\n\n\nThe authors also claim that on regression tasks, MolCLR surpasses other pre-training baselines in five out of six benchmarks and achieves almost the same performance on the remaining ESOL benchmark. For the QM9 dataset, MolCLR does not have comparable performancee with SchNet and MGCN supervised models.\n\n\n\nTable 2 shows the test performance on seven benchmarks on classifiaction task",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Molecular contrastive learning of representations (MolCLR) via graph neural networks</span>"
+    ]
+  },
+  {
+    "objectID": "papers/MolCLR_2024.html#analysis-of-molecule-graph-augmentations",
+    "href": "papers/MolCLR_2024.html#analysis-of-molecule-graph-augmentations",
+    "title": "Molecular contrastive learning of representations (MolCLR) via graph neural networks",
+    "section": "Analysis of molecule graph augmentations",
+    "text": "Analysis of molecule graph augmentations\nThe authors employed four augmentation strategies on the classification benchmarks. Out of four augmentations, sub-graph removal with probability 0.25 achieved good (ROC-AUC %) on all of the classification benchmarks except in the BBBP benchmark as shown in the figure 2. The reason might be that model structures are sensitive in BBBP benchmark.\nThey also tested GIN supervised models with and without molecular graph augmentations. With augmentations (sub-graph removal with a probability of 0.25), the model achieved superior performance compared to without augmentations.\n\n\n\nFigure 2 shows the investigation of molecule graph augmentations on classification benchmarks",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Molecular contrastive learning of representations (MolCLR) via graph neural networks</span>"
+    ]
+  },
+  {
+    "objectID": "papers/MolCLR_2024.html#investigation-of-molclr-representation",
+    "href": "papers/MolCLR_2024.html#investigation-of-molclr-representation",
+    "title": "Molecular contrastive learning of representations (MolCLR) via graph neural networks",
+    "section": "Investigation of MOlCLR representation",
+    "text": "Investigation of MOlCLR representation\nThe authors examined the representations learned by pretrained MOlCLR using t-SNE embedding. This method groups similar chemicals together in two-dimensional space. In Figure 3, they show a picture of 100,000 molecules from the validation set of PubChem database showing similar/dissimilar molecules learned by MolCLR pretraining.\n\n\n\nFigure 3 Visualization of molecular representations learned by MolClr via t-sne\n\n\nFor instance, the three molecules on the top possess carbonyl groups connected with aryls. The two molecules on the bottom left have similar structures, where a halogen atom (fluorine or chlorine) is connected to benzene.\nTherefore, learned representations are not random but they are meaningful.\nIn addition to this, the authors also query molecule from the PubcChem with ID 42953211 and the closest nine similar molecules are retrevied along with RDKFP and ECFP similarities labelled. It is observed that these selected molecules share the same functional groups, including alkyl halides (chlorine), tertiary amines, ketones and aromatics. A thiophene structure can also be found in all the molecules.\nMore examples of query molecules can be found in supplementary information of this paper.\n\n\n\nFigure shows Comparison of MolCLR-learned representations and conventional FPs using the query molecule (PubChem ID 42953211)",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Molecular contrastive learning of representations (MolCLR) via graph neural networks</span>"
+    ]
+  },
+  {
+    "objectID": "papers/MolCLR_2024.html#take-aways",
+    "href": "papers/MolCLR_2024.html#take-aways",
+    "title": "Molecular contrastive learning of representations (MolCLR) via graph neural networks",
+    "section": "Take aways",
+    "text": "Take aways\n\nGood molecular representations are important for better predictions\nSelf-supervised contrastive learning would be an advantage for generalizable machine learning over supervised learning",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Molecular contrastive learning of representations (MolCLR) via graph neural networks</span>"
+    ]
+  },
+  {
+    "objectID": "papers/MolCLR_2024.html#references",
+    "href": "papers/MolCLR_2024.html#references",
+    "title": "Molecular contrastive learning of representations (MolCLR) via graph neural networks",
+    "section": "References",
+    "text": "References\n\n\nLe-Khac, Phuc H, Graham Healy, and Alan F Smeaton. 2020. “Contrastive Representation Learning: A Framework and Review.” Ieee Access 8: 193907–34.\n\n\nWang, Yuyang, Jianren Wang, Zhonglin Cao, and Amir Barati Farimani. 2022. “Molecular Contrastive Learning of Representations via Graph Neural Networks.” Nature Machine Intelligence 4 (3): 279–87.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Molecular contrastive learning of representations (MolCLR) via graph neural networks</span>"
+    ]
   }
 ]
