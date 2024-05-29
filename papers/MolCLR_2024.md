@@ -18,7 +18,7 @@ I chose Wang's et al.'s paper [@wang2022molecular] for our journal club because
 
 ## Context
 
-The paper introduces MolCLR, a self-supervised learning framework that uses graph encoders to learn effective molecular representations.
+The paper introduces MolCLR, a self-supervised learning framework that uses graph encoders to learn differentiable molecular representations.
 
 The authors used a large unlabeled dataset with 10 million unique molecule SMILES from ChemBERTa and PubChem. This framework involves two important steps. First, in the pre-training phase, they build molecule graphs and develop graph neural network (GNN) encoders to learn differentiable representations. Second, the pretrained GNN backbone is used for supervised learning tasks.
 
@@ -29,7 +29,7 @@ The aim of contrastive representation learning is to develop an embedding space 
 
 ## NT-Xent loss
 
-The authors use a NT-Xent loss to train the graph encoders.
+The authors use a NT-Xent loss for the contrastive learning.
 
 $$
 L_{ij} = -\log \left( \frac{\exp(\text{sim}(z_i, z_j)/\tau)}{\sum_{k=1}^{2N} \mathbf{1}_{\{k \neq i\}} \exp(\text{sim}(z_i, z_k)/\tau)} \right)
