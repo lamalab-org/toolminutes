@@ -318,7 +318,7 @@ window.Quarto = {
 </section>
 <section id="context" class="level2">
 <h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>The paper introduces MolCLR, a self-supervised learning framework that uses graph encoders to learn effective molecular representations.</p>
+<p>The paper introduces MolCLR, a self-supervised learning framework that uses graph encoders to learn differentiable molecular representations.</p>
 <p>The authors used a large unlabeled dataset with 10 million unique molecule SMILES from ChemBERTa and PubChem. This framework involves two important steps. First, in the pre-training phase, they build molecule graphs and develop graph neural network (GNN) encoders to learn differentiable representations. Second, the pretrained GNN backbone is used for supervised learning tasks.</p>
 </section>
 <section id="main-idea-behind-contrastive-learning" class="level2">
@@ -333,7 +333,7 @@ window.Quarto = {
 </section>
 <section id="nt-xent-loss" class="level2">
 <h2 class="anchored" data-anchor-id="nt-xent-loss">NT-Xent loss</h2>
-<p>The authors use a NT-Xent loss to train the graph encoders.</p>
+<p>The authors use a NT-Xent loss for the contrastive learning.</p>
 <p><span class="math display">\[
 L_{ij} = -\log \left( \frac{\exp(\text{sim}(z_i, z_j)/\tau)}{\sum_{k=1}^{2N} \mathbf{1}_{\{k \neq i\}} \exp(\text{sim}(z_i, z_k)/\tau)} \right)
 \]</span></p>

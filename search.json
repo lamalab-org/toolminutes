@@ -465,7 +465,7 @@
     "href": "papers/MolCLR_2024.html#context",
     "title": "Molecular contrastive learning of representations (MolCLR) via graph neural networks",
     "section": "Context",
-    "text": "Context\nThe paper introduces MolCLR, a self-supervised learning framework that uses graph encoders to learn effective molecular representations.\nThe authors used a large unlabeled dataset with 10 million unique molecule SMILES from ChemBERTa and PubChem. This framework involves two important steps. First, in the pre-training phase, they build molecule graphs and develop graph neural network (GNN) encoders to learn differentiable representations. Second, the pretrained GNN backbone is used for supervised learning tasks.",
+    "text": "Context\nThe paper introduces MolCLR, a self-supervised learning framework that uses graph encoders to learn differentiable molecular representations.\nThe authors used a large unlabeled dataset with 10 million unique molecule SMILES from ChemBERTa and PubChem. This framework involves two important steps. First, in the pre-training phase, they build molecule graphs and develop graph neural network (GNN) encoders to learn differentiable representations. Second, the pretrained GNN backbone is used for supervised learning tasks.",
     "crumbs": [
       "Papers",
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Molecular contrastive learning of representations (MolCLR) via graph neural networks</span>"
@@ -487,7 +487,7 @@
     "href": "papers/MolCLR_2024.html#nt-xent-loss",
     "title": "Molecular contrastive learning of representations (MolCLR) via graph neural networks",
     "section": "NT-Xent loss",
-    "text": "NT-Xent loss\nThe authors use a NT-Xent loss to train the graph encoders.\n\\[\nL_{ij} = -\\log \\left( \\frac{\\exp(\\text{sim}(z_i, z_j)/\\tau)}{\\sum_{k=1}^{2N} \\mathbf{1}_{\\{k \\neq i\\}} \\exp(\\text{sim}(z_i, z_k)/\\tau)} \\right)\n\\]\n\nz_i and z_j: Latent vectors extracted from a positive data pair.\nN: Batch size, indicating the number of data pairs used.\nsim(⋅): Function measuring the similarity between two vectors.\nτ: The temperature parameter, used to scale the similarity measures in the function.\n\nTo get more understanding, (Le-Khac, Healy, and Smeaton 2020) is a review paper on contrastive learning.",
+    "text": "NT-Xent loss\nThe authors use a NT-Xent loss for the contrastive learning.\n\\[\nL_{ij} = -\\log \\left( \\frac{\\exp(\\text{sim}(z_i, z_j)/\\tau)}{\\sum_{k=1}^{2N} \\mathbf{1}_{\\{k \\neq i\\}} \\exp(\\text{sim}(z_i, z_k)/\\tau)} \\right)\n\\]\n\nz_i and z_j: Latent vectors extracted from a positive data pair.\nN: Batch size, indicating the number of data pairs used.\nsim(⋅): Function measuring the similarity between two vectors.\nτ: The temperature parameter, used to scale the similarity measures in the function.\n\nTo get more understanding, (Le-Khac, Healy, and Smeaton 2020) is a review paper on contrastive learning.",
     "crumbs": [
       "Papers",
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Molecular contrastive learning of representations (MolCLR) via graph neural networks</span>"
