@@ -2,7 +2,6 @@
 author: Kevin Jablonka
 date: 2024-04-24
 title-block-banner: chen_yield_pred_2024_images/dalle_yield.webp
-bibliography: ../references.bib
 ---
 
 # Uncertainty-Aware Yield Prediction with Multimodal Molecular Features
@@ -228,6 +227,3 @@ The authors perform ablations to understand the importance of the different comp
 - Their approach with frozen encoders is interesting, it would have been interesting to see learning curves to better understand the data efficiency of the approach
 
 ## References
-
-::: {#refs}
-:::

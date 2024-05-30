@@ -100,6 +100,3 @@ More examples of query molecules can be found in supplementary information of th
 - Self-supervised contrastive learning would be an advantage for generalizable machine learning over supervised learning
 
 ## References
-
-::: {#refs}
-:::
