@@ -2,6 +2,7 @@
 author: Kevin Jablonka
 date: 2024-04-24
 title-block-banner: chen_yield_pred_2024_images/dalle_yield.webp
+bibliography: ../references.bib
 ---
 
 # Uncertainty-Aware Yield Prediction with Multimodal Molecular Features

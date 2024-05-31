@@ -2,6 +2,7 @@
 author: Martiño Ríos-García
 date: 2024-05-14
 title-block-banner: dagdelen_data_extraction_2024_images/ai_banner.webp
+bibliography: ../references.bib
 ---
 
 # Structured information extraction from scientific text with large language models
