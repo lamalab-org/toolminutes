@@ -280,6 +280,7 @@ background-size: cover;
   <li><a href="#human-in-the-loop" id="toc-human-in-the-loop" class="nav-link" data-scroll-target="#human-in-the-loop">Human-in-the-loop</a></li>
   </ul></li>
   <li><a href="#take-aways" id="toc-take-aways" class="nav-link" data-scroll-target="#take-aways">Take aways</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
@@ -290,12 +291,10 @@ background-size: cover;
 
 
 
-<section id="why-discussing-this-paper" class="level2 page-columns page-full">
+<section id="why-discussing-this-paper" class="level2">
 <h2 class="anchored" data-anchor-id="why-discussing-this-paper">Why discussing this paper?</h2>
-<p>I chose Dagdelen et al.’s paper <span class="citation" data-cites="dagdelen_structured_2024">(<a href="chem_yield_prediction_2024.html#ref-dagdelen_structured_2024" role="doc-biblioref">Dagdelen et al. 2024</a>)</span> for our journal club because:</p>
-<div class="no-row-height column-margin column-container"><div id="ref-dagdelen_structured_2024" class="csl-entry" role="listitem">
-Dagdelen, John, Alexander Dunn, Sanghoon Lee, Nicholas Walker, Andrew S. Rosen, Gerbrand Ceder, Kristin A. Persson, and Anubhav Jain. 2024. <span>“Structured Information Extraction from Scientific Text with Large Language Models.”</span> <em>Nature Communications</em> 15 (1): 1418. <a href="https://doi.org/10.1038/s41467-024-45563-x">https://doi.org/10.1038/s41467-024-45563-x</a>.
-</div></div><ul>
+<p>I chose Dagdelen et al.’s paper <span class="citation" data-cites="dagdelen_structured_2024">(<a href="#ref-dagdelen_structured_2024" role="doc-biblioref">Dagdelen et al. 2024</a>)</span> for our journal club because:</p>
+<ul>
 <li>It is one of the last published papers to fine-tune a model for the data extraction task for materials science.</li>
 <li>It presents a very robust fine-tuning and evaluation process.</li>
 <li>Furthermore, they show how the current models can help with a tedious task such as it is annotating data.</li>
@@ -305,49 +304,33 @@ Dagdelen, John, Alexander Dunn, Sanghoon Lee, Nicholas Walker, Andrew S. Rosen, 
 <h2 class="anchored" data-anchor-id="context">Context</h2>
 <p>Extracting the unstructured scientific information from the articles that contain it can be a really arduos and time-consuming task. In the recent years, several works have shown the great potential that LLMs have to greatly accelerate this task. However, for some research fields or harder extraction schemas, the general pre-training of these models might not be enough to archieve the desired results. For such cases, fine-tuning have shown to be the adequate technique.</p>
 </section>
-<section id="prior-work" class="level2 page-columns page-full">
+<section id="prior-work" class="level2">
 <h2 class="anchored" data-anchor-id="prior-work">Prior work</h2>
-<section id="old-ages" class="level3 page-columns page-full">
+<section id="old-ages" class="level3">
 <h3 class="anchored" data-anchor-id="old-ages">Old ages</h3>
-<p>Several works from the Ceder group showed the complete tedious process. First, Huo et al. <span class="citation" data-cites="Huo2019">(<a href="chem_yield_prediction_2024.html#ref-Huo2019" role="doc-biblioref">Huo et al. 2019</a>)</span> use LDA + RF to classify text. To train the RF model they had to manually label 6000 materials paragraphs as they contain synthesis information or not.</p>
-<div class="no-row-height column-margin column-container"><div id="ref-Huo2019" class="csl-entry" role="listitem">
-Huo, Haoyan, Ziqin Rong, Olga Kononova, Wenhao Sun, Tiago Botari, Tanjin He, Vahe Tshitoyan, and Gerbrand Ceder. 2019. <span>“Semi-Supervised Machine-Learning Classification of Materials Synthesis Procedures.”</span> <em>Npj Computational Materials</em> 5 (1). <a href="https://doi.org/10.1038/s41524-019-0204-1">https://doi.org/10.1038/s41524-019-0204-1</a>.
-</div><div id="ref-Kononova2019" class="csl-entry" role="listitem">
-Kononova, Olga, Haoyan Huo, Tanjin He, Ziqin Rong, Tiago Botari, Wenhao Sun, Vahe Tshitoyan, and Gerbrand Ceder. 2019. <span>“Text-Mined Dataset of Inorganic Materials Synthesis Recipes.”</span> <em>Scientific Data</em> 6 (1). <a href="https://doi.org/10.1038/s41597-019-0224-1">https://doi.org/10.1038/s41597-019-0224-1</a>.
-</div></div><p>In a following work, Kononova et al. <span class="citation" data-cites="Kononova2019">(<a href="chem_yield_prediction_2024.html#ref-Kononova2019" role="doc-biblioref">Kononova et al. 2019</a>)</span> trained a Word2Vec model, to then feed the embeddings to a BiLSTM-CRF. To train this NN they manually annotated more than 800 paragraphs word-by-word with tags about solid-state synthesis role (material, target, precursor or other). Furthermore, to classify the synthesis operations (NOT OPERATION, MIXING, HEATING, etc) they trained another NN with more annotated data. To this step they also had to <strong>LEMMATIZED</strong> the sentences and obtain each token’s <strong>POS</strong>. Amazing hard work!</p>
-<p>Similar works by Kim et al. <span class="citation" data-cites="Kim2017 mysore2019materials Kim2020">(<a href="chem_yield_prediction_2024.html#ref-Kim2017" role="doc-biblioref">Kim et al. 2017</a>, <a href="chem_yield_prediction_2024.html#ref-Kim2020" role="doc-biblioref">2020</a>; <a href="chem_yield_prediction_2024.html#ref-mysore2019materials" role="doc-biblioref">Mysore et al. 2019</a>)</span> in which they applied similar techniques such as word embeddings from language models, then fed to a named entity recognition model.</p>
-<div class="no-row-height column-margin column-container"><div id="ref-Kim2017" class="csl-entry" role="listitem">
-Kim, Edward, Kevin Huang, Adam Saunders, Andrew McCallum, Gerbrand Ceder, and Elsa Olivetti. 2017. <span>“Materials Synthesis Insights from Scientific Literature via Text Extraction and Machine Learning.”</span> <em>Chemistry of Materials</em> 29 (21): 9436–44. <a href="https://doi.org/10.1021/acs.chemmater.7b03500">https://doi.org/10.1021/acs.chemmater.7b03500</a>.
-</div><div id="ref-Kim2020" class="csl-entry" role="listitem">
-Kim, Edward, Zach Jensen, Alexander van Grootel, Kevin Huang, Matthew Staib, Sheshera Mysore, Haw-Shiuan Chang, et al. 2020. <span>“Inorganic Materials Synthesis Planning with Literature-Trained Neural Networks.”</span> <em>Journal of Chemical Information and Modeling</em> 60 (3): 1194–1201. <a href="https://doi.org/10.1021/acs.jcim.9b00995">https://doi.org/10.1021/acs.jcim.9b00995</a>.
-</div></div><div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full">
+<p>Several works from the Ceder group showed the complete tedious process. First, Huo et al. <span class="citation" data-cites="Huo2019">(<a href="#ref-Huo2019" role="doc-biblioref">Huo et al. 2019</a>)</span> use LDA + RF to classify text. To train the RF model they had to manually label 6000 materials paragraphs as they contain synthesis information or not.</p>
+<p>In a following work, Kononova et al. <span class="citation" data-cites="Kononova2019">(<a href="#ref-Kononova2019" role="doc-biblioref">Kononova et al. 2019</a>)</span> trained a Word2Vec model, to then feed the embeddings to a BiLSTM-CRF. To train this NN they manually annotated more than 800 paragraphs word-by-word with tags about solid-state synthesis role (material, target, precursor or other). Furthermore, to classify the synthesis operations (NOT OPERATION, MIXING, HEATING, etc) they trained another NN with more annotated data. To this step they also had to <strong>LEMMATIZED</strong> the sentences and obtain each token’s <strong>POS</strong>. Amazing hard work!</p>
+<p>Similar works by Kim et al. <span class="citation" data-cites="Kim2017 mysore2019materials Kim2020">(<a href="#ref-Kim2017" role="doc-biblioref">Kim et al. 2017</a>, <a href="#ref-Kim2020" role="doc-biblioref">2020</a>; <a href="#ref-mysore2019materials" role="doc-biblioref">Mysore et al. 2019</a>)</span> in which they applied similar techniques such as word embeddings from language models, then fed to a named entity recognition model.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
 <p><img src="dagdelen_data_extraction_2024_images/annotation.png" class="img-fluid figure-img"></p>
-<figcaption>Figure taken from Mysore et al.&nbsp;paper <span class="citation" data-cites="mysore2019materials">(<a href="chem_yield_prediction_2024.html#ref-mysore2019materials" role="doc-biblioref">Mysore et al. 2019</a>)</span> illustrating how they labeled the data for the NER task.</figcaption>
-<div class="no-row-height column-margin column-container"><div id="ref-mysore2019materials" class="csl-entry" role="listitem">
-Mysore, Sheshera, Zach Jensen, Edward Kim, Kevin Huang, Haw-Shiuan Chang, Emma Strubell, Jeffrey Flanigan, Andrew McCallum, and Elsa Olivetti. 2019. <span>“The Materials Science Procedural Text Corpus: Annotating Materials Synthesis Procedures with Shallow Semantic Structures.”</span> <a href="https://arxiv.org/abs/1905.06939">https://arxiv.org/abs/1905.06939</a>.
-</div></div></figure>
+<figcaption>Figure taken from Mysore et al.&nbsp;paper <span class="citation" data-cites="mysore2019materials">(<a href="#ref-mysore2019materials" role="doc-biblioref">Mysore et al. 2019</a>)</span> illustrating how they labeled the data for the NER task.</figcaption>
+</figure>
 </div>
 </section>
-<section id="chemdataextractor-1.0-and-2.0" class="level3 page-columns page-full">
+<section id="chemdataextractor-1.0-and-2.0" class="level3">
 <h3 class="anchored" data-anchor-id="chemdataextractor-1.0-and-2.0">ChemDataExtractor 1.0 and 2.0</h3>
-<p>Cole et al. <span class="citation" data-cites="Swain2016 Mavrai2021">(<a href="chem_yield_prediction_2024.html#ref-Swain2016" role="doc-biblioref">Swain and Cole 2016</a>; <a href="chem_yield_prediction_2024.html#ref-Mavrai2021" role="doc-biblioref">Mavračić et al. 2021</a>)</span> developed ChemDataExtractor which is build from the combination of traditional ML techniques for each NLP task such as lemmatazion, tokenization, POS tagging, it even include Table Parsing. All of these models trained in chemical text, which made this tool a really good option for extracting chemical data from text.</p>
-<div class="no-row-height column-margin column-container"><div id="ref-Swain2016" class="csl-entry" role="listitem">
-Swain, Matthew C., and Jacqueline M. Cole. 2016. <span>“ChemDataExtractor: A Toolkit for Automated Extraction of Chemical Information from the Scientific Literature.”</span> <em>Journal of Chemical Information and Modeling</em> 56 (10): 1894–904. <a href="https://doi.org/10.1021/acs.jcim.6b00207">https://doi.org/10.1021/acs.jcim.6b00207</a>.
-</div><div id="ref-Mavrai2021" class="csl-entry" role="listitem">
-Mavračić, Juraj, Callum J. Court, Taketomo Isazawa, Stephen R. Elliott, and Jacqueline M. Cole. 2021. <span>“ChemDataExtractor 2.0: Autopopulated Ontologies for Materials Science.”</span> <em>Journal of Chemical Information and Modeling</em> 61 (9): 4280–89. <a href="https://doi.org/10.1021/acs.jcim.1c00446">https://doi.org/10.1021/acs.jcim.1c00446</a>.
-</div></div></section>
-<section id="trewartha-et-al.-2022" class="level3 page-columns page-full">
+<p>Cole et al. <span class="citation" data-cites="Swain2016 Mavrai2021">(<a href="#ref-Swain2016" role="doc-biblioref">Swain and Cole 2016</a>; <a href="#ref-Mavrai2021" role="doc-biblioref">Mavračić et al. 2021</a>)</span> developed ChemDataExtractor which is build from the combination of traditional ML techniques for each NLP task such as lemmatazion, tokenization, POS tagging, it even include Table Parsing. All of these models trained in chemical text, which made this tool a really good option for extracting chemical data from text.</p>
+</section>
+<section id="trewartha-et-al.-2022" class="level3">
 <h3 class="anchored" data-anchor-id="trewartha-et-al.-2022">Trewartha et al.&nbsp;(2022)</h3>
-<p>Trewartha el al. <span class="citation" data-cites="Trewartha2022">(<a href="chem_yield_prediction_2024.html#ref-Trewartha2022" role="doc-biblioref">Trewartha et al. 2022</a>)</span> compared the performance of a simpler model such as a BiLSTM RNN with three more complex transformer models, BERT, SciBERT and MatBERT for the NER task. For that, they used data from three different NER datasets, each one related with different materials synthesis.</p>
-<div class="no-row-height column-margin column-container"></div><p>The results, showed that the more specialized BERT models were able to better recognize the different entities. However, it is important to remark that the BERT models were fine-tuned for the task.</p>
-<div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full">
+<p>Trewartha el al. <span class="citation" data-cites="Trewartha2022">(<a href="#ref-Trewartha2022" role="doc-biblioref">Trewartha et al. 2022</a>)</span> compared the performance of a simpler model such as a BiLSTM RNN with three more complex transformer models, BERT, SciBERT and MatBERT for the NER task. For that, they used data from three different NER datasets, each one related with different materials synthesis.</p>
+<p>The results, showed that the more specialized BERT models were able to better recognize the different entities. However, it is important to remark that the BERT models were fine-tuned for the task.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
 <p><img src="dagdelen_data_extraction_2024_images/trewartha_results.jpg" class="img-fluid figure-img"></p>
-<figcaption>Figure taken from Trewartha et al. <span class="citation" data-cites="Trewartha2022">(<a href="chem_yield_prediction_2024.html#ref-Trewartha2022" role="doc-biblioref">Trewartha et al. 2022</a>)</span> summarizing the results that they obtained with each model.</figcaption>
-<div class="no-row-height column-margin column-container"><div id="ref-Trewartha2022" class="csl-entry" role="listitem">
-Trewartha, Amalie, Nicholas Walker, Haoyan Huo, Sanghoon Lee, Kevin Cruse, John Dagdelen, Alexander Dunn, Kristin A. Persson, Gerbrand Ceder, and Anubhav Jain. 2022. <span>“Quantifying the Advantage of Domain-Specific Pre-Training on Named Entity Recognition Tasks in Materials Science.”</span> <em>Patterns</em> 3 (4): 100488. <a href="https://doi.org/10.1016/j.patter.2022.100488">https://doi.org/10.1016/j.patter.2022.100488</a>.
-</div></div></figure>
+<figcaption>Figure taken from Trewartha et al. <span class="citation" data-cites="Trewartha2022">(<a href="#ref-Trewartha2022" role="doc-biblioref">Trewartha et al. 2022</a>)</span> summarizing the results that they obtained with each model.</figcaption>
+</figure>
 </div>
 </section>
 </section>
@@ -564,7 +547,7 @@ Trewartha, Amalie, Nicholas Walker, Haoyan Huo, Sanghoon Lee, Kevin Cruse, John 
 </tbody>
 </table>
 <p>A limitation of the method could be that for each of the three extractions tasks, they have to annotate between 100 and 500 text passages. This can be a tedious work. However, to overcome this limitation, they proposed to include human-in-the-loop annotation.</p>
-<section id="human-in-the-loop" class="level3 page-columns page-full">
+<section id="human-in-the-loop" class="level3">
 <h3 class="anchored" data-anchor-id="human-in-the-loop">Human-in-the-loop</h3>
 <p>To overcome the limitation of having to manually annotate all the data needed for the fine-tuning process, they sucesfully implemented human-in-the-loop annotation. For that, they fine-tune the model with a small amount of manually labelled data. Then the model is asked to extract data from the other text passages. The returned data by the model is corrected by an human annotator and is feed into the model to further fine-tune it.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -580,10 +563,8 @@ Trewartha, Amalie, Nicholas Walker, Haoyan Huo, Sanghoon Lee, Kevin Cruse, John 
 <figcaption>Figure showing the time reduction across the process of annotation using the human-in-the-loop technique.</figcaption>
 </figure>
 </div>
-<p>By using this annotation method they greatly improve the annotation time solving one of the main drawbacks of fine-tuning an LLM. This great limitation can be seen in another works such as the one by Guo el al. <span class="citation" data-cites="Guo2021">(<a href="chem_yield_prediction_2024.html#ref-Guo2021" role="doc-biblioref">Guo et al. 2021</a>)</span> in which they employed 13 graduate and postdoc students to annotate about chemical reactions. After that, they have to even check all the annotation. They estimate that this process took them almost 300 hours.</p>
-<div class="no-row-height column-margin column-container"><div id="ref-Guo2021" class="csl-entry" role="listitem">
-Guo, Jiang, A. Santiago Ibanez-Lopez, Hanyu Gao, Victor Quach, Connor W. Coley, Klavs F. Jensen, and Regina Barzilay. 2021. <span>“Automated Chemical Reaction Extraction from Scientific Literature.”</span> <em>Journal of Chemical Information and Modeling</em> 62 (9): 2035–45. <a href="https://doi.org/10.1021/acs.jcim.1c00284">https://doi.org/10.1021/acs.jcim.1c00284</a>.
-</div></div></section>
+<p>By using this annotation method they greatly improve the annotation time solving one of the main drawbacks of fine-tuning an LLM. This great limitation can be seen in another works such as the one by Guo el al. <span class="citation" data-cites="Guo2021">(<a href="#ref-Guo2021" role="doc-biblioref">Guo et al. 2021</a>)</span> in which they employed 13 graduate and postdoc students to annotate about chemical reactions. After that, they have to even check all the annotation. They estimate that this process took them almost 300 hours.</p>
+</section>
 </section>
 <section id="take-aways" class="level2">
 <h2 class="anchored" data-anchor-id="take-aways">Take aways</h2>
@@ -592,9 +573,43 @@ Guo, Jiang, A. Santiago Ibanez-Lopez, Hanyu Gao, Victor Quach, Connor W. Coley, 
 <li>Despite some labeled data is needed, the process is simplified a lot with the use of LLMs.</li>
 <li>With the fasst and continuous development of the current models, maybe fine-tuning for a simpler task such as data extraction is no furhter needed.</li>
 </ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
 
 
-
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-dagdelen_structured_2024" class="csl-entry" role="listitem">
+Dagdelen, John, Alexander Dunn, Sanghoon Lee, Nicholas Walker, Andrew S. Rosen, Gerbrand Ceder, Kristin A. Persson, and Anubhav Jain. 2024. <span>“Structured Information Extraction from Scientific Text with Large Language Models.”</span> <em>Nature Communications</em> 15 (1): 1418. <a href="https://doi.org/10.1038/s41467-024-45563-x">https://doi.org/10.1038/s41467-024-45563-x</a>.
+</div>
+<div id="ref-Guo2021" class="csl-entry" role="listitem">
+Guo, Jiang, A. Santiago Ibanez-Lopez, Hanyu Gao, Victor Quach, Connor W. Coley, Klavs F. Jensen, and Regina Barzilay. 2021. <span>“Automated Chemical Reaction Extraction from Scientific Literature.”</span> <em>Journal of Chemical Information and Modeling</em> 62 (9): 2035–45. <a href="https://doi.org/10.1021/acs.jcim.1c00284">https://doi.org/10.1021/acs.jcim.1c00284</a>.
+</div>
+<div id="ref-Huo2019" class="csl-entry" role="listitem">
+Huo, Haoyan, Ziqin Rong, Olga Kononova, Wenhao Sun, Tiago Botari, Tanjin He, Vahe Tshitoyan, and Gerbrand Ceder. 2019. <span>“Semi-Supervised Machine-Learning Classification of Materials Synthesis Procedures.”</span> <em>Npj Computational Materials</em> 5 (1). <a href="https://doi.org/10.1038/s41524-019-0204-1">https://doi.org/10.1038/s41524-019-0204-1</a>.
+</div>
+<div id="ref-Kim2017" class="csl-entry" role="listitem">
+Kim, Edward, Kevin Huang, Adam Saunders, Andrew McCallum, Gerbrand Ceder, and Elsa Olivetti. 2017. <span>“Materials Synthesis Insights from Scientific Literature via Text Extraction and Machine Learning.”</span> <em>Chemistry of Materials</em> 29 (21): 9436–44. <a href="https://doi.org/10.1021/acs.chemmater.7b03500">https://doi.org/10.1021/acs.chemmater.7b03500</a>.
+</div>
+<div id="ref-Kim2020" class="csl-entry" role="listitem">
+Kim, Edward, Zach Jensen, Alexander van Grootel, Kevin Huang, Matthew Staib, Sheshera Mysore, Haw-Shiuan Chang, et al. 2020. <span>“Inorganic Materials Synthesis Planning with Literature-Trained Neural Networks.”</span> <em>Journal of Chemical Information and Modeling</em> 60 (3): 1194–1201. <a href="https://doi.org/10.1021/acs.jcim.9b00995">https://doi.org/10.1021/acs.jcim.9b00995</a>.
+</div>
+<div id="ref-Kononova2019" class="csl-entry" role="listitem">
+Kononova, Olga, Haoyan Huo, Tanjin He, Ziqin Rong, Tiago Botari, Wenhao Sun, Vahe Tshitoyan, and Gerbrand Ceder. 2019. <span>“Text-Mined Dataset of Inorganic Materials Synthesis Recipes.”</span> <em>Scientific Data</em> 6 (1). <a href="https://doi.org/10.1038/s41597-019-0224-1">https://doi.org/10.1038/s41597-019-0224-1</a>.
+</div>
+<div id="ref-Mavrai2021" class="csl-entry" role="listitem">
+Mavračić, Juraj, Callum J. Court, Taketomo Isazawa, Stephen R. Elliott, and Jacqueline M. Cole. 2021. <span>“ChemDataExtractor 2.0: Autopopulated Ontologies for Materials Science.”</span> <em>Journal of Chemical Information and Modeling</em> 61 (9): 4280–89. <a href="https://doi.org/10.1021/acs.jcim.1c00446">https://doi.org/10.1021/acs.jcim.1c00446</a>.
+</div>
+<div id="ref-mysore2019materials" class="csl-entry" role="listitem">
+Mysore, Sheshera, Zach Jensen, Edward Kim, Kevin Huang, Haw-Shiuan Chang, Emma Strubell, Jeffrey Flanigan, Andrew McCallum, and Elsa Olivetti. 2019. <span>“The Materials Science Procedural Text Corpus: Annotating Materials Synthesis Procedures with Shallow Semantic Structures.”</span> <a href="https://arxiv.org/abs/1905.06939">https://arxiv.org/abs/1905.06939</a>.
+</div>
+<div id="ref-Swain2016" class="csl-entry" role="listitem">
+Swain, Matthew C., and Jacqueline M. Cole. 2016. <span>“ChemDataExtractor: A Toolkit for Automated Extraction of Chemical Information from the Scientific Literature.”</span> <em>Journal of Chemical Information and Modeling</em> 56 (10): 1894–904. <a href="https://doi.org/10.1021/acs.jcim.6b00207">https://doi.org/10.1021/acs.jcim.6b00207</a>.
+</div>
+<div id="ref-Trewartha2022" class="csl-entry" role="listitem">
+Trewartha, Amalie, Nicholas Walker, Haoyan Huo, Sanghoon Lee, Kevin Cruse, John Dagdelen, Alexander Dunn, Kristin A. Persson, Gerbrand Ceder, and Anubhav Jain. 2022. <span>“Quantifying the Advantage of Domain-Specific Pre-Training on Named Entity Recognition Tasks in Materials Science.”</span> <em>Patterns</em> 3 (4): 100488. <a href="https://doi.org/10.1016/j.patter.2022.100488">https://doi.org/10.1016/j.patter.2022.100488</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

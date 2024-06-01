@@ -362,7 +362,7 @@ window.Quarto = {
 
 <section id="why-discussing-this-paper" class="level2">
 <h2 class="anchored" data-anchor-id="why-discussing-this-paper">Why discussing this paper?</h2>
-<p>I chose Chen et al.’s paper <span class="citation" data-cites="Chen_2024">(<a href="chem_yield_prediction_2024.html#ref-Chen_2024" role="doc-biblioref">Chen et al. 2024</a>)</span> for our journal club because</p>
+<p>I chose Chen et al.’s paper <span class="citation" data-cites="Chen_2024">(<a href="#ref-Chen_2024" role="doc-biblioref">Chen et al. 2024</a>)</span> for our journal club because</p>
 <ul>
 <li>An important and interesting problem in chemistry</li>
 <li>Uses many of the techniques we care about in our group</li>
@@ -376,18 +376,18 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="prior-work">Prior work</h2>
 <section id="ahneman-et-al.-2018" class="level3">
 <h3 class="anchored" data-anchor-id="ahneman-et-al.-2018">Ahneman et al.&nbsp;(2018)</h3>
-<p>Ahneman et al. <span class="citation" data-cites="Ahneman_2018">(<a href="chem_yield_prediction_2024.html#ref-Ahneman_2018" role="doc-biblioref">Ahneman et al. 2018</a>)</span> reported in <em>Science</em> a random forest model that predicts the yield of chemical reactions in a high-throughput dataset (palladium-catalyzed Buchwald-Hartwig cross-coupling reactions). For this, the authors created a set of features using computational techniques.</p>
-<p>A very interesting aspect of this work is the subsequent exchange with Chuang and Keiser <span class="citation" data-cites="Chuang_2018">(<a href="chem_yield_prediction_2024.html#ref-Chuang_2018" role="doc-biblioref">Chuang and Keiser 2018</a>)</span> who point out that the chemical features used in the work by Ahneman et al.&nbsp;perform not distinguishably better than non-meaningful features.</p>
+<p>Ahneman et al. <span class="citation" data-cites="Ahneman_2018">(<a href="#ref-Ahneman_2018" role="doc-biblioref">Ahneman et al. 2018</a>)</span> reported in <em>Science</em> a random forest model that predicts the yield of chemical reactions in a high-throughput dataset (palladium-catalyzed Buchwald-Hartwig cross-coupling reactions). For this, the authors created a set of features using computational techniques.</p>
+<p>A very interesting aspect of this work is the subsequent exchange with Chuang and Keiser <span class="citation" data-cites="Chuang_2018">(<a href="#ref-Chuang_2018" role="doc-biblioref">Chuang and Keiser 2018</a>)</span> who point out that the chemical features used in the work by Ahneman et al.&nbsp;perform not distinguishably better than non-meaningful features.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="chen_yield_pred_2024_images/362_aat8603_f1.jpeg" class="img-fluid figure-img"></p>
-<figcaption>Figure taken from Chuang and Keiser’s paper<span class="citation" data-cites="Chuang_2018">(<a href="chem_yield_prediction_2024.html#ref-Chuang_2018" role="doc-biblioref">Chuang and Keiser 2018</a>)</span> illustrating models trained with various featurization approaches.</figcaption>
+<figcaption>Figure taken from Chuang and Keiser’s paper<span class="citation" data-cites="Chuang_2018">(<a href="#ref-Chuang_2018" role="doc-biblioref">Chuang and Keiser 2018</a>)</span> illustrating models trained with various featurization approaches.</figcaption>
 </figure>
 </div>
 </section>
 <section id="schwaller-et-al.-2020-2021" class="level3">
 <h3 class="anchored" data-anchor-id="schwaller-et-al.-2020-2021">Schwaller et al.&nbsp;(2020, 2021)</h3>
-<p>Schwaller et al. <span class="citation" data-cites="schwaller2020data schwaller2021prediction">(<a href="chem_yield_prediction_2024.html#ref-schwaller2020data" role="doc-biblioref">Schwaller et al. 2020</a>, <a href="chem_yield_prediction_2024.html#ref-schwaller2021prediction" role="doc-biblioref">2021</a>)</span> utilized BERT models with a regression head to predict yields based on reaction SMILES.</p>
+<p>Schwaller et al. <span class="citation" data-cites="schwaller2020data schwaller2021prediction">(<a href="#ref-schwaller2020data" role="doc-biblioref">Schwaller et al. 2020</a>, <a href="#ref-schwaller2021prediction" role="doc-biblioref">2021</a>)</span> utilized BERT models with a regression head to predict yields based on reaction SMILES.</p>
 <p>They observed multiple interesting effects:</p>
 <ul>
 <li>The performance on high-throughput datasets is good, on USPTO datasets the models are not predictive (<span class="math inline">\(R^2\)</span> on a random split of 0.117 for the gram scale)</li>
@@ -396,13 +396,13 @@ window.Quarto = {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="chen_yield_pred_2024_images/yield_scales.jpg" class="img-fluid figure-img"></p>
-<figcaption>Figure taken from Schwaller et al. <span class="citation" data-cites="schwaller2021prediction">(<a href="chem_yield_prediction_2024.html#ref-schwaller2021prediction" role="doc-biblioref">Schwaller et al. 2021</a>)</span> illustrating the distribution of yields on different scales.</figcaption>
+<figcaption>Figure taken from Schwaller et al. <span class="citation" data-cites="schwaller2021prediction">(<a href="#ref-schwaller2021prediction" role="doc-biblioref">Schwaller et al. 2021</a>)</span> illustrating the distribution of yields on different scales.</figcaption>
 </figure>
 </div>
 </section>
 <section id="kwon-et-al.-2022" class="level3">
 <h3 class="anchored" data-anchor-id="kwon-et-al.-2022">Kwon et al.&nbsp;(2022)</h3>
-<p>Kwon et al. <span class="citation" data-cites="Kwon_2022">(<a href="chem_yield_prediction_2024.html#ref-Kwon_2022" role="doc-biblioref">Kwon et al. 2022</a>)</span>, in contrast, used graph neural networks to predict yields. They pass reactants and products through a graph neural network and concatenate the embeddings to predict the yield. They train on a similar loss as the work at hand (but use also use dropout Monte-Carlo <span class="citation" data-cites="gal2016dropout">(<a href="chem_yield_prediction_2024.html#ref-gal2016dropout" role="doc-biblioref">Gal and Ghahramani 2016</a>)</span> to estimate the epistemic uncertainty).</p>
+<p>Kwon et al. <span class="citation" data-cites="Kwon_2022">(<a href="#ref-Kwon_2022" role="doc-biblioref">Kwon et al. 2022</a>)</span>, in contrast, used graph neural networks to predict yields. They pass reactants and products through a graph neural network and concatenate the embeddings to predict the yield. They train on a similar loss as the work at hand (but use also use dropout Monte-Carlo <span class="citation" data-cites="gal2016dropout">(<a href="#ref-gal2016dropout" role="doc-biblioref">Gal and Ghahramani 2016</a>)</span> to estimate the epistemic uncertainty).</p>
 </section>
 </section>
 <section id="problem-setting" class="level2">
@@ -420,7 +420,7 @@ window.Quarto = {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="chen_yield_pred_2024_images/approach.png" class="img-fluid figure-img"></p>
-<figcaption>Overview of the model architecture. Figure taken from Chem et al. <span class="citation" data-cites="Chen_2024">(<a href="chem_yield_prediction_2024.html#ref-Chen_2024" role="doc-biblioref">Chen et al. 2024</a>)</span></figcaption>
+<figcaption>Overview of the model architecture. Figure taken from Chem et al. <span class="citation" data-cites="Chen_2024">(<a href="#ref-Chen_2024" role="doc-biblioref">Chen et al. 2024</a>)</span></figcaption>
 </figure>
 </div>
 <section id="graph-encoder-and-smiles-encoder" class="level3">
@@ -439,7 +439,7 @@ window.Quarto = {
 \mathbf{x}_i^{\prime}=\boldsymbol{\Theta}^{\top} \sum_{j \in \mathcal{N}(i) \cup\{i\}} \frac{e_{j, i}}{\sqrt{\hat{d}_j \hat{d}_i}} \mathbf{x}_j
 \]</span></p>
 <p>where <span class="math inline">\(\hat{d}_i\)</span> is the degree of node <span class="math inline">\(i\)</span> and <span class="math inline">\(\boldsymbol{\Theta}\)</span> is a learnable weight matrix. <span class="math inline">\(\mathcal{N}(i)\)</span> is the set of neighbors of node <span class="math inline">\(i\)</span>. <span class="math inline">\(\mathbf{x}_i\)</span> is the node embedding of node <span class="math inline">\(i\)</span>, <span class="math inline">\(e_{j, i}\)</span> is the edge feature between node <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>.</p>
-<p>The node embeddings are then aggregated using Set2Set pooling <span class="citation" data-cites="vinyals2016order">(<a href="chem_yield_prediction_2024.html#ref-vinyals2016order" role="doc-biblioref">Vinyals, Bengio, and Kudlur 2016</a>)</span>.</p>
+<p>The node embeddings are then aggregated using Set2Set pooling <span class="citation" data-cites="vinyals2016order">(<a href="#ref-vinyals2016order" role="doc-biblioref">Vinyals, Bengio, and Kudlur 2016</a>)</span>.</p>
 </section>
 <section id="smiles-encoder" class="level4">
 <h4 class="anchored" data-anchor-id="smiles-encoder">SMILES encoder</h4>
@@ -498,7 +498,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>MoE <span class="citation" data-cites="shazeer2017outrageously">(<a href="chem_yield_prediction_2024.html#ref-shazeer2017outrageously" role="doc-biblioref">Shazeer et al. 2017</a>)</span> has become popular recently as a way to scale LLMs. You might have across model names like Mixtral-8x7B <span class="citation" data-cites="jiang2024mixtral">(<a href="chem_yield_prediction_2024.html#ref-jiang2024mixtral" role="doc-biblioref">Jiang et al. 2024</a>)</span>, which indicates that the model is a mixture of 8 experts, each of which is a 7B parameter model. The total number of parameters is 47B parameters, but the inference cost is similar to the one of a 14B parameter model. (Note however, that memory consumption is still high as all experts need to be loaded into memory.)</p>
+<p>MoE <span class="citation" data-cites="shazeer2017outrageously">(<a href="#ref-shazeer2017outrageously" role="doc-biblioref">Shazeer et al. 2017</a>)</span> has become popular recently as a way to scale LLMs. You might have across model names like Mixtral-8x7B <span class="citation" data-cites="jiang2024mixtral">(<a href="#ref-jiang2024mixtral" role="doc-biblioref">Jiang et al. 2024</a>)</span>, which indicates that the model is a mixture of 8 experts, each of which is a 7B parameter model. The total number of parameters is 47B parameters, but the inference cost is similar to the one of a 14B parameter model. (Note however, that memory consumption is still high as all experts need to be loaded into memory.)</p>
 <p><a href="https://cameronrwolfe.substack.com/p/conditional-computation-the-birth">This blog by Cameron Wolfe</a> gives a good overview. You might also find <a href="https://www.youtube.com/watch?v=mwO6v4BlgZQ">Yannic Kilcher’s video about Mixtral of Experts</a> useful.</p>
 </div>
 </div>
@@ -542,7 +542,7 @@ Note
 \mathcal{L}(\boldsymbol{\lambda})=-\mathbb{E}_{q(\boldsymbol{\theta} ; \boldsymbol{\lambda})}[\log p(\mathbf{y} \mid \mathbf{x}, \boldsymbol{\theta})]+\mathrm{KL}(q(\boldsymbol{\theta} ; \boldsymbol{\lambda}) \| p(\boldsymbol{\theta}))
 \]</span></p>
 <p>In this equation, the first term is the negative log-likelihood, and the second term is the KL divergence between the approximate posterior <span class="math inline">\(q(\boldsymbol{\theta} ; \boldsymbol{\lambda})\)</span> and the prior <span class="math inline">\(p(\boldsymbol{\theta})\)</span>. The KL divergence is a measure of how much the approximate posterior diverges from the prior. The idea is to minimize the negative log-likelihood while keeping the approximate posterior close to the prior. This is a way to quantify the uncertainty in the model.</p>
-<p>The idea comes from Bayesian inference, where we want to estimate the posterior distribution over the parameters of the model. In practice, this is intractable, so we use variational inference to approximate the posterior with a simpler distribution. The posterior (which quantifies uncertainty) is typically computationally expensive to compute, so we use variational inference to approximate it with a simpler distribution, this is called variational inference. Since during training, we do some sampling, we need to perform a reparametrization trick <span class="citation" data-cites="kingma2015variational">(<a href="chem_yield_prediction_2024.html#ref-kingma2015variational" role="doc-biblioref">Kingma, Salimans, and Welling 2015</a>)</span> to make the gradients flow through the sampling operation.</p>
+<p>The idea comes from Bayesian inference, where we want to estimate the posterior distribution over the parameters of the model. In practice, this is intractable, so we use variational inference to approximate the posterior with a simpler distribution. The posterior (which quantifies uncertainty) is typically computationally expensive to compute, so we use variational inference to approximate it with a simpler distribution, this is called variational inference. Since during training, we do some sampling, we need to perform a reparametrization trick <span class="citation" data-cites="kingma2015variational">(<a href="#ref-kingma2015variational" role="doc-biblioref">Kingma, Salimans, and Welling 2015</a>)</span> to make the gradients flow through the sampling operation.</p>
 </div>
 </div>
 </section>
@@ -676,132 +676,43 @@ Note
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
+
+
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Ahneman_2018" class="csl-entry" role="listitem">
-Ahneman, Derek T., Jesús G. Estrada, Shishi Lin, Spencer D. Dreher, and
-Abigail G. Doyle. 2018. <span>“Predicting Reaction Performance in c–n
-Cross-Coupling Using Machine Learning.”</span> <em>Science</em> 360
-(6385): 186–90. <a href="https://doi.org/10.1126/science.aar5169">https://doi.org/10.1126/science.aar5169</a>.
+Ahneman, Derek T., Jesús G. Estrada, Shishi Lin, Spencer D. Dreher, and Abigail G. Doyle. 2018. <span>“Predicting Reaction Performance in c–n Cross-Coupling Using Machine Learning.”</span> <em>Science</em> 360 (6385): 186–90. <a href="https://doi.org/10.1126/science.aar5169">https://doi.org/10.1126/science.aar5169</a>.
 </div>
 <div id="ref-Chen_2024" class="csl-entry" role="listitem">
-Chen, Jiayuan, Kehan Guo, Zhen Liu, Olexandr Isayev, and Xiangliang
-Zhang. 2024. <span>“Uncertainty-Aware Yield Prediction with Multimodal
-Molecular Features.”</span> <em>Proceedings of the AAAI Conference on
-Artificial Intelligence</em> 38 (8): 8274–82. <a href="https://doi.org/10.1609/aaai.v38i8.28668">https://doi.org/10.1609/aaai.v38i8.28668</a>.
+Chen, Jiayuan, Kehan Guo, Zhen Liu, Olexandr Isayev, and Xiangliang Zhang. 2024. <span>“Uncertainty-Aware Yield Prediction with Multimodal Molecular Features.”</span> <em>Proceedings of the AAAI Conference on Artificial Intelligence</em> 38 (8): 8274–82. <a href="https://doi.org/10.1609/aaai.v38i8.28668">https://doi.org/10.1609/aaai.v38i8.28668</a>.
 </div>
 <div id="ref-Chuang_2018" class="csl-entry" role="listitem">
-Chuang, Kangway V., and Michael J. Keiser. 2018. <span>“Comment on
-<span>‘Predicting Reaction Performance in c–n Cross-Coupling Using
-Machine Learning’</span>.”</span> <em>Science</em> 362 (6416). <a href="https://doi.org/10.1126/science.aat8603">https://doi.org/10.1126/science.aat8603</a>.
-</div>
-<div id="ref-dagdelen_structured_2024" class="csl-entry" role="listitem">
-Dagdelen, John, Alexander Dunn, Sanghoon Lee, Nicholas Walker, Andrew S.
-Rosen, Gerbrand Ceder, Kristin A. Persson, and Anubhav Jain. 2024.
-<span>“Structured Information Extraction from Scientific Text with Large
-Language Models.”</span> <em>Nature Communications</em> 15 (1): 1418. <a href="https://doi.org/10.1038/s41467-024-45563-x">https://doi.org/10.1038/s41467-024-45563-x</a>.
+Chuang, Kangway V., and Michael J. Keiser. 2018. <span>“Comment on <span>‘Predicting Reaction Performance in c–n Cross-Coupling Using Machine Learning’</span>.”</span> <em>Science</em> 362 (6416). <a href="https://doi.org/10.1126/science.aat8603">https://doi.org/10.1126/science.aat8603</a>.
 </div>
 <div id="ref-gal2016dropout" class="csl-entry" role="listitem">
-Gal, Yarin, and Zoubin Ghahramani. 2016. <span>“Dropout as a Bayesian
-Approximation: Representing Model Uncertainty in Deep Learning.”</span>
-In <em>International Conference on Machine Learning</em>, 1050–59. PMLR.
-</div>
-<div id="ref-Guo2021" class="csl-entry" role="listitem">
-Guo, Jiang, A. Santiago Ibanez-Lopez, Hanyu Gao, Victor Quach, Connor W.
-Coley, Klavs F. Jensen, and Regina Barzilay. 2021. <span>“Automated
-Chemical Reaction Extraction from Scientific Literature.”</span>
-<em>Journal of Chemical Information and Modeling</em> 62 (9): 2035–45.
-<a href="https://doi.org/10.1021/acs.jcim.1c00284">https://doi.org/10.1021/acs.jcim.1c00284</a>.
-</div>
-<div id="ref-Huo2019" class="csl-entry" role="listitem">
-Huo, Haoyan, Ziqin Rong, Olga Kononova, Wenhao Sun, Tiago Botari, Tanjin
-He, Vahe Tshitoyan, and Gerbrand Ceder. 2019. <span>“Semi-Supervised
-Machine-Learning Classification of Materials Synthesis
-Procedures.”</span> <em>Npj Computational Materials</em> 5 (1). <a href="https://doi.org/10.1038/s41524-019-0204-1">https://doi.org/10.1038/s41524-019-0204-1</a>.
+Gal, Yarin, and Zoubin Ghahramani. 2016. <span>“Dropout as a Bayesian Approximation: Representing Model Uncertainty in Deep Learning.”</span> In <em>International Conference on Machine Learning</em>, 1050–59. PMLR.
 </div>
 <div id="ref-jiang2024mixtral" class="csl-entry" role="listitem">
-Jiang, Albert Q., Alexandre Sablayrolles, Antoine Roux, Arthur Mensch,
-Blanche Savary, Chris Bamford, Devendra Singh Chaplot, et al. 2024.
-<span>“Mixtral of Experts.”</span> <a href="https://arxiv.org/abs/2401.04088">https://arxiv.org/abs/2401.04088</a>.
-</div>
-<div id="ref-Kim2017" class="csl-entry" role="listitem">
-Kim, Edward, Kevin Huang, Adam Saunders, Andrew McCallum, Gerbrand
-Ceder, and Elsa Olivetti. 2017. <span>“Materials Synthesis Insights from
-Scientific Literature via Text Extraction and Machine Learning.”</span>
-<em>Chemistry of Materials</em> 29 (21): 9436–44. <a href="https://doi.org/10.1021/acs.chemmater.7b03500">https://doi.org/10.1021/acs.chemmater.7b03500</a>.
-</div>
-<div id="ref-Kim2020" class="csl-entry" role="listitem">
-Kim, Edward, Zach Jensen, Alexander van Grootel, Kevin Huang, Matthew
-Staib, Sheshera Mysore, Haw-Shiuan Chang, et al. 2020. <span>“Inorganic
-Materials Synthesis Planning with Literature-Trained Neural
-Networks.”</span> <em>Journal of Chemical Information and Modeling</em>
-60 (3): 1194–1201. <a href="https://doi.org/10.1021/acs.jcim.9b00995">https://doi.org/10.1021/acs.jcim.9b00995</a>.
+Jiang, Albert Q., Alexandre Sablayrolles, Antoine Roux, Arthur Mensch, Blanche Savary, Chris Bamford, Devendra Singh Chaplot, et al. 2024. <span>“Mixtral of Experts.”</span> <a href="https://arxiv.org/abs/2401.04088">https://arxiv.org/abs/2401.04088</a>.
 </div>
 <div id="ref-kingma2015variational" class="csl-entry" role="listitem">
-Kingma, Diederik P., Tim Salimans, and Max Welling. 2015.
-<span>“Variational Dropout and the Local Reparameterization
-Trick.”</span> <a href="https://arxiv.org/abs/1506.02557">https://arxiv.org/abs/1506.02557</a>.
-</div>
-<div id="ref-Kononova2019" class="csl-entry" role="listitem">
-Kononova, Olga, Haoyan Huo, Tanjin He, Ziqin Rong, Tiago Botari, Wenhao
-Sun, Vahe Tshitoyan, and Gerbrand Ceder. 2019. <span>“Text-Mined Dataset
-of Inorganic Materials Synthesis Recipes.”</span> <em>Scientific
-Data</em> 6 (1). <a href="https://doi.org/10.1038/s41597-019-0224-1">https://doi.org/10.1038/s41597-019-0224-1</a>.
+Kingma, Diederik P., Tim Salimans, and Max Welling. 2015. <span>“Variational Dropout and the Local Reparameterization Trick.”</span> <a href="https://arxiv.org/abs/1506.02557">https://arxiv.org/abs/1506.02557</a>.
 </div>
 <div id="ref-Kwon_2022" class="csl-entry" role="listitem">
-Kwon, Youngchun, Dongseon Lee, Youn-Suk Choi, and Seokho Kang. 2022.
-<span>“Uncertainty-Aware Prediction of Chemical Reaction Yields with
-Graph Neural Networks.”</span> <em>Journal of Cheminformatics</em> 14
-(1). <a href="https://doi.org/10.1186/s13321-021-00579-z">https://doi.org/10.1186/s13321-021-00579-z</a>.
-</div>
-<div id="ref-Mavrai2021" class="csl-entry" role="listitem">
-Mavračić, Juraj, Callum J. Court, Taketomo Isazawa, Stephen R. Elliott,
-and Jacqueline M. Cole. 2021. <span>“ChemDataExtractor 2.0:
-Autopopulated Ontologies for Materials Science.”</span> <em>Journal of
-Chemical Information and Modeling</em> 61 (9): 4280–89. <a href="https://doi.org/10.1021/acs.jcim.1c00446">https://doi.org/10.1021/acs.jcim.1c00446</a>.
-</div>
-<div id="ref-mysore2019materials" class="csl-entry" role="listitem">
-Mysore, Sheshera, Zach Jensen, Edward Kim, Kevin Huang, Haw-Shiuan
-Chang, Emma Strubell, Jeffrey Flanigan, Andrew McCallum, and Elsa
-Olivetti. 2019. <span>“The Materials Science Procedural Text Corpus:
-Annotating Materials Synthesis Procedures with Shallow Semantic
-Structures.”</span> <a href="https://arxiv.org/abs/1905.06939">https://arxiv.org/abs/1905.06939</a>.
+Kwon, Youngchun, Dongseon Lee, Youn-Suk Choi, and Seokho Kang. 2022. <span>“Uncertainty-Aware Prediction of Chemical Reaction Yields with Graph Neural Networks.”</span> <em>Journal of Cheminformatics</em> 14 (1). <a href="https://doi.org/10.1186/s13321-021-00579-z">https://doi.org/10.1186/s13321-021-00579-z</a>.
 </div>
 <div id="ref-schwaller2020data" class="csl-entry" role="listitem">
-Schwaller, Philippe, Alain C Vaucher, Teodoro Laino, and Jean-Louis
-Reymond. 2020. <span>“Data Augmentation Strategies to Improve Reaction
-Yield Predictions and Estimate Uncertainty.”</span> <em>Chemrxiv
-Preprint</em>.
+Schwaller, Philippe, Alain C Vaucher, Teodoro Laino, and Jean-Louis Reymond. 2020. <span>“Data Augmentation Strategies to Improve Reaction Yield Predictions and Estimate Uncertainty.”</span> <em>Chemrxiv Preprint</em>.
 </div>
 <div id="ref-schwaller2021prediction" class="csl-entry" role="listitem">
-———. 2021. <span>“Prediction of Chemical Reaction Yields Using Deep
-Learning.”</span> <em>Machine Learning: Science and Technology</em> 2
-(1): 015016.
+———. 2021. <span>“Prediction of Chemical Reaction Yields Using Deep Learning.”</span> <em>Machine Learning: Science and Technology</em> 2 (1): 015016.
 </div>
 <div id="ref-shazeer2017outrageously" class="csl-entry" role="listitem">
-Shazeer, Noam, Azalia Mirhoseini, Krzysztof Maziarz, Andy Davis, Quoc
-Le, Geoffrey Hinton, and Jeff Dean. 2017. <span>“Outrageously Large
-Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer.”</span> <a href="https://arxiv.org/abs/1701.06538">https://arxiv.org/abs/1701.06538</a>.
-</div>
-<div id="ref-Swain2016" class="csl-entry" role="listitem">
-Swain, Matthew C., and Jacqueline M. Cole. 2016.
-<span>“ChemDataExtractor: A Toolkit for Automated Extraction of Chemical
-Information from the Scientific Literature.”</span> <em>Journal of
-Chemical Information and Modeling</em> 56 (10): 1894–904. <a href="https://doi.org/10.1021/acs.jcim.6b00207">https://doi.org/10.1021/acs.jcim.6b00207</a>.
-</div>
-<div id="ref-Trewartha2022" class="csl-entry" role="listitem">
-Trewartha, Amalie, Nicholas Walker, Haoyan Huo, Sanghoon Lee, Kevin
-Cruse, John Dagdelen, Alexander Dunn, Kristin A. Persson, Gerbrand
-Ceder, and Anubhav Jain. 2022. <span>“Quantifying the Advantage of
-Domain-Specific Pre-Training on Named Entity Recognition Tasks in
-Materials Science.”</span> <em>Patterns</em> 3 (4): 100488. <a href="https://doi.org/10.1016/j.patter.2022.100488">https://doi.org/10.1016/j.patter.2022.100488</a>.
+Shazeer, Noam, Azalia Mirhoseini, Krzysztof Maziarz, Andy Davis, Quoc Le, Geoffrey Hinton, and Jeff Dean. 2017. <span>“Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer.”</span> <a href="https://arxiv.org/abs/1701.06538">https://arxiv.org/abs/1701.06538</a>.
 </div>
 <div id="ref-vinyals2016order" class="csl-entry" role="listitem">
-Vinyals, Oriol, Samy Bengio, and Manjunath Kudlur. 2016. <span>“Order
-Matters: Sequence to Sequence for Sets.”</span> <a href="https://arxiv.org/abs/1511.06391">https://arxiv.org/abs/1511.06391</a>.
+Vinyals, Oriol, Samy Bengio, and Manjunath Kudlur. 2016. <span>“Order Matters: Sequence to Sequence for Sets.”</span> <a href="https://arxiv.org/abs/1511.06391">https://arxiv.org/abs/1511.06391</a>.
 </div>
 </div>
-
-
 </section>
 
 </main> <!-- /main -->
