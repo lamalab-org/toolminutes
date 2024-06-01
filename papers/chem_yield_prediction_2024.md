@@ -228,6 +228,3 @@ The authors perform ablations to understand the importance of the different comp
 - Their approach with frozen encoders is interesting, it would have been interesting to see learning curves to better understand the data efficiency of the approach
 
 ## References
-
-::: {#refs}
-:::

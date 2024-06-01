@@ -3,8 +3,6 @@ author: Martiño Ríos-García
 date: 2024-05-14
 title-block-banner: dagdelen_data_extraction_2024_images/ai_banner.webp
 bibliography: ../references.bib
-reference-location: margin
-citation-location: margin
 ---
 
 # Structured information extraction from scientific text with large language models
@@ -135,3 +133,5 @@ By using this annotation method they greatly improve the annotation time solving
 - Open source models with proper tuning can yield high-quality results similar to those of closed source models.
 - Despite some labeled data is needed, the process is simplified a lot with the use of LLMs.
 - With the fasst and continuous development of the current models, maybe fine-tuning for a simpler task such as data extraction is no furhter needed.
+
+## References
