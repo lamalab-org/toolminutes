@@ -9,7 +9,7 @@ bibliography: ../references.bib
 
 ## Why discuss this paper? 
 
-I chose the PaCh (Packed Chemicals) paper [@Chen_2024] current topics in the cheminformatics seminar because 
+I chose the PaCh (Packed Chemicals) paper [@Nugmanov2024] current topics in the cheminformatics seminar because 
 
 - It aims to combine compact local stereochemistry encoding (in SMILES) with explicit bond connectivity and 2D layout (like in MDL MOL files).
 - This is an interesting approach to package these two pieces of information together, which makes our group think about possible real-world applications.
