@@ -58,8 +58,8 @@ Some metrics that have been used for quantifying the model predictions are the f
     * MCS ratio - $MCS_{ratio} = \frac{a_{MCS}}{a_{r}}$
     * MCS Tanimoto - $MCS_{tan} = \frac{a_{MCS}}{a_r + a_p - a_{MCS}}$
     * MCS overlap - $MCS_{ovrlp} = \frac{a_{MCS}}{min(a_r, a_p)}$
-    * $DMF_{\%}$ - the difference between the molecular formulas of the predicted structures and the reference structure
-    * $DMW_{\%}$ - the average-average difference over all the predicted structures divided by the average molecular weight of the reference structures
+    * DMF% - the difference between the molecular formulas of the predicted structures and the reference structure
+    * DMW% - the average-average difference over all the predicted structures divided by the average molecular weight of the reference structures
 
 $a_{MCS}$ - number of atoms in the maximum common substructure
 
