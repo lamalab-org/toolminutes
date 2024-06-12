@@ -6,7 +6,7 @@
 ```mermaid
 graph TD;
     classDef introClass fill:#f9f,stroke:#333,stroke-width:2px;
-    
+
     Introduction_MIST["Introduction to MIST"]::introClass --> Neural_Network_Approach["Neural Network Approach"];
     Introduction_MIST --> Spectrum_Representation["Spectrum Representation"];
     Introduction_MIST --> Inductive_Biases_and_Features["Inductive Biases and Features"];
@@ -16,6 +16,7 @@ graph TD;
     Inductive_Biases_and_Features --> Novel_Unfolding_Architecture["Novel 'Unfolding' Architecture"];
     Spectrum_Representation --> Chemical_Formulae_of_Peaks["Uses chemical formulae of peaks"];
     Spectrum_Representation --> Inspired_by_CSI_FingerID["Inspired by CSI:FingerID"];
+
 
 
 ```
