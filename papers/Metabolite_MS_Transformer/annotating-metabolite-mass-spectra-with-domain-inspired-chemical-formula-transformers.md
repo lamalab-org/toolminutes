@@ -5,7 +5,10 @@
 ### Overview of MIST
 ```mermaid
 graph TD;
-    Introduction_MIST["Introduction to MIST"] --> Neural_Network_Approach["Neural Network Approach"];
+    style Introduction_MIST fill:#f9f,stroke:#333,stroke-width:2px;
+  
+  Introduction_MIST{ text-align: center; font-weight: bold; }["Introduction to MIST"] --> Neural_Network_Approach["Neural Network Approach"];
+  
     Introduction_MIST --> Spectrum_Representation["Spectrum Representation"];
     Introduction_MIST --> Inductive_Biases_and_Features["Inductive Biases and Features"];
     Inductive_Biases_and_Features --> Neutral_Loss_Relationships["Neutral Loss Relationships"];
