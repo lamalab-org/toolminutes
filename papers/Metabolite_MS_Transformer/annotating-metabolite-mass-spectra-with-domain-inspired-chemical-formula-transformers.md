@@ -6,9 +6,9 @@
 ```mermaid
 graph TD;
     
+  classDef introClass fill:#f9f,stroke:#333,stroke-width:2px;
     
-    classDef introClass fill:#f9f,stroke:#333,stroke-width:2px;
-
+    subgraph MainFlow
   
   Introduction_MIST["<strong>Introduction to MIST</strong>"] -----> Neural_Network_Approach["Neural Network Approach"];
     Introduction_MIST ---> Spectrum_Representation["Spectrum Representation"];
