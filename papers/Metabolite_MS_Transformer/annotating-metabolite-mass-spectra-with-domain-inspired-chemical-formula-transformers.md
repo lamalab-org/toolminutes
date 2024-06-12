@@ -52,7 +52,7 @@ Real_World_Application --> Propose_New_Annotations{{"Propose New Annotations"}}
 - Metabolite analysis compares healthy, UC, and CD patient groups, focusing on piperidine and pyridine alkaloids.
 - The MIST model accurately predicts compound fingerprints from mass spectra with high accuracy.
 - Future directions involve standardizing benchmarks in mass spectrometry model development and exploring retrieval task complexities and biases in predictions.
-
+```mermaid
 root((Research Article Mind Map))
   Introduction
     Importance of mass spectrometry in metabolomics
@@ -95,3 +95,4 @@ root((Research Article Mind Map))
 
   References
     List of key references cited in the article for further reading and validation of the study's findings
+```
