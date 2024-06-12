@@ -8,6 +8,7 @@ graph TD;
     style Start, End fill:#f9f,stroke:#333,stroke-width:4px;
     style Introduction_MIST, Neural_Network_Approach, Spectrum_Representation, Inductive_Biases_and_Features, Enhancing_Spectra_Annotation, Model_Evaluation, Real_World_Application fill:#f9f,stroke:#333,stroke-width:2px,stroke-dasharray: 5, 5;
     style Outperforms_Methods, No_Handcrafted_Kernels, Chemical_Formulae_of_Peaks, Inspired_by_CSI_FingerID, Neutral_Loss_Relationships, Simultaneous_Predictions, In_Silico_Forward_Augmentation, Novel_Unfolding_Architecture, Contrastive_Representation_Learning, Applied_on_Penultimate_Layer, Ablation_Studies, Demonstrate_Utility, Conducted_on_Public_Dataset, Clinical_Sample_Analysis, Inflammatory_Bowel_Disease_Cohort, Propose_New_Annotations, Dipeptide_Alkaloid_Structure, End fill:#fff,stroke:#333,stroke-width:1px,stroke-dasharray: 5, 5;
+    
 
     Introduction_MIST --> Neural_Network_Approach;
     Introduction_MIST --> Spectrum_Representation;
@@ -27,6 +28,7 @@ graph TD;
     Clinical_Sample_Analysis --> Inflammatory_Bowel_Disease_Cohort;
     Real_World_Application --> Propose_New_Annotations;
     Propose_New_Annotations --> Dipeptide_Alkaloid_Structure;
+
     
 ```
 
