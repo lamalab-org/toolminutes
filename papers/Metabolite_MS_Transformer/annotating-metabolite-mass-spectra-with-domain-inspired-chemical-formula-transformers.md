@@ -17,8 +17,8 @@ Inductive_Biases_and_Features --> In_Silico_Forward_Augmentation["In Silico Forw
 Inductive_Biases_and_Features --> Novel_Unfolding_Architecture["Novel 'Unfolding' Architecture"];
 Spectrum_Representation --> Chemical_Formulae_of_Peaks["Uses chemical formulae of peaks"];
 Spectrum_Representation --> Inspired_by_CSI_FingerID["Inspired by CSI:FingerID"];
-
-
+```
+```mermaid
 %%{init: {"flowchart": {"htmlLabels": true}} }%%
 flowchart LR;
 
