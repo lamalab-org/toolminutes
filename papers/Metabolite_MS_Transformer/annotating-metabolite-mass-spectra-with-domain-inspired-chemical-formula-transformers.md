@@ -26,6 +26,31 @@ Real_World_Application --> Propose_New_Annotations["Propose New Annotations"];
 
 
 ```
+```mermaid
+%%{init: {"flowchart": {"htmlLabels": true}} }%%
+flowchart LR;
+
+Introduction_MIST["<b><center>Introduction to MIST</center></b>"] -->|Overview| Neural_Network_Approach["Neural Network Approach"];
+Introduction_MIST -->|Overview| Spectrum_Representation["Spectrum Representation"];
+Introduction_MIST -->|Overview| Inductive_Biases_and_Features["Inductive Biases and Features"];
+Inductive_Biases_and_Features -->|Detail| Neutral_Loss_Relationships["Neutral Loss Relationships"];
+Inductive_Biases_and_Features -->|Detail| Simultaneous_Predictions["Simultaneous Predictions"];
+Inductive_Biases_and_Features -->|Detail| In_Silico_Forward_Augmentation["In Silico Forward Augmentation"];
+Inductive_Biases_and_Features -->|Detail| Novel_Unfolding_Architecture["Novel 'Unfolding' Architecture"];
+Spectrum_Representation -->|Detail| Chemical_Formulae_of_Peaks["Uses chemical formulae of peaks"];
+Spectrum_Representation -->|Detail| Inspired_by_CSI_FingerID["Inspired by CSI:FingerID"];
+
+Introduction_MIST -->|Overview| Enhancing_Spectra_Annotation["<b><center>Enhancing Spectra Annotation</center></b>"];
+Enhancing_Spectra_Annotation -->|Detail| Contrastive_Representation_Learning["Contrastive Representation Learning"];
+
+Introduction_MIST -->|Overview| Model_Evaluation["<b><center>Model Evaluation</center></b>"];
+Model_Evaluation -->|Detail| Ablation_Studies["Ablation Studies"];
+
+Introduction_MIST -->|Overview| Real_World_Application["<b><center>Real-World Application</center></b>"];
+Real_World_Application -->|Detail| Clinical_Sample_Analysis["Clinical Sample Analysis"];
+Real_World_Application -->|Detail| Propose_New_Annotations["Propose New Annotations"];
+
+```
 
 ### Summary:
 
