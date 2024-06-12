@@ -5,29 +5,19 @@
 ### Overview of MIST
 ```mermaid
 graph TD;
-    style Start, End fill:#f9f,stroke:#333,stroke-width:4px;
-    style Introduction_MIST, Neural_Network_Approach, Spectrum_Representation, Inductive_Biases_and_Features, Enhancing_Spectra_Annotation, Model_Evaluation, Real_World_Application fill:#f9f,stroke:#333,stroke-width:2px,stroke-dasharray: 5, 5;
-    style Outperforms_Methods, No_Handcrafted_Kernels, Chemical_Formulae_of_Peaks, Inspired_by_CSI_FingerID, Neutral_Loss_Relationships, Simultaneous_Predictions, In_Silico_Forward_Augmentation, Novel_Unfolding_Architecture, Contrastive_Representation_Learning, Applied_on_Penultimate_Layer, Ablation_Studies, Demonstrate_Utility, Conducted_on_Public_Dataset, Clinical_Sample_Analysis, Inflammatory_Bowel_Disease_Cohort, Propose_New_Annotations, Dipeptide_Alkaloid_Structure, End fill:#fff,stroke:#333,stroke-width:1px,stroke-dasharray: 5, 5;
-    
-
-    Introduction_MIST --> Neural_Network_Approach;
-    Introduction_MIST --> Spectrum_Representation;
-    Introduction_MIST --> Inductive_Biases_and_Features;
-    Inductive_Biases_and_Features --> Enhancing_Spectra_Annotation;
-    Inductive_Biases_and_Features --> Model_Evaluation;
-    Inductive_Biases_and_Features --> Real_World_Application;
-    Neural_Network_Approach --> Outperforms_Methods;
-    Neural_Network_Approach --> No_Handcrafted_Kernels;
-    Spectrum_Representation --> Chemical_Formulae_of_Peaks;
-    Spectrum_Representation --> Inspired_by_CSI_FingerID;
-    Enhancing_Spectra_Annotation --> Contrastive_Representation_Learning;
-    Model_Evaluation --> Ablation_Studies;
-    Ablation_Studies --> Demonstrate_Utility;
-    Ablation_Studies --> Conducted_on_Public_Dataset;
-    Real_World_Application --> Clinical_Sample_Analysis;
-    Clinical_Sample_Analysis --> Inflammatory_Bowel_Disease_Cohort;
-    Real_World_Application --> Propose_New_Annotations;
-    Propose_New_Annotations --> Dipeptide_Alkaloid_Structure;
+    Introduction_MIST["Introduction to MIST"] --> Neural_Network_Approach["Neural Network Approach"];
+    Introduction_MIST --> Spectrum_Representation["Spectrum Representation"];
+    Introduction_MIST --> Inductive_Biases_and_Features["Inductive Biases and Features"];
+    Inductive_Biases_and_Features --> Neutral_Loss_Relationships["Neutral Loss Relationships"];
+    Inductive_Biases_and_Features --> Simultaneous_Predictions["Simultaneous Predictions"];
+    Inductive_Biases_and_Features --> In_Silico_Forward_Augmentation["In Silico Forward Augmentation"];
+    Inductive_Biases_and_Features --> Novel_Unfolding_Architecture["Novel 'Unfolding' Architecture"];
+    Spectrum_Representation --> Chemical_Formulae_of_Peaks["Uses chemical formulae of peaks"];
+    Spectrum_Representation --> Inspired_by_CSI_FingerID["Inspired by CSI:FingerID"];
+    Enhancing_Spectra_Annotation["Enhancing Spectra Annotation"] --> Contrastive_Representation_Learning["Contrastive Representation Learning"];
+    Model_Evaluation["Model Evaluation"] --> Ablation_Studies["Ablation Studies"];
+    Real_World_Application["Real-World Application"] --> Clinical_Sample_Analysis["Clinical Sample Analysis"];
+    Real_World_Application --> Propose_New_Annotations["Propose New Annotations"];
 
     
 ```
