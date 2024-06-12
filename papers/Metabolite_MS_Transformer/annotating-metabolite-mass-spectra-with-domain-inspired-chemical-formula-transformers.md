@@ -8,7 +8,7 @@
 %%{init: {"flowchart": {"htmlLabels": true}} }%%
 flowchart LR;
 
-Introduction_MIST["<b><center>Introduction to MIST</center></b>"] --> Neural_Network_Approach["Neural Network Approach"];
+Introduction_MIST["<b><center>Introduction to MIST</center></b>"] ---> Neural_Network_Approach["Neural Network Approach"];
 Introduction_MIST --> Spectrum_Representation["Spectrum Representation"];
 Introduction_MIST --> Inductive_Biases_and_Features["Inductive Biases and Features"];
 Inductive_Biases_and_Features --> Neutral_Loss_Relationships["Neutral Loss Relationships"];
@@ -19,13 +19,13 @@ Spectrum_Representation --> Chemical_Formulae_of_Peaks["Uses chemical formulae o
 Spectrum_Representation --> Inspired_by_CSI_FingerID["Inspired by CSI:FingerID"];
 
 Introduction_MIST --> Enhancing_Spectra_Annotation["<b><center>Enhancing Spectra Annotation</center></b>"];
-Enhancing_Spectra_Annotation --> Contrastive_Representation_Learning["Contrastive Representation Learning"];
+Enhancing_Spectra_Annotation --> Contrastive_Representation_Learning{{"Contrastive Representation Learning"}};
 
 Introduction_MIST --> Model_Evaluation["<b><center>Model Evaluation</center></b>"];
-Model_Evaluation --> Ablation_Studies["Ablation Studies"];
+Model_Evaluation --> Ablation_Studies{{"Ablation Studies"}};
 
 Introduction_MIST --> Real_World_Application["<b><center>Real-World Application</center></b>"];
-Real_World_Application --> Clinical_Sample_Analysis["Clinical Sample Analysis"];
+Real_World_Application --> Clinical_Sample_Analysis{{"Clinical Sample Analysis"}};
 Real_World_Application --> Propose_New_Annotations{{"Propose New Annotations"}}
 
 ```
