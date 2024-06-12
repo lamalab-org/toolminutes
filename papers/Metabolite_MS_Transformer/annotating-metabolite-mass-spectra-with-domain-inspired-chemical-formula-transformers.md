@@ -3,21 +3,7 @@
 ## Why discuss this paper?
 - The article primarily focuses on metabolite analysis and small-molecule structure elucidation using deep learning approaches.
 ### Overview of MIST
-```mermaid
-flowchart TD;
-    
 
-    Introduction_MIST["Introduction to MIST"] ---> Neural_Network_Approach["Neural Network Approach"];
-    Introduction_MIST --> Spectrum_Representation["Spectrum Representation"];
-    Introduction_MIST --> Inductive_Biases_and_Features["Inductive Biases and Features"];
-    Inductive_Biases_and_Features --> Neutral_Loss_Relationships["Neutral Loss Relationships"];
-    Inductive_Biases_and_Features --> Simultaneous_Predictions["Simultaneous Predictions"];
-    Inductive_Biases_and_Features --> In_Silico_Forward_Augmentation["In Silico Forward Augmentation"];
-    Inductive_Biases_and_Features --> Novel_Unfolding_Architecture["Novel 'Unfolding' Architecture"];
-    Spectrum_Representation --> Chemical_Formulae_of_Peaks["Uses chemical formulae of peaks"];
-    Spectrum_Representation --> Inspired_by_CSI_FingerID["Inspired by CSI:FingerID"];
-
-```
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true}} }%%
 flowchart LR;
@@ -31,6 +17,16 @@ Inductive_Biases_and_Features --> In_Silico_Forward_Augmentation["In Silico Forw
 Inductive_Biases_and_Features --> Novel_Unfolding_Architecture["Novel 'Unfolding' Architecture"];
 Spectrum_Representation --> Chemical_Formulae_of_Peaks["Uses chemical formulae of peaks"];
 Spectrum_Representation --> Inspired_by_CSI_FingerID["Inspired by CSI:FingerID"];
+
+```
+```mermaid
+%%{init: {"flowchart": {"htmlLabels": true}} }%%
+flowchart LR;
+
+Enhancing_Spectra_Annotation["<b><center>Enhancing Spectra Annotation</center></b>"] --> Contrastive_Representation_Learning["Contrastive Representation Learning"];
+Model_Evaluation["<b><center>Model Evaluation</center></b>"] --> Ablation_Studies["Ablation Studies"];
+Real_World_Application["<b><center>Real-World Application</center></b>"] --> Clinical_Sample_Analysis["Clinical Sample Analysis"];
+Real_World_Application --> Propose_New_Annotations["Propose New Annotations"];
 
 ```
 
