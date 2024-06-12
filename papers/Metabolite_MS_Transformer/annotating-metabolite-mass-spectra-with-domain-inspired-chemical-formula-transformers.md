@@ -18,8 +18,7 @@ Inductive_Biases_and_Features --> Novel_Unfolding_Architecture["Novel 'Unfolding
 Spectrum_Representation --> Chemical_Formulae_of_Peaks["Uses chemical formulae of peaks"];
 Spectrum_Representation --> Inspired_by_CSI_FingerID["Inspired by CSI:FingerID"];
 
-```
-```mermaid
+
 %%{init: {"flowchart": {"htmlLabels": true}} }%%
 flowchart LR;
 
@@ -29,11 +28,6 @@ Real_World_Application["<b><center>Real-World Application</center></b>"] --> Cli
 Real_World_Application --> Propose_New_Annotations["Propose New Annotations"];
 
 ```
-
-Enhancing_Spectra_Annotation["Enhancing Spectra Annotation"] --> Contrastive_Representation_Learning["Contrastive Representation Learning"];
-    Model_Evaluation["Model Evaluation"] --> Ablation_Studies["Ablation Studies"];
-    Real_World_Application["Real-World Application"] --> Clinical_Sample_Analysis["Clinical Sample Analysis"];
-    Real_World_Application --> Propose_New_Annotations["Propose New Annotations"];
 
 ### Summary:
 
