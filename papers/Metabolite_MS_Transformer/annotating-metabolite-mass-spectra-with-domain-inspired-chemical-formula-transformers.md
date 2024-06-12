@@ -4,7 +4,7 @@
 - The article primarily focuses on metabolite analysis and small-molecule structure elucidation using deep learning approaches.
 ### Overview of MIST
 ```mermaid
-graph TD;
+flowchart TD;
     
 
     Introduction_MIST["Introduction to MIST"] ---> Neural_Network_Approach["Neural Network Approach"];
