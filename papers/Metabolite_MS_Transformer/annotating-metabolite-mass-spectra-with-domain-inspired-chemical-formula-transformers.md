@@ -8,15 +8,15 @@
 %%{init: {"flowchart": {"htmlLabels": true}} }%%
 flowchart LR;
 
-Introduction_MIST["<b><center>Introduction to MIST</center></b>"] ---> Neural_Network_Approach["Neural Network Approach"];
+Introduction_MIST["<b><center>Introduction to MIST</center></b>"] --> Neural_Network_Approach["Neural Network Approach"];
 Introduction_MIST --> Spectrum_Representation["Spectrum Representation"];
 Introduction_MIST --> Inductive_Biases_and_Features["Inductive Biases and Features"];
-Inductive_Biases_and_Features --> Neutral_Loss_Relationships["Neutral Loss Relationships"];
-Inductive_Biases_and_Features --> Simultaneous_Predictions["Simultaneous Predictions"];
-Inductive_Biases_and_Features --> In_Silico_Forward_Augmentation["In Silico Forward Augmentation"];
-Inductive_Biases_and_Features --> Novel_Unfolding_Architecture["Novel 'Unfolding' Architecture"];
-Spectrum_Representation --> Chemical_Formulae_of_Peaks["Uses chemical formulae of peaks"];
-Spectrum_Representation --> Inspired_by_CSI_FingerID["Inspired by CSI:FingerID"];
+Inductive_Biases_and_Features --> Neutral_Loss_Relationships{{"Neutral Loss Relationships"}};
+Inductive_Biases_and_Features --> Simultaneous_Predictions{{"Simultaneous Predictions"}};
+Inductive_Biases_and_Features --> In_Silico_Forward_Augmentation{{"In Silico Forward Augmentation"}};
+Inductive_Biases_and_Features --> Novel_Unfolding_Architecture{{"Novel 'Unfolding' Architecture"}};
+Spectrum_Representation --> Chemical_Formulae_of_Peaks{{"Uses chemical formulae of peaks"}};
+Spectrum_Representation --> Inspired_by_CSI_FingerID{{"Inspired by CSI:FingerID"}};
 
 Introduction_MIST --> Enhancing_Spectra_Annotation["<b><center>Enhancing Spectra Annotation</center></b>"];
 Enhancing_Spectra_Annotation --> Contrastive_Representation_Learning{{"Contrastive Representation Learning"}};
