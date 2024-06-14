@@ -31,7 +31,6 @@ Real_World_Application --> Propose_New_Annotations{{"Propose New Annotations"}}
 ```
 ![Figure 1](papers/Metabolite_MS_Transformer/Figures/Fig1.png)
 
-
 ### Summary:
 
 - **Metabolite Analysis:**
@@ -56,3 +55,6 @@ All code to replicate experiments, train new models and load pretrained models i
 - The MIST model accurately predicts compound fingerprints from mass spectra with high accuracy.
 - Future directions involve standardizing benchmarks in mass spectrometry model development and exploring retrieval task complexities and biases in predictions.
 
+
+
+[def]: papers/Metabolite_MS_Transformer/Figures/Fig1.png
