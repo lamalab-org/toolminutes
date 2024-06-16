@@ -156,8 +156,8 @@ In_Silico_Spectra --> Augments_libraries["Augments spectral libraries with simul
 In_Silico_Spectra --> Improves_coverage_match["Improves coverage and match finding"]
 
 Competitive_Fragmentation_Modelling["Competitive Fragmentation Modelling (CFM)"]
-CFM --> Combinatorial_fragmentation["Combines combinatorial fragmentation and probabilistic modeling"]
-CFM --> Slow_struggles_larger_compounds["Slow and struggles with larger compounds"]
+Competitive_Fragmentation_Modelling["Competitive Fragmentation Modelling (CFM)"] --> Combinatorial_fragmentation["Combines combinatorial fragmentation and probabilistic modeling"]
+Competitive_Fragmentation_Modelling["Competitive Fragmentation Modelling (CFM)"] --> Slow_struggles_larger_compounds["Slow and struggles with larger compounds"]
 
 Deep_Learning_Approaches["Deep Learning Approaches"]
 Deep_Learning_Approaches --> Fully_connected_networks["Use fully connected neural networks or graph neural networks"]
