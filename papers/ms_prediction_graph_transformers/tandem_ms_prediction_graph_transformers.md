@@ -97,6 +97,8 @@ Development_of_MassFormer --> Unique_Positional_Encoding["Unique Positional Enco
 - Unlike traditional methods, MassFormer utilizes a graph-based approach to represent molecules.
 - Incorporating spectral metadata like collision energy used during the measurement. This additional information allows MassFormer to account for factors that might influence the fragmentation patterns observed in the final spectrum prediction.
 
+## Results
+
 !["Figure 2"](Fig2.png)
 <br>
 - Accurate Predictions: MassFormer can predict realistic mass spectra for held out compounds. The high cosine similarity values (around 0.6) indicate a close match between the predicted and actual spectra.
@@ -140,18 +142,6 @@ Advantages_of_MassFormer --> Efficiency
 Advantages_of_MassFormer --> Real_World_Applications
 ```
 
-## Results
-
-1. MassFormer (MF) outperforms other models across various ranking metrics in spectrum identification tasks, except for CASMI 2016 sim set top-1, where it is surpassed by the fingerprint model (FP).
-   
-2. The study emphasizes the importance of considering candidate-query similarity in retrieval performance, with Tanimoto similarity of MACCS fingerprints providing valuable insights into model performance.
-   
-3. Normalized ranking metrics are highlighted for their ability to provide a more informative assessment of model performance in spectrum identification tasks, particularly in evaluating the frequency and quality of correct candidate ranking.
-   
-4. MassFormer's effectiveness in accurately ranking candidate structures is evident from its performance compared to other models like FP and CFM across different spectrum identification tasks.
-   
-5. The study underscores the significance of top-k accuracy and top-k% accuracy in evaluating the frequency and quality of correct candidate ranking in spectrum identification tasks, with MassFormer demonstrating strong performance in these metrics.
-
 ## Data availability
 
 All public data from the study have been uploaded to Zenodo at https://doi.org/10.5281/zenodo.8399738 (ref. 93). Some data that support the findings of this study are available from the National Institute of Standards and Technology (NIST). However, its access is subject to restrictions, requiring the purchase of an appropriate license or special permission from NIST.
@@ -170,24 +160,3 @@ The code used in this study is open-source (BSD-2-Clause license) and can be fou
 ## References
 
 ## Challenges in Mass Spectrometry
-```mermaid
-%%{init: {"flowchart": {"htmlLabels": true}} }%%
-flowchart LR;
-
-Challenges_in_MS["Challenges in MS"]::Challenges_in_MS;
-Challenges_in_MS --> Accurate_simulation_difficult["Accurate simulation of fragmentation is difficult"]::Accurate_simulation_difficult;
-Challenges_in_MS --> Simulations_slow_approximate["First principles simulations are slow and approximate"]::Simulations_slow_approximate;
-Challenges_in_MS --> Incomplete_spectral_databases["Incomplete spectral databases hinder compound identification"]::Incomplete_spectral_databases;
-
-classDef Challenges_in_MS stroke:#000,fill:#fff;
-classDef Accurate_simulation_difficult stroke:#f00,fill:#fff;
-classDef Simulations_slow_approximate stroke:#0f0,fill:#fff;
-classDef Incomplete_spectral_databases stroke:#00f,fill:#fff;
-
-class Challenges_in_MS Challenges_in_MS;
-class Accurate_simulation_difficult Accurate_simulation_difficult;
-class Simulations_slow_approximate Simulations_slow_approximate;
-class Incomplete_spectral_databases Incomplete_spectral_databases;
-
-
-```
