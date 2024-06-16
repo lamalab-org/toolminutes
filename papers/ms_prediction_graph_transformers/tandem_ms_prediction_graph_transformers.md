@@ -10,6 +10,8 @@
 
 ## Why discuss this paper?
 - The article is one of the first applications of transformers in this field, and the results show promise for improved MS-based compound identification.
+## Context
+
 ### Overview of Mass Spectrometry
 
 ```mermaid
@@ -83,6 +85,10 @@ Development_of_MassFormer --> Graph_transformers_model["Graph Transformers model
 Development_of_MassFormer --> Captures_local_global["Captures both local and global structural information"]
 Development_of_MassFormer --> Unique_Positional_Encoding["Unique Positional Encoding uses degree and shortest path information"]
 ```
+!["Figure 1"](Fig1.png)
+<br>
+Fig. 1 provides an overview of the method used in the study. It illustrates the process of extracting node and edge embeddings from the molecular graph, applying a graph transformer, extracting the chemical embedding from the readout node, adding spectral metadata, and predicting the binned spectrum. The input embeddings and graph transformer layers' parameters are initialized from a pretrained model and then fine-tuned on the spectrum prediction task. The figure visually represents the flow of information and processing steps involved in the model's operation.
+
 ### Advantages of MassFormer
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true}} }%%
@@ -111,9 +117,7 @@ Advantages_of_MassFormer --> Global_Interactions
 Advantages_of_MassFormer --> Efficiency
 Advantages_of_MassFormer --> Real_World_Applications
 ```
-!["Figure 1"](Fig1.png)
-<br>
-Fig. 1 provides an overview of the method used in the study. It illustrates the process of extracting node and edge embeddings from the molecular graph, applying a graph transformer, extracting the chemical embedding from the readout node, adding spectral metadata, and predicting the binned spectrum. The input embeddings and graph transformer layers' parameters are initialized from a pretrained model and then fine-tuned on the spectrum prediction task. The figure visually represents the flow of information and processing steps involved in the model's operation.
+
 
 !["Figure 2"](Fig2.png)
 <br>
@@ -121,7 +125,11 @@ Fig. 1 provides an overview of the method used in the study. It illustrates the 
 <br>
 !["Figure 4"](Fig4.png)
 <br>
+
 ### Summary:
+
+### Data availability
+All public data from the study have been uploaded to Zenodo at https://doi.org/10.5281/zenodo.8399738 (ref. 93). Some data that support the findings of this study are available from the National Institute of Standards and Technology (NIST). However, its access is subject to restrictions, requiring the purchase of an appropriate license or special permission from NIST.
 
 ### Code availability
 The code used in this study is open-source (BSD-2-Clause license) and can be found in a GitHub repository (https://github.com/Roestlab/massformer/) with a DOI of https://doi.org/10.5281/zenodo.10558852.
