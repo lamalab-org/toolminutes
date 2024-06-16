@@ -126,7 +126,17 @@ Advantages_of_MassFormer --> Real_World_Applications
 !["Figure 4"](Fig4.png)
 <br>
 
-### Summary:
+## Results
+
+1. MassFormer (MF) outperforms other models across various ranking metrics in spectrum identification tasks, except for CASMI 2016 sim set top-1, where it is surpassed by the fingerprint model (FP).
+   
+2. The study emphasizes the importance of considering candidate-query similarity in retrieval performance, with Tanimoto similarity of MACCS fingerprints providing valuable insights into model performance.
+   
+3. Normalized ranking metrics are highlighted for their ability to provide a more informative assessment of model performance in spectrum identification tasks, particularly in evaluating the frequency and quality of correct candidate ranking.
+   
+4. MassFormer's effectiveness in accurately ranking candidate structures is evident from its performance compared to other models like FP and CFM across different spectrum identification tasks.
+   
+5. The study underscores the significance of top-k accuracy and top-k% accuracy in evaluating the frequency and quality of correct candidate ranking in spectrum identification tasks, with MassFormer demonstrating strong performance in these metrics.
 
 ### Data availability
 All public data from the study have been uploaded to Zenodo at https://doi.org/10.5281/zenodo.8399738 (ref. 93). Some data that support the findings of this study are available from the National Institute of Standards and Technology (NIST). However, its access is subject to restrictions, requiring the purchase of an appropriate license or special permission from NIST.
