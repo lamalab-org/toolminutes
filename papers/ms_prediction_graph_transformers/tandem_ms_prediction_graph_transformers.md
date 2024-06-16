@@ -102,7 +102,7 @@ Development_of_MassFormer --> Unique_Positional_Encoding["Unique Positional Enco
 !["Figure 2"](Fig2.png)
 <br>
 - Accurate Predictions: MassFormer can predict realistic mass spectra for held out compounds. The high cosine similarity values (around 0.6) indicate a close match between the predicted and actual spectra.
-- Outperforms Existing Models: When compared to other deep learning models (CFM, FP, WLN) on a larger dataset, MassFormer consistently performs better. MassFormer shows the highest average cosine similarity across different data splits.
+- Outperforms Existing Models: When compared to other deep learning models (CFM, FP, WLN) on a larger dataset, MassFormer consistently performs better. It shows the highest average cosine similarity across different data splits.
 
 !["Figure 3"](Fig3.png)
 <br>
@@ -159,4 +159,4 @@ The code used in this study is open-source (BSD-2-Clause license) and can be fou
 
 ## References
 
-## Challenges in Mass Spectrometry
+[references_MassFormer.bib](references_MassFormer.bib)
