@@ -139,6 +139,13 @@ Advantages_of_MassFormer --> Global_Interactions
 Advantages_of_MassFormer --> Efficiency
 Advantages_of_MassFormer --> Real_World_Applications
 ```
+!["Figure 1"](Fig1.png)
+
+!["Figure 2"](Fig2.png)
+
+!["Figure 3"](Fig3.png)
+
+!["Figure 4"](Fig4.png)
 
 ### Summary:
 
