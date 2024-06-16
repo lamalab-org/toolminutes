@@ -109,6 +109,105 @@ Development_of_MassFormer --> Advantages_of_MassFormer
 Advantages_of_MassFormer --> Conclusion
 ```
 
+```mermaid
+%%{init: {"flowchart": {"htmlLabels": true}} }%%
+flowchart LR;
+
+Mass_Spectrometry_MS["<b>Mass Spectrometry (MS)</b>"]
+Mass_Spectrometry_MS --> Identifies_quantifies_chemicals["Identifies and quantifies chemicals in a mixture"]
+Mass_Spectrometry_MS --> Ionized_detected_mass_analyzer["Molecules are ionized and detected by mass analyzer"]
+Mass_Spectrometry_MS --> Records_mass_charge_ratio["Records mass-to-charge ratio (m/z)"]
+
+Tandem_MS_MS["<b>Tandem Mass Spectrometry (MS/MS)</b>"]
+Tandem_MS_MS --> Includes_fragmentation_step["Includes fragmentation step"]
+Tandem_MS_MS --> Breaks_down_molecules["Breaks down molecules into smaller fragments"]
+Tandem_MS_MS --> Infers_molecular_structure["Infers molecular structure of original molecule"]
+
+LC_MS_MS["<b>LC-MS/MS</b>"]
+LC_MS_MS --> Combines_liquid_chromatography["Combines liquid chromatography for separation"]
+LC_MS_MS --> Used_in_various_fields["Used in proteomics, metabolomics, forensics, environmental chemistry"]
+
+Mass_Spectrometry_MS --> Tandem_MS_MS
+Mass_Spectrometry_MS --> LC_MS_MS
+```
+
+```mermaid
+%%{init: {"flowchart": {"htmlLabels": true}} }%%
+flowchart LR;
+
+Challenges_in_MS["<b>Challenges in MS</b>"]
+Challenges_in_MS --> Accurate_simulation_difficult["Accurate simulation of fragmentation is difficult"]
+Challenges_in_MS --> Simulations_slow_approximate["First principles simulations are slow and approximate"]
+Challenges_in_MS --> Incomplete_spectral_databases["Incomplete spectral databases hinder compound identification"]
+```
+
+```mermaid
+%%{init: {"flowchart": {"htmlLabels": true}} }%%
+flowchart LR;
+
+Existing_Solutions_Limitations["<b>Existing Solutions and Limitations</b>"]
+
+Database_Searches["Database Searches"]
+Database_Searches --> Rely_large_libraries["Rely on large reference libraries and spectrum similarity functions"]
+Database_Searches --> Poor_coverage["Databases have poor coverage"]
+
+In_Silico_Spectra["In Silico Spectra"]
+In_Silico_Spectra --> Augments_libraries["Augments spectral libraries with simulated spectra"]
+In_Silico_Spectra --> Improves_coverage_match["Improves coverage and match finding"]
+
+Competitive_Fragmentation_Modelling["Competitive Fragmentation Modelling (CFM)"]
+CFM --> Combinatorial_fragmentation["Combines combinatorial fragmentation and probabilistic modeling"]
+CFM --> Slow_struggles_larger_compounds["Slow and struggles with larger compounds"]
+
+Deep_Learning_Approaches["Deep Learning Approaches"]
+Deep_Learning_Approaches --> Fully_connected_networks["Use fully connected neural networks or graph neural networks"]
+Deep_Learning_Approaches --> Focus_local_structures["Focus on local structures"]
+Deep_Learning_Approaches --> Struggle_global_interactions["Struggle with modeling global interactions"]
+
+Existing_Solutions_Limitations --> Database_Searches
+Existing_Solutions_Limitations --> In_Silico_Spectra
+Existing_Solutions_Limitations --> Competitive_Fragmentation_Modelling
+Existing_Solutions_Limitations --> Deep_Learning_Approaches
+```
+
+```mermaid
+%%{init: {"flowchart": {"htmlLabels": true}} }%%
+flowchart LR;
+
+Development_of_MassFormer["<b>Development of MassFormer</b>"]
+Development_of_MassFormer --> Adapts_graph_transformer["Adapts graph transformer architecture for MS/MS spectrum prediction"]
+Development_of_MassFormer --> Graph_transformers_model["Graph Transformers model pairwise interactions between all nodes"]
+Development_of_MassFormer --> Captures_local_global["Captures both local and global structural information"]
+Development_of_MassFormer --> Unique_Positional_Encoding["Unique Positional Encoding uses degree and shortest path information"]
+```
+
+```mermaid
+%%{init: {"flowchart": {"htmlLabels": true}} }%%
+flowchart LR;
+
+Advantages_of_MassFormer["<b>Advantages of MassFormer</b>"]
+
+Accurate_Predictions["Accurate Predictions"]
+Accurate_Predictions --> State_of_the_art["State-of-the-art performance in spectrum prediction"]
+Accurate_Predictions --> Outperforms_existing_methods["Outperforms existing baseline methods"]
+
+Global_Interactions["Global Interactions"]
+Global_Interactions --> Models_global_interactions["Models global interactions between distant atoms"]
+Global_Interactions --> Improves_understanding["Improves understanding of fragmentation events"]
+
+Efficiency["Efficiency"]
+Efficiency --> Leverages_pretrained_models["Leverages pretrained graph transformer models"]
+Efficiency --> Accurate_predictions["Provides accurate predictions without excessive computational costs"]
+
+Real_World_Applications["Real-World Applications"]
+Real_World_Applications --> Validated_spectrum_identification["Validated for spectrum identification problems"]
+Real_World_Applications --> Handles_collision_energy["Handles effects of collision energy on spectra"]
+
+Advantages_of_MassFormer --> Accurate_Predictions
+Advantages_of_MassFormer --> Global_Interactions
+Advantages_of_MassFormer --> Efficiency
+Advantages_of_MassFormer --> Real_World_Applications
+```
 
 ### Summary:
 
