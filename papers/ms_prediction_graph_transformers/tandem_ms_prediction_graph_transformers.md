@@ -12,10 +12,11 @@ bibliography: references_MassFormer.bib
 
 **Published:** April 2024
 
-**Journal:** Nature Machine Intelligence
+**Journal:** [Nature Machine Intelligence](https://www.nature.com/natmachintell/)
 
 ## Why discuss this paper?
 - The article is one of the first applications of transformers in this field, and the results show promise for improved MS-based compound identification.
+
 ## Context
 
 ### Overview of Mass Spectrometry
@@ -41,7 +42,7 @@ LC_MS_MS --> Used_in_various_fields["Used in proteomics, metabolomics, forensics
 Mass_Spectrometry_MS --> Tandem_MS_MS
 Mass_Spectrometry_MS --> LC_MS_MS
 ```
-## Challenges in Mass Spectrometry
+### Challenges in Mass Spectrometry
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true}} }%%
 flowchart LR;
@@ -51,7 +52,7 @@ Challenges_in_MS --> Accurate_simulation_difficult["Accurate simulation of fragm
 Challenges_in_MS --> Simulations_slow_approximate["First principles simulations are slow and approximate"]
 Challenges_in_MS --> Incomplete_spectral_databases["Incomplete spectral databases hinder compound identification"]
 ```
-## Overview of Existing Solutions and Limitations
+### Overview of Existing Solutions and Limitations
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true}} }%%
 flowchart LR;
@@ -91,7 +92,7 @@ Development_of_MassFormer --> Graph_transformers_model["Graph Transformers model
 Development_of_MassFormer --> Captures_local_global["Captures both local and global structural information"]
 Development_of_MassFormer --> Unique_Positional_Encoding["Unique Positional Encoding uses degree and shortest path information"]
 ```
-### Overview of Steps involved MassFormer
+### Overview of Steps involved in MassFormer
 !["Figure 1"](Fig1.png)
 <br>
 - Unlike traditional methods, MassFormer utilizes a graph-based approach to represent molecules.
@@ -101,15 +102,22 @@ Development_of_MassFormer --> Unique_Positional_Encoding["Unique Positional Enco
 
 !["Figure 2"](Fig2.png)
 <br>
+
+**Predicted vs Real spectra for two held out compound (Azlocillin and Flamprop-isopropyl)**
 - Accurate Predictions: MassFormer can predict realistic mass spectra for held out compounds. The high cosine similarity values (around 0.6) indicate a close match between the predicted and actual spectra.
 - Outperforms Existing Models: When compared to other deep learning models (CFM, FP, WLN) on a larger dataset, MassFormer consistently performs better. It shows the highest average cosine similarity across different data splits.
 
 !["Figure 3"](Fig3.png)
 <br>
-- MassFormer can not only predict mass spectra accurately but also captures the influence of collision energy on the fragmentation patterns observed in the spectra. 
+
+**benzhydrylpiperazine**
+- MassFormer can not only predict mass spectra accurately but also captures the influence of collision energy on the fragmentation patterns observed in the spectra.
+- This ability is important for real-world applications where collision energy is a variable factor during data acquisition. 
 
 !["Figure 4"](Fig4.png)
 <br>
+
+**Mass spectrum of propranolol**
 - Separation of Nitrogen-Containing Peaks:The gradient attribution maps reveal that nitrogen-containing peaks can be linearly separated from those without nitrogen, demonstrating that the model captures meaningful chemical information related to nitrogen content.
 - Improved Classification Accuracy: The linear classification accuracy is significantly higher when using nitrogen labeling compared to random labeling, with nearly half of the peaks being perfectly separable based on their gradient attributions, highlighting the effectiveness of the attributions in distinguishing chemical compositions.
 
