@@ -12,7 +12,7 @@
 - The article is one of the first applications of transformers in this field, and the results show promise for improved MS-based compound identification.
 ## Context
 
-## Overview of Mass Spectrometry
+### Overview of Mass Spectrometry
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true}} }%%
@@ -121,6 +121,9 @@ Advantages_of_MassFormer --> Real_World_Applications
 
 !["Figure 2"](Fig2.png)
 <br>
+1.	Accurate Predictions: MassFormer can predict realistic mass spectra for held out compounds. The high cosine similarity values (around 0.6) indicate a close match between the predicted and actual spectra.
+2.	Outperforms Existing Models: When compared to other deep learning models (CFM, FP, WLN) on a larger dataset, MassFormer consistently performs better. MassFormer shows the highest average cosine similarity across different data splits.
+
 !["Figure 3"](Fig3.png)
 <br>
 !["Figure 4"](Fig4.png)
