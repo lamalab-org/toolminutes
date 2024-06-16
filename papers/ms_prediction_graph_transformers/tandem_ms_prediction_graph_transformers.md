@@ -139,9 +139,11 @@ Advantages_of_MassFormer --> Real_World_Applications
 5. The study underscores the significance of top-k accuracy and top-k% accuracy in evaluating the frequency and quality of correct candidate ranking in spectrum identification tasks, with MassFormer demonstrating strong performance in these metrics.
 
 ### Data availability
+
 All public data from the study have been uploaded to Zenodo at https://doi.org/10.5281/zenodo.8399738 (ref. 93). Some data that support the findings of this study are available from the National Institute of Standards and Technology (NIST). However, its access is subject to restrictions, requiring the purchase of an appropriate license or special permission from NIST.
 
 ### Code availability
+
 The code used in this study is open-source (BSD-2-Clause license) and can be found in a GitHub repository (https://github.com/Roestlab/massformer/) with a DOI of https://doi.org/10.5281/zenodo.10558852.
 
 ## Takeaways
