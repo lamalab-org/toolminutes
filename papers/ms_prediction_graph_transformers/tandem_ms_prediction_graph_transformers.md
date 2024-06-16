@@ -6,7 +6,7 @@
 
 **Published:** April 2024
 
-**Journal:** Nat Mach Intell
+**Journal:** Nature Machine Intelligence
 
 ## Why discuss this paper?
 - The article primarily focuses on metabolite analysis and small-molecule structure elucidation using deep learning approaches.
@@ -141,6 +141,7 @@ Advantages_of_MassFormer --> Real_World_Applications
 ```
 !["Figure 1"](Fig1.png)
 <br>
+Fig. 1 provides an overview of the method used in the study. It illustrates the process of extracting node and edge embeddings from the molecular graph, applying a graph transformer, extracting the chemical embedding from the readout node, adding spectral metadata, and predicting the binned spectrum. The input embeddings and graph transformer layers' parameters are initialized from a pretrained model and then fine-tuned on the spectrum prediction task. The figure visually represents the flow of information and processing steps involved in the model's operation.
 !["Figure 2"](Fig2.png)
 <br>
 !["Figure 3"](Fig3.png)
