@@ -174,7 +174,7 @@ The code used in this study is open-source (BSD-2-Clause license) and can be fou
 %%{init: {"flowchart": {"htmlLabels": true}} }%%
 flowchart LR;
 
-Challenges_in_MS["**Challenges in MS**"]::Challenges_in_MS;
+Challenges_in_MS["Challenges in MS"]::Challenges_in_MS;
 Challenges_in_MS --> Accurate_simulation_difficult["Accurate simulation of fragmentation is difficult"]::Accurate_simulation_difficult;
 Challenges_in_MS --> Simulations_slow_approximate["First principles simulations are slow and approximate"]::Simulations_slow_approximate;
 Challenges_in_MS --> Incomplete_spectral_databases["Incomplete spectral databases hinder compound identification"]::Incomplete_spectral_databases;
