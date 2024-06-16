@@ -1,6 +1,6 @@
 # Tandem mass spectrum prediction for small molecules using graph transformers
 
-**Authors:** Young, A., Röst, H.
+**Authors:** Adamo Young, Hannes Röst & Bo Wang 
 
 **DOI:** [doi:10.1038/s42256-024-00816-8](https://doi.org/10.1038/s42256-024-00816-8)
 
