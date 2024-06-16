@@ -33,7 +33,7 @@ Real_World_Application --> Propose_New_Annotations{{"Propose New Annotations"}}
 <br>
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true}} }%%
-flowchart TD;
+flowchart LR;
 
 Mass_Spectrometry_MS["<b>Mass Spectrometry (MS)</b>"]
 Mass_Spectrometry_MS --> Identifies_quantifies_chemicals["Identifies and quantifies chemicals in a mixture"]
