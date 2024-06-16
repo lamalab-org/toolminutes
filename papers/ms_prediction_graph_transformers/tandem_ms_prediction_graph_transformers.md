@@ -161,7 +161,6 @@ All public data from the study have been uploaded to Zenodo at https://doi.org/1
 The code used in this study is open-source (BSD-2-Clause license) and can be found in a GitHub repository (https://github.com/Roestlab/massformer/) with a DOI of https://doi.org/10.5281/zenodo.10558852.
 
 ## Takeaways
-Certainly! Here are the 4 takeaway points in shorter, professional sentences:
 
 - **The current study introduces MassFormer, a novel method utilizing graph transformers for small molecule MS/MS spectra prediction.** 
 - **While demonstrating strong performance, MassFormer's applicability is currently limited by data type compatibility.** (limitations)
