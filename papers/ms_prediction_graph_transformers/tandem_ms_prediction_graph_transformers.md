@@ -9,36 +9,8 @@
 **Journal:** Nature Machine Intelligence
 
 ## Why discuss this paper?
-- The article primarily focuses on metabolite analysis and small-molecule structure elucidation using deep learning approaches.
-### Overview of MIST
-
-```mermaid
-%%{init: {"flowchart": {"htmlLabels": true}} }%%
-flowchart LR;
-
-Introduction_MIST["<b><center>Introduction to MIST</center></b>"] --> Neural_Network_Approach["Neural Network Approach"];
-Introduction_MIST --> Spectrum_Representation["Spectrum Representation"];
-Introduction_MIST --> Inductive_Biases_and_Features["Inductive Biases and Features"];
-Inductive_Biases_and_Features --> Neutral_Loss_Relationships{{"Neutral Loss Relationships"}};
-Inductive_Biases_and_Features --> Simultaneous_Predictions{{"Simultaneous Predictions"}};
-Inductive_Biases_and_Features --> In_Silico_Forward_Augmentation{{"In Silico Forward Augmentation"}};
-Inductive_Biases_and_Features --> Novel_Unfolding_Architecture{{"Novel 'Unfolding' Architecture"}};
-Spectrum_Representation --> Chemical_Formulae_of_Peaks{{"Uses chemical formulae of peaks"}};
-Spectrum_Representation --> Inspired_by_CSI_FingerID{{"Inspired by CSI:FingerID"}};
-
-Introduction_MIST --> Enhancing_Spectra_Annotation["<b><center>Enhancing Spectra Annotation</center></b>"];
-Enhancing_Spectra_Annotation --> Contrastive_Representation_Learning{{"Contrastive Representation Learning"}};
-
-Introduction_MIST --> Model_Evaluation["<b><center>Model Evaluation</center></b>"];
-Model_Evaluation --> Ablation_Studies{{"Ablation Studies"}};
-
-Introduction_MIST --> Real_World_Application["<b><center>Real-World Application</center></b>"];
-Real_World_Application --> Clinical_Sample_Analysis{{"Clinical Sample Analysis"}};
-Real_World_Application --> Propose_New_Annotations{{"Propose New Annotations"}}
-
-```
-
-
+- The article is one of the first applications of transformers in this field, and the results show promise for improved MS-based compound identification.
+### Overview of Mass Spectrometry
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true}} }%%
@@ -61,7 +33,7 @@ LC_MS_MS --> Used_in_various_fields["Used in proteomics, metabolomics, forensics
 Mass_Spectrometry_MS --> Tandem_MS_MS
 Mass_Spectrometry_MS --> LC_MS_MS
 ```
-
+### Challenges in Mass Spectrometry
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true}} }%%
 flowchart LR;
@@ -71,7 +43,7 @@ Challenges_in_MS --> Accurate_simulation_difficult["Accurate simulation of fragm
 Challenges_in_MS --> Simulations_slow_approximate["First principles simulations are slow and approximate"]
 Challenges_in_MS --> Incomplete_spectral_databases["Incomplete spectral databases hinder compound identification"]
 ```
-
+### Overview of Existing Solutions and Limitations
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true}} }%%
 flowchart LR;
@@ -100,7 +72,7 @@ Existing_Solutions_Limitations --> In_Silico_Spectra
 Existing_Solutions_Limitations --> Competitive_Fragmentation_Modelling
 Existing_Solutions_Limitations --> Deep_Learning_Approaches
 ```
-
+### Overview of MassFormer
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true}} }%%
 flowchart LR;
@@ -111,7 +83,7 @@ Development_of_MassFormer --> Graph_transformers_model["Graph Transformers model
 Development_of_MassFormer --> Captures_local_global["Captures both local and global structural information"]
 Development_of_MassFormer --> Unique_Positional_Encoding["Unique Positional Encoding uses degree and shortest path information"]
 ```
-
+### Advantages of MassFormer
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true}} }%%
 flowchart LR;
