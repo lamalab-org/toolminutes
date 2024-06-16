@@ -163,7 +163,7 @@ The code used in this study is open-source (BSD-2-Clause license) and can be fou
 ## Takeaways
 Certainly! Here are the 4 takeaway points in shorter, professional sentences:
 
-1. **The current study introduces MassFormer, a novel method utilizing graph transformers for small molecule MS/MS spectra prediction.** 
-2. **While demonstrating strong performance, MassFormer's applicability is currently limited by data type compatibility.** (limitations)
-3. **The model offers explainability for its predictions; however, further development is required for detailed peak annotations.** (Need for improvement)
-4. **MassFormer holds significant promise for MS-based compound identification, potentially enhancing existing tools and even aiding spectrum-to-structure generation.** (Focuses on future potential and broader applications) 
+- **The current study introduces MassFormer, a novel method utilizing graph transformers for small molecule MS/MS spectra prediction.** 
+- **While demonstrating strong performance, MassFormer's applicability is currently limited by data type compatibility.** (limitations)
+- **The model offers explainability for its predictions; however, further development is required for detailed peak annotations.** (Need for improvement)
+- **MassFormer holds significant promise for MS-based compound identification, potentially enhancing existing tools and even aiding spectrum-to-structure generation.** (Focuses on future potential and broader applications) 
