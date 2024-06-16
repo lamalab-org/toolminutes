@@ -1,4 +1,12 @@
-# Annotating metabolite mass spectra with domain-inspired chemical formula transformers
+# Tandem mass spectrum prediction for small molecules using graph transformers
+
+**Authors:** Young, A., Röst, H.
+
+**DOI:** [doi:10.1038/s42256-024-00816-8](https://doi.org/10.1038/s42256-024-00816-8)
+
+**Published:** April 2024
+
+**Journal:** Nat Mach Intell
 
 ## Why discuss this paper?
 - The article primarily focuses on metabolite analysis and small-molecule structure elucidation using deep learning approaches.
