@@ -89,6 +89,21 @@ Development_of_MassFormer --> Unique_Positional_Encoding["Unique Positional Enco
 <br>
 Fig. 1 provides an overview of the method used in the study. It illustrates the process of extracting node and edge embeddings from the molecular graph, applying a graph transformer, extracting the chemical embedding from the readout node, adding spectral metadata, and predicting the binned spectrum. The input embeddings and graph transformer layers' parameters are initialized from a pretrained model and then fine-tuned on the spectrum prediction task. The figure visually represents the flow of information and processing steps involved in the model's operation.
 
+!["Figure 2"](Fig2.png)
+<br>
+1.	Accurate Predictions: MassFormer can predict realistic mass spectra for held out compounds. The high cosine similarity values (around 0.6) indicate a close match between the predicted and actual spectra.
+2.	Outperforms Existing Models: When compared to other deep learning models (CFM, FP, WLN) on a larger dataset, MassFormer consistently performs better. MassFormer shows the highest average cosine similarity across different data splits.
+
+!["Figure 3"](Fig3.png)
+<br>
+MassFormer can not only predict mass spectra accurately but also captures the influence of collision energy on the fragmentation patterns observed in the spectra. 
+!["Figure 4"](Fig4.png)
+<br>
+
+1. **Separation of Nitrogen-Containing Peaks:** The gradient attribution maps reveal that nitrogen-containing peaks can be linearly separated from those without nitrogen, demonstrating that the model captures meaningful chemical information related to nitrogen content.
+
+2. **Improved Classification Accuracy:** The linear classification accuracy is significantly higher when using nitrogen labeling compared to random labeling, with nearly half of the peaks being perfectly separable based on their gradient attributions, highlighting the effectiveness of the attributions in distinguishing chemical compositions.
+
 ## Advantages of MassFormer
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true}} }%%
@@ -118,21 +133,6 @@ Advantages_of_MassFormer --> Efficiency
 Advantages_of_MassFormer --> Real_World_Applications
 ```
 
-
-!["Figure 2"](Fig2.png)
-<br>
-1.	Accurate Predictions: MassFormer can predict realistic mass spectra for held out compounds. The high cosine similarity values (around 0.6) indicate a close match between the predicted and actual spectra.
-2.	Outperforms Existing Models: When compared to other deep learning models (CFM, FP, WLN) on a larger dataset, MassFormer consistently performs better. MassFormer shows the highest average cosine similarity across different data splits.
-
-!["Figure 3"](Fig3.png)
-<br>
-MassFormer can not only predict mass spectra accurately but also captures the influence of collision energy on the fragmentation patterns observed in the spectra. 
-!["Figure 4"](Fig4.png)
-<br>
-
-1. **Separation of Nitrogen-Containing Peaks:** The gradient attribution maps reveal that nitrogen-containing peaks can be linearly separated from those without nitrogen, demonstrating that the model captures meaningful chemical information related to nitrogen content.
-
-2. **Improved Classification Accuracy:** The linear classification accuracy is significantly higher when using nitrogen labeling compared to random labeling, with nearly half of the peaks being perfectly separable based on their gradient attributions, highlighting the effectiveness of the attributions in distinguishing chemical compositions.
 ## Results
 
 1. MassFormer (MF) outperforms other models across various ranking metrics in spectrum identification tasks, except for CASMI 2016 sim set top-1, where it is surpassed by the fingerprint model (FP).
