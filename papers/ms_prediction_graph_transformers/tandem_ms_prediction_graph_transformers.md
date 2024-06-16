@@ -166,3 +166,16 @@ The code used in this study is open-source (BSD-2-Clause license) and can be fou
 - **While demonstrating strong performance, MassFormer's applicability is currently limited by data type compatibility.** (limitations)
 - **The model offers explainability for its predictions; however, further development is required for detailed peak annotations.** (Need for improvement)
 - **MassFormer holds significant promise for MS-based compound identification, potentially enhancing existing tools and even aiding spectrum-to-structure generation.** (Focuses on future potential and broader applications) 
+
+## References
+
+## Challenges in Mass Spectrometry
+```mermaid
+%%{init: {"flowchart": {"htmlLabels": true}} }%%
+flowchart LR;
+
+Challenges_in_MS["<b>Challenges in MS</b>"]
+Challenges_in_MS --> Accurate_simulation_difficult"Accurate simulation of fragmentation is difficult"
+Challenges_in_MS --> Simulations_slow_approximate"First principles simulations are slow and approximate"
+Challenges_in_MS --> Incomplete_spectral_databases"Incomplete spectral databases hinder compound identification"
+```
