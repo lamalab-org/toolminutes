@@ -37,8 +37,8 @@ Real_World_Application --> Clinical_Sample_Analysis{{"Clinical Sample Analysis"}
 Real_World_Application --> Propose_New_Annotations{{"Propose New Annotations"}}
 
 ```
-![Figure 1](./Fig1.png)
-<br>
+
+
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true}} }%%
@@ -140,13 +140,13 @@ Advantages_of_MassFormer --> Efficiency
 Advantages_of_MassFormer --> Real_World_Applications
 ```
 !["Figure 1"](Fig1.png)
-
+<br>
 !["Figure 2"](Fig2.png)
-
+<br>
 !["Figure 3"](Fig3.png)
-
+<br>
 !["Figure 4"](Fig4.png)
-
+<br>
 ### Summary:
 
 - **Metabolite Analysis:**
