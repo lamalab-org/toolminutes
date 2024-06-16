@@ -1,3 +1,9 @@
+---
+Presenter: Vinay Singh
+date: 2024-06-19
+title-block-banner: /cover_MassFormer.png
+bibliography: /references.bib
+---
 # Tandem mass spectrum prediction for small molecules using graph transformers
 
 **Authors:** Adamo Young, Hannes Röst & Bo Wang 
@@ -99,11 +105,10 @@ Development_of_MassFormer --> Unique_Positional_Encoding["Unique Positional Enco
 !["Figure 3"](Fig3.png)
 <br>
 - MassFormer can not only predict mass spectra accurately but also captures the influence of collision energy on the fragmentation patterns observed in the spectra. 
+
 !["Figure 4"](Fig4.png)
 <br>
-
 - Separation of Nitrogen-Containing Peaks:The gradient attribution maps reveal that nitrogen-containing peaks can be linearly separated from those without nitrogen, demonstrating that the model captures meaningful chemical information related to nitrogen content.
-
 - Improved Classification Accuracy: The linear classification accuracy is significantly higher when using nitrogen labeling compared to random labeling, with nearly half of the peaks being perfectly separable based on their gradient attributions, highlighting the effectiveness of the attributions in distinguishing chemical compositions.
 
 ## Advantages of MassFormer
