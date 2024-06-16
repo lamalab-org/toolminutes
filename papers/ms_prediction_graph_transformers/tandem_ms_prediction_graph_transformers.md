@@ -174,14 +174,20 @@ The code used in this study is open-source (BSD-2-Clause license) and can be fou
 %%{init: {"flowchart": {"htmlLabels": true}} }%%
 flowchart LR;
 
-Challenges_in_MS["**Challenges in MS**"];
-Challenges_in_MS --> Accurate_simulation_difficult["Accurate simulation of fragmentation is difficult"];
-Challenges_in_MS --> Simulations_slow_approximate["First principles simulations are slow and approximate"];
-Challenges_in_MS --> Incomplete_spectral_databases["Incomplete spectral databases hinder compound identification"];
+Challenges_in_MS["**Challenges in MS**"]::Challenges_in_MS;
+Challenges_in_MS --> Accurate_simulation_difficult["Accurate simulation of fragmentation is difficult"]::Accurate_simulation_difficult;
+Challenges_in_MS --> Simulations_slow_approximate["First principles simulations are slow and approximate"]::Simulations_slow_approximate;
+Challenges_in_MS --> Incomplete_spectral_databases["Incomplete spectral databases hinder compound identification"]::Incomplete_spectral_databases;
 
 classDef Challenges_in_MS stroke:#000;
 classDef Accurate_simulation_difficult stroke:#f00;
 classDef Simulations_slow_approximate stroke:#0f0;
 classDef Incomplete_spectral_databases stroke:#00f;
+
+class Challenges_in_MS Challenges_in_MS;
+class Accurate_simulation_difficult Accurate_simulation_difficult;
+class Simulations_slow_approximate Simulations_slow_approximate;
+class Incomplete_spectral_databases Incomplete_spectral_databases;
+
 
 ```
