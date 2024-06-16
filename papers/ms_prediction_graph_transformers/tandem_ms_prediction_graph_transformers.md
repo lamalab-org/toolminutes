@@ -95,8 +95,12 @@ Development_of_MassFormer --> Unique_Positional_Encoding["Unique Positional Enco
 ### Overview of Steps involved in MassFormer
 !["Figure 1"](Fig1.png)
 <br>
+
+**Molecule to Spectrum**
 - Unlike traditional methods, MassFormer utilizes a graph-based approach to represent molecules.
 - Incorporating spectral metadata like collision energy used during the measurement. This additional information allows MassFormer to account for factors that might influence the fragmentation patterns observed in the final spectrum prediction.
+Multihead self-attention : MHA - allows an input to attend to relevant parts of itself
+Multilayer perceptrons : MLPs - capture non-linear relationships between the resulting representation and the final output.
 
 ## Results
 
