@@ -126,9 +126,13 @@ Advantages_of_MassFormer --> Real_World_Applications
 
 !["Figure 3"](Fig3.png)
 <br>
+MassFormer can not only predict mass spectra accurately but also captures the influence of collision energy on the fragmentation patterns observed in the spectra. 
 !["Figure 4"](Fig4.png)
 <br>
 
+1. **Separation of Nitrogen-Containing Peaks:** The gradient attribution maps reveal that nitrogen-containing peaks can be linearly separated from those without nitrogen, demonstrating that the model captures meaningful chemical information related to nitrogen content.
+
+2. **Improved Classification Accuracy:** The linear classification accuracy is significantly higher when using nitrogen labeling compared to random labeling, with nearly half of the peaks being perfectly separable based on their gradient attributions, highlighting the effectiveness of the attributions in distinguishing chemical compositions.
 ## Results
 
 1. MassFormer (MF) outperforms other models across various ranking metrics in spectrum identification tasks, except for CASMI 2016 sim set top-1, where it is surpassed by the fingerprint model (FP).
