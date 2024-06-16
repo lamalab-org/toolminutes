@@ -142,6 +142,7 @@ Advantages_of_MassFormer --> Real_World_Applications
 !["Figure 1"](Fig1.png)
 <br>
 Fig. 1 provides an overview of the method used in the study. It illustrates the process of extracting node and edge embeddings from the molecular graph, applying a graph transformer, extracting the chemical embedding from the readout node, adding spectral metadata, and predicting the binned spectrum. The input embeddings and graph transformer layers' parameters are initialized from a pretrained model and then fine-tuned on the spectrum prediction task. The figure visually represents the flow of information and processing steps involved in the model's operation.
+
 !["Figure 2"](Fig2.png)
 <br>
 !["Figure 3"](Fig3.png)
@@ -150,28 +151,13 @@ Fig. 1 provides an overview of the method used in the study. It illustrates the 
 <br>
 ### Summary:
 
-- **Metabolite Analysis:**
-  - Relative abundances of piperidine and pyridine alkaloids in healthy, UC, and CD patient groups are compared.
-  - Total number of metabolites and novel structures identified are discussed.
-  - Abundance fold changes between healthy, UC, and CD cohorts are analyzed.
-  - Annotated molecule structures for select compounds are presented.
-
-- **MIST Model:**
-  - MIST accurately predicts compound fingerprints from mass spectra.
-  - Contrastive fine-tuning improves metabolite retrieval.
-  - The model demonstrates strong accuracy on various metabolite classes.
-
-- **Future Directions:**
-  - Need for standardized benchmarks in mass spectrometry model development.
-  - Exploration of retrieval task complexities and potential biases in predictions.
 ### Code availability
-All code to replicate experiments, train new models and load pretrained models is available at https://github.com/samgoldman97/mist.
+The code used in this study is open-source (BSD-2-Clause license) and can be found in a GitHub repository (https://github.com/Roestlab/massformer/) with a DOI of https://doi.org/10.5281/zenodo.10558852.
 
 ## Takeaways
-- Metabolite analysis compares healthy, UC, and CD patient groups, focusing on piperidine and pyridine alkaloids.
-- The MIST model accurately predicts compound fingerprints from mass spectra with high accuracy.
-- Future directions involve standardizing benchmarks in mass spectrometry model development and exploring retrieval task complexities and biases in predictions.
+Certainly! Here are the 4 takeaway points in shorter, professional sentences:
 
-
-
-[def]: papers/Metabolite_MS_Transformer/Figures/Fig1.png
+1. **The current study introduces MassFormer, a novel method utilizing graph transformers for small molecule MS/MS spectra prediction.** 
+2. **While demonstrating strong performance, MassFormer's applicability is currently limited by data type compatibility.** (limitations)
+3. **The model offers explainability for its predictions; however, further development is required for detailed peak annotations.** (Need for improvement)
+4. **MassFormer holds significant promise for MS-based compound identification, potentially enhancing existing tools and even aiding spectrum-to-structure generation.** (Focuses on future potential and broader applications) 
