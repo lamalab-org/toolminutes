@@ -4,6 +4,7 @@ date: 2024-06-19
 title-block-banner: cover_MassFormer.png
 bibliography: references_MassFormer.bib
 ---
+
 # Tandem mass spectrum prediction for small molecules using graph transformers
 
 **Authors:** [Adamo Young](https://scholar.google.co.uk/citations?hl=en&user=Z6aqZBQAAAAJ&view_op=list_works&sortby=pubdate), [Hannes Röst](https://scholar.google.co.uk/citations?hl=en&user=6OThq9wAAAAJ) & [Bo Wang](https://orcid.org/0000-0002-9620-3413) 
@@ -15,10 +16,10 @@ bibliography: references_MassFormer.bib
 **Journal:** [Nature Machine Intelligence](https://www.nature.com/natmachintell/)
 
 ## Why discuss this paper?
-- The article is one of the first applications of transformers in this field.
+- I chose this article because, even after decades of work in the field, we still lack reference spectra, and the vast majority of small molecules lack experimental reference spectra, making the identification of new compounds a difficult task.
 - It tackles with fundamental challenge in Mass Spectrometry (MS) - accurately simulating the fragmentation process.
 - The results show promise for improved MS-based compound identification.
-- It may be possible to combine MassFormer with SIRIUS (or another existing tool) to improve structure identifications.
+
 
 ## Context
 
