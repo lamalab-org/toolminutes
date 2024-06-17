@@ -47,6 +47,7 @@ Mass_Spectrometry_MS --> Tandem_MS_MS
 Mass_Spectrometry_MS --> LC_MS_MS
 ```
 ### Challenges in Mass Spectrometry
+- Mass spectrometry faces several significant challenges that impact its effectiveness.
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": true}} }%%
 flowchart LR;
@@ -102,7 +103,7 @@ Development_of_MassFormer --> Unique_Positional_Encoding["Unique Positional Enco
 
 **Molecule to Spectrum**
 - Unlike traditional methods, MassFormer utilizes a graph-based approach to represent molecules.
-- Incorporating spectral metadata like collision energy used during the measurement. This additional information allows MassFormer to account for factors that might influence the fragmentation patterns observed in the final spectrum prediction.
+- Incorporating spectral metadata, such as collision energy used during the measurement, allows MassFormer to account for factors that might influence the fragmentation patterns observed in the final spectrum prediction.
 - Multihead self-attention : MHA - allows an input to attend to relevant parts of itself
 - Multilayer perceptrons : MLPs - capture non-linear relationships between the resulting representation and the final output.
 
@@ -111,7 +112,7 @@ Development_of_MassFormer --> Unique_Positional_Encoding["Unique Positional Enco
 !["Figure 2"](Fig2.png)
 <br>
 
-**Spectrum similarity experiments: Predicted vs Real spectra for two held out compound (Azlocillin and Flamprop-isopropyl)**
+**Spectrum similarity experiments: Predicted vs. Real spectra for two held-out compounds (Azlocillin and Flamprop-isopropyl)**
 - Accurate Predictions: MassFormer can predict realistic mass spectra for held out compounds. The high cosine similarity values (around 0.6) indicate a close match between the predicted and actual spectra.
 - Outperforms Existing Models: When compared to other deep learning models (CFM, FP, WLN) on a larger dataset, MassFormer consistently performs better. It shows the highest average cosine similarity across different data splits.
 - NIST: National Institute of Standards and Technology
@@ -122,7 +123,7 @@ Development_of_MassFormer --> Unique_Positional_Encoding["Unique Positional Enco
 !["Figure 3"](Fig3.png)
 <br>
 
-**Collision energy experiments: benzhydrylpiperazine**
+**Collision energy experiments: Benzhydrylpiperazine**
 - MassFormer can not only predict mass spectra accurately but also captures the influence of collision energy on the fragmentation patterns observed in the spectra.
 - This ability is important for real-world applications where collision energy is a variable factor during data acquisition. 
 - NCEs: Normalized collision energies
@@ -131,7 +132,7 @@ Development_of_MassFormer --> Unique_Positional_Encoding["Unique Positional Enco
 <br>
 
 **Explainability using gradient attributions: Mass spectrum of propranolol**
-- Separation of Nitrogen-Containing Peaks:The gradient attribution maps reveal that nitrogen-containing peaks can be linearly separated from those without nitrogen, demonstrating that the model captures meaningful chemical information related to nitrogen content.
+- Separation of Nitrogen-Containing Peaks: The gradient attribution maps reveal that nitrogen-containing peaks can be linearly separated from those without nitrogen, demonstrating that the model captures meaningful chemical information related to nitrogen content.
 - Improved Classification Accuracy: The linear classification accuracy is significantly higher when using nitrogen labeling compared to random labeling, with nearly half of the peaks being perfectly separable based on their gradient attributions, highlighting the effectiveness of the attributions in distinguishing chemical compositions.
 
 ## Advantages of MassFormer
@@ -165,8 +166,8 @@ Advantages_of_MassFormer --> Real_World_Applications
 ## Takeaways
 
 - The current study introduces MassFormer, a novel method utilizing graph transformers for small molecule MS/MS spectra prediction.
-- While demonstrating strong performance, MassFormer's applicability is currently limited by data type compatibility. (limitations)
-- The model offers explainability for its predictions; however, further development is required for detailed peak annotations. (Need for improvement)
+- While demonstrating strong performance, MassFormer’s applicability is currently limited by compatibility with various data types.
+- The model offers explainability for its predictions; however, further development is needed for detailed peak annotations.
 - MassFormer holds significant promise for MS-based compound identification, potentially enhancing existing tools and even aiding spectrum-to-structure generation. (Focuses on future potential and broader applications) 
 
 ## Data availability
