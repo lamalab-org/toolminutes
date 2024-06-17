@@ -121,7 +121,7 @@ Development_of_MassFormer --> Unique_Positional_Encoding["Unique Positional Enco
 !["Figure 3"](Fig3.png)
 <br>
 
-**Collision energy experiments:benzhydrylpiperazine**
+**Collision energy experiments: benzhydrylpiperazine**
 - MassFormer can not only predict mass spectra accurately but also captures the influence of collision energy on the fragmentation patterns observed in the spectra.
 - This ability is important for real-world applications where collision energy is a variable factor during data acquisition. 
 - NCEs: Normalized collision energies
