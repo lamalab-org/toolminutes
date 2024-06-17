@@ -170,7 +170,7 @@ Advantages_of_MassFormer --> Real_World_Applications
 
 ## Data availability
 
-All public data from the study have been uploaded to Zenodo at https://doi.org/10.5281/zenodo.8399738 (ref. 93). Some data that support the findings of this study are available from the National Institute of Standards and Technology (NIST). However, its access is subject to restrictions, requiring the purchase of an appropriate license or special permission from NIST.
+All public data from the study have been uploaded to Zenodo at https://doi.org/10.5281/zenodo.8399738. Some data that support the findings of this study are available from the National Institute of Standards and Technology (NIST). However, its access is subject to restrictions, requiring the purchase of an appropriate license or special permission from NIST.
 
 ## Code availability
 
