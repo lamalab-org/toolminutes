@@ -24,6 +24,7 @@ book:
         - papers/chem_yield_prediction_2024.md
         - papers/dagdelen_data_extraction.md
         - papers/MolCLR_2024.md
+        - papers/PaCh.md
 
 bibliography: references.bib
 # csl: nature.csl
