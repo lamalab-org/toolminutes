@@ -110,7 +110,7 @@ Development_of_MassFormer --> Unique_Positional_Encoding["Unique Positional Enco
 !["Figure 2"](Fig2.png)
 <br>
 
-**Predicted vs Real spectra for two held out compound (Azlocillin and Flamprop-isopropyl)**
+**Spectrum similarity experiments: Predicted vs Real spectra for two held out compound (Azlocillin and Flamprop-isopropyl)**
 - Accurate Predictions: MassFormer can predict realistic mass spectra for held out compounds. The high cosine similarity values (around 0.6) indicate a close match between the predicted and actual spectra.
 - Outperforms Existing Models: When compared to other deep learning models (CFM, FP, WLN) on a larger dataset, MassFormer consistently performs better. It shows the highest average cosine similarity across different data splits.
 - NIST: National Institute of Standards and Technology
@@ -121,7 +121,7 @@ Development_of_MassFormer --> Unique_Positional_Encoding["Unique Positional Enco
 !["Figure 3"](Fig3.png)
 <br>
 
-**benzhydrylpiperazine**
+**Collision energy experiments:benzhydrylpiperazine**
 - MassFormer can not only predict mass spectra accurately but also captures the influence of collision energy on the fragmentation patterns observed in the spectra.
 - This ability is important for real-world applications where collision energy is a variable factor during data acquisition. 
 - NCEs: Normalized collision energies
@@ -129,7 +129,7 @@ Development_of_MassFormer --> Unique_Positional_Encoding["Unique Positional Enco
 !["Figure 4"](Fig4.png)
 <br>
 
-**Mass spectrum of propranolol**
+**Explainability using gradient attributions: Mass spectrum of propranolol**
 - Separation of Nitrogen-Containing Peaks:The gradient attribution maps reveal that nitrogen-containing peaks can be linearly separated from those without nitrogen, demonstrating that the model captures meaningful chemical information related to nitrogen content.
 - Improved Classification Accuracy: The linear classification accuracy is significantly higher when using nitrogen labeling compared to random labeling, with nearly half of the peaks being perfectly separable based on their gradient attributions, highlighting the effectiveness of the attributions in distinguishing chemical compositions.
 
