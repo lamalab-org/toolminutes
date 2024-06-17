@@ -102,8 +102,8 @@ Development_of_MassFormer --> Unique_Positional_Encoding["Unique Positional Enco
 **Molecule to Spectrum**
 - Unlike traditional methods, MassFormer utilizes a graph-based approach to represent molecules.
 - Incorporating spectral metadata like collision energy used during the measurement. This additional information allows MassFormer to account for factors that might influence the fragmentation patterns observed in the final spectrum prediction.
-Multihead self-attention : MHA - allows an input to attend to relevant parts of itself
-Multilayer perceptrons : MLPs - capture non-linear relationships between the resulting representation and the final output.
+- Multihead self-attention : MHA - allows an input to attend to relevant parts of itself
+- Multilayer perceptrons : MLPs - capture non-linear relationships between the resulting representation and the final output.
 
 ## Results
 
@@ -113,10 +113,10 @@ Multilayer perceptrons : MLPs - capture non-linear relationships between the res
 **Predicted vs Real spectra for two held out compound (Azlocillin and Flamprop-isopropyl)**
 - Accurate Predictions: MassFormer can predict realistic mass spectra for held out compounds. The high cosine similarity values (around 0.6) indicate a close match between the predicted and actual spectra.
 - Outperforms Existing Models: When compared to other deep learning models (CFM, FP, WLN) on a larger dataset, MassFormer consistently performs better. It shows the highest average cosine similarity across different data splits.
-NIST: National Institute of Standards and Technology
-MoNA: MassBank of North America
-FP: Fingerprint (FP) neural network model
-WLN: Weisfeiler–Lehman (WLN) graph neural network model
+- NIST: National Institute of Standards and Technology
+- MoNA: MassBank of North America
+- FP: Fingerprint (FP) neural network model
+- WLN: Weisfeiler–Lehman (WLN) graph neural network model
 
 !["Figure 3"](Fig3.png)
 <br>
@@ -124,7 +124,7 @@ WLN: Weisfeiler–Lehman (WLN) graph neural network model
 **benzhydrylpiperazine**
 - MassFormer can not only predict mass spectra accurately but also captures the influence of collision energy on the fragmentation patterns observed in the spectra.
 - This ability is important for real-world applications where collision energy is a variable factor during data acquisition. 
-NCEs: Normalized collision energies
+- NCEs: Normalized collision energies
 
 !["Figure 4"](Fig4.png)
 <br>
