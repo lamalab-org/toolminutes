@@ -17,7 +17,7 @@ bibliography: references_MassFormer.bib
 
 ## Why discuss this paper?
 - I chose this article because, even after decades of work in the field, we still lack reference spectra, and the vast majority of small molecules lack experimental reference spectra, making the identification of new compounds a difficult task.
-- It tackles with fundamental challenge in Mass Spectrometry (MS) - accurately simulating the fragmentation process.
+- It tackles the fundamental challenge in Mass Spectrometry (MS) of accurately simulating the fragmentation process.
 - The results show promise for improved MS-based compound identification.
 
 
