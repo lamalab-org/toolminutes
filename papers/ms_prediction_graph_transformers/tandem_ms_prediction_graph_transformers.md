@@ -1,7 +1,7 @@
 ---
 presenter: Vinay Singh
 date: 2024-06-19
-title-block-banner: [cover_MassFormer](papers/ms_prediction_graph_transformers/cover_MassFormer.png) 
+title-block-banner: ![Cover_Image](cover_MassFormer.png)
 bibliography: references_MassFormer.bib
 ---
 # Tandem mass spectrum prediction for small molecules using graph transformers
