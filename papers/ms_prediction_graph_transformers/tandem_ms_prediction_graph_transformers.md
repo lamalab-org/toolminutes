@@ -6,7 +6,7 @@ bibliography: references_MassFormer.bib
 ---
 # Tandem mass spectrum prediction for small molecules using graph transformers
 
-**Authors:** Adamo Young, Hannes Röst & Bo Wang 
+**Authors:** [Adamo Young](https://scholar.google.co.uk/citations?hl=en&user=Z6aqZBQAAAAJ&view_op=list_works&sortby=pubdate), [Hannes Röst](https://scholar.google.co.uk/citations?hl=en&user=6OThq9wAAAAJ) & [Bo Wang](https://orcid.org/0000-0002-9620-3413) 
 
 **DOI:** [doi:10.1038/s42256-024-00816-8](https://doi.org/10.1038/s42256-024-00816-8)
 
@@ -164,10 +164,10 @@ The code used in this study is open-source (BSD-2-Clause license) and can be fou
 
 ## Takeaways
 
-- **The current study introduces MassFormer, a novel method utilizing graph transformers for small molecule MS/MS spectra prediction.** 
-- **While demonstrating strong performance, MassFormer's applicability is currently limited by data type compatibility.** (limitations)
-- **The model offers explainability for its predictions; however, further development is required for detailed peak annotations.** (Need for improvement)
-- **MassFormer holds significant promise for MS-based compound identification, potentially enhancing existing tools and even aiding spectrum-to-structure generation.** (Focuses on future potential and broader applications) 
+- The current study introduces MassFormer, a novel method utilizing graph transformers for small molecule MS/MS spectra prediction.
+- While demonstrating strong performance, MassFormer's applicability is currently limited by data type compatibility. (limitations)
+- The model offers explainability for its predictions; however, further development is required for detailed peak annotations. (Need for improvement)
+- MassFormer holds significant promise for MS-based compound identification, potentially enhancing existing tools and even aiding spectrum-to-structure generation. (Focuses on future potential and broader applications) 
 
 ## References
 
