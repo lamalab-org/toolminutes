@@ -15,7 +15,10 @@ bibliography: references_MassFormer.bib
 **Journal:** [Nature Machine Intelligence](https://www.nature.com/natmachintell/)
 
 ## Why discuss this paper?
-- The article is one of the first applications of transformers in this field, and the results show promise for improved MS-based compound identification.
+- The article is one of the first applications of transformers in this field.
+- It tackles with fundamental challenge in Mass Spectrometry (MS) - accurately simulating the fragmentation process.
+- The results show promise for improved MS-based compound identification.
+- It may be possible to combine MassFormer with SIRIUS (or another existing tool) to improve structure identifications.
 
 ## Context
 
@@ -110,6 +113,10 @@ Multilayer perceptrons : MLPs - capture non-linear relationships between the res
 **Predicted vs Real spectra for two held out compound (Azlocillin and Flamprop-isopropyl)**
 - Accurate Predictions: MassFormer can predict realistic mass spectra for held out compounds. The high cosine similarity values (around 0.6) indicate a close match between the predicted and actual spectra.
 - Outperforms Existing Models: When compared to other deep learning models (CFM, FP, WLN) on a larger dataset, MassFormer consistently performs better. It shows the highest average cosine similarity across different data splits.
+NIST: National Institute of Standards and Technology
+MoNA: MassBank of North America
+FP: Fingerprint (FP) neural network model
+WLN: Weisfeiler–Lehman (WLN) graph neural network model
 
 !["Figure 3"](Fig3.png)
 <br>
@@ -117,6 +124,7 @@ Multilayer perceptrons : MLPs - capture non-linear relationships between the res
 **benzhydrylpiperazine**
 - MassFormer can not only predict mass spectra accurately but also captures the influence of collision energy on the fragmentation patterns observed in the spectra.
 - This ability is important for real-world applications where collision energy is a variable factor during data acquisition. 
+NCEs: Normalized collision energies
 
 !["Figure 4"](Fig4.png)
 <br>
