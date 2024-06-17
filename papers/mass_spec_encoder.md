@@ -45,7 +45,7 @@ Each mass-spectrum (MS/MS) is represented as a vector in which each bit correspo
 
 ### Model architecture
 
-They leverage the existence of large databases of molecular structures, by pretraining a SMILES autoencoder. The training involves translating a random SMILES into its canonical form.
+They leverage the existence of large databases of molecular structures by pretraining a SMILES autoencoder. The training involves translating a random SMILES into its canonical form.
 
 ![Spec2Mol architecture including a CNN for Mass Spectrum encoder and a GRU for SMILES encoding and decoding](mass_spec_encoder_files/spec2mol_architecture.png)
 
