@@ -19,7 +19,7 @@ I chose to discuss this particular paper because of two fundamental aspects:
 
 ## Context
 
-The identification of the structure of a chemical compound is perceived as one of the most difficult tasks in experimental chemical analysis. Well known techniques for identifying unknown chemical compounds includes mass-spectroscopy (MS), nuclear magentic resonance (NMR), infrared spectroscopy (IR), gas and liquid chromatographies (GC, LC/HPLC) and many others.
+The identification of the structure of a chemical compound is perceived as one of the most difficult tasks in experimental chemical analysis. Well-known techniques for identifying unknown chemical compounds include mass-spectroscopy (MS), nuclear magnetic resonance (NMR), infrared spectroscopy (IR), gas and liquid chromatographies (GC, LC/HPLC), and many others.
 
 ## Prior work on Machine Learning for Mass Spectroscopy
 
