@@ -161,6 +161,12 @@ Advantages_of_MassFormer --> Global_Interactions
 Advantages_of_MassFormer --> Efficiency
 Advantages_of_MassFormer --> Real_World_Applications
 ```
+## Takeaways
+
+- The current study introduces MassFormer, a novel method utilizing graph transformers for small molecule MS/MS spectra prediction.
+- While demonstrating strong performance, MassFormer's applicability is currently limited by data type compatibility. (limitations)
+- The model offers explainability for its predictions; however, further development is required for detailed peak annotations. (Need for improvement)
+- MassFormer holds significant promise for MS-based compound identification, potentially enhancing existing tools and even aiding spectrum-to-structure generation. (Focuses on future potential and broader applications) 
 
 ## Data availability
 
@@ -169,13 +175,6 @@ All public data from the study have been uploaded to Zenodo at https://doi.org/1
 ## Code availability
 
 The code used in this study is open-source (BSD-2-Clause license) and can be found in a GitHub repository (https://github.com/Roestlab/massformer/) with a DOI of https://doi.org/10.5281/zenodo.10558852.
-
-## Takeaways
-
-- The current study introduces MassFormer, a novel method utilizing graph transformers for small molecule MS/MS spectra prediction.
-- While demonstrating strong performance, MassFormer's applicability is currently limited by data type compatibility. (limitations)
-- The model offers explainability for its predictions; however, further development is required for detailed peak annotations. (Need for improvement)
-- MassFormer holds significant promise for MS-based compound identification, potentially enhancing existing tools and even aiding spectrum-to-structure generation. (Focuses on future potential and broader applications) 
 
 ## References
 
