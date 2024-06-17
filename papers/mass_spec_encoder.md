@@ -31,7 +31,7 @@ The authors describe a tool called: competitive fragmentation modeling for elect
 
 ### Tran et al. (2017)
 
-The authors introduced DeepNovo, consisting ofo an end-to-end deep learning architecture for de novo peptide sequencing from mass spectra, which is a direct reconstruction of the peptide sequence from the mass spectra. [@Tran2017]
+The authors introduced DeepNovo, consisting of an end-to-end deep learning architecture for de novo peptide sequencing from mass spectra, which is a direct reconstruction of the peptide sequence from the mass spectra. [@Tran2017]
 
 ## Problem setting
 
