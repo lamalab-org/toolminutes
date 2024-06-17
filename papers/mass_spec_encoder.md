@@ -13,7 +13,7 @@ bibliography: ../references.bib
 
 I chose to discuss this particular paper because of two fundamental aspects:
 
-- Predicting experimental spectra using Machine Learning is historically a difficult and interesting task.
+- Predicting experimental spectra using Machine Learning has historically been a difficult and interesting task.
 - Our groups are interested in this research topic.
 
 
