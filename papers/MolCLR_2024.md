@@ -1,7 +1,7 @@
 ---
 author: Sreekanth Kunchapu
 date: 2024-05-29
-bibliography: ./references_MolCLR.bib
+bibliography: ../references.bib
 ---
 
 # Molecular contrastive learning of representations (MolCLR) via graph neural networks
@@ -65,11 +65,11 @@ The authors tested the performance of MolCLR framework on seven benchmarks for c
 
 The authors claim that on classification tasks with other self-supervised learning or pre-training strategies, their MolCLR framework achieves the best performance on five out of seven benchmarks, with an average improvement of 4.0 percent in (ROC-AUC (%)).
 
-![Table 1 shows the test performance on seven benchmarks on classifiaction task](MolCLR_2024_images/classifion_benchmark.png) 
+![Table 1 shows the test performance on seven benchmarks on classification task](MolCLR_2024_images/classifion_benchmark.png) 
 
 The authors also claim that on regression tasks, MolCLR surpasses other pre-training baselines in five out of six benchmarks and achieves almost the same performance on the remaining ESOL benchmark. For the QM9 dataset, MolCLR does not have comparable performancee with SchNet and MGCN supervised models.
 
-![Table 2 shows the test performance on seven benchmarks on classifiaction task](MolCLR_2024_images/regression_benchmark.png)
+![Table 2 shows the test performance on seven benchmarks on classification task](MolCLR_2024_images/regression_benchmark.png)
 
 ## Analysis of molecule graph augmentations
 The authors employed four augmentation strategies on the classification benchmarks. Out of four augmentations, sub-graph removal with probability 0.25 achieved good (ROC-AUC %) on all of the classification benchmarks except in the BBBP benchmark as shown in the figure 2.
@@ -79,10 +79,10 @@ They also tested GIN supervised models with and without molecular graph augmenta
 
 ![Figure 2 shows the investigation of molecule graph augmentations on classification benchmarks](MolCLR_2024_images/Augmentation_analysis.png)
 
-## Investigation of MOlCLR representation
+## Investigation of MolCLR representation
 The authors examined the representations learned by pretrained MOlCLR using t-SNE embedding. This method groups similar chemicals together in two-dimensional space. In Figure 3, they show a picture of 100,000 molecules from the validation set of PubChem database showing similar/dissimilar molecules learned by MolCLR pretraining. 
 
-![Figure 3 Visualization of molecular representations learned by MolClr via t-sne](MolCLR_2024_images/T-SNE_visualization.png)
+![Figure 3 Visualization of molecular representations learned by MolCLR via t-sne](MolCLR_2024_images/T-SNE_visualization.png)
 
 For instance, the three molecules on the top possess carbonyl groups connected with aryls. The two molecules on the bottom left have similar structures, where a halogen atom (fluorine or chlorine) is connected to benzene.
 
