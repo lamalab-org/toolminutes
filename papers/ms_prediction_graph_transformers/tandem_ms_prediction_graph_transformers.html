@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Adrian Mirza">
+<meta name="dcterms.date" content="2024-06-19">
 
-<title>Lamalab Tool and Paper Notes - IP Rotator</title>
+<title>Lamalab Tool and Paper Notes - Tandem mass spectrum prediction for small molecules using graph transformers</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,61 +21,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../tools/polars.html" rel="next">
-<link href="../tools/hydra.html" rel="prev">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../papers/PaCh.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -103,6 +68,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>
+
+      .quarto-title-block .quarto-title-banner {
+        background-image: url(cover_MassFormer.png);
+background-size: cover;
+      }
+</style>
 
 
 </head>
@@ -110,13 +82,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tools/hydra.html">Tools</a></li><li class="breadcrumb-item"><a href="../tools/ip_rotator.html"><span class="chapter-title">IP Rotator</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../papers/llm4mat.html">Papers</a></li><li class="breadcrumb-item"><a href="../../papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html"><span class="chapter-title">Tandem mass spectrum prediction for small molecules using graph transformers</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -126,12 +98,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../papers/llm4mat.html">Papers</a></li><li class="breadcrumb-item"><a href="../../papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html"><span class="chapter-title">Tandem mass spectrum prediction for small molecules using graph transformers</span></a></li></ol></nav>
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title"><span class="chapter-title">Tandem mass spectrum prediction for small molecules using graph transformers</span></h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">June 19, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Lamalab Tool and Paper Notes</a> 
+      <a href="../../">Lamalab Tool and Paper Notes</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -143,7 +137,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Tool and paper minutes</span></a>
+  <a href="../../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Tool and paper minutes</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -157,47 +151,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tools/hydra.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Hydra</span></a>
+  <a href="../../tools/hydra.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Hydra</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tools/ip_rotator.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">IP Rotator</span></a>
+  <a href="../../tools/ip_rotator.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">IP Rotator</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tools/polars.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Polars</span></a>
+  <a href="../../tools/polars.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Polars</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tools/thunder_client.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Thunder Client</span></a>
+  <a href="../../tools/thunder_client.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Thunder Client</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tools/tmux.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">tmux</span></a>
+  <a href="../../tools/tmux.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">tmux</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tools/trimean.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Robust statistics and Trimean</span></a>
+  <a href="../../tools/trimean.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Robust statistics and Trimean</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tools/pandarallel.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Easy fast <code>.apply</code> for pandas</span></a>
+  <a href="../../tools/pandarallel.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Easy fast <code>.apply</code> for pandas</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tools/bfg.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">BFG Repo-Cleaner</span></a>
+  <a href="../../tools/bfg.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">BFG Repo-Cleaner</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tools/showyourwork.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">showyourwork</span></a>
+  <a href="../../tools/showyourwork.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">showyourwork</span></a>
   </div>
 </li>
       </ul>
@@ -213,32 +207,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/llm4mat.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Leveraging language representation for materials exploration and discovery</span></a>
+  <a href="../../papers/llm4mat.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Leveraging language representation for materials exploration and discovery</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/chem_yield_prediction_2024.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Uncertainty-Aware Yield Prediction with Multimodal Molecular Features</span></a>
+  <a href="../../papers/chem_yield_prediction_2024.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Uncertainty-Aware Yield Prediction with Multimodal Molecular Features</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/dagdelen_data_extraction.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Structured information extraction from scientific text with large language models</span></a>
+  <a href="../../papers/dagdelen_data_extraction.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Structured information extraction from scientific text with large language models</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/MolCLR_2024.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Molecular contrastive learning of representations (MolCLR) via graph neural networks</span></a>
+  <a href="../../papers/MolCLR_2024.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Molecular contrastive learning of representations (MolCLR) via graph neural networks</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/PaCh.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">PaCh (Packed Chemicals): Computationally Effective Binary Format for Chemical Structure Encoding</span></a>
+  <a href="../../papers/PaCh.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">PaCh (Packed Chemicals): Computationally Effective Binary Format for Chemical Structure Encoding</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Tandem mass spectrum prediction for small molecules using graph transformers</span></a>
+  <a href="../../papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Tandem mass spectrum prediction for small molecules using graph transformers</span></a>
   </div>
 </li>
       </ul>
@@ -253,54 +247,187 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#github-repository" id="toc-github-repository" class="nav-link active" data-scroll-target="#github-repository">GitHub repository</a>
+  <li><a href="#why-discuss-this-paper" id="toc-why-discuss-this-paper" class="nav-link active" data-scroll-target="#why-discuss-this-paper">Why discuss this paper?</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a>
   <ul class="collapse">
-  <li><a href="#example-usage" id="toc-example-usage" class="nav-link" data-scroll-target="#example-usage">Example usage:</a></li>
+  <li><a href="#overview-of-mass-spectrometry" id="toc-overview-of-mass-spectrometry" class="nav-link" data-scroll-target="#overview-of-mass-spectrometry">Overview of Mass Spectrometry</a></li>
+  <li><a href="#challenges-in-mass-spectrometry" id="toc-challenges-in-mass-spectrometry" class="nav-link" data-scroll-target="#challenges-in-mass-spectrometry">Challenges in Mass Spectrometry</a></li>
+  <li><a href="#overview-of-existing-solutions-and-limitations" id="toc-overview-of-existing-solutions-and-limitations" class="nav-link" data-scroll-target="#overview-of-existing-solutions-and-limitations">Overview of Existing Solutions and Limitations</a></li>
   </ul></li>
+  <li><a href="#overview-of-massformer" id="toc-overview-of-massformer" class="nav-link" data-scroll-target="#overview-of-massformer">Overview of MassFormer</a>
+  <ul class="collapse">
+  <li><a href="#overview-of-steps-involved-in-massformer" id="toc-overview-of-steps-involved-in-massformer" class="nav-link" data-scroll-target="#overview-of-steps-involved-in-massformer">Overview of Steps involved in MassFormer</a></li>
+  </ul></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
+  <li><a href="#advantages-of-massformer" id="toc-advantages-of-massformer" class="nav-link" data-scroll-target="#advantages-of-massformer">Advantages of MassFormer</a></li>
+  <li><a href="#takeaways" id="toc-takeaways" class="nav-link" data-scroll-target="#takeaways">Takeaways</a></li>
+  <li><a href="#data-availability" id="toc-data-availability" class="nav-link" data-scroll-target="#data-availability">Data availability</a></li>
+  <li><a href="#code-availability" id="toc-code-availability" class="nav-link" data-scroll-target="#code-availability">Code availability</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tools/hydra.html">Tools</a></li><li class="breadcrumb-item"><a href="../tools/ip_rotator.html"><span class="chapter-title">IP Rotator</span></a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title"><span class="chapter-title">IP Rotator</span></h1>
-</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Adrian Mirza </p>
-          </div>
-  </div>
-    
-  
-    
-  </div>
-  
 
 
-</header>
-
-
-<section id="github-repository" class="level2">
-<h2 class="anchored" data-anchor-id="github-repository">GitHub repository</h2>
-<p><a href="https://github.com/Ge0rg3/requests-ip-rotator/blob/e0b493853883fa7fbfdc4b8c1341aeb5760e2a0a/requests_ip_rotator/ip_rotator.py#L31">iq-requests-rotator</a></p>
-<section id="example-usage" class="level3">
-<h3 class="anchored" data-anchor-id="example-usage">Example usage:</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> requests_ip_rotator <span class="im">import</span> ApiGatewaywith ApiGateway(<span class="st">"https://site.com"</span>) <span class="im">as</span> g:</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    session <span class="op">=</span> requests.Session()</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    session.mount(<span class="st">"https://site.com"</span>, g)    response <span class="op">=</span> session.get(<span class="st">"https://site.com/index.php"</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(response.status_code)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-
+<p><strong>Authors:</strong> <a href="https://scholar.google.co.uk/citations?hl=en&amp;user=Z6aqZBQAAAAJ&amp;view_op=list_works&amp;sortby=pubdate">Adamo Young</a>, <a href="https://scholar.google.co.uk/citations?hl=en&amp;user=6OThq9wAAAAJ">Hannes Röst</a> &amp; <a href="https://orcid.org/0000-0002-9620-3413">Bo Wang</a></p>
+<p><strong>DOI:</strong> <a href="https://doi.org/10.1038/s42256-024-00816-8">doi:10.1038/s42256-024-00816-8</a></p>
+<p><strong>Published:</strong> April 2024</p>
+<p><strong>Journal:</strong> <a href="https://www.nature.com/natmachintell/">Nature Machine Intelligence</a></p>
+<section id="why-discuss-this-paper" class="level2">
+<h2 class="anchored" data-anchor-id="why-discuss-this-paper">Why discuss this paper?</h2>
+<ul>
+<li>I chose this article because, even after decades of work in the field, we still lack reference spectra, and the vast majority of small molecules lack experimental reference spectra, making the identification of new compounds a difficult task.</li>
+<li>It tackles the fundamental challenge in Mass Spectrometry (MS) of accurately simulating the fragmentation process.</li>
+<li>The results show promise for improved MS-based compound identification.</li>
+</ul>
 </section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<section id="overview-of-mass-spectrometry" class="level3">
+<h3 class="anchored" data-anchor-id="overview-of-mass-spectrometry">Overview of Mass Spectrometry</h3>
+<pre class="mermaid"><code>%%{init: {"flowchart": {"htmlLabels": true}} }%%
+flowchart LR;
+
+Mass_Spectrometry_MS["&lt;b&gt;Mass Spectrometry (MS)&lt;/b&gt;"]
+Mass_Spectrometry_MS --&gt; Identifies_quantifies_chemicals["Identifies and quantifies chemicals in a mixture"]
+Mass_Spectrometry_MS --&gt; Ionized_detected_mass_analyzer["Molecules are ionized and detected by mass analyzer"]
+Mass_Spectrometry_MS --&gt; Records_mass_charge_ratio["Records mass-to-charge ratio (m/z)"]
+
+Tandem_MS_MS["&lt;b&gt;Tandem Mass Spectrometry (MS/MS)&lt;/b&gt;"]
+Tandem_MS_MS --&gt; Includes_fragmentation_step["Includes fragmentation step"]
+Tandem_MS_MS --&gt; Breaks_down_molecules["Breaks down molecules into smaller fragments"]
+Tandem_MS_MS --&gt; Infers_molecular_structure["Infers molecular structure of original molecule"]
+
+LC_MS_MS["&lt;b&gt;LC-MS/MS&lt;/b&gt;"]
+LC_MS_MS --&gt; Combines_liquid_chromatography["Combines liquid chromatography for separation"]
+LC_MS_MS --&gt; Used_in_various_fields["Used in proteomics, metabolomics, forensics, environmental chemistry"]
+
+Mass_Spectrometry_MS --&gt; Tandem_MS_MS
+Mass_Spectrometry_MS --&gt; LC_MS_MS</code></pre>
+</section>
+<section id="challenges-in-mass-spectrometry" class="level3">
+<h3 class="anchored" data-anchor-id="challenges-in-mass-spectrometry">Challenges in Mass Spectrometry</h3>
+<ul>
+<li>Mass spectrometry faces several significant challenges that impact its effectiveness.</li>
+</ul>
+<pre class="mermaid"><code>%%{init: {"flowchart": {"htmlLabels": true}} }%%
+flowchart LR;
+
+Challenges_in_MS["&lt;b&gt;Challenges in MS&lt;/b&gt;"]
+Challenges_in_MS --&gt; Accurate_simulation_difficult["Accurate simulation of fragmentation is difficult"]
+Challenges_in_MS --&gt; Simulations_slow_approximate["First principles simulations are slow and approximate"]
+Challenges_in_MS --&gt; Incomplete_spectral_databases["Incomplete spectral databases hinder compound identification"]</code></pre>
+</section>
+<section id="overview-of-existing-solutions-and-limitations" class="level3">
+<h3 class="anchored" data-anchor-id="overview-of-existing-solutions-and-limitations">Overview of Existing Solutions and Limitations</h3>
+<pre class="mermaid"><code>%%{init: {"flowchart": {"htmlLabels": true}} }%%
+flowchart LR;
+
+Existing_Solutions_Limitations["&lt;b&gt;Existing Solutions and Limitations&lt;/b&gt;"]
+
+Database_Searches["Database Searches"]
+Database_Searches --&gt; Rely_large_libraries["Rely on large reference libraries and spectrum similarity functions"]
+Database_Searches --&gt; Poor_coverage["Databases have poor coverage"]
+
+In_Silico_Spectra["In Silico Spectra"]
+In_Silico_Spectra --&gt; Augments_libraries["Augments spectral libraries with simulated spectra"]
+In_Silico_Spectra --&gt; Improves_coverage_match["Improves coverage and match finding"]
+
+Competitive_Fragmentation_Modelling["Competitive Fragmentation Modelling (CFM)"]
+Competitive_Fragmentation_Modelling["Competitive Fragmentation Modelling (CFM)"] --&gt; Combinatorial_fragmentation["Combines combinatorial fragmentation and probabilistic modeling"]
+Competitive_Fragmentation_Modelling["Competitive Fragmentation Modelling (CFM)"] --&gt; Slow_struggles_larger_compounds["Slow and struggles with larger compounds"]
+
+Deep_Learning_Approaches["Deep Learning Approaches"]
+Deep_Learning_Approaches --&gt; Fully_connected_networks["Use fully connected neural networks or graph neural networks"]
+Deep_Learning_Approaches --&gt; Focus_local_structures["Focus on local structures"]
+Deep_Learning_Approaches --&gt; Struggle_global_interactions["Struggle with modeling global interactions"]
+
+Existing_Solutions_Limitations --&gt; Database_Searches
+Existing_Solutions_Limitations --&gt; In_Silico_Spectra
+Existing_Solutions_Limitations --&gt; Competitive_Fragmentation_Modelling
+Existing_Solutions_Limitations --&gt; Deep_Learning_Approaches</code></pre>
+</section>
+</section>
+<section id="overview-of-massformer" class="level2">
+<h2 class="anchored" data-anchor-id="overview-of-massformer">Overview of MassFormer</h2>
+<pre class="mermaid"><code>%%{init: {"flowchart": {"htmlLabels": true}} }%%
+flowchart LR;
+
+Development_of_MassFormer["&lt;b&gt;Development of MassFormer&lt;/b&gt;"]
+Development_of_MassFormer --&gt; Adapts_graph_transformer["Adapts graph transformer architecture for MS/MS spectrum prediction"]
+Development_of_MassFormer --&gt; Graph_transformers_model["Graph Transformers model pairwise interactions between all nodes"]
+Development_of_MassFormer --&gt; Captures_local_global["Captures both local and global structural information"]
+Development_of_MassFormer --&gt; Unique_Positional_Encoding["Unique Positional Encoding uses degree and shortest path information"]</code></pre>
+<section id="overview-of-steps-involved-in-massformer" class="level3">
+<h3 class="anchored" data-anchor-id="overview-of-steps-involved-in-massformer">Overview of Steps involved in MassFormer</h3>
+<p><img src="Fig1.png" class="img-fluid" alt="“Figure 1”"> <br></p>
+<p><strong>Molecule to Spectrum</strong> - Unlike traditional methods, MassFormer utilizes a graph-based approach to represent molecules. - Incorporating spectral metadata, such as collision energy used during the measurement, allows MassFormer to account for factors that might influence the fragmentation patterns observed in the final spectrum prediction. - Multihead self-attention : MHA - allows an input to attend to relevant parts of itself - Multilayer perceptrons : MLPs - capture non-linear relationships between the resulting representation and the final output.</p>
+</section>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<p><img src="Fig2.png" class="img-fluid" alt="“Figure 2”"> <br></p>
+<p><strong>Spectrum similarity experiments: Predicted vs.&nbsp;Real spectra for two held-out compounds (Azlocillin and Flamprop-isopropyl)</strong> - Accurate Predictions: MassFormer can predict realistic mass spectra for held out compounds. The high cosine similarity values (around 0.6) indicate a close match between the predicted and actual spectra. - Outperforms Existing Models: When compared to other deep learning models (CFM, FP, WLN) on a larger dataset, MassFormer consistently performs better. It shows the highest average cosine similarity across different data splits. - NIST: National Institute of Standards and Technology - MoNA: MassBank of North America - FP: Fingerprint (FP) neural network model - WLN: Weisfeiler–Lehman (WLN) graph neural network model</p>
+<p><img src="Fig3.png" class="img-fluid" alt="“Figure 3”"> <br></p>
+<p><strong>Collision energy experiments: Benzhydrylpiperazine</strong> - MassFormer can not only predict mass spectra accurately but also captures the influence of collision energy on the fragmentation patterns observed in the spectra. - This ability is important for real-world applications where collision energy is a variable factor during data acquisition. - NCEs: Normalized collision energies</p>
+<p><img src="Fig4.png" class="img-fluid" alt="“Figure 4”"> <br></p>
+<p><strong>Explainability using gradient attributions: Mass spectrum of propranolol</strong> - Separation of Nitrogen-Containing Peaks: The gradient attribution maps reveal that nitrogen-containing peaks can be linearly separated from those without nitrogen, demonstrating that the model captures meaningful chemical information related to nitrogen content. - Improved Classification Accuracy: The linear classification accuracy is significantly higher when using nitrogen labeling compared to random labeling, with nearly half of the peaks being perfectly separable based on their gradient attributions, highlighting the effectiveness of the attributions in distinguishing chemical compositions.</p>
+</section>
+<section id="advantages-of-massformer" class="level2">
+<h2 class="anchored" data-anchor-id="advantages-of-massformer">Advantages of MassFormer</h2>
+<pre class="mermaid"><code>%%{init: {"flowchart": {"htmlLabels": true}} }%%
+flowchart LR;
+
+Advantages_of_MassFormer["&lt;b&gt;Advantages of MassFormer&lt;/b&gt;"]
+
+Accurate_Predictions["Accurate Predictions"]
+Accurate_Predictions --&gt; State_of_the_art["State-of-the-art performance in spectrum prediction"]
+Accurate_Predictions --&gt; Outperforms_existing_methods["Outperforms existing baseline methods"]
+
+Global_Interactions["Global Interactions"]
+Global_Interactions --&gt; Models_global_interactions["Models global interactions between distant atoms"]
+Global_Interactions --&gt; Improves_understanding["Improves understanding of fragmentation events"]
+
+Efficiency["Efficiency"]
+Efficiency --&gt; Leverages_pretrained_models["Leverages pretrained graph transformer models"]
+Efficiency --&gt; Accurate_predictions["Provides accurate predictions without excessive computational costs"]
+
+Real_World_Applications["Real-World Applications"]
+Real_World_Applications --&gt; Validated_spectrum_identification["Validated for spectrum identification problems"]
+Real_World_Applications --&gt; Handles_collision_energy["Handles effects of collision energy on spectra"]
+
+Advantages_of_MassFormer --&gt; Accurate_Predictions
+Advantages_of_MassFormer --&gt; Global_Interactions
+Advantages_of_MassFormer --&gt; Efficiency
+Advantages_of_MassFormer --&gt; Real_World_Applications</code></pre>
+</section>
+<section id="takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="takeaways">Takeaways</h2>
+<ul>
+<li>The current study introduces MassFormer, a novel method utilizing graph transformers for small molecule MS/MS spectra prediction.</li>
+<li>While demonstrating strong performance, MassFormer’s applicability is currently limited by compatibility with various data types.</li>
+<li>The model offers explainability for its predictions; however, further development is needed for detailed peak annotations.</li>
+<li>MassFormer holds significant promise for MS-based compound identification, potentially enhancing existing tools and even aiding spectrum-to-structure generation. (Focuses on future potential and broader applications)</li>
+</ul>
+</section>
+<section id="data-availability" class="level2">
+<h2 class="anchored" data-anchor-id="data-availability">Data availability</h2>
+<p>All public data from the study have been uploaded to Zenodo at https://doi.org/10.5281/zenodo.8399738. Some data that support the findings of this study are available from the National Institute of Standards and Technology (NIST). However, its access is subject to restrictions, requiring the purchase of an appropriate license or special permission from NIST.</p>
+</section>
+<section id="code-availability" class="level2">
+<h2 class="anchored" data-anchor-id="code-availability">Code availability</h2>
+<p>The code used in this study is open-source (BSD-2-Clause license) and can be found in a GitHub repository (https://github.com/Roestlab/massformer/) with a DOI of https://doi.org/10.5281/zenodo.10558852.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p><a href="references_MassFormer.bib">references_MassFormer.bib</a></p>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -715,14 +842,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../tools/hydra.html" class="pagination-link" aria-label="Hydra">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Hydra</span></span>
+      <a href="../../papers/PaCh.html" class="pagination-link" aria-label="PaCh (Packed Chemicals): Computationally Effective Binary Format for Chemical Structure Encoding">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">PaCh (Packed Chemicals): Computationally Effective Binary Format for Chemical Structure Encoding</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../tools/polars.html" class="pagination-link" aria-label="Polars">
-        <span class="nav-page-text"><span class="chapter-title">Polars</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
