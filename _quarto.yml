@@ -25,7 +25,7 @@ book:
         - papers/dagdelen_data_extraction.md
         - papers/MolCLR_2024.md
         - papers/PaCh.md
-        - papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.md
+        - papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.qmd
 
 bibliography: references.bib
 # csl: nature.csl

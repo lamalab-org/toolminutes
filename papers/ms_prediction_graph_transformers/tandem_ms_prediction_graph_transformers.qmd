@@ -1,8 +1,7 @@
 ---
-presenter: Vinay Singh
+author: Vinay Singh
 date: 2024-06-19
 title-block-banner: cover_MassFormer.png
-bibliography: references_MassFormer.bib
 ---
 
 # Tandem mass spectrum prediction for small molecules using graph transformers
@@ -25,7 +24,8 @@ bibliography: references_MassFormer.bib
 
 ### Overview of Mass Spectrometry
 
-```mermaid
+```{mermaid}
+
 %%{init: {"flowchart": {"htmlLabels": true}} }%%
 flowchart LR;
 
@@ -46,9 +46,12 @@ LC_MS_MS --> Used_in_various_fields["Used in proteomics, metabolomics, forensics
 Mass_Spectrometry_MS --> Tandem_MS_MS
 Mass_Spectrometry_MS --> LC_MS_MS
 ```
+
 ### Challenges in Mass Spectrometry
 - Mass spectrometry faces several significant challenges that impact its effectiveness.
-```mermaid
+  
+```{mermaid}
+
 %%{init: {"flowchart": {"htmlLabels": true}} }%%
 flowchart LR;
 
@@ -57,8 +60,10 @@ Challenges_in_MS --> Accurate_simulation_difficult["Accurate simulation of fragm
 Challenges_in_MS --> Simulations_slow_approximate["First principles simulations are slow and approximate"]
 Challenges_in_MS --> Incomplete_spectral_databases["Incomplete spectral databases hinder compound identification"]
 ```
+
 ### Overview of Existing Solutions and Limitations
-```mermaid
+```{mermaid}
+
 %%{init: {"flowchart": {"htmlLabels": true}} }%%
 flowchart LR;
 
@@ -86,8 +91,11 @@ Existing_Solutions_Limitations --> In_Silico_Spectra
 Existing_Solutions_Limitations --> Competitive_Fragmentation_Modelling
 Existing_Solutions_Limitations --> Deep_Learning_Approaches
 ```
+
 ## Overview of MassFormer
-```mermaid
+
+```{mermaid}
+
 %%{init: {"flowchart": {"htmlLabels": true}} }%%
 flowchart LR;
 
@@ -97,6 +105,7 @@ Development_of_MassFormer --> Graph_transformers_model["Graph Transformers model
 Development_of_MassFormer --> Captures_local_global["Captures both local and global structural information"]
 Development_of_MassFormer --> Unique_Positional_Encoding["Unique Positional Encoding uses degree and shortest path information"]
 ```
+
 ### Overview of Steps involved in MassFormer
 !["Figure 1"](Fig1.png)
 <br>
@@ -136,7 +145,8 @@ Development_of_MassFormer --> Unique_Positional_Encoding["Unique Positional Enco
 - Improved Classification Accuracy: The linear classification accuracy is significantly higher when using nitrogen labeling compared to random labeling, with nearly half of the peaks being perfectly separable based on their gradient attributions, highlighting the effectiveness of the attributions in distinguishing chemical compositions.
 
 ## Advantages of MassFormer
-```mermaid
+```{mermaid}
+
 %%{init: {"flowchart": {"htmlLabels": true}} }%%
 flowchart LR;
 
@@ -163,6 +173,7 @@ Advantages_of_MassFormer --> Global_Interactions
 Advantages_of_MassFormer --> Efficiency
 Advantages_of_MassFormer --> Real_World_Applications
 ```
+
 ## Takeaways
 
 - The current study introduces MassFormer, a novel method utilizing graph transformers for small molecule MS/MS spectra prediction.
@@ -178,6 +189,3 @@ All public data from the study have been uploaded to Zenodo at https://doi.org/1
 
 The code used in this study is open-source (BSD-2-Clause license) and can be found in a GitHub repository (https://github.com/Roestlab/massformer/) with a DOI of https://doi.org/10.5281/zenodo.10558852.
 
-## References
-
-[references_MassFormer.bib](references_MassFormer.bib)
