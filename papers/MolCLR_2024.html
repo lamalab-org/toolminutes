@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -271,7 +271,7 @@ window.Quarto = {
   <li><a href="#overview-of-molclr-framework" id="toc-overview-of-molclr-framework" class="nav-link" data-scroll-target="#overview-of-molclr-framework">Overview of MolCLR framework</a></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
   <li><a href="#analysis-of-molecule-graph-augmentations" id="toc-analysis-of-molecule-graph-augmentations" class="nav-link" data-scroll-target="#analysis-of-molecule-graph-augmentations">Analysis of molecule graph augmentations</a></li>
-  <li><a href="#investigation-of-molclr-representation" id="toc-investigation-of-molclr-representation" class="nav-link" data-scroll-target="#investigation-of-molclr-representation">Investigation of MOlCLR representation</a></li>
+  <li><a href="#investigation-of-molclr-representation" id="toc-investigation-of-molclr-representation" class="nav-link" data-scroll-target="#investigation-of-molclr-representation">Investigation of MolCLR representation</a></li>
   <li><a href="#take-aways" id="toc-take-aways" class="nav-link" data-scroll-target="#take-aways">Take aways</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
@@ -376,14 +376,14 @@ L_{ij} = -\log \left( \frac{\exp(\text{sim}(z_i, z_j)/\tau)}{\sum_{k=1}^{2N} \ma
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="MolCLR_2024_images/classifion_benchmark.png" class="img-fluid figure-img"></p>
-<figcaption>Table 1 shows the test performance on seven benchmarks on classifiaction task</figcaption>
+<figcaption>Table 1 shows the test performance on seven benchmarks on classification task</figcaption>
 </figure>
 </div>
 <p>The authors also claim that on regression tasks, MolCLR surpasses other pre-training baselines in five out of six benchmarks and achieves almost the same performance on the remaining ESOL benchmark. For the QM9 dataset, MolCLR does not have comparable performancee with SchNet and MGCN supervised models.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="MolCLR_2024_images/regression_benchmark.png" class="img-fluid figure-img"></p>
-<figcaption>Table 2 shows the test performance on seven benchmarks on classifiaction task</figcaption>
+<figcaption>Table 2 shows the test performance on seven benchmarks on classification task</figcaption>
 </figure>
 </div>
 </section>
@@ -399,12 +399,12 @@ L_{ij} = -\log \left( \frac{\exp(\text{sim}(z_i, z_j)/\tau)}{\sum_{k=1}^{2N} \ma
 </div>
 </section>
 <section id="investigation-of-molclr-representation" class="level2">
-<h2 class="anchored" data-anchor-id="investigation-of-molclr-representation">Investigation of MOlCLR representation</h2>
+<h2 class="anchored" data-anchor-id="investigation-of-molclr-representation">Investigation of MolCLR representation</h2>
 <p>The authors examined the representations learned by pretrained MOlCLR using t-SNE embedding. This method groups similar chemicals together in two-dimensional space. In Figure 3, they show a picture of 100,000 molecules from the validation set of PubChem database showing similar/dissimilar molecules learned by MolCLR pretraining.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="MolCLR_2024_images/T-SNE_visualization.png" class="img-fluid figure-img"></p>
-<figcaption>Figure 3 Visualization of molecular representations learned by MolClr via t-sne</figcaption>
+<figcaption>Figure 3 Visualization of molecular representations learned by MolCLR via t-sne</figcaption>
 </figure>
 </div>
 <p>For instance, the three molecules on the top possess carbonyl groups connected with aryls. The two molecules on the bottom left have similar structures, where a halogen atom (fluorine or chlorine) is connected to benzene.</p>
