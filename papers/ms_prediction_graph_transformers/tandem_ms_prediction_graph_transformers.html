@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Vinay Singh">
 <meta name="dcterms.date" content="2024-06-19">
 
 <title>Lamalab Tool and Paper Notes - Tandem mass spectrum prediction for small molecules using graph transformers</title>
@@ -75,6 +76,9 @@ ul.task-list li input[type="checkbox"] {
 background-size: cover;
       }
 </style>
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -108,6 +112,12 @@ background-size: cover;
   
   <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Vinay Singh </p>
+            </div>
+    </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
@@ -263,7 +273,6 @@ background-size: cover;
   <li><a href="#takeaways" id="toc-takeaways" class="nav-link" data-scroll-target="#takeaways">Takeaways</a></li>
   <li><a href="#data-availability" id="toc-data-availability" class="nav-link" data-scroll-target="#data-availability">Data availability</a></li>
   <li><a href="#code-availability" id="toc-code-availability" class="nav-link" data-scroll-target="#code-availability">Code availability</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
@@ -290,7 +299,12 @@ background-size: cover;
 <h2 class="anchored" data-anchor-id="context">Context</h2>
 <section id="overview-of-mass-spectrometry" class="level3">
 <h3 class="anchored" data-anchor-id="overview-of-mass-spectrometry">Overview of Mass Spectrometry</h3>
-<pre class="mermaid"><code>%%{init: {"flowchart": {"htmlLabels": true}} }%%
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {"flowchart": {"htmlLabels": true}} }%%
 flowchart LR;
 
 Mass_Spectrometry_MS["&lt;b&gt;Mass Spectrometry (MS)&lt;/b&gt;"]
@@ -308,24 +322,46 @@ LC_MS_MS --&gt; Combines_liquid_chromatography["Combines liquid chromatography f
 LC_MS_MS --&gt; Used_in_various_fields["Used in proteomics, metabolomics, forensics, environmental chemistry"]
 
 Mass_Spectrometry_MS --&gt; Tandem_MS_MS
-Mass_Spectrometry_MS --&gt; LC_MS_MS</code></pre>
+Mass_Spectrometry_MS --&gt; LC_MS_MS
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 </section>
 <section id="challenges-in-mass-spectrometry" class="level3">
 <h3 class="anchored" data-anchor-id="challenges-in-mass-spectrometry">Challenges in Mass Spectrometry</h3>
 <ul>
 <li>Mass spectrometry faces several significant challenges that impact its effectiveness.</li>
 </ul>
-<pre class="mermaid"><code>%%{init: {"flowchart": {"htmlLabels": true}} }%%
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {"flowchart": {"htmlLabels": true}} }%%
 flowchart LR;
 
 Challenges_in_MS["&lt;b&gt;Challenges in MS&lt;/b&gt;"]
 Challenges_in_MS --&gt; Accurate_simulation_difficult["Accurate simulation of fragmentation is difficult"]
 Challenges_in_MS --&gt; Simulations_slow_approximate["First principles simulations are slow and approximate"]
-Challenges_in_MS --&gt; Incomplete_spectral_databases["Incomplete spectral databases hinder compound identification"]</code></pre>
+Challenges_in_MS --&gt; Incomplete_spectral_databases["Incomplete spectral databases hinder compound identification"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 </section>
 <section id="overview-of-existing-solutions-and-limitations" class="level3">
 <h3 class="anchored" data-anchor-id="overview-of-existing-solutions-and-limitations">Overview of Existing Solutions and Limitations</h3>
-<pre class="mermaid"><code>%%{init: {"flowchart": {"htmlLabels": true}} }%%
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {"flowchart": {"htmlLabels": true}} }%%
 flowchart LR;
 
 Existing_Solutions_Limitations["&lt;b&gt;Existing Solutions and Limitations&lt;/b&gt;"]
@@ -350,19 +386,36 @@ Deep_Learning_Approaches --&gt; Struggle_global_interactions["Struggle with mode
 Existing_Solutions_Limitations --&gt; Database_Searches
 Existing_Solutions_Limitations --&gt; In_Silico_Spectra
 Existing_Solutions_Limitations --&gt; Competitive_Fragmentation_Modelling
-Existing_Solutions_Limitations --&gt; Deep_Learning_Approaches</code></pre>
+Existing_Solutions_Limitations --&gt; Deep_Learning_Approaches
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="overview-of-massformer" class="level2">
 <h2 class="anchored" data-anchor-id="overview-of-massformer">Overview of MassFormer</h2>
-<pre class="mermaid"><code>%%{init: {"flowchart": {"htmlLabels": true}} }%%
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {"flowchart": {"htmlLabels": true}} }%%
 flowchart LR;
 
 Development_of_MassFormer["&lt;b&gt;Development of MassFormer&lt;/b&gt;"]
 Development_of_MassFormer --&gt; Adapts_graph_transformer["Adapts graph transformer architecture for MS/MS spectrum prediction"]
 Development_of_MassFormer --&gt; Graph_transformers_model["Graph Transformers model pairwise interactions between all nodes"]
 Development_of_MassFormer --&gt; Captures_local_global["Captures both local and global structural information"]
-Development_of_MassFormer --&gt; Unique_Positional_Encoding["Unique Positional Encoding uses degree and shortest path information"]</code></pre>
+Development_of_MassFormer --&gt; Unique_Positional_Encoding["Unique Positional Encoding uses degree and shortest path information"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 <section id="overview-of-steps-involved-in-massformer" class="level3">
 <h3 class="anchored" data-anchor-id="overview-of-steps-involved-in-massformer">Overview of Steps involved in MassFormer</h3>
 <p><img src="Fig1.png" class="img-fluid" alt="“Figure 1”"> <br></p>
@@ -380,7 +433,12 @@ Development_of_MassFormer --&gt; Unique_Positional_Encoding["Unique Positional E
 </section>
 <section id="advantages-of-massformer" class="level2">
 <h2 class="anchored" data-anchor-id="advantages-of-massformer">Advantages of MassFormer</h2>
-<pre class="mermaid"><code>%%{init: {"flowchart": {"htmlLabels": true}} }%%
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {"flowchart": {"htmlLabels": true}} }%%
 flowchart LR;
 
 Advantages_of_MassFormer["&lt;b&gt;Advantages of MassFormer&lt;/b&gt;"]
@@ -404,7 +462,13 @@ Real_World_Applications --&gt; Handles_collision_energy["Handles effects of coll
 Advantages_of_MassFormer --&gt; Accurate_Predictions
 Advantages_of_MassFormer --&gt; Global_Interactions
 Advantages_of_MassFormer --&gt; Efficiency
-Advantages_of_MassFormer --&gt; Real_World_Applications</code></pre>
+Advantages_of_MassFormer --&gt; Real_World_Applications
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 </section>
 <section id="takeaways" class="level2">
 <h2 class="anchored" data-anchor-id="takeaways">Takeaways</h2>
@@ -422,10 +486,6 @@ Advantages_of_MassFormer --&gt; Real_World_Applications</code></pre>
 <section id="code-availability" class="level2">
 <h2 class="anchored" data-anchor-id="code-availability">Code availability</h2>
 <p>The code used in this study is open-source (BSD-2-Clause license) and can be found in a GitHub repository (https://github.com/Roestlab/massformer/) with a DOI of https://doi.org/10.5281/zenodo.10558852.</p>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<p><a href="references_MassFormer.bib">references_MassFormer.bib</a></p>
 
 
 </section>
