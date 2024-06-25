@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Sreekanth Kunchapu">
-<meta name="dcterms.date" content="2024-05-29">
+<meta name="author" content="Noura Rayya">
+<meta name="dcterms.date" content="2024-06-26">
 
-<title>Lamalab Tool and Paper Notes - Molecular contrastive learning of representations (MolCLR) via graph neural networks</title>
+<title>Lamalab Tool and Paper Notes - Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -52,8 +52,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../papers/PaCh.html" rel="next">
-<link href="../papers/dagdelen_data_extraction.html" rel="prev">
+<link href="../papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -91,35 +90,6 @@ div.csl-indent {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -132,7 +102,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/llm4mat.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/MolCLR_2024.html"><span class="chapter-title">Molecular contrastive learning of representations (MolCLR) via graph neural networks</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/llm4mat.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/open-source-cheminformatics.html"><span class="chapter-title">Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -244,7 +214,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/MolCLR_2024.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Molecular contrastive learning of representations (MolCLR) via graph neural networks</span></a>
+  <a href="../papers/MolCLR_2024.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Molecular contrastive learning of representations (MolCLR) via graph neural networks</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -259,7 +229,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/open-source-cheminformatics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span></a>
+  <a href="../papers/open-source-cheminformatics.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span></a>
   </div>
 </li>
       </ul>
@@ -274,14 +244,12 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#why-discussing-this-paper" id="toc-why-discussing-this-paper" class="nav-link active" data-scroll-target="#why-discussing-this-paper">Why discussing this paper?</a></li>
+  <li><a href="#why-discuss-this-paper" id="toc-why-discuss-this-paper" class="nav-link active" data-scroll-target="#why-discuss-this-paper">Why discuss this paper?</a></li>
   <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
-  <li><a href="#main-idea-behind-contrastive-learning" id="toc-main-idea-behind-contrastive-learning" class="nav-link" data-scroll-target="#main-idea-behind-contrastive-learning">Main idea behind contrastive learning</a></li>
-  <li><a href="#nt-xent-loss" id="toc-nt-xent-loss" class="nav-link" data-scroll-target="#nt-xent-loss">NT-Xent loss</a></li>
-  <li><a href="#overview-of-molclr-framework" id="toc-overview-of-molclr-framework" class="nav-link" data-scroll-target="#overview-of-molclr-framework">Overview of MolCLR framework</a></li>
+  <li><a href="#cheminformatics-in-chemistry-brief-history" id="toc-cheminformatics-in-chemistry-brief-history" class="nav-link" data-scroll-target="#cheminformatics-in-chemistry-brief-history">Cheminformatics in chemistry: Brief history</a></li>
+  <li><a href="#problem-setting" id="toc-problem-setting" class="nav-link" data-scroll-target="#problem-setting">Problem setting</a></li>
+  <li><a href="#approach" id="toc-approach" class="nav-link" data-scroll-target="#approach">Approach</a></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
-  <li><a href="#analysis-of-molecule-graph-augmentations" id="toc-analysis-of-molecule-graph-augmentations" class="nav-link" data-scroll-target="#analysis-of-molecule-graph-augmentations">Analysis of molecule graph augmentations</a></li>
-  <li><a href="#investigation-of-molclr-representation" id="toc-investigation-of-molclr-representation" class="nav-link" data-scroll-target="#investigation-of-molclr-representation">Investigation of MolCLR representation</a></li>
   <li><a href="#take-aways" id="toc-take-aways" class="nav-link" data-scroll-target="#take-aways">Take aways</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
@@ -290,9 +258,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/llm4mat.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/MolCLR_2024.html"><span class="chapter-title">Molecular contrastive learning of representations (MolCLR) via graph neural networks</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/llm4mat.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/open-source-cheminformatics.html"><span class="chapter-title">Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Molecular contrastive learning of representations (MolCLR) via graph neural networks</span></h1>
+<h1 class="title"><span class="chapter-title">Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span></h1>
 </div>
 
 
@@ -302,14 +270,14 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Sreekanth Kunchapu </p>
+             <p>Noura Rayya </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 29, 2024</p>
+      <p class="date">June 26, 2024</p>
     </div>
   </div>
   
@@ -321,118 +289,126 @@ window.Quarto = {
 </header>
 
 
-<section id="why-discussing-this-paper" class="level2">
-<h2 class="anchored" data-anchor-id="why-discussing-this-paper">Why discussing this paper?</h2>
-<p>I chose Wang’s et al.’s paper <span class="citation" data-cites="wang2022molecular">(<a href="#ref-wang2022molecular" role="doc-biblioref">Wang et al. 2022</a>)</span> for our journal club because</p>
+<section id="why-discuss-this-paper" class="level2">
+<h2 class="anchored" data-anchor-id="why-discuss-this-paper">Why discuss this paper?</h2>
+<p>I chose the Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales paper <span class="citation" data-cites="pernaa2023open">(<a href="#ref-pernaa2023open" role="doc-biblioref">Pernaa et al. 2023</a>)</span> for current topics in the cheminformatics seminar because:</p>
 <ul>
-<li>Supervised learning relies heavily on labeled training data, which can be expensive and time-consuming to obtain.</li>
-<li>Labeled datasets are limited; training models on such datasets might lead to overfitting and poor generalization.</li>
-<li>Self-Supervised Learning (SSL) provides a promising alternative. It enables learning from unlabeled data, which is much easier to acquire in real-world applications and is part of a large research effort.</li>
-<li>SSL learns the inherent structure and patterns in unlabeled data. By doing so, self-supervised models can acquire rich representations and knowledge that can be transferred to downstream tasks, even with limited labeled data.</li>
-<li>Contrastive self-supervised learning, as the name implies, is a self-supervised method that learns representations by contrasting positive and negative pairs.</li>
+<li>Introducing the concept of “qualitative content analysis” which might be unfamiliar to our group’s regular work, along with the used software ATLAS.ti 9.</li>
+<li>Discuss Open-Source in Chemoinformatics due to its relevance in our work in NFDI4Chem.</li>
+<li>The covered discussion over business, and business politics which might be of interest to us at this level of our careers.</li>
 </ul>
 </section>
 <section id="context" class="level2">
 <h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>The paper introduces MolCLR, a self-supervised learning framework that uses graph encoders to learn differentiable molecular representations.</p>
-<p>The authors used a large unlabeled dataset with 10 million unique molecule SMILES from ChemBERTa and PubChem. This framework involves two important steps. First, in the pre-training phase, they build molecule graphs and develop graph neural network (GNN) encoders to learn differentiable representations. Second, the pretrained GNN backbone is used for supervised learning tasks.</p>
+<p>The paper demonstrates and promotes the different rationales of open-source in cheminformatics by extracting them from different sources and categorizing them for rationales designing in future software development projects. Additionally, the authors transparently cover the arguments against this approach.</p>
 </section>
-<section id="main-idea-behind-contrastive-learning" class="level2">
-<h2 class="anchored" data-anchor-id="main-idea-behind-contrastive-learning">Main idea behind contrastive learning</h2>
-<p>The aim of contrastive representation learning is to develop an embedding space where similar samples are positioned closely together, whereas dissimilar samples are kept distant from each other.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="MolCLR_2024_images/Constrative_learning.png" class="img-fluid figure-img"></p>
-<figcaption>Figure taken from the blog post by Ekin Tiu illustrating the idea behind contrastive learning.</figcaption>
-</figure>
-</div>
+<section id="cheminformatics-in-chemistry-brief-history" class="level2">
+<h2 class="anchored" data-anchor-id="cheminformatics-in-chemistry-brief-history">Cheminformatics in chemistry: Brief history</h2>
+<p>Cheminformatics has been used in chemistry since the 1940s <span class="citation" data-cites="chen2006chemoinformatics">(<a href="#ref-chen2006chemoinformatics" role="doc-biblioref">Chen 2006</a>)</span>. King et al. <span class="citation" data-cites="king1946asymmetric">(<a href="#ref-king1946asymmetric" role="doc-biblioref">King, Cross, and Thomas 1946</a>)</span> may be the first scholars who applied computers in chemistry research. However, Ray and Kirsch <span class="citation" data-cites="ray1957finding">(<a href="#ref-ray1957finding" role="doc-biblioref">Ray and Kirsch 1957</a>)</span> described an algorithm for substructure searching in a paper published in 1957, which might be considered the first actual cheminformatics paper.</p>
+<p>Although cheminformatics as a field has been around for many decades, much of the cheminformatics research has been conducted in industrial laboratories, not academia. Because of this, many applications and methods are not published due to intellectual-property-rights issues <span class="citation" data-cites="willett2011chemoinformatics">(<a href="#ref-willett2011chemoinformatics" role="doc-biblioref">Willett 2011</a>)</span>.</p>
 </section>
-<section id="nt-xent-loss" class="level2">
-<h2 class="anchored" data-anchor-id="nt-xent-loss">NT-Xent loss</h2>
-<p>The authors use a NT-Xent loss for the contrastive learning.</p>
-<p><span class="math display">\[
-L_{ij} = -\log \left( \frac{\exp(\text{sim}(z_i, z_j)/\tau)}{\sum_{k=1}^{2N} \mathbf{1}_{\{k \neq i\}} \exp(\text{sim}(z_i, z_k)/\tau)} \right)
-\]</span></p>
+<section id="problem-setting" class="level2">
+<h2 class="anchored" data-anchor-id="problem-setting">Problem setting</h2>
 <ul>
-<li><code>z_i</code> and <code>z_j</code>: Latent vectors extracted from a positive data pair.</li>
-<li><code>N</code>: Batch size, indicating the number of data pairs used.</li>
-<li><code>sim(⋅)</code>: Function measuring the similarity between two vectors.</li>
-<li><code>τ</code>: The temperature parameter, used to scale the similarity measures in the function.</li>
+<li>The development of the field requires open-source technology</li>
+<li>Open-source software development in cheminformatics is necessary for cheminformatics education.</li>
+<li>Open source and open data enable reproducibility which supports scientific reliability.</li>
+<li>Open-source code lowers the research costs significantly.</li>
 </ul>
-<p>To get more understanding, <span class="citation" data-cites="le2020contrastive">(<a href="#ref-le2020contrastive" role="doc-biblioref">Le-Khac, Healy, and Smeaton 2020</a>)</span> is a review paper on contrastive learning.</p>
 </section>
-<section id="overview-of-molclr-framework" class="level2">
-<h2 class="anchored" data-anchor-id="overview-of-molclr-framework">Overview of MolCLR framework</h2>
-<ul>
-<li><p>The SMILES are converted into graphs in a batch. The graphs consist of nodes and edges. Nodes represent atoms, and edges represent the chemical bonds of a molecule.</p></li>
-<li><p>The authors studied three types of augmentations: atom masking, bond deletion, and sub-graph removal. These augmentations introduce variance to the model, allowing it to learn different substructures/topologies of the same molecule and generalize well to unseen molecules.</p></li>
-<li><p>The GNNs operate based on a message-passing framework. At each node, the local neighborhood information is aggregated and updated iteratively, resulting in node embeddings of the molecule.</p></li>
-<li><p>These embeddings are fed into a Multi-Layer Perceptron (MLP) with hidden units to obtain a latent representation of the molecule. The MLP serves as a projection head, mapping the high-dimensional representations from the encoder (GNN) to a lower-dimensional latent space. This projection helps in learning more compact and discriminative representations for the contrastive loss.</p></li>
-<li><p>The key difference between supervised GNNs and self-supervised contrastive GNNs is the training objective. In a supervised setup, where we have access to ground truth labels, we can train the network to optimize standard loss functions such as Binary Cross Entropy (BCE) for classification or Mean Absolute Error/Mean Squared Error (MAE/MSE) for regression. In self-supervised contrastive learning, we aim to learn a latent space where positive pairs are closer and negative pairs are further apart.</p></li>
-<li><p>The goal is to score the agreement between positive pairs higher than that of negative pairs. For a given graph, its positive pair is constructed using data augmentations, while all other graphs in the batch constitute negative pairs.</p></li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="MolCLR_2024_images/Overview_figure_MolCLR.png" class="img-fluid figure-img"></p>
-<figcaption>Overview figure for the MolCLR framework</figcaption>
-</figure>
-</div>
-<p>For more information about GNNs and their applications, check out this review paper [zhou2020graph].</p>
+<section id="approach" class="level2">
+<h2 class="anchored" data-anchor-id="approach">Approach</h2>
+<p>The authors considered research articles with “open source”-related concepts that were then analyzed using qualitative content analysis and ATLAS.ti 9 software to extract relevant expressions and generate rationales subcategories, which were then classified into main categories.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 41%">
+<col style="width: 43%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Original Expression</th>
+<th style="text-align: center;">Sub-Category</th>
+<th style="text-align: center;">Main Category</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">“Despite these efforts, no general purpose deterministic structure generator has been developed in an open source format so far.” <span class="citation" data-cites="peironcely2012omg">(<a href="#ref-peironcely2012omg" role="doc-biblioref">Peironcely et al. 2012</a>)</span></td>
+<td style="text-align: center;">No available open-source alternative</td>
+<td style="text-align: center;">Develop New Software</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">“The ChemoPy package aims at providing the user with comprehensive implementations of these descriptors in a unified framework to allow easy and transparent computation.” <span class="citation" data-cites="cao2013chemopy">(<a href="#ref-cao2013chemopy" role="doc-biblioref">Cao et al. 2013</a>)</span></td>
+<td style="text-align: center;">Clear workflow</td>
+<td style="text-align: center;">Improve Usability</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="results" class="level2">
 <h2 class="anchored" data-anchor-id="results">Results</h2>
-<p>The authors tested the performance of MolCLR framework on seven benchmarks for classification tasks and six benchmarks for regression tasks.</p>
-<p>The authors claim that on classification tasks with other self-supervised learning or pre-training strategies, their MolCLR framework achieves the best performance on five out of seven benchmarks, with an average improvement of 4.0 percent in (ROC-AUC (%)).</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="MolCLR_2024_images/classifion_benchmark.png" class="img-fluid figure-img"></p>
-<figcaption>Table 1 shows the test performance on seven benchmarks on classification task</figcaption>
-</figure>
-</div>
-<p>The authors also claim that on regression tasks, MolCLR surpasses other pre-training baselines in five out of six benchmarks and achieves almost the same performance on the remaining ESOL benchmark. For the QM9 dataset, MolCLR does not have comparable performancee with SchNet and MGCN supervised models.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="MolCLR_2024_images/regression_benchmark.png" class="img-fluid figure-img"></p>
-<figcaption>Table 2 shows the test performance on seven benchmarks on classification task</figcaption>
-</figure>
-</div>
-</section>
-<section id="analysis-of-molecule-graph-augmentations" class="level2">
-<h2 class="anchored" data-anchor-id="analysis-of-molecule-graph-augmentations">Analysis of molecule graph augmentations</h2>
-<p>The authors employed four augmentation strategies on the classification benchmarks. Out of four augmentations, sub-graph removal with probability 0.25 achieved good (ROC-AUC %) on all of the classification benchmarks except in the BBBP benchmark as shown in the figure 2. The reason might be that model structures are sensitive in BBBP benchmark.</p>
-<p>They also tested GIN supervised models with and without molecular graph augmentations. With augmentations (sub-graph removal with a probability of 0.25), the model achieved superior performance compared to without augmentations.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="MolCLR_2024_images/Augmentation_analysis.png" class="img-fluid figure-img"></p>
-<figcaption>Figure 2 shows the investigation of molecule graph augmentations on classification benchmarks</figcaption>
-</figure>
-</div>
-</section>
-<section id="investigation-of-molclr-representation" class="level2">
-<h2 class="anchored" data-anchor-id="investigation-of-molclr-representation">Investigation of MolCLR representation</h2>
-<p>The authors examined the representations learned by pretrained MOlCLR using t-SNE embedding. This method groups similar chemicals together in two-dimensional space. In Figure 3, they show a picture of 100,000 molecules from the validation set of PubChem database showing similar/dissimilar molecules learned by MolCLR pretraining.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="MolCLR_2024_images/T-SNE_visualization.png" class="img-fluid figure-img"></p>
-<figcaption>Figure 3 Visualization of molecular representations learned by MolCLR via t-sne</figcaption>
-</figure>
-</div>
-<p>For instance, the three molecules on the top possess carbonyl groups connected with aryls. The two molecules on the bottom left have similar structures, where a halogen atom (fluorine or chlorine) is connected to benzene.</p>
-<p>Therefore, learned representations are not random but they are meaningful.</p>
-<p>In addition to this, the authors also query molecule from the PubcChem with ID 42953211 and the closest nine similar molecules are retrevied along with RDKFP and ECFP similarities labelled. It is observed that these selected molecules share the same functional groups, including alkyl halides (chlorine), tertiary amines, ketones and aromatics. A thiophene structure can also be found in all the molecules.</p>
-<p>More examples of query molecules can be found in supplementary information of this paper.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="MolCLR_2024_images/Query_molecule.png" class="img-fluid figure-img"></p>
-<figcaption>Figure shows Comparison of MolCLR-learned representations and conventional FPs using the query molecule (PubChem ID 42953211)</figcaption>
-</figure>
-</div>
+<p>The analysis produced six main rationale categories for open-source cheminformatics software development. The perspective of the rationale can be either general or specific. Most rationales produce technological outcomes, such as new software, frameworks, interfaces, and processes.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 28%">
+<col style="width: 30%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">#</th>
+<th style="text-align: center;">Rationale</th>
+<th style="text-align: center;">Perspective</th>
+<th style="text-align: center;">Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">Develop New Software</td>
+<td style="text-align: center;">General/Specific</td>
+<td style="text-align: center;">Technological</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">Update Current Features, Tools, or Processes</td>
+<td style="text-align: center;">Specific</td>
+<td style="text-align: center;">Technological</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">Improve Usability</td>
+<td style="text-align: center;">General</td>
+<td style="text-align: center;">Technological</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">Support Open-source Development and Open Science</td>
+<td style="text-align: center;">General/Specific</td>
+<td style="text-align: center;">Technological/Political</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">Fulfill Chemical Information Needs</td>
+<td style="text-align: center;">Specific</td>
+<td style="text-align: center;">Content-driven</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">Support Chemistry Learning and Teaching</td>
+<td style="text-align: center;">General/Specific</td>
+<td style="text-align: center;">Pedagogical</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="take-aways" class="level2">
 <h2 class="anchored" data-anchor-id="take-aways">Take aways</h2>
 <ul>
-<li>Good molecular representations are important for better predictions</li>
-<li>Self-supervised contrastive learning would be an advantage for generalizable machine learning over supervised learning</li>
+<li>The most central challenge hindering the academic development of cheminformatics has been the industrial background.</li>
+<li>Open source development can bridge academic and industrial stakeholders.</li>
 </ul>
 </section>
 <section id="references" class="level2">
@@ -440,11 +416,26 @@ L_{ij} = -\log \left( \frac{\exp(\text{sim}(z_i, z_j)/\tau)}{\sum_{k=1}^{2N} \ma
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-le2020contrastive" class="csl-entry" role="listitem">
-Le-Khac, Phuc H, Graham Healy, and Alan F Smeaton. 2020. <span>“Contrastive Representation Learning: A Framework and Review.”</span> <em>Ieee Access</em> 8: 193907–34.
+<div id="ref-cao2013chemopy" class="csl-entry" role="listitem">
+Cao, Dong-Sheng, Qing-Song Xu, Qian-Nan Hu, and Yi-Zeng Liang. 2013. <span>“ChemoPy: Freely Available Python Package for Computational Biology and Chemoinformatics.”</span> <em>Bioinformatics</em> 29 (8): 1092–94.
 </div>
-<div id="ref-wang2022molecular" class="csl-entry" role="listitem">
-Wang, Yuyang, Jianren Wang, Zhonglin Cao, and Amir Barati Farimani. 2022. <span>“Molecular Contrastive Learning of Representations via Graph Neural Networks.”</span> <em>Nature Machine Intelligence</em> 4 (3): 279–87.
+<div id="ref-chen2006chemoinformatics" class="csl-entry" role="listitem">
+Chen, William Lingran. 2006. <span>“Chemoinformatics: Past, Present, and Future.”</span> <em>Journal of Chemical Information and Modeling</em> 46 (6): 2230–55.
+</div>
+<div id="ref-king1946asymmetric" class="csl-entry" role="listitem">
+King, Gilbert W, Paul C Cross, and George B Thomas. 1946. <span>“The Asymmetric Rotor III. Punched-Card Methods of Constructing Band Spectra.”</span> <em>The Journal of Chemical Physics</em> 14 (1): 35–42.
+</div>
+<div id="ref-peironcely2012omg" class="csl-entry" role="listitem">
+Peironcely, Julio E, Miguel Rojas-Chertó, Davide Fichera, Theo Reijmers, Leon Coulier, Jean-Loup Faulon, and Thomas Hankemeier. 2012. <span>“OMG: Open Molecule Generator.”</span> <em>Journal of Cheminformatics</em> 4: 1–13.
+</div>
+<div id="ref-pernaa2023open" class="csl-entry" role="listitem">
+Pernaa, Johannes, Aleksi Takala, Veysel Ciftci, José Hernández-Ramos, Lizethly Cáceres-Jensen, and Jorge Rodrı́guez-Becerra. 2023. <span>“Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales.”</span> <em>Applied Sciences</em> 13 (17): 9516.
+</div>
+<div id="ref-ray1957finding" class="csl-entry" role="listitem">
+Ray, Louis C, and Russell A Kirsch. 1957. <span>“Finding Chemical Records by Digital Computers.”</span> <em>Science</em> 126 (3278): 814–19.
+</div>
+<div id="ref-willett2011chemoinformatics" class="csl-entry" role="listitem">
+Willett, Peter. 2011. <span>“Chemoinformatics: A History.”</span> <em>Wiley Interdisciplinary Reviews: Computational Molecular Science</em> 1 (1): 46–56.
 </div>
 </div>
 </section>
@@ -861,14 +852,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../papers/dagdelen_data_extraction.html" class="pagination-link" aria-label="Structured information extraction from scientific text with large language models">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Structured information extraction from scientific text with large language models</span></span>
+      <a href="../papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html" class="pagination-link" aria-label="Tandem mass spectrum prediction for small molecules using graph transformers">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Tandem mass spectrum prediction for small molecules using graph transformers</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../papers/PaCh.html" class="pagination-link" aria-label="PaCh (Packed Chemicals): Computationally Effective Binary Format for Chemical Structure Encoding">
-        <span class="nav-page-text"><span class="chapter-title">PaCh (Packed Chemicals): Computationally Effective Binary Format for Chemical Structure Encoding</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

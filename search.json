@@ -811,5 +811,104 @@
       "Papers",
       "<span class='chapter-number'>16</span>  <span class='chapter-title'>Tandem mass spectrum prediction for small molecules using graph transformers</span>"
     ]
+  },
+  {
+    "objectID": "papers/open-source-cheminformatics.html",
+    "href": "papers/open-source-cheminformatics.html",
+    "title": "Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales",
+    "section": "",
+    "text": "Why discuss this paper?\nI chose the Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales paper (Pernaa et al. 2023) for current topics in the cheminformatics seminar because:",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span>"
+    ]
+  },
+  {
+    "objectID": "papers/open-source-cheminformatics.html#why-discuss-this-paper",
+    "href": "papers/open-source-cheminformatics.html#why-discuss-this-paper",
+    "title": "Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales",
+    "section": "",
+    "text": "Introducing the concept of “qualitative content analysis” which might be unfamiliar to our group’s regular work, along with the used software ATLAS.ti 9.\nDiscuss Open-Source in Chemoinformatics due to its relevance in our work in NFDI4Chem.\nThe covered discussion over business, and business politics which might be of interest to us at this level of our careers.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span>"
+    ]
+  },
+  {
+    "objectID": "papers/open-source-cheminformatics.html#context",
+    "href": "papers/open-source-cheminformatics.html#context",
+    "title": "Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales",
+    "section": "Context",
+    "text": "Context\nThe paper demonstrates and promotes the different rationales of open-source in cheminformatics by extracting them from different sources and categorizing them for rationales designing in future software development projects. Additionally, the authors transparently cover the arguments against this approach.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span>"
+    ]
+  },
+  {
+    "objectID": "papers/open-source-cheminformatics.html#cheminformatics-in-chemistry-brief-history",
+    "href": "papers/open-source-cheminformatics.html#cheminformatics-in-chemistry-brief-history",
+    "title": "Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales",
+    "section": "Cheminformatics in chemistry: Brief history",
+    "text": "Cheminformatics in chemistry: Brief history\nCheminformatics has been used in chemistry since the 1940s (Chen 2006). King et al. (King, Cross, and Thomas 1946) may be the first scholars who applied computers in chemistry research. However, Ray and Kirsch (Ray and Kirsch 1957) described an algorithm for substructure searching in a paper published in 1957, which might be considered the first actual cheminformatics paper.\nAlthough cheminformatics as a field has been around for many decades, much of the cheminformatics research has been conducted in industrial laboratories, not academia. Because of this, many applications and methods are not published due to intellectual-property-rights issues (Willett 2011).",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span>"
+    ]
+  },
+  {
+    "objectID": "papers/open-source-cheminformatics.html#problem-setting",
+    "href": "papers/open-source-cheminformatics.html#problem-setting",
+    "title": "Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales",
+    "section": "Problem setting",
+    "text": "Problem setting\n\nThe development of the field requires open-source technology\nOpen-source software development in cheminformatics is necessary for cheminformatics education.\nOpen source and open data enable reproducibility which supports scientific reliability.\nOpen-source code lowers the research costs significantly.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span>"
+    ]
+  },
+  {
+    "objectID": "papers/open-source-cheminformatics.html#approach",
+    "href": "papers/open-source-cheminformatics.html#approach",
+    "title": "Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales",
+    "section": "Approach",
+    "text": "Approach\nThe authors considered research articles with “open source”-related concepts that were then analyzed using qualitative content analysis and ATLAS.ti 9 software to extract relevant expressions and generate rationales subcategories, which were then classified into main categories.\n\n\n\n\n\n\n\n\nOriginal Expression\nSub-Category\nMain Category\n\n\n\n\n“Despite these efforts, no general purpose deterministic structure generator has been developed in an open source format so far.” (Peironcely et al. 2012)\nNo available open-source alternative\nDevelop New Software\n\n\n“The ChemoPy package aims at providing the user with comprehensive implementations of these descriptors in a unified framework to allow easy and transparent computation.” (Cao et al. 2013)\nClear workflow\nImprove Usability",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span>"
+    ]
+  },
+  {
+    "objectID": "papers/open-source-cheminformatics.html#results",
+    "href": "papers/open-source-cheminformatics.html#results",
+    "title": "Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales",
+    "section": "Results",
+    "text": "Results\nThe analysis produced six main rationale categories for open-source cheminformatics software development. The perspective of the rationale can be either general or specific. Most rationales produce technological outcomes, such as new software, frameworks, interfaces, and processes.\n\n\n\n\n\n\n\n\n\n#\nRationale\nPerspective\nOutcome\n\n\n\n\n1\nDevelop New Software\nGeneral/Specific\nTechnological\n\n\n2\nUpdate Current Features, Tools, or Processes\nSpecific\nTechnological\n\n\n3\nImprove Usability\nGeneral\nTechnological\n\n\n4\nSupport Open-source Development and Open Science\nGeneral/Specific\nTechnological/Political\n\n\n5\nFulfill Chemical Information Needs\nSpecific\nContent-driven\n\n\n6\nSupport Chemistry Learning and Teaching\nGeneral/Specific\nPedagogical",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span>"
+    ]
+  },
+  {
+    "objectID": "papers/open-source-cheminformatics.html#take-aways",
+    "href": "papers/open-source-cheminformatics.html#take-aways",
+    "title": "Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales",
+    "section": "Take aways",
+    "text": "Take aways\n\nThe most central challenge hindering the academic development of cheminformatics has been the industrial background.\nOpen source development can bridge academic and industrial stakeholders.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span>"
+    ]
+  },
+  {
+    "objectID": "papers/open-source-cheminformatics.html#references",
+    "href": "papers/open-source-cheminformatics.html#references",
+    "title": "Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales",
+    "section": "References",
+    "text": "References\n\n\n\n\nCao, Dong-Sheng, Qing-Song Xu, Qian-Nan Hu, and Yi-Zeng Liang. 2013. “ChemoPy: Freely Available Python Package for Computational Biology and Chemoinformatics.” Bioinformatics 29 (8): 1092–94.\n\n\nChen, William Lingran. 2006. “Chemoinformatics: Past, Present, and Future.” Journal of Chemical Information and Modeling 46 (6): 2230–55.\n\n\nKing, Gilbert W, Paul C Cross, and George B Thomas. 1946. “The Asymmetric Rotor III. Punched-Card Methods of Constructing Band Spectra.” The Journal of Chemical Physics 14 (1): 35–42.\n\n\nPeironcely, Julio E, Miguel Rojas-Chertó, Davide Fichera, Theo Reijmers, Leon Coulier, Jean-Loup Faulon, and Thomas Hankemeier. 2012. “OMG: Open Molecule Generator.” Journal of Cheminformatics 4: 1–13.\n\n\nPernaa, Johannes, Aleksi Takala, Veysel Ciftci, José Hernández-Ramos, Lizethly Cáceres-Jensen, and Jorge Rodrı́guez-Becerra. 2023. “Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales.” Applied Sciences 13 (17): 9516.\n\n\nRay, Louis C, and Russell A Kirsch. 1957. “Finding Chemical Records by Digital Computers.” Science 126 (3278): 814–19.\n\n\nWillett, Peter. 2011. “Chemoinformatics: A History.” Wiley Interdisciplinary Reviews: Computational Molecular Science 1 (1): 46–56.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span>"
+    ]
   }
 ]
