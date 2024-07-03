@@ -12,7 +12,7 @@ Notero is a plugin to connect Zotero and Notion, two tools that have been essent
 First things first, here is the source of [Notero](https://github.com/dvanoni/notero).
 Thanks to [dvanoni](https://github.com/dvanoni) for this awesome tool!
 
-To install the extension, follow the ncie installation guide in the repository!
+To install the extension, follow the nice installation guide in the repository!
 
 ## Functionality showcase
 
