@@ -72,7 +72,7 @@ bibliography: ../references.bib
     6:  8573586092015465947
     ````
 
-- Step 2: Iteratively updating the atom identifiers
+- **Step 2: Iteratively updating the atom identifiers**
     - initialization of list of tuples with iteration number and identifier (Atom 4)
 
     ```python
@@ -177,6 +177,7 @@ bibliography: ../references.bib
 - **concept:**
     - “MinHashes computed from character strings containing the SMILES of all pairs of circular substructures up to a diameter of four bonds and the shortest topological distance between their central atoms.”
     - MinHash = compression technique and used for similarity estimation [@probst2018probabilistic]
+        - [easy explanation of minhashing from other field](https://medium.com/@omkarsoak/from-min-hashing-to-locality-sensitive-hashing-the-complete-process-b88b298d71a1)
     - includes Cahn-Ingold-Prelog annotation (r,s)
     - “?” is used for undefined stereocenters and double bonds
 
@@ -310,12 +311,14 @@ bibliography: ../references.bib
 
 ## What I liked/didn't like about the paper
 
- Areas for improvement:
+- didnt like:
     - hard to read
     - TMAP not explained (supposed to mean Tree MAP)
     - “scrambled sequences” not explained
-- repetition of how FP works in methods and beginning of results
-        - in supporting info S4 figure “c” is missing
+    - repetition of how FP works in methods and beginning of results
+    - in supporting info S4 figure “c” is missing
+    - typical paper from the "our tool is the best"-field, would have been nice if they included some critical statistics for e.g. bit-collisions
+    - no reference made to the field of machine learning 
 - like:
     - they made quite an effort to test their new FP
 
