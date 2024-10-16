@@ -21,7 +21,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -212,6 +232,11 @@ ul.task-list li input[type="checkbox"] {
   <a href="../papers/open-source-cheminformatics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../papers/universal_chiral_fp_2024.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">MAP4C: One chiral fingerprint to find them all <span class="citation" data-cites="orsi2024one">(</span></span></a><a href="#ref-orsi2024one" role="doc-biblioref">Orsi and Reymond 2024</a>)
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -264,6 +289,11 @@ ul.task-list li input[type="checkbox"] {
 <p>Install the <a href="https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client">Thunder client extension</a> from the marketplace.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-orsi2024one" class="csl-entry" role="listitem">
+Orsi, Markus, and Jean-Louis Reymond. 2024. <span>“One Chiral Fingerprint to Find Them All.”</span> <em>Journal of Cheminformatics</em> 16 (1): 53.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
