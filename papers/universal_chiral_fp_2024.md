@@ -310,7 +310,7 @@ bibliography: ../references.bib
 
 ## What I liked/didn't like about the paper
 
-- didnt like:
+ Areas for improvement:
     - hard to read
     - TMAP not explained (supposed to mean Tree MAP)
     - “scrambled sequences” not explained
