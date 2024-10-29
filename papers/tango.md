@@ -16,7 +16,7 @@ Predicting synthesis path of complex organic molecules whit multiple intermediat
 
 ## Prior work
 
-**Sythesizibility constrained molecular generation**: Enforcing valid chemical transformations
+**Synthesizability constrained molecular generation**: Enforcing valid chemical transformations
 
 - **"SynNet Gao et al.** [@https://doi.org/10.48550/arXiv.2410.03494]:
   - Uses a Markov decision process to generate molecules and synthesis pathways simultaneously through a bottom-up tree model
