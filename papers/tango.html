@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Jonas Schaub">
-<meta name="dcterms.date" content="2024-10-23">
+<meta name="author" content="Mara Schilling-Wilhelmi">
+<meta name="dcterms.date" content="2024-10-30">
 
-<title>lwreg: A Lightweight System for Chemical Registration and Data Storage (Landrum et al. 2024) – Lamalab Tool and Paper Notes</title>
+<title>It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design (Guo and Schwaller 2024) – Lamalab Tool and Paper Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -86,8 +52,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../papers/tango.html" rel="next">
-<link href="../papers/universal_chiral_fp_2024.html" rel="prev">
+<link href="../papers/lwreg_2024.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -125,6 +90,35 @@ div.csl-indent {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -137,7 +131,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/llm4mat.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/lwreg_2024.html"><span class="chapter-title">lwreg: A Lightweight System for Chemical Registration and Data Storage <span class="citation" data-cites="landrum_lwreg_2024">(</span></span></a><a href="#ref-landrum_lwreg_2024" role="doc-biblioref">Landrum et al. 2024</a>)</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/llm4mat.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/tango.html"><span class="chapter-title">It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design <span class="citation" data-cites="https://doi.org/10.48550/arxiv.2410.11527">(</span></span></a><a href="#ref-https://doi.org/10.48550/arxiv.2410.11527" role="doc-biblioref">Guo and Schwaller 2024</a>)</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -274,12 +268,12 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/lwreg_2024.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">lwreg: A Lightweight System for Chemical Registration and Data Storage <span class="citation" data-cites="landrum_lwreg_2024">(</span></span></a><a href="#ref-landrum_lwreg_2024" role="doc-biblioref">Landrum et al. 2024</a>)
+  <a href="../papers/lwreg_2024.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">lwreg: A Lightweight System for Chemical Registration and Data Storage <span class="citation" data-cites="landrum_lwreg_2024">(</span></span></a><a href="#ref-landrum_lwreg_2024" role="doc-biblioref">Landrum et al. 2024</a>)
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/tango.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design <span class="citation" data-cites="https://doi.org/10.48550/arxiv.2410.11527">(</span></span></a><a href="#ref-https://doi.org/10.48550/arxiv.2410.11527" role="doc-biblioref">Guo and Schwaller 2024</a>)
+  <a href="../papers/tango.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design <span class="citation" data-cites="https://doi.org/10.48550/arxiv.2410.11527">(</span></span></a><a href="#ref-https://doi.org/10.48550/arxiv.2410.11527" role="doc-biblioref">Guo and Schwaller 2024</a>)
   </div>
 </li>
       </ul>
@@ -295,13 +289,25 @@ div.csl-indent {
    
   <ul>
   <li><a href="#why-did-i-choose-this-paper" id="toc-why-did-i-choose-this-paper" class="nav-link active" data-scroll-target="#why-did-i-choose-this-paper">Why did I choose this paper?</a></li>
-  <li><a href="#general" id="toc-general" class="nav-link" data-scroll-target="#general">General</a></li>
-  <li><a href="#abstract" id="toc-abstract" class="nav-link" data-scroll-target="#abstract">Abstract</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
-  <li><a href="#results-and-discussion" id="toc-results-and-discussion" class="nav-link" data-scroll-target="#results-and-discussion">Results and Discussion</a></li>
-  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
-  <li><a href="#personal-comments-questions-to-discuss" id="toc-personal-comments-questions-to-discuss" class="nav-link" data-scroll-target="#personal-comments-questions-to-discuss">Personal comments / questions to discuss</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
+  <li><a href="#prior-work" id="toc-prior-work" class="nav-link" data-scroll-target="#prior-work">Prior work</a></li>
+  <li><a href="#main-contributions" id="toc-main-contributions" class="nav-link" data-scroll-target="#main-contributions">Main contributions</a></li>
+  <li><a href="#structure-of-the-overall-pipeline" id="toc-structure-of-the-overall-pipeline" class="nav-link" data-scroll-target="#structure-of-the-overall-pipeline">Structure of the overall pipeline</a></li>
+  <li><a href="#problem-formulation" id="toc-problem-formulation" class="nav-link" data-scroll-target="#problem-formulation">Problem formulation</a>
+  <ul class="collapse">
+  <li><a href="#case-1-starting-material-constrained" id="toc-case-1-starting-material-constrained" class="nav-link" data-scroll-target="#case-1-starting-material-constrained">Case 1: Starting material constrained</a></li>
+  <li><a href="#case-2-intermediate-constrained-synthesis" id="toc-case-2-intermediate-constrained-synthesis" class="nav-link" data-scroll-target="#case-2-intermediate-constrained-synthesis">Case 2: Intermediate Constrained Synthesis</a></li>
+  <li><a href="#case-3-divergent-synthesis" id="toc-case-3-divergent-synthesis" class="nav-link" data-scroll-target="#case-3-divergent-synthesis">Case 3: Divergent Synthesis</a></li>
+  </ul></li>
+  <li><a href="#tango-reward-function" id="toc-tango-reward-function" class="nav-link" data-scroll-target="#tango-reward-function">TANGO Reward Function</a></li>
+  <li><a href="#experimental-setting" id="toc-experimental-setting" class="nav-link" data-scroll-target="#experimental-setting">Experimental setting</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
+  <ul class="collapse">
+  <li><a href="#synthesizibility-constrained-molecules-generation" id="toc-synthesizibility-constrained-molecules-generation" class="nav-link" data-scroll-target="#synthesizibility-constrained-molecules-generation">Synthesizibility constrained molecules generation</a></li>
+  <li><a href="#learning-a-desirable-distribution" id="toc-learning-a-desirable-distribution" class="nav-link" data-scroll-target="#learning-a-desirable-distribution">Learning a desirable distribution</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#personal-opinion" id="toc-personal-opinion" class="nav-link" data-scroll-target="#personal-opinion">Personal opinion</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
@@ -309,9 +315,9 @@ div.csl-indent {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/llm4mat.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/lwreg_2024.html"><span class="chapter-title">lwreg: A Lightweight System for Chemical Registration and Data Storage <span class="citation" data-cites="landrum_lwreg_2024">(</span></span></a><a href="#ref-landrum_lwreg_2024" role="doc-biblioref">Landrum et al. 2024</a>)</li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/llm4mat.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/tango.html"><span class="chapter-title">It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design <span class="citation" data-cites="https://doi.org/10.48550/arxiv.2410.11527">(</span></span></a><a href="#ref-https://doi.org/10.48550/arxiv.2410.11527" role="doc-biblioref">Guo and Schwaller 2024</a>)</li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">lwreg: A Lightweight System for Chemical Registration and Data Storage <span class="citation" data-cites="landrum_lwreg_2024">(<a href="#ref-landrum_lwreg_2024" role="doc-biblioref">Landrum et al. 2024</a>)</span></span></h1>
+<h1 class="title"><span class="chapter-title">It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design <span class="citation" data-cites="https://doi.org/10.48550/arxiv.2410.11527">(<a href="#ref-https://doi.org/10.48550/arxiv.2410.11527" role="doc-biblioref">Guo and Schwaller 2024</a>)</span></span></h1>
 </div>
 
 
@@ -321,14 +327,14 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Jonas Schaub </p>
+             <p>Mara Schilling-Wilhelmi </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 23, 2024</p>
+      <p class="date">October 30, 2024</p>
     </div>
   </div>
   
@@ -340,253 +346,215 @@ div.csl-indent {
 </header>
 
 
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="lwreg_2024_images/graphical_abstract.jpeg" class="img-fluid figure-img" width="300"></p>
-<figcaption>Graphical Abstract, source: <span class="citation" data-cites="landrum_lwreg_2024">(<a href="#ref-landrum_lwreg_2024" role="doc-biblioref">Landrum et al. 2024</a>)</span> CC-BY 4.0</figcaption>
-</figure>
-</div>
 <section id="why-did-i-choose-this-paper" class="level2">
 <h2 class="anchored" data-anchor-id="why-did-i-choose-this-paper">Why did I choose this paper?</h2>
 <ul>
-<li>I have been interested in structure registration/standardisation systems for quite a while now</li>
-<li>In the open source realm, there are not many systems you can use, primarily the ChEMBL curation pipeline <span class="citation" data-cites="bento_open_2020">(<a href="#ref-bento_open_2020" role="doc-biblioref">Bento et al. 2020</a>)</span></li>
-<li>We had an early encounter with lwreg at <a href="https://www.iwomi.net/?page_id=42">IWOMI 2023</a> (which is also acknowledged in the paper)</li>
+<li>From a chemist point of view prediction of synthesis paths is really relevant.</li>
+<li>From a ML perspective they are still a lot of challenges.</li>
 </ul>
 </section>
-<section id="general" class="level2">
-<h2 class="anchored" data-anchor-id="general">General</h2>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>Predicting synthesis path of complex organic molecules whit multiple intermediates is challenging. This task gets even more complex if the products are constrained to e.g.&nbsp;commercially available products.</p>
+</section>
+<section id="prior-work" class="level2">
+<h2 class="anchored" data-anchor-id="prior-work">Prior work</h2>
+<p><strong>Synthesizability constrained molecular generation</strong>: Enforcing valid chemical transformations</p>
 <ul>
-<li><strong>Authors</strong>:
+<li><strong>“SynNet Gao et al.</strong> <span class="citation" data-cites="https://doi.org/10.48550/arXiv.2410.03494">(<a href="#ref-https://doi.org/10.48550/arXiv.2410.03494" role="doc-biblioref"><strong>https://doi.org/10.48550/arXiv.2410.03494?</strong></a>)</span>:
 <ul>
-<li>Affiliation of all authors: ETH Zurich, Department of Chemistry and Applied Biosciences, Computational Chemistry research group</li>
-<li>Group website: <a href="https://riniker.ethz.ch">https://riniker.ethz.ch</a></li>
-<li>Gregory A. Landrum* (Senior scientist, also founder and main maintainer of <a href="https://www.rdkit.org">RDKit open-source cheminformatics toolkit</a>)</li>
-<li>Jessica Braun*</li>
-<li>Paul Katzberger</li>
-<li>Marc T. Lehner</li>
-<li>Sereina Riniker</li>
-<li>* G.L. and J.B. contributed equally to this work.</li>
+<li>Uses a Markov decision process to generate molecules and synthesis pathways simultaneously through a bottom-up tree model</li>
+<li>Focuses primarily on synthesis tree generation without a broad multi-parameter optimization (MPO) approach</li>
 </ul></li>
-<li><strong>Journal</strong>:
+<li><strong>SynFormer Gao et al.</strong> <span class="citation" data-cites="https://doi.org/10.48550/arxiv.2410.03494">(<a href="#ref-https://doi.org/10.48550/arxiv.2410.03494" role="doc-biblioref">Gao, Luo, and Coley 2024</a>)</span>:
 <ul>
-<li><a href="https://pubs.acs.org/journal/jcisd8">Journal of Chemical Information and Modeling</a></li>
-</ul></li>
-<li><strong>Notes</strong>:
-<ul>
-<li>lwreg: LeightWeight chemical REGistration system</li>
-<li>GitHub repository: <a href="https://github.com/rinikerlab/lightweight-registration">https://github.com/rinikerlab/lightweight-registration</a></li>
+<li>generative framework that uses a scalable transformer architecture and a diffusion model to navigate synthesizable chemical space</li>
+<li>generates synthetic pathways by linking commercially available building blocks through known reactions</li>
+<li>focuses on generating pathways within a defined synthesizable space</li>
 </ul></li>
 </ul>
 </section>
-<section id="abstract" class="level2">
-<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
+<section id="main-contributions" class="level2">
+<h2 class="anchored" data-anchor-id="main-contributions">Main contributions</h2>
 <ul>
-<li>lwreg: a lightweight, yet flexible chemical registration system</li>
-<li>captures 2D structures (topologies) and 3D conformers of molecules</li>
-<li>open-source</li>
-<li>Python API (and CLI)</li>
-<li>extendable to also store experimental data and metadata with link to registered structures</li>
-<li>installable directly from GitHub repository: <a href="https://github.com/rinikerlab/lightweight-registration">https://github.com/rinikerlab/lightweight-registration</a></li>
+<li>general-purpose molecular generative model that generates synthesize molecules</li>
+<li>TANimoto Group Overlap (TANGO) reward function for the generation of synthesizable molecules with the presence of enforced building blocks</li>
+<li>generated molecules can satisfy multi-parameter-optimization (MPO) objects relevant to drug discovery</li>
 </ul>
 </section>
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<section id="structure-of-the-overall-pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="structure-of-the-overall-pipeline">Structure of the overall pipeline</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./tango_images/overview.png" class="img-fluid figure-img"></p>
+<figcaption>Overview</figcaption>
+</figure>
+</div>
 <ul>
-<li>definition of chemical registration system in this context: “a database (or other software system) that stores chemical structures together with assigned identifiers”</li>
-<li>minimal functionality:
+<li><a href="https://github.com/schwallergroup/saturn">Saturn</a> model as molecular generative model:
 <ul>
-<li>check whether a compound is already registered</li>
-<li>if yes, return its identifier</li>
-<li>if no, register the new compound</li>
-<li>return the associated structure when given an identifier</li>
+<li>based on <a href="https://github.com/state-spaces/mamba">Mamba</a> a lightweight, autoregressive model for the sequential prediction of SMILES</li>
+<li>pretrained on PubChem</li>
 </ul></li>
-<li>less common in academia than in industry</li>
-<li>rare in computational groups/labs
+<li>Fine-tuning with a reinforcement-learning-setup:
 <ul>
-<li>due to cultural/social factors</li>
-<li>due to technical and scientific challenges
-<ul>
-<li>most registration systems are GUI applications not optimised for computational workflows (e.g.&nbsp;no programmatic access via an API or no bulk submissions)</li>
-<li>biggest scientific challenge: context dependency of “are these two compounds the same?” (conformers, stereochemistry, tautomers, charged states, counter-ions, etc.)</li>
-</ul></li>
-</ul></li>
-<li>use cases for compound registration systems in computational groups:
-<ul>
-<li>tracking compounds that were investigated and maybe shared with (experimental) collaborators</li>
-<li>tracking training/testing/validation sets for ML models</li>
-<li>tracking already executed experiments like MD simulations, QM calculations, costly descriptor calculations, etc.</li>
-</ul></li>
-<li><strong>lwreg</strong>
-<ul>
-<li>open-source, highly flexible compound registration system</li>
-<li>allows different definitions of chemical identity</li>
-<li>supports integration of experimental results</li>
-<li>focus on computational use cases</li>
-<li>accessible via Python API or CLI</li>
-<li>no GUI</li>
+<li>TANGO reward function to measure for similarity of generated molecules and enforced building blocks</li>
+<li><a href="https://github.com/microsoft/syntheseus">Syntheseus</a> as retro-synthesis tool to check if molecules are synthesizable</li>
+<li>MPO for docking-score (biological effectiveness) and QED score (Quantitative Estimate of Drug-likeness)</li>
 </ul></li>
 </ul>
 </section>
-<section id="methods" class="level2">
-<h2 class="anchored" data-anchor-id="methods">Methods</h2>
+<section id="problem-formulation" class="level2">
+<h2 class="anchored" data-anchor-id="problem-formulation">Problem formulation</h2>
+<section id="case-1-starting-material-constrained" class="level3">
+<h3 class="anchored" data-anchor-id="case-1-starting-material-constrained">Case 1: Starting material constrained</h3>
+<p>A synthesis graph G(M, R) is starting-material constrained if there exists at least one leaf node <span class="math display">\[ m \in G(M, R) \]</span> that meets both conditions: <span class="math display">\[ m = b \in B_{enf} \]</span> <span class="math display">\[ \text{depth}(m) = \max \text{depth} \]</span></p>
+<p><span class="math display">\[
+\exists m \in G(M, R) \; \text{such that} \; \text{depth}(m) = \max \; \text{depth and} \; m = b \in B_{enf}
+\]</span></p>
 <ul>
-<li><strong>Implementation and Interface</strong>
-<ul>
-<li>pure Python</li>
-<li>limited number of external dependencies other than the RDKit</li>
-<li>installation via conda with the supplied environment.yml file</li>
-<li>primary operations:
-<ul>
-<li><strong>register</strong>: register a new compound or a bulk of compounds via bulk_register; generate registration ID, called <strong>molregno</strong></li>
-<li><strong>query</strong>: determine whether a given structure is already registered and if yes, return its molregno; configurable to query all stereochem variants / tautomers / etc.</li>
-<li><strong>retrieve</strong>: give a molregno or multiple and retrieve associated structure; optional: retrieve structure prestandardisation or its hashes</li>
-</ul></li>
-</ul></li>
-<li><strong>Filtering and Standardizing Compounds</strong>
-<ul>
-<li>commonly, structure registration systems perform <strong>standardisation</strong> and <strong>filtering</strong> at registration
-<ul>
-<li>standardisation: e.g.&nbsp;remove counter-ions and solvents, transform functional groups into standard forms, etc.</li>
-<li>filtering: e.g.&nbsp;flag/reject structures with overlapping atoms, certain elements or functional groups, unspecified or incorrect stereochem, etc.</li>
-</ul></li>
-<li>lwreg
-<ul>
-<li>some built-in standardisation options, e.g.
-<ul>
-<li>RDKit sanitization (<a href="https://www.rdkit.org/docs/RDKit_Book.html#molecular-sanitization">https://www.rdkit.org/docs/RDKit_Book.html#molecular-sanitization</a>)</li>
-<li>fragment removal (counter-ions, solvents)</li>
-<li>neutralization</li>
-</ul></li>
-<li>some built-in filtering options, e.g.
-<ul>
-<li>check for overlapping atoms</li>
-<li>check for polymer definitions and other annotations (SGroups)</li>
-</ul></li>
-<li>flexible and configurable interface for adding custom standardisation/filtering routines, e.g.&nbsp;(taken from <a href="https://github.com/rinikerlab/lightweight-registration/blob/main/lwreg/standardization_lib.py">standardization_lib.py</a>)<br>
-</li>
+<li>requires at least one terminal node (leaf) in the synthesis route to correspond to a specified starting material</li>
+<li>useful for ensuring the synthesis begins with commercially available or cost-effective starting reagents</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> RDKitSanitize(Standardization):</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="st">"rdkit_sanitize"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>explanation <span class="op">=</span> <span class="st">"runs the standard RDKit sanitization on the molecule"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">__call__</span>(<span class="va">self</span>, mol):</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        Chem.SanitizeMol(mol)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>:</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mol</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<br>
-</li>
-</ul></li>
-<li><strong>Recognizing Duplicate Compounds</strong>
+<hr>
+</section>
+<section id="case-2-intermediate-constrained-synthesis" class="level3">
+<h3 class="anchored" data-anchor-id="case-2-intermediate-constrained-synthesis">Case 2: Intermediate Constrained Synthesis</h3>
+<p><strong>Mathematical Definition:</strong><br>
+A synthesis graph G(M, R) is intermediate constrained if there exists at least one intermediate node <span class="math display">\[ m \in G(M, R) \]</span> that belongs to the enforced building blocks <span class="math display">\[ B_{enf} \]</span>.</p>
+<p><span class="math display">\[
+\exists m \in G(M, R) \; \text{such that} \; m \in B_{enf}
+\]</span></p>
 <ul>
-<li>each molecule in the database is assigned a registration hash</li>
-<li>to check whether a structure is already registered, its hash is generated and checked against the database structure hashes using string matching</li>
-</ul></li>
-<li><strong>Registration Hash</strong>
+<li>allows for one or more intermediate steps in the synthesis to include specified building blocks</li>
+<li>enables designing synthetic pathways that feature important building blocks at intermediate stages</li>
+</ul>
+<hr>
+</section>
+<section id="case-3-divergent-synthesis" class="level3">
+<h3 class="anchored" data-anchor-id="case-3-divergent-synthesis">Case 3: Divergent Synthesis</h3>
+<p>A synthesis graph G(M, R) is divergent if there exists at least one intermediate node <span class="math display">\[ m \in G(M, R) \]</span> that meets the following conditions: <span class="math display">\[ m = b \in B_{enf} \]</span> All <span class="math display">\[ b \in B_{enf} \]</span> are non-commercial.</p>
+<p><span class="math display">\[
+\exists m \in G(M, R) \; \text{such that} \; \forall b \in B_{enf}, \; b \; \text{is non-commercial and} \; m = b \in B_{enf}
+\]</span></p>
 <ul>
-<li>lwreg uses RDKit’s RegistrationHash function to generate its registration hash codes (<a href="https://github.com/rdkit/UGM_2022/blob/main/Presentations/nealschneider_introducing_registrationhash_lightning.pdf">RDKit UGM 2022 presentation slides</a>)</li>
-<li>generated hash has multiple layers to be able to assess molecular similarity on different levels, assessing different structural traits</li>
-<li>layers:<br>
-</li>
+<li>requires that an intermediate node in the synthesis graph matches a non-commercial building block, allowing it to diverge into multiple branches</li>
+<li>suitable for late-stage functionalization, often required to generate diverse molecular structures in drug discovery</li>
+</ul>
+</section>
+</section>
+<section id="tango-reward-function" class="level2">
+<h2 class="anchored" data-anchor-id="tango-reward-function">TANGO Reward Function</h2>
+<ul>
+<li><strong>Tanimoto Similarity</strong>:
+<ul>
+<li>Metric used to quantify the similarity between two molecular structures.</li>
+<li>Calculated based on the overlap of molecular fingerprints, with values ranging from 0 (no similarity) to 1 (perfect similarity).</li>
+</ul></li>
+<li><strong>Fuzzy Matching Substructure (FMS)</strong>:
+<ul>
+<li>Measures the maximum overlap between substructures of a generated molecule.</li>
+<li>Takes into account atom types, hybridization, and bonding patterns.</li>
+<li>Designed to capture functional groups and conserved structures.</li>
 </ul></li>
 </ul>
-<ol type="1">
-<li>FORMULA: molecular formula</li>
-<li>CANONICAL_SMILES: canonical <a href="https://docs.chemaxon.com/display/docs/formats_chemaxon-extended-smiles-and-smarts-cxsmiles-and-cxsmarts.md">CXSMILES</a> with stereochemistry information (including support for “enhanced stereochemistry”, see slides linked above, e.g.&nbsp;definition of enantiomers/racemates)</li>
-<li>TAUTOMER_HASH: tautomer-agnostic structure line notation (<em>HetAtomTautomer</em> hash) with stereochemistry information, developed as part of the MolHash software by NextMove Software (<a href="https://github.com/nextmovesoftware/molhash">GitHub repo</a>, <a href="https://www.nextmovesoftware.com/talks/OBoyle_MolHash_ACS_201908.pdf">ACS Fall 2019 presentation</a>)</li>
-<li>NO_STEREO_SMILES: canonical CXSMILES without stereochemistry information</li>
-<li>NO_STEREO_TAUTOMER_HASH: HetAtomTautomer hash without stereochemistry information</li>
-<li>SGROUP_DATA: canonicalised form of some of the molecule’s SGroup data (if any, configurable)</li>
-<li>ESCAPE: free-text field (basically allows you to use your own registration hash or add custom information you consider relevant)<br>
-
+<p>The TANGO reward for a molecule m in a synthesis graph G(M, R) is calculated as the weighted sum of the Tanimoto similarity (TanSim) and Fuzzy Matching Substructure (FMS) similarity to the enforced building blocks <span class="math display">\[ B_{enf} \]</span>.</p>
+<p><span class="math display">\[
+\text{TANGO}(m, B_{enf}) = \left( \max(\text{TanSim}(m, B_{enf})) \times 0.5 \right) + \left( \max(\text{FMS}(m, B_{enf})) \times 0.5 \right) \in [0, 1]
+\]</span></p>
 <ul>
-<li>layers 1-5 generated using RDKit’s implementation of MolHash</li>
-<li>final registration hash generated by computing an SHA1 hash from all of these layers via Python’s hashlib library<br>
-<img src="lwreg_2024_images/Figure_1.jpeg" class="img-fluid quarto-figure quarto-figure-center" width="600" alt="Figure 1. (A) Illustration of whether or not two molecules are considered to be the same by some of the layers in the registration hash. (B) Examples of the layers used to generate the registration hash for two of the two molecules, source: (Landrum et al. 2024) CC-BY 4.0"><br>
-</li>
-</ul></li>
-</ol>
+<li>Calculates the reward based on the maximum similarity between each non-root node in the synthesis graph and the enforced building blocks.</li>
+<li>The reward is normalized within the range [0, 1] and helps the model learn to generate molecules closer to the desired structural and functional goals.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./tango_images/tango-overview.png" class="img-fluid figure-img"></p>
+<figcaption>TANGO reward function</figcaption>
+</figure>
+</div>
+</section>
+<section id="experimental-setting" class="level2">
+<h2 class="anchored" data-anchor-id="experimental-setting">Experimental setting</h2>
 <ul>
-<li><strong>Why Not InChI?</strong>
+<li><p><strong>Molecular Generative Model</strong>: used model: Saturn (autoregressive SMILES-based model leveraging the Mamba architecture)</p></li>
+<li><p><strong>Retrosynthesis Model</strong>: Syntheseus (framework supporting various retrosynthesis algorithms) with MEGAN as the single-step retrosynthesis model, Retro* as search algorithm</p></li>
+<li><p><strong>Set of Commercial Building Blocks</strong>: includes fragments and reactive compounds from the ZINC database</p></li>
+<li><p><strong>Drug Discovery Case Study</strong>: focuses on generating molecules with optimal docking scores against ClpP (cancer-related protease target), high QED (drug-likeness) values</p></li>
+<li><p><strong>Experimental Details</strong>: oracle budget (maximum number of evaluations of a molecule) of 10,000 steps and evaluation across multiple seeds</p></li>
+<li><p><strong>Metrics</strong>:</p>
 <ul>
-<li>also provides a multi-layer hash that could be used for identity determination</li>
-<li>but(!) InChI standardises input structures (e.g.&nbsp;to standard tautomers)</li>
-<li>this way, more control over standardisation and hashing details</li>
-</ul></li>
-<li><strong>Querying Using Hash Layers</strong>
-<ul>
-<li>default query behaviour of lwreg: standardise query molecule, generate its default registration hash, use it to query the table of registration hashes, return molregno of matching record or none</li>
-<li>can be specified which layer to use, to e.g.&nbsp;query for all stereoisomers, tautomers, etc.</li>
-</ul></li>
-<li><strong>Retrieving Structures</strong>
-<ul>
-<li>Structures are retrieved by giving molregnos</li>
-<li>Structures are returned as v3000 MOL blocks</li>
-<li>possible to retrieve standardised structure or “as registered” form of the structure</li>
-<li>possible to retrieve all mol hashes</li>
-</ul></li>
-<li><strong>Storing Conformers</strong>
-<ul>
-<li>special “registerConformers” mode can be set in the system</li>
-<li>conformers of an existing record/structure are stored under its molregno and are each assigned a conf_id related to that molregno (so only fully defined by tuple (molregno, conf_id))</li>
-<li>conformers are also hashed using a simple scheme that arranges the atom coordinates in a defined order, concatenates them, and hashes the result (details in paper)</li>
-<li>this scheme is independent of the atom ordering but neither translationally nor rotationally invariant (must be standardised at registration if necessary)</li>
-</ul></li>
-<li><strong>Storing Experimental Data</strong>
-<ul>
-<li>SQL-based database managed by lwreg can be extended with additional tables to store experimental data with relations to the registered molecules</li>
-<li>See Jupyter Notebook demos in the GitHub repository</li>
-<li>general recommendation would be to store experimental data/results and metadata in separate tables, with UUIDs to identify experiments</li>
-</ul></li>
-<li><strong>Adding Chemical Search: Integration With the RDKit Cartridges</strong>
-<ul>
-<li>No similarity or substructure search functions in lwreg</li>
-<li>Would be possible to add externally via the RDKit PostgreSQL cartridge or the <a href="https://github.com/rvianello/chemicalite">chemicalite cartridge for sqlite</a></li>
+<li><p><strong>Non-solved</strong>: count of generated molecules that the retrosynthesis model deems unsynthesizable</p></li>
+<li><p><strong>Solved (Enforced)</strong>: count of generated molecules that the retrosynthesis model deems synthesizable and include at least one enforced building block</p></li>
+<li><p><strong>N (Replicates)</strong>: number of successful replicates (out of 10 seeds) in which at least one Solved (Enforced) molecule is generated</p></li>
+<li><p><strong>Unique Enforced Blocks</strong>: average and standard deviation of unique enforced building blocks in the synthesis routes for Solved (Enforced) molecules</p></li>
+<li><p><strong>Reaction Steps</strong>: average and standard deviation of the number of reaction steps in synthesis routes for Solved (Enforced) molecules</p></li>
+<li><p>Docking Score and QED</p></li>
 </ul></li>
 </ul>
 </section>
-<section id="results-and-discussion" class="level2">
-<h2 class="anchored" data-anchor-id="results-and-discussion">Results and Discussion</h2>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<section id="synthesizibility-constrained-molecules-generation" class="level3">
+<h3 class="anchored" data-anchor-id="synthesizibility-constrained-molecules-generation">Synthesizibility constrained molecules generation</h3>
 <ul>
-<li>performed several benchmarks (performance snapshots)</li>
-<li>executed lwreg commands on a two-year old workstation (3.8 GHz Intel Xeon W-1270P CPU, 64 GB RAM, Ubuntu 22.04)</li>
-<li>database was a PostgresSQL v14 installation running on an eight-year-old workstation (3.5 GHz Intel Xeon E3−1240 CPU, 32 GB RAM, Ubuntu 22.04.)</li>
-<li><strong>Registering All Compounds From ChEMBL33</strong>
+<li>different configurations: with 10 and 100 enforced building blocks, diffenrent constrains (SM, divergent and unconstrained)</li>
+<li>Metrics:
 <ul>
-<li>RDKit sanitization for standardisation</li>
-<li>2.3 mio molecules in final database</li>
-<li>total runtime of registration: 17.5 h (26 ms per molecule avg.)</li>
-<li>7.4 GB of disk space required (1 GB molecule hashes, 3 GB original mol blocks, 3.4 GB for mol blocks table)</li>
-<li>median query time of the database was 5.6 ms (maximum 274 ms)</li>
-</ul></li>
-<li><strong>Storing DASH Tree Conformers</strong>
-<ul>
-<li>took the data from <span class="citation" data-cites="lehner_dash_2023">(<a href="#ref-lehner_dash_2023" role="doc-biblioref">Lehner et al. 2023</a>)</span>, 365,419 molecules and 1,027,559 conformers, and built a database with lwreg</li>
-<li>conformer table occupied 3.5 GB of disk space</li>
-<li>molecule registration data only 1.3 GB</li>
-<li>registering and retrieving conformers took about the same time as for the ChEMBL structures (more details in paper)</li>
-</ul></li>
-<li><strong>Storing Molecular Data Sets for Bioactivity Prediction and Associated Machine-Learning Results</strong>
-<ul>
-<li>details in the Jupyter Notebook tutorials</li>
+<li>Synthesisablity: Non-solved and Solved (enforced)</li>
+<li>mean value for differnet docking score intervals (lower number are better)</li>
+<li>number of molecules in the docking score interval M</li>
+<li>mean QED values for every docking score interval (higher values are better)</li>
+<li>mean number of reactions steps</li>
+<li>mean number of enforced building blocks used in synthesis routs of synthesizible molecules</li>
 </ul></li>
 </ul>
-</section>
-<section id="conclusions" class="level2">
-<h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./tango_images/results.png" class="img-fluid figure-img"></p>
+<figcaption>Results</figcaption>
+</figure>
+</div>
 <ul>
-<li>summary of the paper, highlighting the layered hash, the good performance, and the extendability of the underlying database</li>
-<li>lwreg does not have a GUI but can be a solid (backend) for one in the future</li>
-<li>invite the community to the issues and discussions sections of the GitHub repository</li>
+<li>comparison to other models because of new metrics hard and not shown by the authors</li>
+<li>TANGO reward function archives highest scores compared to only Tanimoto similarity or Fuzzy matching substructures</li>
+<li>equal weighting (0.5) of Tanimoto similarity and FMS in the TANGO reward function shows the best performance</li>
+<li>more consistent and stable outcomes across different seeds compared to other reward configurations</li>
 </ul>
 </section>
-<section id="personal-comments-questions-to-discuss" class="level2">
-<h2 class="anchored" data-anchor-id="personal-comments-questions-to-discuss">Personal comments / questions to discuss</h2>
+<section id="learning-a-desirable-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="learning-a-desirable-distribution">Learning a desirable distribution</h3>
+<p>Comparison of pre-trained model to final checkpoint of fine-tuned model (mean over 10 seeds over 1000 randomly sampled molecules)</p>
 <ul>
-<li>is there a technical reason for why there is no pypi package or sth similar? Installation currently only possible from the GitHub repo</li>
-<li>is there a certain order to the registration hash layers? The FORMULA layer is very unspecified while the CANONICAL_SMILES layer is very defined</li>
+<li><strong>Distribution Shift with TANGO</strong>: enables a shift in the model’s distribution towards generating molecules that meet MPO objectives
+<ul>
+<li>significant increase in Solved (Enforced) molecules, indicating the model’s successful learning of constrained synthesizability</li>
+<li>distribution of docking scores and QED values showed a shift towards favorable ranges</li>
+<li>model learned to focus on a narrower, more optimized chemical space</li>
+</ul></li>
+<li><strong>Exploitation Advantage</strong>: model benefits from exploiting certain favorable enforced building blocks which promotes local exploration, allowing the generation of structurally related but optimized molecules</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./tango_images/learning-the-distribution.png" class="img-fluid figure-img"></p>
+<figcaption>Comparison of pre-trained and fine-tuned model</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<ul>
+<li><p><strong>Effectiveness of TANGO</strong>: The TANGO reward function enables the Saturn model to learn constrained synthesizability effectively, balancing both synthesizability and structural similarity requirements.</p></li>
+<li><p><strong>Multi-Parameter Optimization</strong>: TANGO facilitates multi-parameter optimization (MPO), allowing the generation of molecules that meet complex objectives, including optimal docking scores, high QED values, and the inclusion of enforced building blocks.</p></li>
+<li><p><strong>Improved Synthesizability</strong>: Compared to previous methods, TANGO demonstrates a higher success rate in generating synthesizable molecules, particularly with constrained conditions.</p></li>
+<li><p><strong>Potential in Drug Discovery</strong>: The approach provides a promising framework for generating drug-like molecules with specific requirements, potentially accelerating the early stages of drug discovery and development.</p></li>
+</ul>
+</section>
+<section id="personal-opinion" class="level2">
+<h2 class="anchored" data-anchor-id="personal-opinion">Personal opinion</h2>
+<ul>
+<li>shown method and functions are easy to understand</li>
+<li>missing comparison with other models to prove improvement of scores with new method</li>
 </ul>
 </section>
 <section id="references" class="level2">
@@ -594,17 +562,14 @@ div.csl-indent {
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-bento_open_2020" class="csl-entry" role="listitem">
-Bento, A. Patrícia, Anne Hersey, Eloy Félix, Greg Landrum, Anna Gaulton, Francis Atkinson, Louisa J. Bellis, Marleen De Veij, and Andrew R. Leach. 2020. <span>“An Open Source Chemical Structure Curation Pipeline Using <span>RDKit</span>.”</span> <em>Journal of Cheminformatics</em> 12 (1): 51. <a href="https://doi.org/10.1186/s13321-020-00456-1">https://doi.org/10.1186/s13321-020-00456-1</a>.
+<div id="ref-https://doi.org/10.48550/arxiv.2410.03494" class="csl-entry" role="listitem">
+Gao, Wenhao, Shitong Luo, and Connor W. Coley. 2024. <span>“Generative Artificial Intelligence for Navigating Synthesizable Chemical Space.”</span> arXiv. <a href="https://doi.org/10.48550/ARXIV.2410.03494">https://doi.org/10.48550/ARXIV.2410.03494</a>.
 </div>
 <div id="ref-https://doi.org/10.48550/arxiv.2410.11527" class="csl-entry" role="listitem">
 Guo, Jeff, and Philippe Schwaller. 2024. <span>“It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.”</span> arXiv. <a href="https://doi.org/10.48550/ARXIV.2410.11527">https://doi.org/10.48550/ARXIV.2410.11527</a>.
 </div>
 <div id="ref-landrum_lwreg_2024" class="csl-entry" role="listitem">
 Landrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. <span>“Lwreg: <span>A</span> <span>Lightweight</span> <span>System</span> for <span>Chemical</span> <span>Registration</span> and <span>Data</span> <span>Storage</span>.”</span> <em>Journal of Chemical Information and Modeling</em> 64 (16): 6247–52. <a href="https://doi.org/10.1021/acs.jcim.4c01133">https://doi.org/10.1021/acs.jcim.4c01133</a>.
-</div>
-<div id="ref-lehner_dash_2023" class="csl-entry" role="listitem">
-Lehner, Marc T., Paul Katzberger, Niels Maeder, Carl C. G. Schiebroek, Jakob Teetz, Gregory A. Landrum, and Sereina Riniker. 2023. <span>“<span>DASH</span>: <span>Dynamic</span> <span>Attention</span>-<span>Based</span> <span>Substructure</span> <span>Hierarchy</span> for <span>Partial</span> <span>Charge</span> <span>Assignment</span>.”</span> <em>Journal of Chemical Information and Modeling</em> 63 (19): 6014–28. <a href="https://doi.org/10.1021/acs.jcim.3c00800">https://doi.org/10.1021/acs.jcim.3c00800</a>.
 </div>
 <div id="ref-orsi2024one" class="csl-entry" role="listitem">
 Orsi, Markus, and Jean-Louis Reymond. 2024. <span>“One Chiral Fingerprint to Find Them All.”</span> <em>Journal of Cheminformatics</em> 16 (1): 53.
@@ -1035,14 +1000,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../papers/universal_chiral_fp_2024.html" class="pagination-link" aria-label="MAP4C: One chiral fingerprint to find them all [@orsi2024one]">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">MAP4C: One chiral fingerprint to find them all <span class="citation" data-cites="orsi2024one">(</span></span></span></a><a href="#ref-orsi2024one" role="doc-biblioref">Orsi and Reymond 2024</a>)
+      <a href="../papers/lwreg_2024.html" class="pagination-link" aria-label="lwreg: A Lightweight System for Chemical Registration and Data Storage [@landrum_lwreg_2024]">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">lwreg: A Lightweight System for Chemical Registration and Data Storage <span class="citation" data-cites="landrum_lwreg_2024">(</span></span></span></a><a href="#ref-landrum_lwreg_2024" role="doc-biblioref">Landrum et al. 2024</a>)
                 
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../papers/tango.html" class="pagination-link" aria-label="It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design [@https://doi.org/10.48550/arxiv.2410.11527]">
-        <span class="nav-page-text"><span class="chapter-title">It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design <span class="citation" data-cites="https://doi.org/10.48550/arxiv.2410.11527">(</span></span></span></a><a href="#ref-https://doi.org/10.48550/arxiv.2410.11527" role="doc-biblioref">Guo and Schwaller 2024</a>) <i class="bi bi-arrow-right-short"></i>
-      
   </div>
 </nav>
 </div> <!-- /content -->
