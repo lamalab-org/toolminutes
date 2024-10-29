@@ -16,17 +16,16 @@ Predicting synthesis path of complex organic molecules whit multiple intermediat
 
 ## Prior work
 
-**Stabilizability constrained molecular generation**: Enforcing valid chemical transformations
+**Sythesizibility constrained molecular generation**: Enforcing valid chemical transformations
 
 - **"SynNet Gao et al.** [@https://doi.org/10.48550/arXiv.2410.03494]:
   - Uses a Markov decision process to generate molecules and synthesis pathways simultaneously through a bottom-up tree model
-  - utilizes reactive templates and commercial starting materials for synthesizabilit.
   - Focuses primarily on synthesis tree generation without a broad multi-parameter optimization (MPO) approach 
 
 - **SynFormer Gao et al.** [@https://doi.org/10.48550/arxiv.2410.03494]:
   - generative framework that uses a scalable transformer architecture and a diffusion model to navigate synthesizable chemical space
-  - generates synthetic pathways by linking commercially available building blocks through known reactions, ensuring synthetic accessibility
-  - focuses on generating pathways within a defined synthesizable space, emphasizing chemical space exploration and pathway reconstruction
+  - generates synthetic pathways by linking commercially available building blocks through known reactions
+  - focuses on generating pathways within a defined synthesizable space
 
 
 ## Main contributions
@@ -166,7 +165,7 @@ $$
 Comparison of pre-trained model to final checkpoint of fine-tuned model (mean over 10 seeds over 1000 randomly sampled molecules)
 
 - **Distribution Shift with TANGO**: enables a shift in the model’s distribution towards generating molecules that meet MPO objectives
-  - significant increase in **Solved (Enforced)** molecules, indicating the model’s successful learning of constrained synthesizability
+  - significant increase in Solved (Enforced) molecules, indicating the model’s successful learning of constrained synthesizability
   - distribution of docking scores and QED values showed a shift towards favorable ranges
   - model learned to focus on a narrower, more optimized chemical space
 
@@ -181,8 +180,6 @@ Comparison of pre-trained model to final checkpoint of fine-tuned model (mean ov
 - **Multi-Parameter Optimization**: TANGO facilitates multi-parameter optimization (MPO), allowing the generation of molecules that meet complex objectives, including optimal docking scores, high QED values, and the inclusion of enforced building blocks.
 
 - **Improved Synthesizability**: Compared to previous methods, TANGO demonstrates a higher success rate in generating synthesizable molecules, particularly with constrained conditions.
-
-- **Computational Efficiency**: The method is computationally efficient, achieving high performance within a limited Oracle budget, making it practical for large-scale molecular generation tasks.
 
 - **Potential in Drug Discovery**: The approach provides a promising framework for generating drug-like molecules with specific requirements, potentially accelerating the early stages of drug discovery and development.
 
