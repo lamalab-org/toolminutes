@@ -18,8 +18,7 @@ Predicting synthesis path of complex organic molecules whit multiple intermediat
 
 **Stabilizability constrained molecular generation**: Enforcing valid chemical transformations
 
-- **"SynNet Gao et al.** [@
-https://doi.org/10.48550/arXiv.2410.03494]:
+- **"SynNet Gao et al.** [@https://doi.org/10.48550/arXiv.2410.03494]:
   - Uses a Markov decision process to generate molecules and synthesis pathways simultaneously through a bottom-up tree model
   - utilizes reactive templates and commercial starting materials for synthesizabilit.
   - Focuses primarily on synthesis tree generation without a broad multi-parameter optimization (MPO) approach 
@@ -54,63 +53,68 @@ https://doi.org/10.48550/arXiv.2410.03494]:
 
 ### Case 1: Starting material constrained
 
-A synthesis graph \( G(M, R) \) is starting-material constrained if there exists at least one leaf node \( m \in G(M, R) \) that meets both conditions:
-1. \( m = b \in B_{enf} \)
-2. \( \text{depth}(m) = \max \text{depth} \) 
+A synthesis graph G(M, R) is starting-material constrained if there exists at least one leaf node $$ m \in G(M, R) $$ that meets both conditions:
+$$ m = b \in B_{enf} $$
+$$ \text{depth}(m) = \max \text{depth} $$ 
 
 $$
-\exists m \in G(M, R) \text{ such that } \text{depth}(m) = \max \text{depth and } m = b \in B_{enf}
+\exists m \in G(M, R) \; \text{such that} \; \text{depth}(m) = \max \; \text{depth and} \; m = b \in B_{enf}
 $$
 
 - requires at least one terminal node (leaf) in the synthesis route to correspond to a specified starting material
 - useful for ensuring the synthesis begins with commercially available or cost-effective starting reagents
 
+---
+
 ### Case 2: Intermediate Constrained Synthesis
 
-**Mathematical Definition:**
-A synthesis graph \( G(M, R) \) is intermediate constrained if there exists at least one intermediate node \( m \in G(M, R) \) that belongs to the enforced building blocks \( B_{enf} \).
+**Mathematical Definition:**  
+A synthesis graph G(M, R) is intermediate constrained if there exists at least one intermediate node $$ m \in G(M, R) $$ that belongs to the enforced building blocks $$ B_{enf} $$.
 
 $$
-\exists m \in G(M, R) \text{ such that } m \in B_{enf}
+\exists m \in G(M, R) \; \text{such that} \; m \in B_{enf}
 $$
 
 - allows for one or more intermediate steps in the synthesis to include specified building blocks
 - enables designing synthetic pathways that feature important building blocks at intermediate stages
 
+---
+
 ### Case 3: Divergent Synthesis
 
-A synthesis graph \( G(M, R) \) is divergent if there exists at least one intermediate node \( m \in G(M, R) \) that meets the following conditions:
-1. \( m = b \in B_{enf} \)
-2. All \( b \in B_{enf} \) are non-commercial.
+A synthesis graph G(M, R) is divergent if there exists at least one intermediate node $$ m \in G(M, R) $$ that meets the following conditions:
+$$ m = b \in B_{enf} $$
+All $$ b \in B_{enf} $$ are non-commercial.
 
 $$
-\exists m \in G(M, R) \text{ such that } \forall b \in B_{enf}, b \text{ is non-commercial and } m = b \in B_{enf}
+\exists m \in G(M, R) \; \text{such that} \; \forall b \in B_{enf}, \; b \; \text{is non-commercial and} \; m = b \in B_{enf}
 $$
 
 - requires that an intermediate node in the synthesis graph matches a non-commercial building block, allowing it to diverge into multiple branches
 - suitable for late-stage functionalization, often required to generate diverse molecular structures in drug discovery
 
-## TANGO reward function
+## TANGO Reward Function
 
 - **Tanimoto Similarity**: 
-  - metric used to quantify the similarity between two molecular structures
-  - calculated based on the overlap of molecular fingerprints, with values ranging from 0 (no similarity) to 1 (perfect similarity)
+  - Metric used to quantify the similarity between two molecular structures.
+  - Calculated based on the overlap of molecular fingerprints, with values ranging from 0 (no similarity) to 1 (perfect similarity).
 
 - **Fuzzy Matching Substructure (FMS)**: 
-  - measures the maximum overlap between substructures of a generated molecule
-  - taking into account atom types, hybridization, and bonding patterns
-  - designed to capture functional groups and conserved structures 
+  - Measures the maximum overlap between substructures of a generated molecule.
+  - Takes into account atom types, hybridization, and bonding patterns.
+  - Designed to capture functional groups and conserved structures.
 
-The TANGO reward for a molecule \( m \) in a synthesis graph \( G(M, R) \) is calculated as the weighted sum of the Tanimoto similarity (TanSim) and Fuzzy Matching Substructure (FMS) similarity to the enforced building blocks \( B_{enf} \).
+The TANGO reward for a molecule m in a synthesis graph G(M, R) is calculated as the weighted sum of the Tanimoto similarity (TanSim) and Fuzzy Matching Substructure (FMS) similarity to the enforced building blocks $$ B_{enf} $$.
 
 $$
 \text{TANGO}(m, B_{enf}) = \left( \max(\text{TanSim}(m, B_{enf})) \times 0.5 \right) + \left( \max(\text{FMS}(m, B_{enf})) \times 0.5 \right) \in [0, 1]
 $$
 
-- calculates the reward based on the maximum similarity between each non-root node in the synthesis graph and the enforced building blocks
-- reward is normalized within the range [0, 1] and helps the model learn to generate molecules closer to the desired structural and functional goals
+- Calculates the reward based on the maximum similarity between each non-root node in the synthesis graph and the enforced building blocks.
+- The reward is normalized within the range [0, 1] and helps the model learn to generate molecules closer to the desired structural and functional goals.
 
 ![TANGO reward function](./tango_images/tango-overview.png)
+
 
 ## Experimental setting
 
@@ -164,7 +168,7 @@ Comparison of pre-trained model to final checkpoint of fine-tuned model (mean ov
 - **Distribution Shift with TANGO**: enables a shift in the model’s distribution towards generating molecules that meet MPO objectives
   - significant increase in **Solved (Enforced)** molecules, indicating the model’s successful learning of constrained synthesizability
   - distribution of docking scores and QED values showed a shift towards favorable ranges
- - model learned to focus on a narrower, more optimized chemical space
+  - model learned to focus on a narrower, more optimized chemical space
 
 - **Exploitation Advantage**: model benefits from exploiting certain favorable enforced building blocks which promotes local exploration, allowing the generation of structurally related but optimized molecules
 
