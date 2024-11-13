@@ -83,7 +83,7 @@ They propose a case study in which they study the relation of the agents' perfor
 
 The most interesting results these days is that the models perform much better in the text than in the images. They claim that these results are because the vision tasks are more complex and the agents are not yet able to perform them. However, in my opinion, more ablations would be needed to clarify this point.
 
-### Another results
+### Additional results
 
 - Python tasks' results are better than R tasks' results.
 - Agents struggle to retrieve results from many files.
