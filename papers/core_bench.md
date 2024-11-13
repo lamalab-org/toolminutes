@@ -91,8 +91,8 @@ The most interesting results these days is that the models perform much better i
 
 ## Takeaways
 
-- A simple adaptation of the agents can really improve the results in the evaluation.
+- A simple adaptation of the agents can really improve the evaluation results.
 - Models perform much better in the text than in the images.
-- Despite they present this benchmark as a way to evaluate the agents, and specially if the agents can reproduce the results of the published works, I do not think that it is yet possible to use an agent to check the code reproduction of a paper.
+- Despite they present this benchmark as a way to evaluate the agents, and especially if the agents can reproduce the results of the published works, I do not think that it is yet possible to use an agent to check the code reproduction of a paper.
 
 ## References
