@@ -11,7 +11,7 @@ bibliography: ../references.bib
 
 I chose Siegel et al.'s paper [@siegel2024corebenchfosteringcredibilitypublished] for our journal club because:
 
-- I really like what this folks are proposing about agents' evaluation.
+- I really like what these folks are proposing about agents' evaluation.
 - I think that the evaluation of agents is the current bottleneck in the development of new agents.
 - They write some really interesting statements such as *"Before agents can automate scientific research, they must be able to reproduce existing results."*.
 - One of the conclusions is really interesting for one of the projects that I am working on.
