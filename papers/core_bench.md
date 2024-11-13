@@ -20,9 +20,9 @@ I chose Siegel et al.'s paper [@siegel2024corebenchfosteringcredibilitypublished
 
 With the appearance of the LLMs, agents have gained a lot of importance, especially during the last year. However, the evaluation of these agents is still a challenge, and a bunch of benchmarks and different evaluations have been proposed to evaluate them.
 
-### Swe-Bench
+### SWE-Bench
 
-In this work by Jimenez et al. [@jimenez2024swebenchlanguagemodelsresolve] they introduced another agent benchmark. The tasks that they evaluate are based on GitHub Pull Requests extracted from some popular repositories. They evaluate the agents in solving the issues that are opened in these PRs. Nowadays it is one of the most used benchmarks for evaluating new LLMs.
+In this work by Jimenez et al. [@jimenez2024swebenchlanguagemodelsresolve], they introduced another agent benchmark. The tasks that they evaluate are based on GitHub Pull Requests extracted from some popular repositories. They evaluate the agents in solving the issues that are opened in these PRs. Nowadays, it is one of the most used benchmarks for evaluating new LLMs.
 
 ### AI Agents That Matter
 
