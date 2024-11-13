@@ -75,13 +75,13 @@ The general results of the evaluation are shown in the following table:
 
 : Accuracy in the most difficult partitions of the benchmark {#tbl-letters}
 
-The number of models that they tested is quite short. However, some important conclusions can be taken from there.
+The number of models that they tested is limited. However, some important conclusions can be taken from there.
 
-As expected and the most obvious is that the performance decreases as the difficulty of the task increases. Also, the bigger model shows better results than the smaller one, and the adapted agent shows better results than the general one, specially for the smallest or weakest model.
+As expected and the most obvious is that the performance decreases as the difficulty of the task increases. Also, the bigger model shows better results than the smaller ones, and the adapted agent shows better results than the general one, specially for the smallest or weakest model.
 
 They propose a case study in which they study the relation of the agents' performance with the economical cost of the models. However, this has not much sense since the models powering the agents are not the same, and they have very different costs per tokens expended.
 
-The most interesting results these days is that the models perform much better in the text than in the images. They claim that these results are because the vision tasks are more complex and the agents are not yet able to perform them. However, in my opinion, more ablations would be needed to clarify this point.
+The most interesting result these days is that the models perform much better in the text than in the images. They claim that this is the case because the vision tasks are more complex, and the agents are not yet able to perform them. However, in my opinion, more ablations would be needed to clarify this point.
 
 ### Additional results
 
