@@ -18,7 +18,7 @@ I chose Siegel et al.'s paper [@siegel2024corebenchfosteringcredibilitypublished
 
 ## Prior work
 
-With the appereance of the LLMs, agents have gain a lot of importance, especially during the last year. However, the evaluation of these agents is still a challenge, and a bunch of benchmarks and different evaluations have been proposed to evaluate them.
+With the appearance of the LLMs, agents have gained a lot of importance, especially during the last year. However, the evaluation of these agents is still a challenge, and a bunch of benchmarks and different evaluations have been proposed to evaluate them.
 
 ### Swe-Bench
 
