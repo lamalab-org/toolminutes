@@ -532,7 +532,7 @@
     "href": "papers/universal_chiral_fp_2024.html#abstract",
     "title": "MAP4C: One chiral fingerprint to find them all (Orsi and Reymond 2024)",
     "section": "Abstract",
-    "text": "Abstract\n\nchirality often not considered in fingerprints\ndeveloped MAP4C (chiral version of MAP4, publ. in 2020)\nMAP → “MinHashed Atom-Pair fingerprint up to four bonds”\nconcept:\n\n“MinHashes computed from character strings containing the SMILES of all pairs of circular substructures up to a diameter of four bonds and the shortest topological distance between their central atoms.”\nMinHash = compression technique and used for similarity estimation (Probst and Reymond 2018)\nincludes Cahn-Ingold-Prelog annotation (r,s)\n“?” is used for undefined stereocenters and double bonds\n\nclaim:\n\ncan distinguish between stereoisomers of small drugs to large natural products and peptides",
+    "text": "Abstract\n\nchirality often not considered in fingerprints\ndeveloped MAP4C (chiral version of MAP4, publ. in 2020)\nMAP → “MinHashed Atom-Pair fingerprint up to four bonds”\nconcept:\n\n“MinHashes computed from character strings containing the SMILES of all pairs of circular substructures up to a diameter of four bonds and the shortest topological distance between their central atoms.”\nMinHash = compression technique and used for similarity estimation (Probst and Reymond 2018)\n\neasy explanation of minhashing from other field\n\nincludes Cahn-Ingold-Prelog annotation (r,s)\n“?” is used for undefined stereocenters and double bonds\n\nclaim:\n\ncan distinguish between stereoisomers of small drugs to large natural products and peptides",
     "crumbs": [
       "Papers",
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>MAP4C: One chiral fingerprint to find them all [@orsi2024one]</span>"
@@ -587,7 +587,7 @@
     "href": "papers/universal_chiral_fp_2024.html#what-i-likeddidnt-like-about-the-paper",
     "title": "MAP4C: One chiral fingerprint to find them all (Orsi and Reymond 2024)",
     "section": "What I liked/didn’t like about the paper",
-    "text": "What I liked/didn’t like about the paper\nAreas for improvement: - hard to read - TMAP not explained (supposed to mean Tree MAP) - “scrambled sequences” not explained - repetition of how FP works in methods and beginning of results - in supporting info S4 figure “c” is missing - like: - they made quite an effort to test their new FP",
+    "text": "What I liked/didn’t like about the paper\n\ndidn’t like:\n\nhard to read\nTMAP not explained (supposed to mean Tree MAP)\n“scrambled sequences” not explained\nrepetition of how FP works in methods and beginning of results\nin supporting info S4 figure “c” is missing\ntypical paper from the “our tool is the best”-field, would have been nice if they included some critical statistics for e.g. bit-collisions\nno reference made to the field of machine learning\n\nlike:\n\nthey made quite an effort to test their new FP",
     "crumbs": [
       "Papers",
       "<span class='chapter-number'>18</span>  <span class='chapter-title'>MAP4C: One chiral fingerprint to find them all [@orsi2024one]</span>"

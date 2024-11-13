@@ -459,7 +459,7 @@ window.Quarto = {
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>: <span class="op">-</span><span class="dv">2155244659601281804</span></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span>: <span class="op">-</span><span class="dv">3602994677767288312</span></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span>:  <span class="dv">8573586092015465947</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li>Step 2: Iteratively updating the atom identifiers
+<li><strong>Step 2: Iteratively updating the atom identifiers</strong>
 <ul>
 <li>initialization of list of tuples with iteration number and identifier (Atom 4)</li>
 </ul>
@@ -573,7 +573,10 @@ window.Quarto = {
 <li><p><strong>concept:</strong></p>
 <ul>
 <li>“MinHashes computed from character strings containing the SMILES of all pairs of circular substructures up to a diameter of four bonds and the shortest topological distance between their central atoms.”</li>
-<li>MinHash = compression technique and used for similarity estimation <span class="citation" data-cites="probst2018probabilistic">(<a href="#ref-probst2018probabilistic" role="doc-biblioref">Probst and Reymond 2018</a>)</span></li>
+<li>MinHash = compression technique and used for similarity estimation <span class="citation" data-cites="probst2018probabilistic">(<a href="#ref-probst2018probabilistic" role="doc-biblioref">Probst and Reymond 2018</a>)</span>
+<ul>
+<li><a href="https://medium.com/@omkarsoak/from-min-hashing-to-locality-sensitive-hashing-the-complete-process-b88b298d71a1">easy explanation of minhashing from other field</a></li>
+</ul></li>
 <li>includes Cahn-Ingold-Prelog annotation (r,s)</li>
 <li>“?” is used for undefined stereocenters and double bonds</li>
 </ul></li>
@@ -1004,7 +1007,22 @@ window.Quarto = {
 </section>
 <section id="what-i-likeddidnt-like-about-the-paper" class="level2">
 <h2 class="anchored" data-anchor-id="what-i-likeddidnt-like-about-the-paper">What I liked/didn’t like about the paper</h2>
-<p>Areas for improvement: - hard to read - TMAP not explained (supposed to mean Tree MAP) - “scrambled sequences” not explained - repetition of how FP works in methods and beginning of results - in supporting info S4 figure “c” is missing - like: - they made quite an effort to test their new FP</p>
+<ul>
+<li>didn’t like:
+<ul>
+<li>hard to read</li>
+<li>TMAP not explained (supposed to mean Tree MAP)</li>
+<li>“scrambled sequences” not explained</li>
+<li>repetition of how FP works in methods and beginning of results</li>
+<li>in supporting info S4 figure “c” is missing</li>
+<li>typical paper from the “our tool is the best”-field, would have been nice if they included some critical statistics for e.g.&nbsp;bit-collisions</li>
+<li>no reference made to the field of machine learning</li>
+</ul></li>
+<li>like:
+<ul>
+<li>they made quite an effort to test their new FP</li>
+</ul></li>
+</ul>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
