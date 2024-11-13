@@ -43,7 +43,7 @@ This benchmark proposed by Laurent et al. [@laurent2024labbenchmeasuringcapabili
 
 ## Approach
 
-They proposed a new benchmark, that allow in some extend more deeply evaluate the agents. They propose to evaluate the agents in three different tasks: CORE-Bench-Easy, CORE-Bench-Medium and CORE-Bench-Hard. The first one is a simple task, the second one is a medium task and the last one is a hard task. The evaluation is done in a way that the agents have to provide the answer and the reasoning behind it.
+They proposed a new benchmark that allows the agents to be evaluated more deeply. They propose to evaluate the agents in three different tasks: CORE-Bench-Easy, CORE-Bench-Medium, and CORE-Bench-Hard. The first one is a simple task, the second one is a medium task, and the last one is a hard task. The evaluation is done so that the agents have to provide the answer and the reasoning behind it.
 
 | Task level | Information provided to the agent | Agent task |
 | :--------: | :-------------------------------: | :--------: |
@@ -51,15 +51,15 @@ They proposed a new benchmark, that allow in some extend more deeply evaluate th
 |CORE-Bench-Medium| The dockerfile is provided | Run the docker and extract the results |
 |CORE-Bench-Hard| Only a README is provided | Create and run the docker and extract the results |
 
-: Description of the different tasks according to the difficulty, and the actual task for each {#tbl-letters}
+: Description of the different tasks according to the difficulty and the actual task for each {#tbl-letters}
 
-To generate the ground truth of the different tasks, they reproduced some published works. To give some numerical room they sample by repeating each manual run 3 times being the ground truth the 95 % prediction interval.
+They reproduced some published works to generate the ground truth of the different tasks. To give some numerical room, they sampled by repeating each manual run three times, which was the ground truth for the 95 % prediction interval.
 
-![Figure taken from by Siegel et al. paper [@siegel2024corebenchfosteringcredibilitypublished]. In the Figure *(a)* it is detailed an example for a medium-level task. The figure *(b)* ilustrates how the evaluation is performed.](core_bench_papers/core_bench_3.png)
+![Figure taken from by Siegel et al. paper [@siegel2024corebenchfosteringcredibilitypublished]. In the Figure *(a)* it is detailed an example for a medium-level task. The figure *(b)* illustrates how the evaluation is performed.](core_bench_papers/core_bench_3.png)
 
 Similarly to other benchmarks such as MLAgentBench [@huang2024mlagentbenchevaluatinglanguageagents] or MLE-BENCH [@chan2024mlebenchevaluatingmachinelearning], they provide the agent with access to different files and the agent need to read and run those files to reach the final answer.
 
-Interestengly, they evaluate two different agents: AutoGPT and CORE-Agent. The first one is a general agent widely used, while the second is an adapted improved version of the first one.
+Interestingly, they evaluate two different agents: AutoGPT and CORE-Agent. The first one is a general agent widely used, while the second is an adapted, improved version of the first one.
 
 ## Results
 
