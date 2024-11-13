@@ -85,7 +85,7 @@ The most interesting result these days is that the models perform much better in
 
 ### Additional results
 
-- Python tasks' results are better than R tasks' results.
+- The results of the Python tasks are better than those of the R tasks.
 - Agents struggle to retrieve results from many files.
 - Better safety measures and guardrails are needed to prevent agents from running malicious code when commercially deploying these agents.
 
