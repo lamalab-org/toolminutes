@@ -26,7 +26,7 @@ In this work by Jimenez et al. [@jimenez2024swebenchlanguagemodelsresolve] they 
 
 ### AI Agents That Matter
 
-This is a previous work from the same authors of the CORE-Bench. In this work, Kappor et al. [@kapoor2024aiagentsmatter] propose different case studies each of them with a different evaluation method for some of the more common NLP benchmarks. The particularity is that these evaluations are thought to evaluating more than only the final answer of the agents.
+This is previous work from the same authors of the CORE-Bench. In this work, Kappor et al. [@kapoor2024aiagentsmatter] propose different case studies, each with a different evaluation method for some of the more common NLP benchmarks. The particularity is that these evaluations are thought to evaluate more than only the agents' final answers.
 
 ### LAB-Bench
 
