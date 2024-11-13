@@ -30,9 +30,9 @@ This is a previous work from the same authors of the CORE-Bench. In this work, K
 
 ### LAB-Bench
 
-This benchmark proposed by Laurent et al. [@laurent2024labbenchmeasuringcapabilitieslanguage] is focused on evaluating agents in the scientific domain and more specifically in the medical chemistry domain. It is multimodal including tasks such as analyzing lab images, scientific tables, lab protocols or the retrieval from biological databases.
+This benchmark proposed by Laurent et al. [@laurent2024labbenchmeasuringcapabilitieslanguage] is focused on evaluating agents in the scientific domain, specifically in the medical/biochemistry domain. It is multimodal, including tasks such as analyzing lab images, scientific tables, lab protocols, or retrieving data from biological databases.
 
-![Figure taken from by Laurent et al. paper [@laurent2024labbenchmeasuringcapabilitieslanguage] illustrating the results of the different leading LLMs in LAB-Bench.](core_bench_papers/core_bench_2.png)
+![Figure taken from Laurent et al. paper [@laurent2024labbenchmeasuringcapabilitieslanguage] illustrating the results of the different leading LLMs in LAB-Bench.](core_bench_papers/core_bench_2.png)
 
 ## Problem setting
 
