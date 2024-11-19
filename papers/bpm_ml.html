@@ -317,11 +317,11 @@ window.Quarto = {
 
 
 <hr>
-<p>author: Anagha Aneesh date: 2024-11-20 title-block-banner: ![[bpm_title.webp]] bibliography: ../references.bib ___ # Why I chose this paper - Reconstructing IR/Raman spectra is interesting to me - Applications of ML to electronic structure theory (outside of potential) is cool # Introduction - Machine learning force fields (ML FF) have accelerated the field of molecular simulations – specifically for systems where there is not an established force field - ML FFs are significantly more cost-efficient - Learning molecular properties like dipole moment (IR) and polarizability (Raman) can help in interpreting spectra signals and benchmarking ML accuracy against experiment - Neural network algorithms v.s. kernel algorithms - NN: better performance + lower cost for larger systems - kernel: requires less data + high cost for large systems ## Existing Work on ML Models for Electric Polarizability - Equivariant neural networks, response formalism, Applequists’s dipole interaction model - Two kernel-based methods - align structures in training data and treat tensor components as scalars - requires lots of data - symmetry-adapted Gaussian regression - generalization of scalar kernel ridge regression (KRR) ### Goal of this work - KRR on bond polarizability model (BPM) - molecular polarizability is a sum over bond contributions # Theory ## Bond Polarizability Model - total molecular polarizability, <span class="math inline">\(\alpha\)</span> is the sum of bond polarizabilities <span class="math display">\[
+<p>author: Anagha Aneesh date: 2024-11-20 title-block-banner: ![[bpm_title.webp]] bibliography: ../references.bib ___ ## Why I chose this paper - Reconstructing IR/Raman spectra is interesting to me - Applications of ML to electronic structure theory (outside of potential) is cool ## Introduction - Machine learning force fields (ML FF) have accelerated the field of molecular simulations – specifically for systems where there is not an established force field - ML FFs are significantly more cost-efficient - Learning molecular properties like dipole moment (IR) and polarizability (Raman) can help in interpreting spectra signals and benchmarking ML accuracy against experiment - Neural network algorithms v.s. kernel algorithms - NN: better performance + lower cost for larger systems - kernel: requires less data + high cost for large systems ### Existing Work on ML Models for Electric Polarizability - Equivariant neural networks, response formalism, Applequists’s dipole interaction model - Two kernel-based methods - align structures in training data and treat tensor components as scalars - requires lots of data - symmetry-adapted Gaussian regression - generalization of scalar kernel ridge regression (KRR) ### Goal of this work - KRR on bond polarizability model (BPM) - molecular polarizability is a sum over bond contributions ## Theory ### Bond Polarizability Model - total molecular polarizability, <span class="math inline">\(\alpha\)</span> is the sum of bond polarizabilities <span class="math display">\[
 \alpha = \sum_b{\alpha^b}
 \]</span> - elements of individual bond polarizability tensors <span class="math display">\[
 \alpha_{ij}^{b} = \frac{1}{3}(2\alpha_p^b + \alpha_l^b)\delta_{ij} + (\alpha_l^b + \alpha_p^b)(\hat{R}_i^b\hat{R}_j^b - \frac{1}{3}\delta_{ij})
-\]</span> - assumes bonds are cylindrically symmetric and typically assumes total polarizability only depends on bond length ## ML Model - Separate polarizability tensor into isotropic and anisotropic components so the ML task is to infer these <span class="math display">\[
+\]</span> - assumes bonds are cylindrically symmetric and typically assumes total polarizability only depends on bond length ### ML Model - Separate polarizability tensor into isotropic and anisotropic components so the ML task is to infer these <span class="math display">\[
 \alpha = \alpha_{\text{iso}}\bf{1}+\beta
 \]</span> - Rewrite elements of tensor in terms of components <span class="math display">\[
 \alpha_{ij}^{b} = \alpha_{\text{iso}}^b\delta_{ij} + \beta^b(\hat{R}_i^b\hat{R}_j^b - \frac{1}{3}\delta_{ij})
@@ -333,14 +333,14 @@ K(\textbf{q}^b,\textbf{q}^{b'}) = \text{exp}(-\gamma||\textbf{q}^b-\textbf{q}^{b
 \beta_{ij} = \sum_b{\beta^bQ_{ij}^b} = \sum_n{\sum_{b,b'}{K(\textbf{q}^b},\textbf{q}^{b'})Q_{ij}^bv_n}
 \]</span> - loss function <span class="math display">\[
 \mathcal{L} = \frac{1}{2}\sum_{i,j}{||\beta_{ij} - \textbf{K}_{ij}\textbf{v}||^2}
-\]</span> ## Raman Spectra - Calculating the anharmonic IR and Raman spectra <span class="math display">\[
+\]</span> ### Raman Spectra - Calculating the anharmonic IR and Raman spectra <span class="math display">\[
 I_{\text{iso}}(\omega) \propto v(\omega) \int{dt \ e^{i\omega t}\langle\dot{\alpha}_{\text{iso}}(\tau)\dot{\alpha}_{\text{iso}}(t-\tau)}\rangle_\tau
 \]</span> <span class="math display">\[
 I_{\text{aniso}}(\omega) \propto v(\omega) \int{dt \ e^{i\omega t}\langle Tr[\dot{\beta}_{\text{iso}}(\tau)\dot{\beta}_{\text{iso}}(t-\tau)}]\rangle_\tau
-\]</span> # Biphenyl</p>
-<p>![[bpm_fig1.webp]] # Raman spectra evaluation ![[bpm_fig2.webp]] # Malonaldehyde - keto and enol forms— author: Martiño Ríos-García date: 2024-11-13 title-block-banner: core_bench_papers/ai_agents_blog_pic.jpg bibliography: ../references.bib</p>
+\]</span> ## Biphenyl</p>
+<p><img src="./bpm_ml/bpm_fig1.webp" class="img-fluid" alt="biphenyl"> ## Raman spectra evaluation <img src="./bpm_ml/bpm_fig2.webp" class="img-fluid" alt="raman_spec"> ## Malonaldehyde - keto and enol forms</p>
 <hr>
-<p>![[bpm_fig3.webp]] # Future Directions - Deep neural network implementation of BPM - Consider all bonds within a cutoff region</p>
+<p><img src="./bpm_ml/bpm_fig3.webp" class="img-fluid" alt="malonaldehyde"> ## Future Directions - Deep neural network implementation of BPM - Consider all bonds within a cutoff region</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
