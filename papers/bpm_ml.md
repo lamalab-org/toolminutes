@@ -1,7 +1,7 @@
 ___
 author: Anagha Aneesh
 date: 2024-11-20
-title-block-banner: ![[bpm_title.webp]]
+title-block-banner: ![[bpm_title.webp]](./bpm_ml_figures/bpm_title.webp)
 bibliography: ../references.bib
 ___
 # A Bond-Based Machine Learning Model for Molecular Polarizabilities and A Priori Raman Spectra
@@ -71,13 +71,13 @@ I_{\text{aniso}}(\omega) \propto v(\omega) \int{dt \ e^{i\omega t}\langle Tr[\do
 $$
 ## Biphenyl
 
-![biphenyl](./bpm_ml/bpm_fig1.webp)
+![biphenyl](./bpm_ml_figures/bpm_fig1.webp)
 ## Raman spectra evaluation
-![raman_spec](./bpm_ml/bpm_fig2.webp)
+![raman_spec](./bpm_ml_figures/bpm_fig2.webp)
 ## Malonaldehyde
 - keto and enol forms
 ---
-![malonaldehyde](./bpm_ml/bpm_fig3.webp)
+![malonaldehyde](./bpm_ml_figures/bpm_fig3.webp)
 ## Future Directions
 - Deep neural network implementation of BPM
 - Consider all bonds within a cutoff region
