@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Noura Rayya">
-<meta name="dcterms.date" content="2024-06-26">
 
-<title>Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales – Lamalab Tool and Paper Notes</title>
+<title>A Bond-Based Machine Learning Model for Molecular Polarizabilities and A Priori Raman Spectra – Lamalab Tool and Paper Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -52,8 +50,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../papers/universal_chiral_fp_2024.html" rel="next">
-<link href="../papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html" rel="prev">
+<link href="../papers/core_bench.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -91,6 +88,35 @@ div.csl-indent {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -103,7 +129,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/llm4mat.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/open-source-cheminformatics.html"><span class="chapter-title">Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/llm4mat.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/bpm_ml.html"><span class="chapter-title">A Bond-Based Machine Learning Model for Molecular Polarizabilities and A Priori Raman Spectra</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -230,7 +256,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/open-source-cheminformatics.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span></a>
+  <a href="../papers/open-source-cheminformatics.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -255,7 +281,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/bpm_ml.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A Bond-Based Machine Learning Model for Molecular Polarizabilities and A Priori Raman Spectra</span></a>
+  <a href="../papers/bpm_ml.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">A Bond-Based Machine Learning Model for Molecular Polarizabilities and A Priori Raman Spectra</span></a>
   </div>
 </li>
       </ul>
@@ -265,47 +291,22 @@ div.csl-indent {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#why-discuss-this-paper" id="toc-why-discuss-this-paper" class="nav-link active" data-scroll-target="#why-discuss-this-paper">Why discuss this paper?</a></li>
-  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
-  <li><a href="#cheminformatics-in-chemistry-brief-history" id="toc-cheminformatics-in-chemistry-brief-history" class="nav-link" data-scroll-target="#cheminformatics-in-chemistry-brief-history">Cheminformatics in chemistry: Brief history</a></li>
-  <li><a href="#problem-setting" id="toc-problem-setting" class="nav-link" data-scroll-target="#problem-setting">Problem setting</a></li>
-  <li><a href="#approach" id="toc-approach" class="nav-link" data-scroll-target="#approach">Approach</a></li>
-  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
-  <li><a href="#take-aways" id="toc-take-aways" class="nav-link" data-scroll-target="#take-aways">Take aways</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/llm4mat.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/open-source-cheminformatics.html"><span class="chapter-title">Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/llm4mat.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/bpm_ml.html"><span class="chapter-title">A Bond-Based Machine Learning Model for Molecular Polarizabilities and A Priori Raman Spectra</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span></h1>
+<h1 class="title"><span class="chapter-title">A Bond-Based Machine Learning Model for Molecular Polarizabilities and A Priori Raman Spectra</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Noura Rayya </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">June 26, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -315,144 +316,36 @@ div.csl-indent {
 </header>
 
 
-<section id="why-discuss-this-paper" class="level2">
-<h2 class="anchored" data-anchor-id="why-discuss-this-paper">Why discuss this paper?</h2>
-<p>I chose the Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales paper <span class="citation" data-cites="pernaa2023open">(<a href="#ref-pernaa2023open" role="doc-biblioref">Pernaa et al. 2023</a>)</span> for current topics in the cheminformatics seminar because:</p>
-<ul>
-<li>Introducing the concept of “qualitative content analysis” which might be unfamiliar to our group’s regular work, along with the used software ATLAS.ti 9.</li>
-<li>Discuss Open-Source in Chemoinformatics due to its relevance in our work in NFDI4Chem.</li>
-<li>The covered discussion over business, and business politics which might be of interest to us at this level of our careers.</li>
-</ul>
-</section>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>The paper demonstrates and promotes the different rationales of open-source in cheminformatics by extracting them from different sources and categorizing them for rationales designing in future software development projects. Additionally, the authors transparently cover the arguments against this approach.</p>
-</section>
-<section id="cheminformatics-in-chemistry-brief-history" class="level2">
-<h2 class="anchored" data-anchor-id="cheminformatics-in-chemistry-brief-history">Cheminformatics in chemistry: Brief history</h2>
-<p>Cheminformatics has been used in chemistry since the 1940s <span class="citation" data-cites="chen2006chemoinformatics">(<a href="#ref-chen2006chemoinformatics" role="doc-biblioref">Chen 2006</a>)</span>. King et al. <span class="citation" data-cites="king1946asymmetric">(<a href="#ref-king1946asymmetric" role="doc-biblioref">King, Cross, and Thomas 1946</a>)</span> may be the first scholars who applied computers in chemistry research. However, Ray and Kirsch <span class="citation" data-cites="ray1957finding">(<a href="#ref-ray1957finding" role="doc-biblioref">Ray and Kirsch 1957</a>)</span> described an algorithm for substructure searching in a paper published in 1957, which might be considered the first actual cheminformatics paper.</p>
-<p>Although cheminformatics as a field has been around for many decades, much of the cheminformatics research has been conducted in industrial laboratories, not academia. Because of this, many applications and methods are not published due to intellectual-property-rights issues <span class="citation" data-cites="willett2011chemoinformatics">(<a href="#ref-willett2011chemoinformatics" role="doc-biblioref">Willett 2011</a>)</span>.</p>
-</section>
-<section id="problem-setting" class="level2">
-<h2 class="anchored" data-anchor-id="problem-setting">Problem setting</h2>
-<ul>
-<li>The development of the field requires open-source technology</li>
-<li>Open-source software development in cheminformatics is necessary for cheminformatics education.</li>
-<li>Open source and open data enable reproducibility which supports scientific reliability.</li>
-<li>Open-source code lowers the research costs significantly.</li>
-</ul>
-</section>
-<section id="approach" class="level2">
-<h2 class="anchored" data-anchor-id="approach">Approach</h2>
-<p>The authors considered research articles with “open source”-related concepts that were then analyzed using qualitative content analysis and ATLAS.ti 9 software to extract relevant expressions and generate rationales subcategories, which were then classified into main categories.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 15%">
-<col style="width: 41%">
-<col style="width: 43%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Original Expression</th>
-<th style="text-align: center;">Sub-Category</th>
-<th style="text-align: center;">Main Category</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">“Despite these efforts, no general purpose deterministic structure generator has been developed in an open source format so far.” <span class="citation" data-cites="peironcely2012omg">(<a href="#ref-peironcely2012omg" role="doc-biblioref">Peironcely et al. 2012</a>)</span></td>
-<td style="text-align: center;">No available open-source alternative</td>
-<td style="text-align: center;">Develop New Software</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">“The ChemoPy package aims at providing the user with comprehensive implementations of these descriptors in a unified framework to allow easy and transparent computation.” <span class="citation" data-cites="cao2013chemopy">(<a href="#ref-cao2013chemopy" role="doc-biblioref">Cao et al. 2013</a>)</span></td>
-<td style="text-align: center;">Clear workflow</td>
-<td style="text-align: center;">Improve Usability</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="results" class="level2">
-<h2 class="anchored" data-anchor-id="results">Results</h2>
-<p>The analysis produced six main rationale categories for open-source cheminformatics software development. The perspective of the rationale can be either general or specific. Most rationales produce technological outcomes, such as new software, frameworks, interfaces, and processes.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 10%">
-<col style="width: 28%">
-<col style="width: 30%">
-<col style="width: 30%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">#</th>
-<th style="text-align: center;">Rationale</th>
-<th style="text-align: center;">Perspective</th>
-<th style="text-align: center;">Outcome</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">Develop New Software</td>
-<td style="text-align: center;">General/Specific</td>
-<td style="text-align: center;">Technological</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">Update Current Features, Tools, or Processes</td>
-<td style="text-align: center;">Specific</td>
-<td style="text-align: center;">Technological</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">Improve Usability</td>
-<td style="text-align: center;">General</td>
-<td style="text-align: center;">Technological</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">Support Open-source Development and Open Science</td>
-<td style="text-align: center;">General/Specific</td>
-<td style="text-align: center;">Technological/Political</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">Fulfill Chemical Information Needs</td>
-<td style="text-align: center;">Specific</td>
-<td style="text-align: center;">Content-driven</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">6</td>
-<td style="text-align: center;">Support Chemistry Learning and Teaching</td>
-<td style="text-align: center;">General/Specific</td>
-<td style="text-align: center;">Pedagogical</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="take-aways" class="level2">
-<h2 class="anchored" data-anchor-id="take-aways">Take aways</h2>
-<ul>
-<li>The most central challenge hindering the academic development of cheminformatics has been the industrial background.</li>
-<li>Open source development can bridge academic and industrial stakeholders.</li>
-</ul>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
+<hr>
+<p>author: Anagha Aneesh date: 2024-11-20 title-block-banner: ![[bpm_title.webp]] bibliography: ../references.bib ___ # Why I chose this paper - Reconstructing IR/Raman spectra is interesting to me - Applications of ML to electronic structure theory (outside of potential) is cool # Introduction - Machine learning force fields (ML FF) have accelerated the field of molecular simulations – specifically for systems where there is not an established force field - ML FFs are significantly more cost-efficient - Learning molecular properties like dipole moment (IR) and polarizability (Raman) can help in interpreting spectra signals and benchmarking ML accuracy against experiment - Neural network algorithms v.s. kernel algorithms - NN: better performance + lower cost for larger systems - kernel: requires less data + high cost for large systems ## Existing Work on ML Models for Electric Polarizability - Equivariant neural networks, response formalism, Applequists’s dipole interaction model - Two kernel-based methods - align structures in training data and treat tensor components as scalars - requires lots of data - symmetry-adapted Gaussian regression - generalization of scalar kernel ridge regression (KRR) ### Goal of this work - KRR on bond polarizability model (BPM) - molecular polarizability is a sum over bond contributions # Theory ## Bond Polarizability Model - total molecular polarizability, <span class="math inline">\(\alpha\)</span> is the sum of bond polarizabilities <span class="math display">\[
+\alpha = \sum_b{\alpha^b}
+\]</span> - elements of individual bond polarizability tensors <span class="math display">\[
+\alpha_{ij}^{b} = \frac{1}{3}(2\alpha_p^b + \alpha_l^b)\delta_{ij} + (\alpha_l^b + \alpha_p^b)(\hat{R}_i^b\hat{R}_j^b - \frac{1}{3}\delta_{ij})
+\]</span> - assumes bonds are cylindrically symmetric and typically assumes total polarizability only depends on bond length ## ML Model - Separate polarizability tensor into isotropic and anisotropic components so the ML task is to infer these <span class="math display">\[
+\alpha = \alpha_{\text{iso}}\bf{1}+\beta
+\]</span> - Rewrite elements of tensor in terms of components <span class="math display">\[
+\alpha_{ij}^{b} = \alpha_{\text{iso}}^b\delta_{ij} + \beta^b(\hat{R}_i^b\hat{R}_j^b - \frac{1}{3}\delta_{ij})
+\]</span> - KRR used to evaluate isotropic component, summed over bonds instead of atoms <span class="math display">\[
+\alpha_{\text{iso}} = \sum_b{\alpha_{\text{iso}}^b} = \sum_n{\sum{K(\textbf{q}^b},\textbf{q}^{b'})w_n}
+\]</span> - Using a Gaussian kernel <span class="math display">\[
+K(\textbf{q}^b,\textbf{q}^{b'}) = \text{exp}(-\gamma||\textbf{q}^b-\textbf{q}^{b'}||^2)
+\]</span> - The same can be done for anisotropic component <span class="math display">\[
+\beta_{ij} = \sum_b{\beta^bQ_{ij}^b} = \sum_n{\sum_{b,b'}{K(\textbf{q}^b},\textbf{q}^{b'})Q_{ij}^bv_n}
+\]</span> - loss function <span class="math display">\[
+\mathcal{L} = \frac{1}{2}\sum_{i,j}{||\beta_{ij} - \textbf{K}_{ij}\textbf{v}||^2}
+\]</span> ## Raman Spectra - Calculating the anharmonic IR and Raman spectra <span class="math display">\[
+I_{\text{iso}}(\omega) \propto v(\omega) \int{dt \ e^{i\omega t}\langle\dot{\alpha}_{\text{iso}}(\tau)\dot{\alpha}_{\text{iso}}(t-\tau)}\rangle_\tau
+\]</span> <span class="math display">\[
+I_{\text{aniso}}(\omega) \propto v(\omega) \int{dt \ e^{i\omega t}\langle Tr[\dot{\beta}_{\text{iso}}(\tau)\dot{\beta}_{\text{iso}}(t-\tau)}]\rangle_\tau
+\]</span> # Biphenyl</p>
+<p>![[bpm_fig1.webp]] # Raman spectra evaluation ![[bpm_fig2.webp]] # Malonaldehyde - keto and enol forms— author: Martiño Ríos-García date: 2024-11-13 title-block-banner: core_bench_papers/ai_agents_blog_pic.jpg bibliography: ../references.bib</p>
+<hr>
+<p>![[bpm_fig3.webp]] # Future Directions - Deep neural network implementation of BPM - Consider all bonds within a cutoff region</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-cao2013chemopy" class="csl-entry" role="listitem">
-Cao, Dong-Sheng, Qing-Song Xu, Qian-Nan Hu, and Yi-Zeng Liang. 2013. <span>“ChemoPy: Freely Available Python Package for Computational Biology and Chemoinformatics.”</span> <em>Bioinformatics</em> 29 (8): 1092–94.
-</div>
-<div id="ref-chen2006chemoinformatics" class="csl-entry" role="listitem">
-Chen, William Lingran. 2006. <span>“Chemoinformatics: Past, Present, and Future.”</span> <em>Journal of Chemical Information and Modeling</em> 46 (6): 2230–55.
-</div>
 <div id="ref-https://doi.org/10.48550/arxiv.2410.11527" class="csl-entry" role="listitem">
 Guo, Jeff, and Philippe Schwaller. 2024. <span>“It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.”</span> arXiv. <a href="https://doi.org/10.48550/ARXIV.2410.11527">https://doi.org/10.48550/ARXIV.2410.11527</a>.
-</div>
-<div id="ref-king1946asymmetric" class="csl-entry" role="listitem">
-King, Gilbert W, Paul C Cross, and George B Thomas. 1946. <span>“The Asymmetric Rotor III. Punched-Card Methods of Constructing Band Spectra.”</span> <em>The Journal of Chemical Physics</em> 14 (1): 35–42.
 </div>
 <div id="ref-landrum_lwreg_2024" class="csl-entry" role="listitem">
 Landrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. <span>“Lwreg: <span>A</span> <span>Lightweight</span> <span>System</span> for <span>Chemical</span> <span>Registration</span> and <span>Data</span> <span>Storage</span>.”</span> <em>Journal of Chemical Information and Modeling</em> 64 (16): 6247–52. <a href="https://doi.org/10.1021/acs.jcim.4c01133">https://doi.org/10.1021/acs.jcim.4c01133</a>.
@@ -460,20 +353,7 @@ Landrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina
 <div id="ref-orsi2024one" class="csl-entry" role="listitem">
 Orsi, Markus, and Jean-Louis Reymond. 2024. <span>“One Chiral Fingerprint to Find Them All.”</span> <em>Journal of Cheminformatics</em> 16 (1): 53.
 </div>
-<div id="ref-peironcely2012omg" class="csl-entry" role="listitem">
-Peironcely, Julio E, Miguel Rojas-Chertó, Davide Fichera, Theo Reijmers, Leon Coulier, Jean-Loup Faulon, and Thomas Hankemeier. 2012. <span>“OMG: Open Molecule Generator.”</span> <em>Journal of Cheminformatics</em> 4: 1–13.
 </div>
-<div id="ref-pernaa2023open" class="csl-entry" role="listitem">
-Pernaa, Johannes, Aleksi Takala, Veysel Ciftci, José Hernández-Ramos, Lizethly Cáceres-Jensen, and Jorge Rodrı́guez-Becerra. 2023. <span>“Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales.”</span> <em>Applied Sciences</em> 13 (17): 9516.
-</div>
-<div id="ref-ray1957finding" class="csl-entry" role="listitem">
-Ray, Louis C, and Russell A Kirsch. 1957. <span>“Finding Chemical Records by Digital Computers.”</span> <em>Science</em> 126 (3278): 814–19.
-</div>
-<div id="ref-willett2011chemoinformatics" class="csl-entry" role="listitem">
-Willett, Peter. 2011. <span>“Chemoinformatics: A History.”</span> <em>Wiley Interdisciplinary Reviews: Computational Molecular Science</em> 1 (1): 46–56.
-</div>
-</div>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -898,14 +778,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html" class="pagination-link" aria-label="Tandem mass spectrum prediction for small molecules using graph transformers">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Tandem mass spectrum prediction for small molecules using graph transformers</span></span>
+      <a href="../papers/core_bench.html" class="pagination-link" aria-label="CORE-Bench: Fostering the Credibility of Published Research Through a Computational Reproducibility Agent Benchmark">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">CORE-Bench: Fostering the Credibility of Published Research Through a Computational Reproducibility Agent Benchmark</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../papers/universal_chiral_fp_2024.html" class="pagination-link" aria-label="MAP4C: One chiral fingerprint to find them all [@orsi2024one]">
-        <span class="nav-page-text"><span class="chapter-title">MAP4C: One chiral fingerprint to find them all <span class="citation" data-cites="orsi2024one">(</span></span></span></a><a href="#ref-orsi2024one" role="doc-biblioref">Orsi and Reymond 2024</a>) <i class="bi bi-arrow-right-short"></i>
-      
   </div>
 </nav>
 </div> <!-- /content -->
