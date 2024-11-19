@@ -31,6 +31,7 @@ book:
         - papers/lwreg_2024.md
         - papers/tango.md
         - papers/core_bench.md
+        - papers/bpm_ml.md
 
 bibliography: references.bib
 # csl: nature.csl
