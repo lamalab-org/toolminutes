@@ -5,17 +5,17 @@ title-block-banner: ![[bpm_title.webp]]
 bibliography: ../references.bib
 ___
 # A Bond-Based Machine Learning Model for Molecular Polarizabilities and A Priori Raman Spectra
-# Why I chose this paper
+## Why I chose this paper
 - Reconstructing IR/Raman spectra is interesting to me
 - Applications of ML to electronic structure theory (outside of potential) is cool
-# Introduction
+## Introduction
 - Machine learning force fields (ML FF) have accelerated the field of molecular simulations – specifically for systems where there is not an established force field
 - ML FFs are significantly more cost-efficient
 - Learning molecular properties like dipole moment (IR) and polarizability (Raman) can help in interpreting spectra signals and benchmarking ML accuracy against experiment
 - Neural network algorithms v.s. kernel algorithms
 	- NN: better performance + lower cost for larger systems
 	- kernel: requires less data + high cost for large systems
-## Existing Work on ML Models for Electric Polarizability
+### Existing Work on ML Models for Electric Polarizability
 - Equivariant neural networks, response formalism, Applequists's dipole interaction model
 - Two kernel-based methods
 	- align structures in training data and treat tensor components as scalars
@@ -25,8 +25,8 @@ ___
 ### Goal of this work
 - KRR on bond polarizability model (BPM)
 	- molecular polarizability is a sum over bond contributions
-# Theory
-## Bond Polarizability Model
+## Theory
+### Bond Polarizability Model
 - total molecular polarizability, $\alpha$ is the sum of bond polarizabilities
 $$
 \alpha = \sum_b{\alpha^b}
@@ -36,7 +36,7 @@ $$
 \alpha_{ij}^{b} = \frac{1}{3}(2\alpha_p^b + \alpha_l^b)\delta_{ij} + (\alpha_l^b + \alpha_p^b)(\hat{R}_i^b\hat{R}_j^b - \frac{1}{3}\delta_{ij})
 $$
 - assumes bonds are cylindrically symmetric and typically assumes total polarizability only depends on bond length
-## ML Model
+### ML Model
 - Separate polarizability tensor into isotropic and anisotropic components so the ML task is to infer these
 $$
 \alpha = \alpha_{\text{iso}}\bf{1}+\beta
@@ -61,7 +61,7 @@ $$
 $$
 \mathcal{L} = \frac{1}{2}\sum_{i,j}{||\beta_{ij} - \textbf{K}_{ij}\textbf{v}||^2}
 $$
-## Raman Spectra
+### Raman Spectra
 - Calculating the anharmonic IR and Raman spectra
 $$
 I_{\text{iso}}(\omega) \propto v(\omega) \int{dt \ e^{i\omega t}\langle\dot{\alpha}_{\text{iso}}(\tau)\dot{\alpha}_{\text{iso}}(t-\tau)}\rangle_\tau
@@ -69,19 +69,15 @@ $$
 $$
 I_{\text{aniso}}(\omega) \propto v(\omega) \int{dt \ e^{i\omega t}\langle Tr[\dot{\beta}_{\text{iso}}(\tau)\dot{\beta}_{\text{iso}}(t-\tau)}]\rangle_\tau
 $$
-# Biphenyl
+## Biphenyl
 
-![[bpm_fig1.webp]]
-# Raman spectra evaluation
-![[bpm_fig2.webp]]
-# Malonaldehyde
-- keto and enol forms---
-author: Martiño Ríos-García
-date: 2024-11-13
-title-block-banner: core_bench_papers/ai_agents_blog_pic.jpg 
-bibliography: ../references.bib
+![biphenyl](./bpm_ml/bpm_fig1.webp)
+## Raman spectra evaluation
+![raman_spec](./bpm_ml/bpm_fig2.webp)
+## Malonaldehyde
+- keto and enol forms
 ---
-![[bpm_fig3.webp]]
-# Future Directions
+![malonaldehyde](./bpm_ml/bpm_fig3.webp)
+## Future Directions
 - Deep neural network implementation of BPM
 - Consider all bonds within a cutoff region
