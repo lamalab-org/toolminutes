@@ -131,7 +131,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/llm4mat.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/bpm_ml.html"><span class="chapter-title">A Bond-Based Machine Learning Model for Molecular Polarizabilities and A Priori Raman Spectra</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/llm4mat.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/bpm_L.html"><span class="chapter-title">A Bond-Based Machine Learning Model for Molecular Polarizabilities and A Priori Raman Spectra</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -283,7 +283,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/bpm_ml.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">A Bond-Based Machine Learning Model for Molecular Polarizabilities and A Priori Raman Spectra</span></a>
+  <a href="../papers/bpm_L.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">A Bond-Based Machine Learning Model for Molecular Polarizabilities and A Priori Raman Spectra</span></a>
   </div>
 </li>
       </ul>
@@ -299,13 +299,28 @@ window.Quarto = {
    
   <ul>
   <li><a href="#why-i-chose-this-paper" id="toc-why-i-chose-this-paper" class="nav-link active" data-scroll-target="#why-i-chose-this-paper">Why I chose this paper</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#existing-work-on-ml-models-for-electric-polarizability" id="toc-existing-work-on-ml-models-for-electric-polarizability" class="nav-link" data-scroll-target="#existing-work-on-ml-models-for-electric-polarizability">Existing Work on ML Models for Electric Polarizability</a>
+  <ul class="collapse">
+  <li><a href="#goal-of-this-work" id="toc-goal-of-this-work" class="nav-link" data-scroll-target="#goal-of-this-work">Goal of this work</a></li>
+  </ul></li>
+  <li><a href="#theory" id="toc-theory" class="nav-link" data-scroll-target="#theory">Theory</a>
+  <ul class="collapse">
+  <li><a href="#bond-polarizability-model" id="toc-bond-polarizability-model" class="nav-link" data-scroll-target="#bond-polarizability-model">Bond Polarizability Model</a></li>
+  </ul></li>
+  <li><a href="#ml-model" id="toc-ml-model" class="nav-link" data-scroll-target="#ml-model">ML Model</a></li>
+  <li><a href="#raman-spectra" id="toc-raman-spectra" class="nav-link" data-scroll-target="#raman-spectra">Raman Spectra</a></li>
+  <li><a href="#biphenyl" id="toc-biphenyl" class="nav-link" data-scroll-target="#biphenyl">Biphenyl</a></li>
+  <li><a href="#raman-spectra-evaluation" id="toc-raman-spectra-evaluation" class="nav-link" data-scroll-target="#raman-spectra-evaluation">Raman spectra evaluation</a></li>
+  <li><a href="#malonaldehyde" id="toc-malonaldehyde" class="nav-link" data-scroll-target="#malonaldehyde">Malonaldehyde</a></li>
+  <li><a href="#future-directions" id="toc-future-directions" class="nav-link" data-scroll-target="#future-directions">Future Directions</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/llm4mat.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/bpm_ml.html"><span class="chapter-title">A Bond-Based Machine Learning Model for Molecular Polarizabilities and A Priori Raman Spectra</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/llm4mat.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/bpm_L.html"><span class="chapter-title">A Bond-Based Machine Learning Model for Molecular Polarizabilities and A Priori Raman Spectra</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-title">A Bond-Based Machine Learning Model for Molecular Polarizabilities and A Priori Raman Spectra</span></h1>
 </div>
@@ -336,19 +351,29 @@ window.Quarto = {
 </header>
 
 
-<section id="why-i-chose-this-paper" class="level1">
-<h1>Why I chose this paper</h1>
+<section id="why-i-chose-this-paper" class="level2">
+<h2 class="anchored" data-anchor-id="why-i-chose-this-paper">Why I chose this paper</h2>
 <ul>
 <li>Reconstructing IR/Raman spectra is interesting to me</li>
-<li>Applications of ML to electronic structure theory (outside of potential) is cool # Introduction</li>
+<li>Applications of ML to electronic structure theory (outside of potential) is cool</li>
+</ul>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<ul>
 <li>Machine learning force fields (ML FF) have accelerated the field of molecular simulations – specifically for systems where there is not an established force field</li>
 <li>ML FFs are significantly more cost-efficient</li>
 <li>Learning molecular properties like dipole moment (IR) and polarizability (Raman) can help in interpreting spectra signals and benchmarking ML accuracy against experiment</li>
 <li>Neural network algorithms v.s. kernel algorithms
 <ul>
 <li>NN: better performance + lower cost for larger systems</li>
-<li>kernel: requires less data + high cost for large systems ## Existing Work on ML Models for Electric Polarizability</li>
+<li>kernel: requires less data + high cost for large systems</li>
 </ul></li>
+</ul>
+</section>
+<section id="existing-work-on-ml-models-for-electric-polarizability" class="level2">
+<h2 class="anchored" data-anchor-id="existing-work-on-ml-models-for-electric-polarizability">Existing Work on ML Models for Electric Polarizability</h2>
+<ul>
 <li>Equivariant neural networks, response formalism, Applequists’s dipole interaction model</li>
 <li>Two kernel-based methods
 <ul>
@@ -358,45 +383,127 @@ window.Quarto = {
 </ul></li>
 <li>symmetry-adapted Gaussian regression
 <ul>
-<li>generalization of scalar kernel ridge regression (KRR) ### Goal of this work</li>
+<li>generalization of scalar kernel ridge regression (KRR)</li>
 </ul></li>
 </ul></li>
+</ul>
+<section id="goal-of-this-work" class="level3">
+<h3 class="anchored" data-anchor-id="goal-of-this-work">Goal of this work</h3>
+<ul>
 <li>KRR on bond polarizability model (BPM)
 <ul>
-<li>molecular polarizability is a sum over bond contributions # Theory ## Bond Polarizability Model</li>
+<li>molecular polarizability is a sum over bond contributions</li>
 </ul></li>
-<li>total molecular polarizability, <span class="math inline">\(\alpha\)</span> is the sum of bond polarizabilities <span class="math display">\[
+</ul>
+</section>
+</section>
+<section id="theory" class="level2">
+<h2 class="anchored" data-anchor-id="theory">Theory</h2>
+<section id="bond-polarizability-model" class="level3">
+<h3 class="anchored" data-anchor-id="bond-polarizability-model">Bond Polarizability Model</h3>
+<ul>
+<li>total molecular polarizability, <span class="math inline">\(\alpha\)</span> is the sum of bond polarizabilities</li>
+</ul>
+<p><span class="math display">\[
 \alpha = \sum_b{\alpha^b}
-\]</span></li>
-<li>elements of individual bond polarizability tensors <span class="math display">\[
+\]</span></p>
+<ul>
+<li>elements of individual bond polarizability tensors</li>
+</ul>
+<p><span class="math display">\[
 \alpha_{ij}^{b} = \frac{1}{3}(2\alpha_p^b + \alpha_l^b)\delta_{ij} + (\alpha_l^b + \alpha_p^b)(\hat{R}_i^b\hat{R}_j^b - \frac{1}{3}\delta_{ij})
-\]</span></li>
-<li>assumes bonds are cylindrically symmetric and typically assumes total polarizability only depends on bond length ## ML Model</li>
-<li>Separate polarizability tensor into isotropic and anisotropic components so the ML task is to infer these <span class="math display">\[
+\]</span></p>
+<ul>
+<li>assumes bonds are cylindrically symmetric and typically assumes total polarizability only depends on bond length</li>
+</ul>
+</section>
+</section>
+<section id="ml-model" class="level2">
+<h2 class="anchored" data-anchor-id="ml-model">ML Model</h2>
+<ul>
+<li>Separate polarizability tensor into isotropic and anisotropic components so the ML task is to infer these</li>
+</ul>
+<p><span class="math display">\[
 \alpha = \alpha_{\text{iso}}\bf{1}+\beta
-\]</span></li>
-<li>Rewrite elements of tensor in terms of components <span class="math display">\[
+\]</span></p>
+<ul>
+<li>Rewrite elements of tensor in terms of components</li>
+</ul>
+<p><span class="math display">\[
 \alpha_{ij}^{b} = \alpha_{\text{iso}}^b\delta_{ij} + \beta^b(\hat{R}_i^b\hat{R}_j^b - \frac{1}{3}\delta_{ij})
-\]</span></li>
-<li>KRR used to evaluate isotropic component, summed over bonds instead of atoms <span class="math display">\[
+\]</span></p>
+<ul>
+<li>KRR used to evaluate isotropic component, summed over bonds instead of atoms</li>
+</ul>
+<p><span class="math display">\[
 \alpha_{\text{iso}} = \sum_b{\alpha_{\text{iso}}^b} = \sum_n{\sum{K(\textbf{q}^b},\textbf{q}^{b'})w_n}
-\]</span></li>
-<li>Using a Gaussian kernel <span class="math display">\[
+\]</span></p>
+<ul>
+<li>Using a Gaussian kernel</li>
+</ul>
+<p><span class="math display">\[
 K(\textbf{q}^b,\textbf{q}^{b'}) = \text{exp}(-\gamma||\textbf{q}^b-\textbf{q}^{b'}||^2)
-\]</span></li>
-<li>The same can be done for anisotropic component <span class="math display">\[
+\]</span></p>
+<ul>
+<li>The same can be done for anisotropic component</li>
+</ul>
+<p><span class="math display">\[
 \beta_{ij} = \sum_b{\beta^bQ_{ij}^b} = \sum_n{\sum_{b,b'}{K(\textbf{q}^b},\textbf{q}^{b'})Q_{ij}^bv_n}
-\]</span></li>
-<li>loss function <span class="math display">\[
+\]</span></p>
+<ul>
+<li>loss function</li>
+</ul>
+<p><span class="math display">\[
 \mathcal{L} = \frac{1}{2}\sum_{i,j}{||\beta_{ij} - \textbf{K}_{ij}\textbf{v}||^2}
-\]</span> ## Raman Spectra</li>
-<li>Calculating the anharmonic IR and Raman spectra <span class="math display">\[
+\]</span></p>
+</section>
+<section id="raman-spectra" class="level2">
+<h2 class="anchored" data-anchor-id="raman-spectra">Raman Spectra</h2>
+<ul>
+<li>Calculating the anharmonic IR and Raman spectra</li>
+</ul>
+<p><span class="math display">\[
 I_{\text{iso}}(\omega) \propto v(\omega) \int{dt \ e^{i\omega t}\langle\dot{\alpha}_{\text{iso}}(\tau)\dot{\alpha}_{\text{iso}}(t-\tau)}\rangle_\tau
 \]</span> <span class="math display">\[
 I_{\text{aniso}}(\omega) \propto v(\omega) \int{dt \ e^{i\omega t}\langle Tr[\dot{\beta}_{\text{iso}}(\tau)\dot{\beta}_{\text{iso}}(t-\tau)}]\rangle_\tau
-\]</span> # Biphenyl</li>
+\]</span></p>
+</section>
+<section id="biphenyl" class="level2">
+<h2 class="anchored" data-anchor-id="biphenyl">Biphenyl</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./bpm_ml_figures/bpm_fig1.webp" class="img-fluid figure-img"></p>
+<figcaption>biphenyl</figcaption>
+</figure>
+</div>
+</section>
+<section id="raman-spectra-evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="raman-spectra-evaluation">Raman spectra evaluation</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./bpm_ml_figures/bpm_fig2.webp" class="img-fluid figure-img"></p>
+<figcaption>spectra</figcaption>
+</figure>
+</div>
+</section>
+<section id="malonaldehyde" class="level2">
+<h2 class="anchored" data-anchor-id="malonaldehyde">Malonaldehyde</h2>
+<ul>
+<li>keto and enol forms</li>
 </ul>
-<p><img src="./bpm_ml_figures/bpm_fig1.webp" class="img-fluid" alt="biphenyl"> # Raman spectra evaluation <img src="./bpm_ml_figures/bpm_fig2.webp" class="img-fluid" alt="spectra"> # Malonaldehyde - keto and enol forms <img src="./bpm_ml_figures/bpm_fig3.webp" class="img-fluid" alt="malonaldehyde"> # Future Directions - Deep neural network implementation of BPM - Consider all bonds within a cutoff region</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./bpm_ml_figures/bpm_fig3.webp" class="img-fluid figure-img"></p>
+<figcaption>malonaldehyde</figcaption>
+</figure>
+</div>
+</section>
+<section id="future-directions" class="level2">
+<h2 class="anchored" data-anchor-id="future-directions">Future Directions</h2>
+<ul>
+<li>Deep neural network implementation of BPM</li>
+<li>Consider all bonds within a cutoff region</li>
+</ul>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
