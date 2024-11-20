@@ -114,6 +114,7 @@ $$
 - keto and enol forms
 
 ![malonaldehyde](./bpm_ml_figures/bpm_fig3.webp)
+![malonaldehyde_spectra](./bpm_ml_figures/bpm_fig4.webp)
 
 ## Future Directions
 
