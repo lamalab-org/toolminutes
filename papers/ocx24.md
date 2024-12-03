@@ -78,7 +78,7 @@ bibliography: ../references.bib
 - Intermediates - OH, CO, CHO, C, COCOH, H
 - 19,406 Materials
 - 685 million structural relaxations and ∼20 million DFT single points
-- Ab-initio features for XRD matched experimental structures
+- Ab initio features for XRD matched experimental structures
 
 
 
