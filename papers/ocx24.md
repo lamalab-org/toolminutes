@@ -26,9 +26,9 @@ bibliography: ../references.bib
 
 ## How HER & CO2RR
 
-- Catalyst can drive chemical reactions effectively.
-    - Catalyst reduced the activation energy required for a reaction.
-    - Molecules adsorb on catalyst surface and they assist in reactions.
+- Catalysts can drive chemical reactions effectively.
+    - Catalysts reduce the activation energy required for a reaction.
+    - Molecules adsorb on the catalyst surface, and they assist in reactions.
 
 ![Activation Barrier](./ocx24/activation.png)
 
