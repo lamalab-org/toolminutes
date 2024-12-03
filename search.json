@@ -1,5 +1,136 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Lamalab Tool and Paper Notes",
+    "section": "",
+    "text": "In our group seminars, we have a tradition of dedicating a few minutes to showcase tools/software/tricks/methods that we find useful. This repository is a collection of these tool minutes.\n\n\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Tool and paper minutes</span>"
+    ]
+  },
+  {
+    "objectID": "tools/hydra.html",
+    "href": "tools/hydra.html",
+    "title": "Hydra",
+    "section": "",
+    "text": "Getting started\nHydra is an open-source Python framework that simplifies the development of research and other complex applications. The key feature is the ability to dynamically create a hierarchical configuration by composition and override it through config files and the command line. The name Hydra comes from its ability to run multiple similar jobs - much like a Hydra with multiple heads.",
+    "crumbs": [
+      "Tools",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Hydra</span>"
+    ]
+  },
+  {
+    "objectID": "tools/hydra.html#getting-started",
+    "href": "tools/hydra.html#getting-started",
+    "title": "Hydra",
+    "section": "",
+    "text": "Key features:\n\nHierarchical configuration composable from multiple sources\nConfiguration can be specified or overridden from the command line\nDynamic command line tab completion\nRun your application locally or launch it to run remotely\nRun multiple jobs with different arguments with a single command\n\n\n\nInstallation\npip install hydra-core --upgrade\n\n\nBasic example\nConfig, e.g., in conf/config.yaml:\ndb:\ndriver: mysql\nuser: omry\npass: secret\n\n\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.",
+    "crumbs": [
+      "Tools",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Hydra</span>"
+    ]
+  },
+  {
+    "objectID": "tools/ip_rotator.html",
+    "href": "tools/ip_rotator.html",
+    "title": "IP Rotator",
+    "section": "",
+    "text": "GitHub repository\niq-requests-rotator",
+    "crumbs": [
+      "Tools",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>IP Rotator</span>"
+    ]
+  },
+  {
+    "objectID": "tools/ip_rotator.html#github-repository",
+    "href": "tools/ip_rotator.html#github-repository",
+    "title": "IP Rotator",
+    "section": "",
+    "text": "Example usage:\nimport requests\nfrom requests_ip_rotator import ApiGatewaywith ApiGateway(\"https://site.com\") as g:\n    session = requests.Session()\n    session.mount(\"https://site.com\", g)    response = session.get(\"https://site.com/index.php\")\n    print(response.status_code)\n\n\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.",
+    "crumbs": [
+      "Tools",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>IP Rotator</span>"
+    ]
+  },
+  {
+    "objectID": "tools/polars.html",
+    "href": "tools/polars.html",
+    "title": "Polars",
+    "section": "",
+    "text": "An alternative to pandas\nThe advantages of polars can be directly seen in the image above. It is clear from the graph that Polars perform faster than Pandas for most operations. This is particularly true for the GroupBy operation, where Polars is nearly 20 times faster than Pandas. The Filter operation is also significantly faster in Polars, while Create operations are somewhat faster in Pandas. Overall, Polars seems to be a more performant library for data manipulation, particularly for large datasets.",
+    "crumbs": [
+      "Tools",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Polars</span>"
+    ]
+  },
+  {
+    "objectID": "tools/polars.html#syntax-example",
+    "href": "tools/polars.html#syntax-example",
+    "title": "Polars",
+    "section": "Syntax example",
+    "text": "Syntax example\nimport polars as pl\n\nq = (\n    pl.scan_csv(\"docs/data/iris.csv\")\n    .filter(pl.col(\"sepal_length\") &gt; 5)\n    .group_by(\"species\")\n    .agg(pl.all().sum())\n)\n\ndf = q.collect()\n\n\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.",
+    "crumbs": [
+      "Tools",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Polars</span>"
+    ]
+  },
+  {
+    "objectID": "tools/thunder_client.html",
+    "href": "tools/thunder_client.html",
+    "title": "Thunder Client",
+    "section": "",
+    "text": "Installation\nThunder Client is a lightweight alternative to Postman that can be used directly from VSCode.\nYou can use it to test your API endpoints.\nFor an example, see this video.\nInstall the Thunder client extension from the marketplace.",
+    "crumbs": [
+      "Tools",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Thunder Client</span>"
+    ]
+  },
+  {
+    "objectID": "tools/thunder_client.html#installation",
+    "href": "tools/thunder_client.html#installation",
+    "title": "Thunder Client",
+    "section": "",
+    "text": "Guo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.",
+    "crumbs": [
+      "Tools",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Thunder Client</span>"
+    ]
+  },
+  {
+    "objectID": "tools/tmux.html",
+    "href": "tools/tmux.html",
+    "title": "tmux",
+    "section": "",
+    "text": "Installation\ntmux is a terminal multiplexer. It lets you switch easily between several programs in one terminal, detach them (they keep running in the background) and reattach them to a different terminal. And do a lot more.\nor on Mac",
+    "crumbs": [
+      "Tools",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>tmux</span>"
+    ]
+  },
+  {
+    "objectID": "tools/tmux.html#installation",
+    "href": "tools/tmux.html#installation",
+    "title": "tmux",
+    "section": "",
+    "text": "sudo apt install tmux\n\nbrew install tmux",
+    "crumbs": [
+      "Tools",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>tmux</span>"
+    ]
+  },
+  {
+    "objectID": "tools/tmux.html#usage",
+    "href": "tools/tmux.html#usage",
+    "title": "tmux",
+    "section": "Usage",
+    "text": "Usage\nLet’s assume you are via ssh on a remote server and you want to run a long running process. You can use tmux to run the process in a session and then detach from it. You can then log out and log back in later to check on the process. Your process will still be running, even if your ssh session is closed.\n\nOn the remote server\ntmux new -s myprocess\nThen run your process. When you are done, detach from the session by pressing Ctrl+b and then d.\n\n\nOn the remote server later\ntmux ls\nThis will list all the sessions. You can then reattach to the session you want by typing:\ntmux attach -t myprocess\n\n\nPanes\nYou can split your terminal into panes. This is useful if you want to run multiple processes in the same terminal. You can split the terminal vertically by pressing Ctrl+b and then \" or horizontally by pressing Ctrl+b and then %.\nTo move panes around, you can use Ctrl+b and then o to cycle through the panes.\n\n\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.",
+    "crumbs": [
+      "Tools",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>tmux</span>"
+    ]
+  },
+  {
     "objectID": "tools/trimean.html",
     "href": "tools/trimean.html",
     "title": "Robust statistics and Trimean",
@@ -19,6 +150,116 @@
     "crumbs": [
       "Tools",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Easy fast `.apply` for pandas</span>"
+    ]
+  },
+  {
+    "objectID": "tools/bfg.html",
+    "href": "tools/bfg.html",
+    "title": "BFG Repo-Cleaner",
+    "section": "",
+    "text": "If you did not take with your .gitignore or just used git add . you might have by accident committed large files. This might lead to an error like\nremote: error: See https://gh.io/lfs for more information.\nremote: error: File reports/gemini-pro/.langchain.db is 123.01 MB; this exceeds GitHub's file size limit of 100.00 MB\nremote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.\nTo github.com:lamalab-org/chem-bench.git\n ! [remote rejected]     kjappelbaum/issue258 -&gt; kjappelbaum/issue258 (pre-receive hook declined)\nerror: failed to push some refs to 'github.com:lamalab-org/chem-bench.git'\nTo fix this, you need to remove the large files. A convenient tool for doing this is BFG.\nOnce you download the file you can run it using something like\njava -jar ~/Downloads/bfg-1.14.0.jar --strip-blobs-bigger-than 100M --no-blob-protection\nto remove large files.\nNote that this here uses --no-blob-protection as BFG defaults to not touching the last commit.\nAfter the BFG run, it will prompt you to run something like\ngit reflog expire --expire=now --all && git gc --prune=now --aggressive\n\n\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.",
+    "crumbs": [
+      "Tools",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>BFG Repo-Cleaner</span>"
+    ]
+  },
+  {
+    "objectID": "tools/showyourwork.html",
+    "href": "tools/showyourwork.html",
+    "title": "showyourwork",
+    "section": "",
+    "text": "showyourwork : https://github.com/showyourwork is a framework for building reproducible papers. The package works on a combination of Tex and Python code, where you can on the fly modify your plots.\nThe pre-requisites are: 1. define a conda environment with the packages are that necessary for plotting 2. use the \\script{}, \\variable{} and other commands to link your figures/tables to a Python script. 3. compile the paper\n\n\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.",
+    "crumbs": [
+      "Tools",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>showyourwork</span>"
+    ]
+  },
+  {
+    "objectID": "papers/llm4mat.html",
+    "href": "papers/llm4mat.html",
+    "title": "Leveraging language representation for materials exploration and discovery",
+    "section": "",
+    "text": "Why discussing this paper?\nI chose Jiaxing et al.’s paper for our journal club because",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
+    ]
+  },
+  {
+    "objectID": "papers/llm4mat.html#why-discussing-this-paper",
+    "href": "papers/llm4mat.html#why-discussing-this-paper",
+    "title": "Leveraging language representation for materials exploration and discovery",
+    "section": "",
+    "text": "LLMs successfully applied in other domain, interesting to see what can be done in material science\nOne among the few paper where LLMs are applied in materials science for actual material discovery.\nNice embedding figures",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
+    ]
+  },
+  {
+    "objectID": "papers/llm4mat.html#context",
+    "href": "papers/llm4mat.html#context",
+    "title": "Leveraging language representation for materials exploration and discovery",
+    "section": "Context",
+    "text": "Context\n\nMaterial space is not completely explored. And there is possibility of finding better materials in many applications.\nML recommender systems for exploring material spaces are already there but not many using “LLMs”\nLLM framework for recommending prototype crystal structures and later validate through first-principles calculations and experiments\nWhy LLMs? - Universal task agnostic representations",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
+    ]
+  },
+  {
+    "objectID": "papers/llm4mat.html#some-previous-llm-models",
+    "href": "papers/llm4mat.html#some-previous-llm-models",
+    "title": "Leveraging language representation for materials exploration and discovery",
+    "section": "Some Previous LLM Models",
+    "text": "Some Previous LLM Models\n\nMatSciBERT\nMatsciBERT was pretrained on whole sections of more than 1 million materials science articles with masked language modelling.\n\n\nMatBERT\nMatBERT was trained by sampling 50 million paragraphs from 2 million articles masked language modelling.\n\n\nWord2Vec\nMat2Vec was trained similarly as Word2vec training through skip-gram with negative sampling. Each word is embedded into a 200-dimensional vector.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
+    ]
+  },
+  {
+    "objectID": "papers/llm4mat.html#problem-setting",
+    "href": "papers/llm4mat.html#problem-setting",
+    "title": "Leveraging language representation for materials exploration and discovery",
+    "section": "Problem setting",
+    "text": "Problem setting\n\nHand-crafted features and specialized structural models have limitations in providing universal and task-agnostic representations within the vast material space.\nAdditional contexts are also very useful. for eg: (doping, temperature, synthesis conditions)\nIn materials exploration and discovery context:\n\n\neffective representations of both chemical and structural complexity, (ii) successful recall of relevant candidates to property of interest\naccurate candidate ranking based on multiple desired functional properties.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
+    ]
+  },
+  {
+    "objectID": "papers/llm4mat.html#approach",
+    "href": "papers/llm4mat.html#approach",
+    "title": "Leveraging language representation for materials exploration and discovery",
+    "section": "Approach",
+    "text": "Approach\nThe authors propose a two-step funnel based approach\n\n\nRECALL - Given a material finding similar material from a set of materials\n\n\nRANKING - Based on functional properties rank the recalled materials\n\n\n\n\n\nFunnel based recommender framework\n\n\n\nRecalling similar materials\nThe authors use Robocrystallographer representation to describe the material. Encode the material description using pretrained MatBERT (compared other encoders as well), and use this as a feature vector\n\nUse a Query material (a well studied known material with property of interest).\nEncode all material in database and Query material (Robocrystallographer + MatBERT)\nLook at cosine similarity of feature vectors (material in database with Query material)\n\n\n\n\nRecall material based on cosine similarity\n\n\n\n\nRanking potential materials\nBased on multiple properties the recalled materials are ranked.\nUsually for any application, and in this paper, for thermoelectric material as well many properties are important hence a ranker based on performance on different functional aspects.\n\nAuthor train a Multitask Mixture of Expert Model (MMoEM), using multitask learning to rank the materials.\n\n\n\n\nRank material based on cosine similarity",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
+    ]
+  },
+  {
+    "objectID": "papers/llm4mat.html#results",
+    "href": "papers/llm4mat.html#results",
+    "title": "Leveraging language representation for materials exploration and discovery",
+    "section": "Results",
+    "text": "Results\nThe authors perform ablations to understand the importance of the different components of their model. While there are some differences, the differences are not drastic.\n\nAblation on Representation suitable for RECALL step\nTwo set of models 1. Uses only composition of materials Baseline: Mat2Vec\nA(Composition)–&gt; B(MatBERT)\n\nUses Both composition and structure Baseline: CrystalNN Fingerprint\n\nA(Material)–&gt; B(RoboCrystallographer)–&gt; C(MatBERT)\n\nEmbeddings from composition only and Composition + Structure\nStructure level representations exhibit more distinct separation (well-defined domains) by material groups\n\n\n\nUMAP of embeddings from different representations\n\n\nFor further evaluation, authors evaluated material embedding performance on downstream property prediction tasks.\nThe task models were multi-layer perceptrons (MLPs) with meanabsolute-error (MAE) training loss.\nThe tasks consisted of band gap, energy per atom, bulk modulus, shear modulus, Debye temperature, and coefficient of thermal expansion from AFLOW dataset.\n\n\n\nProperty prediction using embeddings from different representations\n\n\n\n\n\nFinding similar materials\nStarting with known materials with favorable properties for TEs such as PbTe, we analyzed the top recalled candidates and found significantly different predicted figure-of-merit zT distributions from selected baseline representations.\n\n\n\nDistributions of predicted zT of the top-100 recalled candidates for PbTe as the query material predicted by MatBERT\n\n\n\n\nRanking potential materials\nLearning from multiple related tasks provides superior performance over single-task learning by modeling task-specific objectives and cross-task relationships.\nIn addition to the embeddings derived from language models, the authors added further information based on context (one hot encoded temperature)\n\n\n\nMulti-task learning framework for material property prediction.\n\n\n\n\n\nPerformance for 6 material property prediction tasks between single-task models and MMoE using composition or structure embeddings.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
+    ]
+  },
+  {
+    "objectID": "papers/llm4mat.html#takeaways",
+    "href": "papers/llm4mat.html#takeaways",
+    "title": "Leveraging language representation for materials exploration and discovery",
+    "section": "Takeaways",
+    "text": "Takeaways\n\nMight not need a Language model for this task\nGood to see that some of the materials where later tested in lab\nComposition vs Composition + structure not convincing.\n\n\n\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
     ]
   },
   {
@@ -481,6 +722,204 @@
     "crumbs": [
       "Papers",
       "<span class='chapter-number'>15</span>  <span class='chapter-title'>PaCh (Packed Chemicals): Computationally Effective Binary Format for Chemical Structure Encoding</span>"
+    ]
+  },
+  {
+    "objectID": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html",
+    "href": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html",
+    "title": "Tandem mass spectrum prediction for small molecules using graph transformers",
+    "section": "",
+    "text": "Why discuss this paper?\nAuthors: Adamo Young, Hannes Röst & Bo Wang\nDOI: doi:10.1038/s42256-024-00816-8\nPublished: April 2024\nJournal: Nature Machine Intelligence",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Tandem mass spectrum prediction for small molecules using graph transformers</span>"
+    ]
+  },
+  {
+    "objectID": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#why-discuss-this-paper",
+    "href": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#why-discuss-this-paper",
+    "title": "Tandem mass spectrum prediction for small molecules using graph transformers",
+    "section": "",
+    "text": "I chose this article because, even after decades of work in the field, we still lack reference spectra, and the vast majority of small molecules lack experimental reference spectra, making the identification of new compounds a difficult task.\nIt tackles the fundamental challenge in Mass Spectrometry (MS) of accurately simulating the fragmentation process.\nThe results show promise for improved MS-based compound identification.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Tandem mass spectrum prediction for small molecules using graph transformers</span>"
+    ]
+  },
+  {
+    "objectID": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#context",
+    "href": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#context",
+    "title": "Tandem mass spectrum prediction for small molecules using graph transformers",
+    "section": "Context",
+    "text": "Context\n\nOverview of Mass Spectrometry\n\n\n\n\n\n%%{init: {\"flowchart\": {\"htmlLabels\": true}} }%%\nflowchart LR;\n\nMass_Spectrometry_MS[\"&lt;b&gt;Mass Spectrometry (MS)&lt;/b&gt;\"]\nMass_Spectrometry_MS --&gt; Identifies_quantifies_chemicals[\"Identifies and quantifies chemicals in a mixture\"]\nMass_Spectrometry_MS --&gt; Ionized_detected_mass_analyzer[\"Molecules are ionized and detected by mass analyzer\"]\nMass_Spectrometry_MS --&gt; Records_mass_charge_ratio[\"Records mass-to-charge ratio (m/z)\"]\n\nTandem_MS_MS[\"&lt;b&gt;Tandem Mass Spectrometry (MS/MS)&lt;/b&gt;\"]\nTandem_MS_MS --&gt; Includes_fragmentation_step[\"Includes fragmentation step\"]\nTandem_MS_MS --&gt; Breaks_down_molecules[\"Breaks down molecules into smaller fragments\"]\nTandem_MS_MS --&gt; Infers_molecular_structure[\"Infers molecular structure of original molecule\"]\n\nLC_MS_MS[\"&lt;b&gt;LC-MS/MS&lt;/b&gt;\"]\nLC_MS_MS --&gt; Combines_liquid_chromatography[\"Combines liquid chromatography for separation\"]\nLC_MS_MS --&gt; Used_in_various_fields[\"Used in proteomics, metabolomics, forensics, environmental chemistry\"]\n\nMass_Spectrometry_MS --&gt; Tandem_MS_MS\nMass_Spectrometry_MS --&gt; LC_MS_MS\n\n\n\n\n\n\n\n\nChallenges in Mass Spectrometry\n\nMass spectrometry faces several significant challenges that impact its effectiveness.\n\n\n\n\n\n\n%%{init: {\"flowchart\": {\"htmlLabels\": true}} }%%\nflowchart LR;\n\nChallenges_in_MS[\"&lt;b&gt;Challenges in MS&lt;/b&gt;\"]\nChallenges_in_MS --&gt; Accurate_simulation_difficult[\"Accurate simulation of fragmentation is difficult\"]\nChallenges_in_MS --&gt; Simulations_slow_approximate[\"First principles simulations are slow and approximate\"]\nChallenges_in_MS --&gt; Incomplete_spectral_databases[\"Incomplete spectral databases hinder compound identification\"]\n\n\n\n\n\n\n\n\nOverview of Existing Solutions and Limitations\n\n\n\n\n\n%%{init: {\"flowchart\": {\"htmlLabels\": true}} }%%\nflowchart LR;\n\nExisting_Solutions_Limitations[\"&lt;b&gt;Existing Solutions and Limitations&lt;/b&gt;\"]\n\nDatabase_Searches[\"Database Searches\"]\nDatabase_Searches --&gt; Rely_large_libraries[\"Rely on large reference libraries and spectrum similarity functions\"]\nDatabase_Searches --&gt; Poor_coverage[\"Databases have poor coverage\"]\n\nIn_Silico_Spectra[\"In Silico Spectra\"]\nIn_Silico_Spectra --&gt; Augments_libraries[\"Augments spectral libraries with simulated spectra\"]\nIn_Silico_Spectra --&gt; Improves_coverage_match[\"Improves coverage and match finding\"]\n\nCompetitive_Fragmentation_Modelling[\"Competitive Fragmentation Modelling (CFM)\"]\nCompetitive_Fragmentation_Modelling[\"Competitive Fragmentation Modelling (CFM)\"] --&gt; Combinatorial_fragmentation[\"Combines combinatorial fragmentation and probabilistic modeling\"]\nCompetitive_Fragmentation_Modelling[\"Competitive Fragmentation Modelling (CFM)\"] --&gt; Slow_struggles_larger_compounds[\"Slow and struggles with larger compounds\"]\n\nDeep_Learning_Approaches[\"Deep Learning Approaches\"]\nDeep_Learning_Approaches --&gt; Fully_connected_networks[\"Use fully connected neural networks or graph neural networks\"]\nDeep_Learning_Approaches --&gt; Focus_local_structures[\"Focus on local structures\"]\nDeep_Learning_Approaches --&gt; Struggle_global_interactions[\"Struggle with modeling global interactions\"]\n\nExisting_Solutions_Limitations --&gt; Database_Searches\nExisting_Solutions_Limitations --&gt; In_Silico_Spectra\nExisting_Solutions_Limitations --&gt; Competitive_Fragmentation_Modelling\nExisting_Solutions_Limitations --&gt; Deep_Learning_Approaches",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Tandem mass spectrum prediction for small molecules using graph transformers</span>"
+    ]
+  },
+  {
+    "objectID": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#overview-of-massformer",
+    "href": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#overview-of-massformer",
+    "title": "Tandem mass spectrum prediction for small molecules using graph transformers",
+    "section": "Overview of MassFormer",
+    "text": "Overview of MassFormer\n\n\n\n\n\n%%{init: {\"flowchart\": {\"htmlLabels\": true}} }%%\nflowchart LR;\n\nDevelopment_of_MassFormer[\"&lt;b&gt;Development of MassFormer&lt;/b&gt;\"]\nDevelopment_of_MassFormer --&gt; Adapts_graph_transformer[\"Adapts graph transformer architecture for MS/MS spectrum prediction\"]\nDevelopment_of_MassFormer --&gt; Graph_transformers_model[\"Graph Transformers model pairwise interactions between all nodes\"]\nDevelopment_of_MassFormer --&gt; Captures_local_global[\"Captures both local and global structural information\"]\nDevelopment_of_MassFormer --&gt; Unique_Positional_Encoding[\"Unique Positional Encoding uses degree and shortest path information\"]\n\n\n\n\n\n\n\nOverview of Steps involved in MassFormer\n \nMolecule to Spectrum - Unlike traditional methods, MassFormer utilizes a graph-based approach to represent molecules. - Incorporating spectral metadata, such as collision energy used during the measurement, allows MassFormer to account for factors that might influence the fragmentation patterns observed in the final spectrum prediction. - Multihead self-attention : MHA - allows an input to attend to relevant parts of itself - Multilayer perceptrons : MLPs - capture non-linear relationships between the resulting representation and the final output.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Tandem mass spectrum prediction for small molecules using graph transformers</span>"
+    ]
+  },
+  {
+    "objectID": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#results",
+    "href": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#results",
+    "title": "Tandem mass spectrum prediction for small molecules using graph transformers",
+    "section": "Results",
+    "text": "Results\n \nSpectrum similarity experiments: Predicted vs. Real spectra for two held-out compounds (Azlocillin and Flamprop-isopropyl) - Accurate Predictions: MassFormer can predict realistic mass spectra for held out compounds. The high cosine similarity values (around 0.6) indicate a close match between the predicted and actual spectra. - Outperforms Existing Models: When compared to other deep learning models (CFM, FP, WLN) on a larger dataset, MassFormer consistently performs better. It shows the highest average cosine similarity across different data splits. - NIST: National Institute of Standards and Technology - MoNA: MassBank of North America - FP: Fingerprint (FP) neural network model - WLN: Weisfeiler–Lehman (WLN) graph neural network model\n \nCollision energy experiments: Benzhydrylpiperazine - MassFormer can not only predict mass spectra accurately but also captures the influence of collision energy on the fragmentation patterns observed in the spectra. - This ability is important for real-world applications where collision energy is a variable factor during data acquisition. - NCEs: Normalized collision energies\n \nExplainability using gradient attributions: Mass spectrum of propranolol - Separation of Nitrogen-Containing Peaks: The gradient attribution maps reveal that nitrogen-containing peaks can be linearly separated from those without nitrogen, demonstrating that the model captures meaningful chemical information related to nitrogen content. - Improved Classification Accuracy: The linear classification accuracy is significantly higher when using nitrogen labeling compared to random labeling, with nearly half of the peaks being perfectly separable based on their gradient attributions, highlighting the effectiveness of the attributions in distinguishing chemical compositions.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Tandem mass spectrum prediction for small molecules using graph transformers</span>"
+    ]
+  },
+  {
+    "objectID": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#advantages-of-massformer",
+    "href": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#advantages-of-massformer",
+    "title": "Tandem mass spectrum prediction for small molecules using graph transformers",
+    "section": "Advantages of MassFormer",
+    "text": "Advantages of MassFormer\n\n\n\n\n\n%%{init: {\"flowchart\": {\"htmlLabels\": true}} }%%\nflowchart LR;\n\nAdvantages_of_MassFormer[\"&lt;b&gt;Advantages of MassFormer&lt;/b&gt;\"]\n\nAccurate_Predictions[\"Accurate Predictions\"]\nAccurate_Predictions --&gt; State_of_the_art[\"State-of-the-art performance in spectrum prediction\"]\nAccurate_Predictions --&gt; Outperforms_existing_methods[\"Outperforms existing baseline methods\"]\n\nGlobal_Interactions[\"Global Interactions\"]\nGlobal_Interactions --&gt; Models_global_interactions[\"Models global interactions between distant atoms\"]\nGlobal_Interactions --&gt; Improves_understanding[\"Improves understanding of fragmentation events\"]\n\nEfficiency[\"Efficiency\"]\nEfficiency --&gt; Leverages_pretrained_models[\"Leverages pretrained graph transformer models\"]\nEfficiency --&gt; Accurate_predictions[\"Provides accurate predictions without excessive computational costs\"]\n\nReal_World_Applications[\"Real-World Applications\"]\nReal_World_Applications --&gt; Validated_spectrum_identification[\"Validated for spectrum identification problems\"]\nReal_World_Applications --&gt; Handles_collision_energy[\"Handles effects of collision energy on spectra\"]\n\nAdvantages_of_MassFormer --&gt; Accurate_Predictions\nAdvantages_of_MassFormer --&gt; Global_Interactions\nAdvantages_of_MassFormer --&gt; Efficiency\nAdvantages_of_MassFormer --&gt; Real_World_Applications",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Tandem mass spectrum prediction for small molecules using graph transformers</span>"
+    ]
+  },
+  {
+    "objectID": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#takeaways",
+    "href": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#takeaways",
+    "title": "Tandem mass spectrum prediction for small molecules using graph transformers",
+    "section": "Takeaways",
+    "text": "Takeaways\n\nThe current study introduces MassFormer, a novel method utilizing graph transformers for small molecule MS/MS spectra prediction.\nWhile demonstrating strong performance, MassFormer’s applicability is currently limited by compatibility with various data types.\nThe model offers explainability for its predictions; however, further development is needed for detailed peak annotations.\nMassFormer holds significant promise for MS-based compound identification, potentially enhancing existing tools and even aiding spectrum-to-structure generation. (Focuses on future potential and broader applications)",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Tandem mass spectrum prediction for small molecules using graph transformers</span>"
+    ]
+  },
+  {
+    "objectID": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#data-availability",
+    "href": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#data-availability",
+    "title": "Tandem mass spectrum prediction for small molecules using graph transformers",
+    "section": "Data availability",
+    "text": "Data availability\nAll public data from the study have been uploaded to Zenodo at https://doi.org/10.5281/zenodo.8399738. Some data that support the findings of this study are available from the National Institute of Standards and Technology (NIST). However, its access is subject to restrictions, requiring the purchase of an appropriate license or special permission from NIST.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Tandem mass spectrum prediction for small molecules using graph transformers</span>"
+    ]
+  },
+  {
+    "objectID": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#code-availability",
+    "href": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#code-availability",
+    "title": "Tandem mass spectrum prediction for small molecules using graph transformers",
+    "section": "Code availability",
+    "text": "Code availability\nThe code used in this study is open-source (BSD-2-Clause license) and can be found in a GitHub repository (https://github.com/Roestlab/massformer/) with a DOI of https://doi.org/10.5281/zenodo.10558852.\n\n\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Tandem mass spectrum prediction for small molecules using graph transformers</span>"
+    ]
+  },
+  {
+    "objectID": "papers/open-source-cheminformatics.html",
+    "href": "papers/open-source-cheminformatics.html",
+    "title": "Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales",
+    "section": "",
+    "text": "Why discuss this paper?\nI chose the Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales paper (Pernaa et al. 2023) for current topics in the cheminformatics seminar because:",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span>"
+    ]
+  },
+  {
+    "objectID": "papers/open-source-cheminformatics.html#why-discuss-this-paper",
+    "href": "papers/open-source-cheminformatics.html#why-discuss-this-paper",
+    "title": "Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales",
+    "section": "",
+    "text": "Introducing the concept of “qualitative content analysis” which might be unfamiliar to our group’s regular work, along with the used software ATLAS.ti 9.\nDiscuss Open-Source in Chemoinformatics due to its relevance in our work in NFDI4Chem.\nThe covered discussion over business, and business politics which might be of interest to us at this level of our careers.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span>"
+    ]
+  },
+  {
+    "objectID": "papers/open-source-cheminformatics.html#context",
+    "href": "papers/open-source-cheminformatics.html#context",
+    "title": "Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales",
+    "section": "Context",
+    "text": "Context\nThe paper demonstrates and promotes the different rationales of open-source in cheminformatics by extracting them from different sources and categorizing them for rationales designing in future software development projects. Additionally, the authors transparently cover the arguments against this approach.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span>"
+    ]
+  },
+  {
+    "objectID": "papers/open-source-cheminformatics.html#cheminformatics-in-chemistry-brief-history",
+    "href": "papers/open-source-cheminformatics.html#cheminformatics-in-chemistry-brief-history",
+    "title": "Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales",
+    "section": "Cheminformatics in chemistry: Brief history",
+    "text": "Cheminformatics in chemistry: Brief history\nCheminformatics has been used in chemistry since the 1940s (Chen 2006). King et al. (King, Cross, and Thomas 1946) may be the first scholars who applied computers in chemistry research. However, Ray and Kirsch (Ray and Kirsch 1957) described an algorithm for substructure searching in a paper published in 1957, which might be considered the first actual cheminformatics paper.\nAlthough cheminformatics as a field has been around for many decades, much of the cheminformatics research has been conducted in industrial laboratories, not academia. Because of this, many applications and methods are not published due to intellectual-property-rights issues (Willett 2011).",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span>"
+    ]
+  },
+  {
+    "objectID": "papers/open-source-cheminformatics.html#problem-setting",
+    "href": "papers/open-source-cheminformatics.html#problem-setting",
+    "title": "Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales",
+    "section": "Problem setting",
+    "text": "Problem setting\n\nThe development of the field requires open-source technology\nOpen-source software development in cheminformatics is necessary for cheminformatics education.\nOpen source and open data enable reproducibility which supports scientific reliability.\nOpen-source code lowers the research costs significantly.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span>"
+    ]
+  },
+  {
+    "objectID": "papers/open-source-cheminformatics.html#approach",
+    "href": "papers/open-source-cheminformatics.html#approach",
+    "title": "Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales",
+    "section": "Approach",
+    "text": "Approach\nThe authors considered research articles with “open source”-related concepts that were then analyzed using qualitative content analysis and ATLAS.ti 9 software to extract relevant expressions and generate rationales subcategories, which were then classified into main categories.\n\n\n\n\n\n\n\n\nOriginal Expression\nSub-Category\nMain Category\n\n\n\n\n“Despite these efforts, no general purpose deterministic structure generator has been developed in an open source format so far.” (Peironcely et al. 2012)\nNo available open-source alternative\nDevelop New Software\n\n\n“The ChemoPy package aims at providing the user with comprehensive implementations of these descriptors in a unified framework to allow easy and transparent computation.” (Cao et al. 2013)\nClear workflow\nImprove Usability",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span>"
+    ]
+  },
+  {
+    "objectID": "papers/open-source-cheminformatics.html#results",
+    "href": "papers/open-source-cheminformatics.html#results",
+    "title": "Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales",
+    "section": "Results",
+    "text": "Results\nThe analysis produced six main rationale categories for open-source cheminformatics software development. The perspective of the rationale can be either general or specific. Most rationales produce technological outcomes, such as new software, frameworks, interfaces, and processes.\n\n\n\n\n\n\n\n\n\n#\nRationale\nPerspective\nOutcome\n\n\n\n\n1\nDevelop New Software\nGeneral/Specific\nTechnological\n\n\n2\nUpdate Current Features, Tools, or Processes\nSpecific\nTechnological\n\n\n3\nImprove Usability\nGeneral\nTechnological\n\n\n4\nSupport Open-source Development and Open Science\nGeneral/Specific\nTechnological/Political\n\n\n5\nFulfill Chemical Information Needs\nSpecific\nContent-driven\n\n\n6\nSupport Chemistry Learning and Teaching\nGeneral/Specific\nPedagogical",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span>"
+    ]
+  },
+  {
+    "objectID": "papers/open-source-cheminformatics.html#take-aways",
+    "href": "papers/open-source-cheminformatics.html#take-aways",
+    "title": "Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales",
+    "section": "Take aways",
+    "text": "Take aways\n\nThe most central challenge hindering the academic development of cheminformatics has been the industrial background.\nOpen source development can bridge academic and industrial stakeholders.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span>"
+    ]
+  },
+  {
+    "objectID": "papers/open-source-cheminformatics.html#references",
+    "href": "papers/open-source-cheminformatics.html#references",
+    "title": "Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales",
+    "section": "References",
+    "text": "References\n\n\n\n\nCao, Dong-Sheng, Qing-Song Xu, Qian-Nan Hu, and Yi-Zeng Liang. 2013. “ChemoPy: Freely Available Python Package for Computational Biology and Chemoinformatics.” Bioinformatics 29 (8): 1092–94.\n\n\nChen, William Lingran. 2006. “Chemoinformatics: Past, Present, and Future.” Journal of Chemical Information and Modeling 46 (6): 2230–55.\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nKing, Gilbert W, Paul C Cross, and George B Thomas. 1946. “The Asymmetric Rotor III. Punched-Card Methods of Constructing Band Spectra.” The Journal of Chemical Physics 14 (1): 35–42.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.\n\n\nPeironcely, Julio E, Miguel Rojas-Chertó, Davide Fichera, Theo Reijmers, Leon Coulier, Jean-Loup Faulon, and Thomas Hankemeier. 2012. “OMG: Open Molecule Generator.” Journal of Cheminformatics 4: 1–13.\n\n\nPernaa, Johannes, Aleksi Takala, Veysel Ciftci, José Hernández-Ramos, Lizethly Cáceres-Jensen, and Jorge Rodrı́guez-Becerra. 2023. “Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales.” Applied Sciences 13 (17): 9516.\n\n\nRay, Louis C, and Russell A Kirsch. 1957. “Finding Chemical Records by Digital Computers.” Science 126 (3278): 814–19.\n\n\nWillett, Peter. 2011. “Chemoinformatics: A History.” Wiley Interdisciplinary Reviews: Computational Molecular Science 1 (1): 46–56.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span>"
     ]
   },
   {
@@ -1064,445 +1503,6 @@
     "crumbs": [
       "Papers",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>A Bond-Based Machine Learning Model for Molecular Polarizabilities and A Priori Raman Spectra</span>"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Lamalab Tool and Paper Notes",
-    "section": "",
-    "text": "In our group seminars, we have a tradition of dedicating a few minutes to showcase tools/software/tricks/methods that we find useful. This repository is a collection of these tool minutes.\n\n\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Tool and paper minutes</span>"
-    ]
-  },
-  {
-    "objectID": "tools/hydra.html",
-    "href": "tools/hydra.html",
-    "title": "Hydra",
-    "section": "",
-    "text": "Getting started\nHydra is an open-source Python framework that simplifies the development of research and other complex applications. The key feature is the ability to dynamically create a hierarchical configuration by composition and override it through config files and the command line. The name Hydra comes from its ability to run multiple similar jobs - much like a Hydra with multiple heads.",
-    "crumbs": [
-      "Tools",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Hydra</span>"
-    ]
-  },
-  {
-    "objectID": "tools/hydra.html#getting-started",
-    "href": "tools/hydra.html#getting-started",
-    "title": "Hydra",
-    "section": "",
-    "text": "Key features:\n\nHierarchical configuration composable from multiple sources\nConfiguration can be specified or overridden from the command line\nDynamic command line tab completion\nRun your application locally or launch it to run remotely\nRun multiple jobs with different arguments with a single command\n\n\n\nInstallation\npip install hydra-core --upgrade\n\n\nBasic example\nConfig, e.g., in conf/config.yaml:\ndb:\ndriver: mysql\nuser: omry\npass: secret\n\n\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.",
-    "crumbs": [
-      "Tools",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Hydra</span>"
-    ]
-  },
-  {
-    "objectID": "tools/ip_rotator.html",
-    "href": "tools/ip_rotator.html",
-    "title": "IP Rotator",
-    "section": "",
-    "text": "GitHub repository\niq-requests-rotator",
-    "crumbs": [
-      "Tools",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>IP Rotator</span>"
-    ]
-  },
-  {
-    "objectID": "tools/ip_rotator.html#github-repository",
-    "href": "tools/ip_rotator.html#github-repository",
-    "title": "IP Rotator",
-    "section": "",
-    "text": "Example usage:\nimport requests\nfrom requests_ip_rotator import ApiGatewaywith ApiGateway(\"https://site.com\") as g:\n    session = requests.Session()\n    session.mount(\"https://site.com\", g)    response = session.get(\"https://site.com/index.php\")\n    print(response.status_code)\n\n\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.",
-    "crumbs": [
-      "Tools",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>IP Rotator</span>"
-    ]
-  },
-  {
-    "objectID": "tools/polars.html",
-    "href": "tools/polars.html",
-    "title": "Polars",
-    "section": "",
-    "text": "An alternative to pandas\nThe advantages of polars can be directly seen in the image above. It is clear from the graph that Polars perform faster than Pandas for most operations. This is particularly true for the GroupBy operation, where Polars is nearly 20 times faster than Pandas. The Filter operation is also significantly faster in Polars, while Create operations are somewhat faster in Pandas. Overall, Polars seems to be a more performant library for data manipulation, particularly for large datasets.",
-    "crumbs": [
-      "Tools",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Polars</span>"
-    ]
-  },
-  {
-    "objectID": "tools/polars.html#syntax-example",
-    "href": "tools/polars.html#syntax-example",
-    "title": "Polars",
-    "section": "Syntax example",
-    "text": "Syntax example\nimport polars as pl\n\nq = (\n    pl.scan_csv(\"docs/data/iris.csv\")\n    .filter(pl.col(\"sepal_length\") &gt; 5)\n    .group_by(\"species\")\n    .agg(pl.all().sum())\n)\n\ndf = q.collect()\n\n\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.",
-    "crumbs": [
-      "Tools",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Polars</span>"
-    ]
-  },
-  {
-    "objectID": "tools/thunder_client.html",
-    "href": "tools/thunder_client.html",
-    "title": "Thunder Client",
-    "section": "",
-    "text": "Installation\nInstall the Thunder client extension from the marketplace.",
-    "crumbs": [
-      "Tools",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Thunder Client</span>"
-    ]
-  },
-  {
-    "objectID": "tools/thunder_client.html#installation",
-    "href": "tools/thunder_client.html#installation",
-    "title": "Thunder Client",
-    "section": "",
-    "text": "Guo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.",
-    "crumbs": [
-      "Tools",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Thunder Client</span>"
-    ]
-  },
-  {
-    "objectID": "tools/tmux.html",
-    "href": "tools/tmux.html",
-    "title": "tmux",
-    "section": "",
-    "text": "Installation\nor on Mac",
-    "crumbs": [
-      "Tools",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>tmux</span>"
-    ]
-  },
-  {
-    "objectID": "tools/tmux.html#installation",
-    "href": "tools/tmux.html#installation",
-    "title": "tmux",
-    "section": "",
-    "text": "sudo apt install tmux\n\nbrew install tmux",
-    "crumbs": [
-      "Tools",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>tmux</span>"
-    ]
-  },
-  {
-    "objectID": "tools/tmux.html#usage",
-    "href": "tools/tmux.html#usage",
-    "title": "tmux",
-    "section": "Usage",
-    "text": "Usage\nLet’s assume you are via ssh on a remote server and you want to run a long running process. You can use tmux to run the process in a session and then detach from it. You can then log out and log back in later to check on the process. Your process will still be running, even if your ssh session is closed.\n\nOn the remote server\ntmux new -s myprocess\nThen run your process. When you are done, detach from the session by pressing Ctrl+b and then d.\n\n\nOn the remote server later\ntmux ls\nThis will list all the sessions. You can then reattach to the session you want by typing:\ntmux attach -t myprocess\n\n\nPanes\nYou can split your terminal into panes. This is useful if you want to run multiple processes in the same terminal. You can split the terminal vertically by pressing Ctrl+b and then \" or horizontally by pressing Ctrl+b and then %.\nTo move panes around, you can use Ctrl+b and then o to cycle through the panes.\n\n\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.",
-    "crumbs": [
-      "Tools",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>tmux</span>"
-    ]
-  },
-  {
-    "objectID": "tools/bfg.html",
-    "href": "tools/bfg.html",
-    "title": "BFG Repo-Cleaner",
-    "section": "",
-    "text": "If you did not take with your .gitignore or just used git add . you might have by accident committed large files. This might lead to an error like\nremote: error: See https://gh.io/lfs for more information.\nremote: error: File reports/gemini-pro/.langchain.db is 123.01 MB; this exceeds GitHub's file size limit of 100.00 MB\nremote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.\nTo github.com:lamalab-org/chem-bench.git\n ! [remote rejected]     kjappelbaum/issue258 -&gt; kjappelbaum/issue258 (pre-receive hook declined)\nerror: failed to push some refs to 'github.com:lamalab-org/chem-bench.git'\nTo fix this, you need to remove the large files. A convenient tool for doing this is BFG.\nOnce you download the file you can run it using something like\njava -jar ~/Downloads/bfg-1.14.0.jar --strip-blobs-bigger-than 100M --no-blob-protection\nto remove large files.\nNote that this here uses --no-blob-protection as BFG defaults to not touching the last commit.\nAfter the BFG run, it will prompt you to run something like\ngit reflog expire --expire=now --all && git gc --prune=now --aggressive\n\n\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.",
-    "crumbs": [
-      "Tools",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>BFG Repo-Cleaner</span>"
-    ]
-  },
-  {
-    "objectID": "tools/showyourwork.html",
-    "href": "tools/showyourwork.html",
-    "title": "showyourwork",
-    "section": "",
-    "text": "showyourwork : https://github.com/showyourwork is a framework for building reproducible papers. The package works on a combination of Tex and Python code, where you can on the fly modify your plots.\nThe pre-requisites are: 1. define a conda environment with the packages are that necessary for plotting 2. use the \\script{}, \\variable{} and other commands to link your figures/tables to a Python script. 3. compile the paper\n\n\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.",
-    "crumbs": [
-      "Tools",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>showyourwork</span>"
-    ]
-  },
-  {
-    "objectID": "papers/llm4mat.html",
-    "href": "papers/llm4mat.html",
-    "title": "Leveraging language representation for materials exploration and discovery",
-    "section": "",
-    "text": "Why discussing this paper?\nI chose Jiaxing et al.’s paper for our journal club because",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
-    ]
-  },
-  {
-    "objectID": "papers/llm4mat.html#why-discussing-this-paper",
-    "href": "papers/llm4mat.html#why-discussing-this-paper",
-    "title": "Leveraging language representation for materials exploration and discovery",
-    "section": "",
-    "text": "LLMs successfully applied in other domain, interesting to see what can be done in material science\nOne among the few paper where LLMs are applied in materials science for actual material discovery.\nNice embedding figures",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
-    ]
-  },
-  {
-    "objectID": "papers/llm4mat.html#context",
-    "href": "papers/llm4mat.html#context",
-    "title": "Leveraging language representation for materials exploration and discovery",
-    "section": "Context",
-    "text": "Context\n\nMaterial space is not completely explored. And there is possibility of finding better materials in many applications.\nML recommender systems for exploring material spaces are already there but not many using “LLMs”\nLLM framework for recommending prototype crystal structures and later validate through first-principles calculations and experiments\nWhy LLMs? - Universal task agnostic representations",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
-    ]
-  },
-  {
-    "objectID": "papers/llm4mat.html#some-previous-llm-models",
-    "href": "papers/llm4mat.html#some-previous-llm-models",
-    "title": "Leveraging language representation for materials exploration and discovery",
-    "section": "Some Previous LLM Models",
-    "text": "Some Previous LLM Models\n\nMatSciBERT\nMatsciBERT was pretrained on whole sections of more than 1 million materials science articles with masked language modelling.\n\n\nMatBERT\nMatBERT was trained by sampling 50 million paragraphs from 2 million articles masked language modelling.\n\n\nWord2Vec\nMat2Vec was trained similarly as Word2vec training through skip-gram with negative sampling. Each word is embedded into a 200-dimensional vector.",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
-    ]
-  },
-  {
-    "objectID": "papers/llm4mat.html#problem-setting",
-    "href": "papers/llm4mat.html#problem-setting",
-    "title": "Leveraging language representation for materials exploration and discovery",
-    "section": "Problem setting",
-    "text": "Problem setting\n\nHand-crafted features and specialized structural models have limitations in providing universal and task-agnostic representations within the vast material space.\nAdditional contexts are also very useful. for eg: (doping, temperature, synthesis conditions)\nIn materials exploration and discovery context:\n\n\neffective representations of both chemical and structural complexity, (ii) successful recall of relevant candidates to property of interest\naccurate candidate ranking based on multiple desired functional properties.",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
-    ]
-  },
-  {
-    "objectID": "papers/llm4mat.html#approach",
-    "href": "papers/llm4mat.html#approach",
-    "title": "Leveraging language representation for materials exploration and discovery",
-    "section": "Approach",
-    "text": "Approach\nThe authors propose a two-step funnel based approach\n\n\nRECALL - Given a material finding similar material from a set of materials\n\n\nRANKING - Based on functional properties rank the recalled materials\n\n\n\n\n\nFunnel based recommender framework\n\n\n\nRecalling similar materials\nThe authors use Robocrystallographer representation to describe the material. Encode the material description using pretrained MatBERT (compared other encoders as well), and use this as a feature vector\n\nUse a Query material (a well studied known material with property of interest).\nEncode all material in database and Query material (Robocrystallographer + MatBERT)\nLook at cosine similarity of feature vectors (material in database with Query material)\n\n\n\n\nRecall material based on cosine similarity\n\n\n\n\nRanking potential materials\nBased on multiple properties the recalled materials are ranked.\nUsually for any application, and in this paper, for thermoelectric material as well many properties are important hence a ranker based on performance on different functional aspects.\n\nAuthor train a Multitask Mixture of Expert Model (MMoEM), using multitask learning to rank the materials.\n\n\n\n\nRank material based on cosine similarity",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
-    ]
-  },
-  {
-    "objectID": "papers/llm4mat.html#results",
-    "href": "papers/llm4mat.html#results",
-    "title": "Leveraging language representation for materials exploration and discovery",
-    "section": "Results",
-    "text": "Results\nThe authors perform ablations to understand the importance of the different components of their model. While there are some differences, the differences are not drastic.\n\nAblation on Representation suitable for RECALL step\nTwo set of models 1. Uses only composition of materials Baseline: Mat2Vec\nA(Composition)–&gt; B(MatBERT)\n\nUses Both composition and structure Baseline: CrystalNN Fingerprint\n\nA(Material)–&gt; B(RoboCrystallographer)–&gt; C(MatBERT)\n\nEmbeddings from composition only and Composition + Structure\nStructure level representations exhibit more distinct separation (well-defined domains) by material groups\n\n\n\nUMAP of embeddings from different representations\n\n\nFor further evaluation, authors evaluated material embedding performance on downstream property prediction tasks.\nThe task models were multi-layer perceptrons (MLPs) with meanabsolute-error (MAE) training loss.\nThe tasks consisted of band gap, energy per atom, bulk modulus, shear modulus, Debye temperature, and coefficient of thermal expansion from AFLOW dataset.\n\n\n\nProperty prediction using embeddings from different representations\n\n\n\n\n\nFinding similar materials\nStarting with known materials with favorable properties for TEs such as PbTe, we analyzed the top recalled candidates and found significantly different predicted figure-of-merit zT distributions from selected baseline representations.\n\n\n\nDistributions of predicted zT of the top-100 recalled candidates for PbTe as the query material predicted by MatBERT\n\n\n\n\nRanking potential materials\nLearning from multiple related tasks provides superior performance over single-task learning by modeling task-specific objectives and cross-task relationships.\nIn addition to the embeddings derived from language models, the authors added further information based on context (one hot encoded temperature)\n\n\n\nMulti-task learning framework for material property prediction.\n\n\n\n\n\nPerformance for 6 material property prediction tasks between single-task models and MMoE using composition or structure embeddings.",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
-    ]
-  },
-  {
-    "objectID": "papers/llm4mat.html#takeaways",
-    "href": "papers/llm4mat.html#takeaways",
-    "title": "Leveraging language representation for materials exploration and discovery",
-    "section": "Takeaways",
-    "text": "Takeaways\n\nMight not need a Language model for this task\nGood to see that some of the materials where later tested in lab\nComposition vs Composition + structure not convincing.\n\n\n\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Leveraging language representation for materials exploration and discovery</span>"
-    ]
-  },
-  {
-    "objectID": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html",
-    "href": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html",
-    "title": "Tandem mass spectrum prediction for small molecules using graph transformers",
-    "section": "",
-    "text": "Why discuss this paper?",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Tandem mass spectrum prediction for small molecules using graph transformers</span>"
-    ]
-  },
-  {
-    "objectID": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#why-discuss-this-paper",
-    "href": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#why-discuss-this-paper",
-    "title": "Tandem mass spectrum prediction for small molecules using graph transformers",
-    "section": "",
-    "text": "I chose this article because, even after decades of work in the field, we still lack reference spectra, and the vast majority of small molecules lack experimental reference spectra, making the identification of new compounds a difficult task.\nIt tackles the fundamental challenge in Mass Spectrometry (MS) of accurately simulating the fragmentation process.\nThe results show promise for improved MS-based compound identification.",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Tandem mass spectrum prediction for small molecules using graph transformers</span>"
-    ]
-  },
-  {
-    "objectID": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#context",
-    "href": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#context",
-    "title": "Tandem mass spectrum prediction for small molecules using graph transformers",
-    "section": "Context",
-    "text": "Context\n\nOverview of Mass Spectrometry\n\n\n\n\n\n%%{init: {\"flowchart\": {\"htmlLabels\": true}} }%%\nflowchart LR;\n\nMass_Spectrometry_MS[\"&lt;b&gt;Mass Spectrometry (MS)&lt;/b&gt;\"]\nMass_Spectrometry_MS --&gt; Identifies_quantifies_chemicals[\"Identifies and quantifies chemicals in a mixture\"]\nMass_Spectrometry_MS --&gt; Ionized_detected_mass_analyzer[\"Molecules are ionized and detected by mass analyzer\"]\nMass_Spectrometry_MS --&gt; Records_mass_charge_ratio[\"Records mass-to-charge ratio (m/z)\"]\n\nTandem_MS_MS[\"&lt;b&gt;Tandem Mass Spectrometry (MS/MS)&lt;/b&gt;\"]\nTandem_MS_MS --&gt; Includes_fragmentation_step[\"Includes fragmentation step\"]\nTandem_MS_MS --&gt; Breaks_down_molecules[\"Breaks down molecules into smaller fragments\"]\nTandem_MS_MS --&gt; Infers_molecular_structure[\"Infers molecular structure of original molecule\"]\n\nLC_MS_MS[\"&lt;b&gt;LC-MS/MS&lt;/b&gt;\"]\nLC_MS_MS --&gt; Combines_liquid_chromatography[\"Combines liquid chromatography for separation\"]\nLC_MS_MS --&gt; Used_in_various_fields[\"Used in proteomics, metabolomics, forensics, environmental chemistry\"]\n\nMass_Spectrometry_MS --&gt; Tandem_MS_MS\nMass_Spectrometry_MS --&gt; LC_MS_MS\n\n\n\n\n\n\n\n\nChallenges in Mass Spectrometry\n\nMass spectrometry faces several significant challenges that impact its effectiveness.\n\n\n\n\n\n\n%%{init: {\"flowchart\": {\"htmlLabels\": true}} }%%\nflowchart LR;\n\nChallenges_in_MS[\"&lt;b&gt;Challenges in MS&lt;/b&gt;\"]\nChallenges_in_MS --&gt; Accurate_simulation_difficult[\"Accurate simulation of fragmentation is difficult\"]\nChallenges_in_MS --&gt; Simulations_slow_approximate[\"First principles simulations are slow and approximate\"]\nChallenges_in_MS --&gt; Incomplete_spectral_databases[\"Incomplete spectral databases hinder compound identification\"]\n\n\n\n\n\n\n\n\nOverview of Existing Solutions and Limitations\n\n\n\n\n\n%%{init: {\"flowchart\": {\"htmlLabels\": true}} }%%\nflowchart LR;\n\nExisting_Solutions_Limitations[\"&lt;b&gt;Existing Solutions and Limitations&lt;/b&gt;\"]\n\nDatabase_Searches[\"Database Searches\"]\nDatabase_Searches --&gt; Rely_large_libraries[\"Rely on large reference libraries and spectrum similarity functions\"]\nDatabase_Searches --&gt; Poor_coverage[\"Databases have poor coverage\"]\n\nIn_Silico_Spectra[\"In Silico Spectra\"]\nIn_Silico_Spectra --&gt; Augments_libraries[\"Augments spectral libraries with simulated spectra\"]\nIn_Silico_Spectra --&gt; Improves_coverage_match[\"Improves coverage and match finding\"]\n\nCompetitive_Fragmentation_Modelling[\"Competitive Fragmentation Modelling (CFM)\"]\nCompetitive_Fragmentation_Modelling[\"Competitive Fragmentation Modelling (CFM)\"] --&gt; Combinatorial_fragmentation[\"Combines combinatorial fragmentation and probabilistic modeling\"]\nCompetitive_Fragmentation_Modelling[\"Competitive Fragmentation Modelling (CFM)\"] --&gt; Slow_struggles_larger_compounds[\"Slow and struggles with larger compounds\"]\n\nDeep_Learning_Approaches[\"Deep Learning Approaches\"]\nDeep_Learning_Approaches --&gt; Fully_connected_networks[\"Use fully connected neural networks or graph neural networks\"]\nDeep_Learning_Approaches --&gt; Focus_local_structures[\"Focus on local structures\"]\nDeep_Learning_Approaches --&gt; Struggle_global_interactions[\"Struggle with modeling global interactions\"]\n\nExisting_Solutions_Limitations --&gt; Database_Searches\nExisting_Solutions_Limitations --&gt; In_Silico_Spectra\nExisting_Solutions_Limitations --&gt; Competitive_Fragmentation_Modelling\nExisting_Solutions_Limitations --&gt; Deep_Learning_Approaches",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Tandem mass spectrum prediction for small molecules using graph transformers</span>"
-    ]
-  },
-  {
-    "objectID": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#overview-of-massformer",
-    "href": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#overview-of-massformer",
-    "title": "Tandem mass spectrum prediction for small molecules using graph transformers",
-    "section": "Overview of MassFormer",
-    "text": "Overview of MassFormer\n\n\n\n\n\n%%{init: {\"flowchart\": {\"htmlLabels\": true}} }%%\nflowchart LR;\n\nDevelopment_of_MassFormer[\"&lt;b&gt;Development of MassFormer&lt;/b&gt;\"]\nDevelopment_of_MassFormer --&gt; Adapts_graph_transformer[\"Adapts graph transformer architecture for MS/MS spectrum prediction\"]\nDevelopment_of_MassFormer --&gt; Graph_transformers_model[\"Graph Transformers model pairwise interactions between all nodes\"]\nDevelopment_of_MassFormer --&gt; Captures_local_global[\"Captures both local and global structural information\"]\nDevelopment_of_MassFormer --&gt; Unique_Positional_Encoding[\"Unique Positional Encoding uses degree and shortest path information\"]\n\n\n\n\n\n\n\nOverview of Steps involved in MassFormer\n \nMolecule to Spectrum - Unlike traditional methods, MassFormer utilizes a graph-based approach to represent molecules. - Incorporating spectral metadata, such as collision energy used during the measurement, allows MassFormer to account for factors that might influence the fragmentation patterns observed in the final spectrum prediction. - Multihead self-attention : MHA - allows an input to attend to relevant parts of itself - Multilayer perceptrons : MLPs - capture non-linear relationships between the resulting representation and the final output.",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Tandem mass spectrum prediction for small molecules using graph transformers</span>"
-    ]
-  },
-  {
-    "objectID": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#results",
-    "href": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#results",
-    "title": "Tandem mass spectrum prediction for small molecules using graph transformers",
-    "section": "Results",
-    "text": "Results\n \nSpectrum similarity experiments: Predicted vs. Real spectra for two held-out compounds (Azlocillin and Flamprop-isopropyl) - Accurate Predictions: MassFormer can predict realistic mass spectra for held out compounds. The high cosine similarity values (around 0.6) indicate a close match between the predicted and actual spectra. - Outperforms Existing Models: When compared to other deep learning models (CFM, FP, WLN) on a larger dataset, MassFormer consistently performs better. It shows the highest average cosine similarity across different data splits. - NIST: National Institute of Standards and Technology - MoNA: MassBank of North America - FP: Fingerprint (FP) neural network model - WLN: Weisfeiler–Lehman (WLN) graph neural network model\n \nCollision energy experiments: Benzhydrylpiperazine - MassFormer can not only predict mass spectra accurately but also captures the influence of collision energy on the fragmentation patterns observed in the spectra. - This ability is important for real-world applications where collision energy is a variable factor during data acquisition. - NCEs: Normalized collision energies\n \nExplainability using gradient attributions: Mass spectrum of propranolol - Separation of Nitrogen-Containing Peaks: The gradient attribution maps reveal that nitrogen-containing peaks can be linearly separated from those without nitrogen, demonstrating that the model captures meaningful chemical information related to nitrogen content. - Improved Classification Accuracy: The linear classification accuracy is significantly higher when using nitrogen labeling compared to random labeling, with nearly half of the peaks being perfectly separable based on their gradient attributions, highlighting the effectiveness of the attributions in distinguishing chemical compositions.",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Tandem mass spectrum prediction for small molecules using graph transformers</span>"
-    ]
-  },
-  {
-    "objectID": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#advantages-of-massformer",
-    "href": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#advantages-of-massformer",
-    "title": "Tandem mass spectrum prediction for small molecules using graph transformers",
-    "section": "Advantages of MassFormer",
-    "text": "Advantages of MassFormer\n\n\n\n\n\n%%{init: {\"flowchart\": {\"htmlLabels\": true}} }%%\nflowchart LR;\n\nAdvantages_of_MassFormer[\"&lt;b&gt;Advantages of MassFormer&lt;/b&gt;\"]\n\nAccurate_Predictions[\"Accurate Predictions\"]\nAccurate_Predictions --&gt; State_of_the_art[\"State-of-the-art performance in spectrum prediction\"]\nAccurate_Predictions --&gt; Outperforms_existing_methods[\"Outperforms existing baseline methods\"]\n\nGlobal_Interactions[\"Global Interactions\"]\nGlobal_Interactions --&gt; Models_global_interactions[\"Models global interactions between distant atoms\"]\nGlobal_Interactions --&gt; Improves_understanding[\"Improves understanding of fragmentation events\"]\n\nEfficiency[\"Efficiency\"]\nEfficiency --&gt; Leverages_pretrained_models[\"Leverages pretrained graph transformer models\"]\nEfficiency --&gt; Accurate_predictions[\"Provides accurate predictions without excessive computational costs\"]\n\nReal_World_Applications[\"Real-World Applications\"]\nReal_World_Applications --&gt; Validated_spectrum_identification[\"Validated for spectrum identification problems\"]\nReal_World_Applications --&gt; Handles_collision_energy[\"Handles effects of collision energy on spectra\"]\n\nAdvantages_of_MassFormer --&gt; Accurate_Predictions\nAdvantages_of_MassFormer --&gt; Global_Interactions\nAdvantages_of_MassFormer --&gt; Efficiency\nAdvantages_of_MassFormer --&gt; Real_World_Applications",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Tandem mass spectrum prediction for small molecules using graph transformers</span>"
-    ]
-  },
-  {
-    "objectID": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#takeaways",
-    "href": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#takeaways",
-    "title": "Tandem mass spectrum prediction for small molecules using graph transformers",
-    "section": "Takeaways",
-    "text": "Takeaways\n\nThe current study introduces MassFormer, a novel method utilizing graph transformers for small molecule MS/MS spectra prediction.\nWhile demonstrating strong performance, MassFormer’s applicability is currently limited by compatibility with various data types.\nThe model offers explainability for its predictions; however, further development is needed for detailed peak annotations.\nMassFormer holds significant promise for MS-based compound identification, potentially enhancing existing tools and even aiding spectrum-to-structure generation. (Focuses on future potential and broader applications)",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Tandem mass spectrum prediction for small molecules using graph transformers</span>"
-    ]
-  },
-  {
-    "objectID": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#data-availability",
-    "href": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#data-availability",
-    "title": "Tandem mass spectrum prediction for small molecules using graph transformers",
-    "section": "Data availability",
-    "text": "Data availability\nAll public data from the study have been uploaded to Zenodo at https://doi.org/10.5281/zenodo.8399738. Some data that support the findings of this study are available from the National Institute of Standards and Technology (NIST). However, its access is subject to restrictions, requiring the purchase of an appropriate license or special permission from NIST.",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Tandem mass spectrum prediction for small molecules using graph transformers</span>"
-    ]
-  },
-  {
-    "objectID": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#code-availability",
-    "href": "papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html#code-availability",
-    "title": "Tandem mass spectrum prediction for small molecules using graph transformers",
-    "section": "Code availability",
-    "text": "Code availability\nThe code used in this study is open-source (BSD-2-Clause license) and can be found in a GitHub repository (https://github.com/Roestlab/massformer/) with a DOI of https://doi.org/10.5281/zenodo.10558852.\n\n\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Tandem mass spectrum prediction for small molecules using graph transformers</span>"
-    ]
-  },
-  {
-    "objectID": "papers/open-source-cheminformatics.html",
-    "href": "papers/open-source-cheminformatics.html",
-    "title": "Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales",
-    "section": "",
-    "text": "Why discuss this paper?\nI chose the Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales paper (Pernaa et al. 2023) for current topics in the cheminformatics seminar because:",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span>"
-    ]
-  },
-  {
-    "objectID": "papers/open-source-cheminformatics.html#why-discuss-this-paper",
-    "href": "papers/open-source-cheminformatics.html#why-discuss-this-paper",
-    "title": "Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales",
-    "section": "",
-    "text": "Introducing the concept of “qualitative content analysis” which might be unfamiliar to our group’s regular work, along with the used software ATLAS.ti 9.\nDiscuss Open-Source in Chemoinformatics due to its relevance in our work in NFDI4Chem.\nThe covered discussion over business, and business politics which might be of interest to us at this level of our careers.",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span>"
-    ]
-  },
-  {
-    "objectID": "papers/open-source-cheminformatics.html#context",
-    "href": "papers/open-source-cheminformatics.html#context",
-    "title": "Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales",
-    "section": "Context",
-    "text": "Context\nThe paper demonstrates and promotes the different rationales of open-source in cheminformatics by extracting them from different sources and categorizing them for rationales designing in future software development projects. Additionally, the authors transparently cover the arguments against this approach.",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span>"
-    ]
-  },
-  {
-    "objectID": "papers/open-source-cheminformatics.html#cheminformatics-in-chemistry-brief-history",
-    "href": "papers/open-source-cheminformatics.html#cheminformatics-in-chemistry-brief-history",
-    "title": "Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales",
-    "section": "Cheminformatics in chemistry: Brief history",
-    "text": "Cheminformatics in chemistry: Brief history\nCheminformatics has been used in chemistry since the 1940s (Chen 2006). King et al. (King, Cross, and Thomas 1946) may be the first scholars who applied computers in chemistry research. However, Ray and Kirsch (Ray and Kirsch 1957) described an algorithm for substructure searching in a paper published in 1957, which might be considered the first actual cheminformatics paper.\nAlthough cheminformatics as a field has been around for many decades, much of the cheminformatics research has been conducted in industrial laboratories, not academia. Because of this, many applications and methods are not published due to intellectual-property-rights issues (Willett 2011).",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span>"
-    ]
-  },
-  {
-    "objectID": "papers/open-source-cheminformatics.html#problem-setting",
-    "href": "papers/open-source-cheminformatics.html#problem-setting",
-    "title": "Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales",
-    "section": "Problem setting",
-    "text": "Problem setting\n\nThe development of the field requires open-source technology\nOpen-source software development in cheminformatics is necessary for cheminformatics education.\nOpen source and open data enable reproducibility which supports scientific reliability.\nOpen-source code lowers the research costs significantly.",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span>"
-    ]
-  },
-  {
-    "objectID": "papers/open-source-cheminformatics.html#approach",
-    "href": "papers/open-source-cheminformatics.html#approach",
-    "title": "Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales",
-    "section": "Approach",
-    "text": "Approach\nThe authors considered research articles with “open source”-related concepts that were then analyzed using qualitative content analysis and ATLAS.ti 9 software to extract relevant expressions and generate rationales subcategories, which were then classified into main categories.\n\n\n\n\n\n\n\n\nOriginal Expression\nSub-Category\nMain Category\n\n\n\n\n“Despite these efforts, no general purpose deterministic structure generator has been developed in an open source format so far.” (Peironcely et al. 2012)\nNo available open-source alternative\nDevelop New Software\n\n\n“The ChemoPy package aims at providing the user with comprehensive implementations of these descriptors in a unified framework to allow easy and transparent computation.” (Cao et al. 2013)\nClear workflow\nImprove Usability",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span>"
-    ]
-  },
-  {
-    "objectID": "papers/open-source-cheminformatics.html#results",
-    "href": "papers/open-source-cheminformatics.html#results",
-    "title": "Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales",
-    "section": "Results",
-    "text": "Results\nThe analysis produced six main rationale categories for open-source cheminformatics software development. The perspective of the rationale can be either general or specific. Most rationales produce technological outcomes, such as new software, frameworks, interfaces, and processes.\n\n\n\n\n\n\n\n\n\n#\nRationale\nPerspective\nOutcome\n\n\n\n\n1\nDevelop New Software\nGeneral/Specific\nTechnological\n\n\n2\nUpdate Current Features, Tools, or Processes\nSpecific\nTechnological\n\n\n3\nImprove Usability\nGeneral\nTechnological\n\n\n4\nSupport Open-source Development and Open Science\nGeneral/Specific\nTechnological/Political\n\n\n5\nFulfill Chemical Information Needs\nSpecific\nContent-driven\n\n\n6\nSupport Chemistry Learning and Teaching\nGeneral/Specific\nPedagogical",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span>"
-    ]
-  },
-  {
-    "objectID": "papers/open-source-cheminformatics.html#take-aways",
-    "href": "papers/open-source-cheminformatics.html#take-aways",
-    "title": "Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales",
-    "section": "Take aways",
-    "text": "Take aways\n\nThe most central challenge hindering the academic development of cheminformatics has been the industrial background.\nOpen source development can bridge academic and industrial stakeholders.",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span>"
-    ]
-  },
-  {
-    "objectID": "papers/open-source-cheminformatics.html#references",
-    "href": "papers/open-source-cheminformatics.html#references",
-    "title": "Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales",
-    "section": "References",
-    "text": "References\n\n\n\n\nCao, Dong-Sheng, Qing-Song Xu, Qian-Nan Hu, and Yi-Zeng Liang. 2013. “ChemoPy: Freely Available Python Package for Computational Biology and Chemoinformatics.” Bioinformatics 29 (8): 1092–94.\n\n\nChen, William Lingran. 2006. “Chemoinformatics: Past, Present, and Future.” Journal of Chemical Information and Modeling 46 (6): 2230–55.\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nKing, Gilbert W, Paul C Cross, and George B Thomas. 1946. “The Asymmetric Rotor III. Punched-Card Methods of Constructing Band Spectra.” The Journal of Chemical Physics 14 (1): 35–42.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.\n\n\nPeironcely, Julio E, Miguel Rojas-Chertó, Davide Fichera, Theo Reijmers, Leon Coulier, Jean-Loup Faulon, and Thomas Hankemeier. 2012. “OMG: Open Molecule Generator.” Journal of Cheminformatics 4: 1–13.\n\n\nPernaa, Johannes, Aleksi Takala, Veysel Ciftci, José Hernández-Ramos, Lizethly Cáceres-Jensen, and Jorge Rodrı́guez-Becerra. 2023. “Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales.” Applied Sciences 13 (17): 9516.\n\n\nRay, Louis C, and Russell A Kirsch. 1957. “Finding Chemical Records by Digital Computers.” Science 126 (3278): 814–19.\n\n\nWillett, Peter. 2011. “Chemoinformatics: A History.” Wiley Interdisciplinary Reviews: Computational Molecular Science 1 (1): 46–56.",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Open-Source Software Development in Cheminformatics: A Qualitative Analysis of Rationales</span>"
     ]
   }
 ]
