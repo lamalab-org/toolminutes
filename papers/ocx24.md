@@ -65,12 +65,12 @@ bibliography: ../references.bib
 
 ![Experiment](./ocx24/overview.png)
 
-- Use Chemical Reduction and Spark abltion method to synthesize intermetallic alloy nano particles.
-- Deposit on Silicon wafer and GDL (Gas Diffusion Layer)
+- Chemical reduction and spark ablation methods are used to synthesize intermetallic alloy nanoparticles.
+- Deposit on silicon wafer and GDL (Gas Diffusion Layer)
 
-- Charecterize Composition, Phase using XRD and XRF.
+- Characterize composition and phase using XRD and XRF.
 
-- HighThroughput electrochemical testing and Gas detection.
+- High-throughput electrochemical testing and gas detection.
 
 
 ###  Computational
