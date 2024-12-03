@@ -98,7 +98,7 @@ bibliography: ../references.bib
 ## Personal opinion
 
 - Promising Development
-- Weak modelling approach
+- Weak modeling approach
 
 
 ## Why did I choose this paper?
