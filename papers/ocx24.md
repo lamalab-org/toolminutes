@@ -20,7 +20,7 @@ bibliography: ../references.bib
 **Synthesizability constrained molecular generation**: Enforcing valid chemical transformations
 
 - **Open Catalyst Project** [@https://opencatalystproject.org/]:
-  - The Open Catalyst Project is a collaborative research effort between Fundamental AI Research (FAIR) at Meta and Carnegie Mellon University's (CMU) Department of Chemical Engineering. The aim is to use AI to model and discover new catalysts for use in renewable energy storage to help in addressing climate change.
+  - The Open Catalyst Project is a collaborative research effort between Fundamental AI Research (FAIR) at Meta and Carnegie Mellon University's (CMU) Department of Chemical Engineering. The aim is to use AI to model and discover new catalysts for use in renewable energy storage to help address climate change.
   - OC20 and OC22 Datasets - These datasets altogether contain 1.3 million molecular relaxations with results from over 260 million DFT calculations.  
 
 
