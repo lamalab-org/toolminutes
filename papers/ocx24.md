@@ -41,7 +41,7 @@ bibliography: ../references.bib
 
 ![Catalyst](./ocx24/catalyst.png)
 
-- Many Intermediate short lived reactions
+- Many intermediate short-lived reactions
 - Multiple adsorption site
 
 ![Configurations](./ocx24/adsorption_sites.png)
