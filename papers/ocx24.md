@@ -56,9 +56,9 @@ bibliography: ../references.bib
 
 ![Overview](./ocx24/overview.png)
 
-- Experimental Dataset with diverse systems
-- Abinito features
-- ML modelling
+- Experimental dataset with diverse systems
+- Ab-inito features
+- ML modeling
 
 
 ## Diverse Experimental Dataset and Extensive Computational Simulation
