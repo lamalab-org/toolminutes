@@ -34,10 +34,10 @@ bibliography: ../references.bib
 
 ## Why is this a hard problem ?
 
-- A Combination of effects play a crucial role
+- A combination of effects play a crucial role
     - Surface effects
     - Bulk effects
-    - Structural, Defects, passivation and termination effects
+    - Structural, defects, passivation and termination effects
 
 ![Catalyst](./ocx24/catalyst.png)
 
