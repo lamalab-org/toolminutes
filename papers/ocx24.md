@@ -9,7 +9,7 @@ bibliography: ../references.bib
 ## Motivation
 
 - Save the world from climate change
-    - Use H2 instead of fossil fuels, Make H2 from Water electrochemically (HER).
+    - Use H$_2$ instead of fossil fuels, Make H$_2$ from water electrochemically (HER).
     - Recycle CO2 into use useful products (CO2RR)
 
 ![CO2 reduction reactions](./ocx24/co2_reaction.png)
