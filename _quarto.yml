@@ -32,6 +32,7 @@ book:
         - papers/tango.md
         - papers/core_bench.md
         - papers/bpm_L.md
+        - papers/coconut.qmd
 
 bibliography: references.bib
 # csl: nature.csl
@@ -40,4 +41,3 @@ format:
   html:
     theme: cosmo
     number-sections: false
-
