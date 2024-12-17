@@ -6,9 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Adrian Mirza">
+<meta name="author" content="Kevin Jablonka">
+<meta name="dcterms.date" content="2024-12-14">
 
-<title>showyourwork – Lamalab Tool and Paper Notes</title>
+<title>Training Large Language Models to Reason in a Continuous Latent Space – Lamalab Tool and Paper Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -51,8 +52,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../papers/llm4mat.html" rel="next">
-<link href="../tools/bfg.html" rel="prev">
+<link href="../papers/bpm_L.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -90,6 +90,35 @@ div.csl-indent {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -102,7 +131,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tools/hydra.html">Tools</a></li><li class="breadcrumb-item"><a href="../tools/showyourwork.html"><span class="chapter-title">showyourwork</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/llm4mat.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/coconut.html"><span class="chapter-title">Training Large Language Models to Reason in a Continuous Latent Space</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -183,7 +212,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tools/showyourwork.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">showyourwork</span></a>
+  <a href="../tools/showyourwork.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">showyourwork</span></a>
   </div>
 </li>
       </ul>
@@ -259,7 +288,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/coconut.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Training Large Language Models to Reason in a Continuous Latent Space</span></a>
+  <a href="../papers/coconut.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Training Large Language Models to Reason in a Continuous Latent Space</span></a>
   </div>
 </li>
       </ul>
@@ -269,15 +298,32 @@ div.csl-indent {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#making-llms-better-at-reasoning" id="toc-making-llms-better-at-reasoning" class="nav-link active" data-scroll-target="#making-llms-better-at-reasoning">Making LLMs better at reasoning</a>
+  <ul class="collapse">
+  <li><a href="#chain-of-thought-cot" id="toc-chain-of-thought-cot" class="nav-link" data-scroll-target="#chain-of-thought-cot">Chain of Thought (CoT)</a></li>
+  <li><a href="#internalized-cot" id="toc-internalized-cot" class="nav-link" data-scroll-target="#internalized-cot">Internalized CoT</a></li>
+  <li><a href="#cot-traces-are-not-faithful-and-might-be-limiting" id="toc-cot-traces-are-not-faithful-and-might-be-limiting" class="nav-link" data-scroll-target="#cot-traces-are-not-faithful-and-might-be-limiting">CoT traces are not faithful and might be limiting</a></li>
+  </ul></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a>
+  <ul class="collapse">
+  <li><a href="#training-approach" id="toc-training-approach" class="nav-link" data-scroll-target="#training-approach">Training approach</a></li>
+  </ul></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tools/hydra.html">Tools</a></li><li class="breadcrumb-item"><a href="../tools/showyourwork.html"><span class="chapter-title">showyourwork</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/llm4mat.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/coconut.html"><span class="chapter-title">Training Large Language Models to Reason in a Continuous Latent Space</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">showyourwork</span></h1>
+<h1 class="title"><span class="chapter-title">Training Large Language Models to Reason in a Continuous Latent Space</span></h1>
 </div>
 
 
@@ -287,10 +333,16 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Adrian Mirza </p>
+             <p>Kevin Jablonka </p>
           </div>
   </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 14, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -300,13 +352,255 @@ div.csl-indent {
 </header>
 
 
-<p>showyourwork : https://github.com/showyourwork is a framework for building reproducible papers. The package works on a combination of Tex and Python code, where you can on the fly modify your plots.</p>
-<p>The pre-requisites are: 1. define a conda environment with the packages are that necessary for plotting 2. use the <code>\script{}</code>, <code>\variable{}</code> and other commands to link your figures/tables to a Python script. 3. compile the paper</p>
+<section id="making-llms-better-at-reasoning" class="level2">
+<h2 class="anchored" data-anchor-id="making-llms-better-at-reasoning">Making LLMs better at reasoning</h2>
+<p>A lot of research currently goes into making LLMs better at reasoning. Much of this is linked to the fact that current systems “think” with the “same intensity” for every token they produce. Many think that systems would be better if models could “think harder” for harder tasks.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="coconut/1734229741257.png" class="img-fluid figure-img"></p>
+<figcaption>Ilya Sutskever at NeurIPS 2024. Reasoning is very prominent on many research agendas. Full video <a href="https://www.youtube.com/watch?v=1yvBqasHLZs&amp;feature=youtu.be">on YouTube</a></figcaption>
+</figure>
+</div>
+<section id="chain-of-thought-cot" class="level3">
+<h3 class="anchored" data-anchor-id="chain-of-thought-cot">Chain of Thought (CoT)</h3>
+<p>Chain of thought prompting is a surprisingly simple method that has shown to improve the performance of LLMs on various benchmarks. Effectively, Wei <span class="citation" data-cites="wei2022chain">(<a href="#ref-wei2022chain" role="doc-biblioref">Wei et al. 2022</a>)</span> showed in their paper (<a href="https://scholar.google.com/scholar?cites=4478103128423899805&amp;as_sdt=2005&amp;sciodt=0,5&amp;hl=en">almost 10k citations</a>) that thought demonstrations improve performance.</p>
+<p>Kojima (<a href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Large+Language+Models+are+Zero-Shot+Reasoners&amp;btnG=">around 3.5k citations</a>) <span class="citation" data-cites="kojima2022large">(<a href="#ref-kojima2022large" role="doc-biblioref">Kojima et al. 2022</a>)</span> showed that simply adding “Let’s think step by step” into the prompt can yield comparable performance boosts.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Various CoT variants have been proposed. I think <a href="https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/">Lilian Weng’s take that many of those things should be blog posts and not papers is true</a>.</p>
+<p>Some useful variants are shown in <span class="citation" data-cites="fu2023complexitybasedpromptingmultistepreasoning">(<a href="#ref-fu2023complexitybasedpromptingmultistepreasoning" role="doc-biblioref">Fu et al. 2023</a>)</span>. The paper also shows some of the prompt sensitivity (e.g., changing <code>Q:</code> to <code>Question:</code> or using <code>\n</code> instead of <code>.</code> to separate steps.)</p>
+</div>
+</div>
+<p>Some follow up work as been discussing that one explanation for the improved performance via CoT reasoning is that the effective compute increases.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>CoT can also be thought of as one flavor of test-time compute. This is currently one of the most promising and active streams of research to increase the performance of LLMs. Models like o1 <span class="citation" data-cites="qin2024o1replicationjourneystrategic">(<a href="#ref-qin2024o1replicationjourneystrategic" role="doc-biblioref">Qin et al. 2024</a>)</span> heavily lean on utilizing test-time compute (i.e.&nbsp;“thinking” more inference time - ideally, making the amount of thinking proportional to the difficulty of the question).</p>
+</div>
+</div>
+</section>
+<section id="internalized-cot" class="level3">
+<h3 class="anchored" data-anchor-id="internalized-cot">Internalized CoT</h3>
+<p>Since generating extra tokens for reasoning in inference time is expensive, researchers attempted to internalize the reasoning pathway.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To converge training, the authors found that it is important to reset optimizer state. Optimizers such as AdamwW keep running averages - and those cause problems when the loss function suddenly changes.</p>
+</div>
+</div>
+</section>
+<section id="cot-traces-are-not-faithful-and-might-be-limiting" class="level3">
+<h3 class="anchored" data-anchor-id="cot-traces-are-not-faithful-and-might-be-limiting">CoT traces are not faithful and might be limiting</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="coconut/tweet.png" class="img-fluid figure-img"></p>
+<figcaption>A <a href="https://x.com/ylecun/status/1652183354370916354">tweet</a> by one of the godfathers. Reasoning might not need to be verbalized.</figcaption>
+</figure>
+</div>
+<p>It is well known, that CoT traces are not faithful., Turpin showed this by adding biases into the prompt. Those biases led to drops in model performance but were not mentioned by the model. This experiments directly allows to conclude that the verbalized explanations are not faithful as a reason for change in predictions is not verbalized.</p>
+<p>Some anthropomorphize this by linking this to neuroscience results that show that “Language is primarily a tool for communication rather than thought” <span class="citation" data-cites="Fedorenko_2024">(<a href="#ref-Fedorenko_2024" role="doc-biblioref">Fedorenko, Piantadosi, and Gibson 2024</a>)</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="coconut/language_network.png" class="img-fluid figure-img"></p>
+<figcaption>Roles of the language network. Taken from <span class="citation" data-cites="Fedorenko_2024">(<a href="#ref-Fedorenko_2024" role="doc-biblioref">Fedorenko, Piantadosi, and Gibson 2024</a>)</span>. Subfigure b shows that the language network is not strongly activated for non-linguistic tasks.</figcaption>
+</figure>
+</div>
+<p>In addition, it is notable that CoT restricts models to one discrete reasoning path. However, it might be effective to explore multiple paths. A relevant work that does this is Tree of Thoughts (ToT) <span class="citation" data-cites="yao2023treethoughtsdeliberateproblem">(<a href="#ref-yao2023treethoughtsdeliberateproblem" role="doc-biblioref">Yao et al. 2023</a>)</span>. ToT works by creating a branching structure of multiple potential solutions:</p>
+<ol type="1">
+<li>Similar to CoT it breaks down problems into sequential thought steps</li>
+<li>But it generates multiple alternative thoughts at each step</li>
+<li>This can be used to create a tree-like structure of reasoning paths</li>
+<li>These trees can be explored using either:
+<ul>
+<li>Breadth-first search (BFS)</li>
+<li>Depth-first search (DFS)</li>
+</ul></li>
+<li>Each node (state) can be evaluated using a classifier or majority vote</li>
+</ol>
+</section>
+</section>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">Methods</h2>
+<p>The key idea presented in the paper is to not verbalize “thoughts” as language tokens but instead use the hidden representations that the model produces as richer “thought vectors” that could, in principle, also encode multiple reasoning pathways at the same time.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="coconut/method.png" class="img-fluid figure-img"></p>
+<figcaption>Method proposed by Coconut compared to CoT.</figcaption>
+</figure>
+</div>
+<p>That is, the approach continues to “think” in its internal representation but only verbalized the final answer.</p>
+<section id="training-approach" class="level3">
+<h3 class="anchored" data-anchor-id="training-approach">Training approach</h3>
+<p>To train this model, the authors use a protocol that is inspired by the one utilized for internalized CoT: Over multiple steps, they replace verbalized thinking steps with latent ones.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="coconut/training.png" class="img-fluid figure-img"></p>
+<figcaption>Training protocol used by the authors.</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<p>In their benchmarks, the authors observed promising results for their approach. They showed that their approached outperforms other “internalized thought” techniques.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Method</th>
+<th style="text-align: center;">GSM8k</th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;">ProntoQA</th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;">ProsQA</th>
+<th style="text-align: center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"></td>
+<td style="text-align: center;">Acc. (%)</td>
+<td style="text-align: center;"># Tokens</td>
+<td style="text-align: center;">Acc. (%)</td>
+<td style="text-align: center;"># Tokens</td>
+<td style="text-align: center;">Acc. (%)</td>
+<td style="text-align: center;"># Tokens</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">CoT</td>
+<td style="text-align: center;"><span class="math inline">\(42.9 \pm 0.2\)</span></td>
+<td style="text-align: center;">25.0</td>
+<td style="text-align: center;"><span class="math inline">\(98.8 \pm 0.8\)</span></td>
+<td style="text-align: center;">92.5</td>
+<td style="text-align: center;"><span class="math inline">\(77.5 \pm 1.9\)</span></td>
+<td style="text-align: center;">49.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">No-CoT</td>
+<td style="text-align: center;"><span class="math inline">\(16.5 \pm 0.5\)</span></td>
+<td style="text-align: center;">2.2</td>
+<td style="text-align: center;"><span class="math inline">\(93.8 \pm 0.7\)</span></td>
+<td style="text-align: center;">3.0</td>
+<td style="text-align: center;"><span class="math inline">\(76.7 \pm 1.0\)</span></td>
+<td style="text-align: center;">8.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">iCoT</td>
+<td style="text-align: center;"><span class="math inline">\(30.0^*\)</span></td>
+<td style="text-align: center;">2.2</td>
+<td style="text-align: center;"><span class="math inline">\(99.8 \pm 0.3\)</span></td>
+<td style="text-align: center;">3.0</td>
+<td style="text-align: center;"><span class="math inline">\(98.2 \pm 0.3\)</span></td>
+<td style="text-align: center;">8.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Pause Token</td>
+<td style="text-align: center;"><span class="math inline">\(16.4 \pm 1.8\)</span></td>
+<td style="text-align: center;">2.2</td>
+<td style="text-align: center;"><span class="math inline">\(77.7 \pm 21.0\)</span></td>
+<td style="text-align: center;">3.0</td>
+<td style="text-align: center;"><span class="math inline">\(75.9 \pm 0.7\)</span></td>
+<td style="text-align: center;">8.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Coconut (Ours)</td>
+<td style="text-align: center;"><span class="math inline">\(34.1 \pm 1.5\)</span></td>
+<td style="text-align: center;">8.2</td>
+<td style="text-align: center;"><span class="math inline">\(99.8 \pm 0.2\)</span></td>
+<td style="text-align: center;">9.0</td>
+<td style="text-align: center;"><span class="math inline">\(97.0 \pm 0.3\)</span></td>
+<td style="text-align: center;">14.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">- w/o curriculum</td>
+<td style="text-align: center;"><span class="math inline">\(14.4 \pm 0.8\)</span></td>
+<td style="text-align: center;">8.2</td>
+<td style="text-align: center;"><span class="math inline">\(52.4 \pm 0.4\)</span></td>
+<td style="text-align: center;">9.0</td>
+<td style="text-align: center;"><span class="math inline">\(76.1 \pm 0.2\)</span></td>
+<td style="text-align: center;">14.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">- w/o thought</td>
+<td style="text-align: center;"><span class="math inline">\(21.6 \pm 0.5\)</span></td>
+<td style="text-align: center;">2.3</td>
+<td style="text-align: center;"><span class="math inline">\(99.9 \pm 0.1\)</span></td>
+<td style="text-align: center;">3.0</td>
+<td style="text-align: center;"><span class="math inline">\(95.5 \pm 1.1\)</span></td>
+<td style="text-align: center;">8.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">- pause as thought</td>
+<td style="text-align: center;"><span class="math inline">\(24.1 \pm 0.7\)</span></td>
+<td style="text-align: center;">2.2</td>
+<td style="text-align: center;"><span class="math inline">\(100.0 \pm 0.1\)</span></td>
+<td style="text-align: center;">3.0</td>
+<td style="text-align: center;"><span class="math inline">\(96.6 \pm 0.8\)</span></td>
+<td style="text-align: center;">8.2</td>
+</tr>
+</tbody>
+</table>
+<p>They also found that increasing the number of latent thoughts per thinking step increases performance.</p>
+<p>By decoding the hidden thoughts they could assign probabilities to different options that COCONUT “explored”. This can be used to construct search trees.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="coconut/tree.png" class="img-fluid figure-img"></p>
+<figcaption>Search tree proposed for ProsQA.</figcaption>
+</figure>
+</div>
+<p>The trees are a bit more “anecdotal” (as there are no systematic statistics) but an interesting perspective on the results</p>
+</section>
+<section id="conclusions" class="level2">
+<h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
+<ul>
+<li>The current protocol is computationally expensive in training (requires multiple forward passes). If one would like to do this on scale, development of suitable infrastructure is needed.</li>
+<li>It is nice to explore some new paradigms (with smaller models)</li>
+<li>Some of this also links to agents (instead of letting them talk via text we could also used hidden representation)</li>
+</ul>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Fedorenko_2024" class="csl-entry" role="listitem">
+Fedorenko, Evelina, Steven T. Piantadosi, and Edward A. F. Gibson. 2024. <span>“Language Is Primarily a Tool for Communication Rather Than Thought.”</span> <em>Nature</em> 630 (8017): 575–86. <a href="https://doi.org/10.1038/s41586-024-07522-w">https://doi.org/10.1038/s41586-024-07522-w</a>.
+</div>
+<div id="ref-fu2023complexitybasedpromptingmultistepreasoning" class="csl-entry" role="listitem">
+Fu, Yao, Hao Peng, Ashish Sabharwal, Peter Clark, and Tushar Khot. 2023. <span>“Complexity-Based Prompting for Multi-Step Reasoning.”</span> <a href="https://arxiv.org/abs/2210.00720">https://arxiv.org/abs/2210.00720</a>.
+</div>
 <div id="ref-https://doi.org/10.48550/arxiv.2410.11527" class="csl-entry" role="listitem">
 Guo, Jeff, and Philippe Schwaller. 2024. <span>“It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.”</span> arXiv. <a href="https://doi.org/10.48550/ARXIV.2410.11527">https://doi.org/10.48550/ARXIV.2410.11527</a>.
+</div>
+<div id="ref-kojima2022large" class="csl-entry" role="listitem">
+Kojima, Takeshi, Shixiang Shane Gu, Machel Reid, Yutaka Matsuo, and Yusuke Iwasawa. 2022. <span>“Large Language Models Are Zero-Shot Reasoners.”</span> <em>Advances in Neural Information Processing Systems</em> 35: 22199–213.
 </div>
 <div id="ref-landrum_lwreg_2024" class="csl-entry" role="listitem">
 Landrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. <span>“Lwreg: <span>A</span> <span>Lightweight</span> <span>System</span> for <span>Chemical</span> <span>Registration</span> and <span>Data</span> <span>Storage</span>.”</span> <em>Journal of Chemical Information and Modeling</em> 64 (16): 6247–52. <a href="https://doi.org/10.1021/acs.jcim.4c01133">https://doi.org/10.1021/acs.jcim.4c01133</a>.
@@ -314,7 +608,17 @@ Landrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina
 <div id="ref-orsi2024one" class="csl-entry" role="listitem">
 Orsi, Markus, and Jean-Louis Reymond. 2024. <span>“One Chiral Fingerprint to Find Them All.”</span> <em>Journal of Cheminformatics</em> 16 (1): 53.
 </div>
+<div id="ref-qin2024o1replicationjourneystrategic" class="csl-entry" role="listitem">
+Qin, Yiwei, Xuefeng Li, Haoyang Zou, Yixiu Liu, Shijie Xia, Zhen Huang, Yixin Ye, et al. 2024. <span>“O1 Replication Journey: A Strategic Progress Report – Part 1.”</span> <a href="https://arxiv.org/abs/2410.18982">https://arxiv.org/abs/2410.18982</a>.
 </div>
+<div id="ref-wei2022chain" class="csl-entry" role="listitem">
+Wei, Jason, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Fei Xia, Ed Chi, Quoc V Le, Denny Zhou, et al. 2022. <span>“Chain-of-Thought Prompting Elicits Reasoning in Large Language Models.”</span> <em>Advances in Neural Information Processing Systems</em> 35: 24824–37.
+</div>
+<div id="ref-yao2023treethoughtsdeliberateproblem" class="csl-entry" role="listitem">
+Yao, Shunyu, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths, Yuan Cao, and Karthik Narasimhan. 2023. <span>“Tree of Thoughts: Deliberate Problem Solving with Large Language Models.”</span> <a href="https://arxiv.org/abs/2305.10601">https://arxiv.org/abs/2305.10601</a>.
+</div>
+</div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -736,14 +1040,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../tools/bfg.html" class="pagination-link" aria-label="BFG Repo-Cleaner">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">BFG Repo-Cleaner</span></span>
+      <a href="../papers/bpm_L.html" class="pagination-link" aria-label="A Bond-Based Machine Learning Model for Molecular Polarizabilities and A Priori Raman Spectra">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">A Bond-Based Machine Learning Model for Molecular Polarizabilities and A Priori Raman Spectra</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../papers/llm4mat.html" class="pagination-link" aria-label="Leveraging language representation for materials exploration and discovery">
-        <span class="nav-page-text"><span class="chapter-title">Leveraging language representation for materials exploration and discovery</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

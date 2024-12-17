@@ -1504,5 +1504,60 @@
       "Papers",
       "<span class='chapter-number'>22</span>  <span class='chapter-title'>A Bond-Based Machine Learning Model for Molecular Polarizabilities and A Priori Raman Spectra</span>"
     ]
+  },
+  {
+    "objectID": "papers/coconut.html",
+    "href": "papers/coconut.html",
+    "title": "Training Large Language Models to Reason in a Continuous Latent Space",
+    "section": "",
+    "text": "Making LLMs better at reasoning\nA lot of research currently goes into making LLMs better at reasoning. Much of this is linked to the fact that current systems “think” with the “same intensity” for every token they produce. Many think that systems would be better if models could “think harder” for harder tasks.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>Training Large Language Models to Reason in a Continuous Latent Space</span>"
+    ]
+  },
+  {
+    "objectID": "papers/coconut.html#making-llms-better-at-reasoning",
+    "href": "papers/coconut.html#making-llms-better-at-reasoning",
+    "title": "Training Large Language Models to Reason in a Continuous Latent Space",
+    "section": "",
+    "text": "Ilya Sutskever at NeurIPS 2024. Reasoning is very prominent on many research agendas. Full video on YouTube\n\n\n\nChain of Thought (CoT)\nChain of thought prompting is a surprisingly simple method that has shown to improve the performance of LLMs on various benchmarks. Effectively, Wei (Wei et al. 2022) showed in their paper (almost 10k citations) that thought demonstrations improve performance.\nKojima (around 3.5k citations) (Kojima et al. 2022) showed that simply adding “Let’s think step by step” into the prompt can yield comparable performance boosts.\n\n\n\n\n\n\nNote\n\n\n\nVarious CoT variants have been proposed. I think Lilian Weng’s take that many of those things should be blog posts and not papers is true.\nSome useful variants are shown in (Fu et al. 2023). The paper also shows some of the prompt sensitivity (e.g., changing Q: to Question: or using \\n instead of . to separate steps.)\n\n\nSome follow up work as been discussing that one explanation for the improved performance via CoT reasoning is that the effective compute increases.\n\n\n\n\n\n\nNote\n\n\n\nCoT can also be thought of as one flavor of test-time compute. This is currently one of the most promising and active streams of research to increase the performance of LLMs. Models like o1 (Qin et al. 2024) heavily lean on utilizing test-time compute (i.e. “thinking” more inference time - ideally, making the amount of thinking proportional to the difficulty of the question).\n\n\n\n\nInternalized CoT\nSince generating extra tokens for reasoning in inference time is expensive, researchers attempted to internalize the reasoning pathway.\n\n\n\n\n\n\nTip\n\n\n\nTo converge training, the authors found that it is important to reset optimizer state. Optimizers such as AdamwW keep running averages - and those cause problems when the loss function suddenly changes.\n\n\n\n\nCoT traces are not faithful and might be limiting\n\n\n\nA tweet by one of the godfathers. Reasoning might not need to be verbalized.\n\n\nIt is well known, that CoT traces are not faithful., Turpin showed this by adding biases into the prompt. Those biases led to drops in model performance but were not mentioned by the model. This experiments directly allows to conclude that the verbalized explanations are not faithful as a reason for change in predictions is not verbalized.\nSome anthropomorphize this by linking this to neuroscience results that show that “Language is primarily a tool for communication rather than thought” (Fedorenko, Piantadosi, and Gibson 2024)\n\n\n\nRoles of the language network. Taken from (Fedorenko, Piantadosi, and Gibson 2024). Subfigure b shows that the language network is not strongly activated for non-linguistic tasks.\n\n\nIn addition, it is notable that CoT restricts models to one discrete reasoning path. However, it might be effective to explore multiple paths. A relevant work that does this is Tree of Thoughts (ToT) (Yao et al. 2023). ToT works by creating a branching structure of multiple potential solutions:\n\nSimilar to CoT it breaks down problems into sequential thought steps\nBut it generates multiple alternative thoughts at each step\nThis can be used to create a tree-like structure of reasoning paths\nThese trees can be explored using either:\n\nBreadth-first search (BFS)\nDepth-first search (DFS)\n\nEach node (state) can be evaluated using a classifier or majority vote",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>Training Large Language Models to Reason in a Continuous Latent Space</span>"
+    ]
+  },
+  {
+    "objectID": "papers/coconut.html#methods",
+    "href": "papers/coconut.html#methods",
+    "title": "Training Large Language Models to Reason in a Continuous Latent Space",
+    "section": "Methods",
+    "text": "Methods\nThe key idea presented in the paper is to not verbalize “thoughts” as language tokens but instead use the hidden representations that the model produces as richer “thought vectors” that could, in principle, also encode multiple reasoning pathways at the same time.\n\n\n\nMethod proposed by Coconut compared to CoT.\n\n\nThat is, the approach continues to “think” in its internal representation but only verbalized the final answer.\n\nTraining approach\nTo train this model, the authors use a protocol that is inspired by the one utilized for internalized CoT: Over multiple steps, they replace verbalized thinking steps with latent ones.\n\n\n\nTraining protocol used by the authors.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>Training Large Language Models to Reason in a Continuous Latent Space</span>"
+    ]
+  },
+  {
+    "objectID": "papers/coconut.html#results",
+    "href": "papers/coconut.html#results",
+    "title": "Training Large Language Models to Reason in a Continuous Latent Space",
+    "section": "Results",
+    "text": "Results\nIn their benchmarks, the authors observed promising results for their approach. They showed that their approached outperforms other “internalized thought” techniques.\n\n\n\n\n\n\n\n\n\n\n\n\nMethod\nGSM8k\n\nProntoQA\n\nProsQA\n\n\n\n\n\n\nAcc. (%)\n# Tokens\nAcc. (%)\n# Tokens\nAcc. (%)\n# Tokens\n\n\nCoT\n\\(42.9 \\pm 0.2\\)\n25.0\n\\(98.8 \\pm 0.8\\)\n92.5\n\\(77.5 \\pm 1.9\\)\n49.4\n\n\nNo-CoT\n\\(16.5 \\pm 0.5\\)\n2.2\n\\(93.8 \\pm 0.7\\)\n3.0\n\\(76.7 \\pm 1.0\\)\n8.2\n\n\niCoT\n\\(30.0^*\\)\n2.2\n\\(99.8 \\pm 0.3\\)\n3.0\n\\(98.2 \\pm 0.3\\)\n8.2\n\n\nPause Token\n\\(16.4 \\pm 1.8\\)\n2.2\n\\(77.7 \\pm 21.0\\)\n3.0\n\\(75.9 \\pm 0.7\\)\n8.2\n\n\nCoconut (Ours)\n\\(34.1 \\pm 1.5\\)\n8.2\n\\(99.8 \\pm 0.2\\)\n9.0\n\\(97.0 \\pm 0.3\\)\n14.2\n\n\n- w/o curriculum\n\\(14.4 \\pm 0.8\\)\n8.2\n\\(52.4 \\pm 0.4\\)\n9.0\n\\(76.1 \\pm 0.2\\)\n14.2\n\n\n- w/o thought\n\\(21.6 \\pm 0.5\\)\n2.3\n\\(99.9 \\pm 0.1\\)\n3.0\n\\(95.5 \\pm 1.1\\)\n8.2\n\n\n- pause as thought\n\\(24.1 \\pm 0.7\\)\n2.2\n\\(100.0 \\pm 0.1\\)\n3.0\n\\(96.6 \\pm 0.8\\)\n8.2\n\n\n\nThey also found that increasing the number of latent thoughts per thinking step increases performance.\nBy decoding the hidden thoughts they could assign probabilities to different options that COCONUT “explored”. This can be used to construct search trees.\n\n\n\nSearch tree proposed for ProsQA.\n\n\nThe trees are a bit more “anecdotal” (as there are no systematic statistics) but an interesting perspective on the results",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>Training Large Language Models to Reason in a Continuous Latent Space</span>"
+    ]
+  },
+  {
+    "objectID": "papers/coconut.html#conclusions",
+    "href": "papers/coconut.html#conclusions",
+    "title": "Training Large Language Models to Reason in a Continuous Latent Space",
+    "section": "Conclusions",
+    "text": "Conclusions\n\nThe current protocol is computationally expensive in training (requires multiple forward passes). If one would like to do this on scale, development of suitable infrastructure is needed.\nIt is nice to explore some new paradigms (with smaller models)\nSome of this also links to agents (instead of letting them talk via text we could also used hidden representation)\n\n\n\n\n\nFedorenko, Evelina, Steven T. Piantadosi, and Edward A. F. Gibson. 2024. “Language Is Primarily a Tool for Communication Rather Than Thought.” Nature 630 (8017): 575–86. https://doi.org/10.1038/s41586-024-07522-w.\n\n\nFu, Yao, Hao Peng, Ashish Sabharwal, Peter Clark, and Tushar Khot. 2023. “Complexity-Based Prompting for Multi-Step Reasoning.” https://arxiv.org/abs/2210.00720.\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nKojima, Takeshi, Shixiang Shane Gu, Machel Reid, Yutaka Matsuo, and Yusuke Iwasawa. 2022. “Large Language Models Are Zero-Shot Reasoners.” Advances in Neural Information Processing Systems 35: 22199–213.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.\n\n\nQin, Yiwei, Xuefeng Li, Haoyang Zou, Yixiu Liu, Shijie Xia, Zhen Huang, Yixin Ye, et al. 2024. “O1 Replication Journey: A Strategic Progress Report – Part 1.” https://arxiv.org/abs/2410.18982.\n\n\nWei, Jason, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Fei Xia, Ed Chi, Quoc V Le, Denny Zhou, et al. 2022. “Chain-of-Thought Prompting Elicits Reasoning in Large Language Models.” Advances in Neural Information Processing Systems 35: 24824–37.\n\n\nYao, Shunyu, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths, Yuan Cao, and Karthik Narasimhan. 2023. “Tree of Thoughts: Deliberate Problem Solving with Large Language Models.” https://arxiv.org/abs/2305.10601.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>Training Large Language Models to Reason in a Continuous Latent Space</span>"
+    ]
   }
 ]
