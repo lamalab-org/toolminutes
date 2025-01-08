@@ -1,7 +1,6 @@
 ---
 author: Kohulan Rajan
 date: 2025-01-08
-bibliography: ../references.bib
 ---
 
 # 🧬 EMNPD Database
@@ -15,7 +14,6 @@ bibliography: ../references.bib
 [![Database](https://img.shields.io/badge/Database-Access_EMNPD-00C7B7?style=for-the-badge)](http://emnpd.idrblab.cn/)
 [![Data](https://img.shields.io/badge/Download-Get_Data-ff69b4?style=for-the-badge)](https://figshare.com/articles/dataset/EMNPD_Download_Data/24078474)
 
-</div>
 
 
 ## Why did I choose this paper?
@@ -26,29 +24,22 @@ bibliography: ../references.bib
 ## [EMNPD (Endophytic Microorganism Natural Products Database)](http://emnpd.idrblab.cn/ )
 - Endophytic microorganisms, residing within plant tissues, play a vital role in biotic and abiotic stress responses by producing diverse natural products (NPs). Approximately 49.5% of FDA-approved drugs are derived from NPs or their derivatives, making endophytes a promising source for novel bioactive compounds. Despite this, existing databases lack a comprehensive focus on endophytes. The newly developed EMNPD database addresses this gap, providing open access to curated data on endophytic microorganism natural products and their bioactivities.
 
-<div style="background-color: #f0f9ff; padding: 20px; border-radius: 10px; border-left: 5px solid #0066cc;">
 
 ### 📊 Key Statistics
-<div align="center">
 
 | 🧬 Natural Products | 🦠 Endophytes | 🎯 Biological Targets | ⚡ Bioactivities |
 |:-----------------:|:-------------:|:-------------------:|:---------------:|
 | **6,632** | **1,017** | **1,286** | **91** |
 
-</div>
 
-- **Data**: Includes physico-chemical properties, ADMET information, and fermentation conditions
+
+- **Data**: Includes physicochemical properties, ADMET information, and fermentation conditions
 - **Accessibility**: Open-access, registration-free database at EMNPD website
-
-</div>
-
 ---
 
-<div align="center">
 
 ## 📈 Comparative Summary of Microbial NP Databases 📉
 
-</div>
 
 | Database | Focus Area | Natural Products | Species | Bioactivity Data | Content Data | Quantitative Activity |
 |:---------|:-----------|:---------------:|:--------:|:----------------:|:------------:|:--------------------:|
@@ -73,9 +64,7 @@ bibliography: ../references.bib
   2. Removal of reviews and low-scoring articles using LitSuggest (threshold <0.6).  
   3. Final curation: 1000 articles selected.  
 
-<div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
-    <img src="https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs13321-023-00779-9/MediaObjects/13321_2023_779_Fig1_HTML.png?as=webp" style="width: 600px;">
-</div>
+<img src="https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs13321-023-00779-9/MediaObjects/13321_2023_779_Fig1_HTML.png?as=webp" style="width: 600px;">
 
 ### Data Collection and Processing  
 - **Compound Characterization**:  
@@ -106,13 +95,11 @@ pie title Distribution
 ```
 
 - **Bioactivity Data**:  
-<div align="center">
 
 | 📊 Activity records | 🎯 Bioactivity Types | 🧬 Proteins | 🔬 Cell Lines | 🌍 Species |
 |:------------:|:-------------------:|:----------:|:-------------:|:----------:|
 | **9,457** | **86** | **94** | **282** | **910** |
 
-</div>
 
 ---
 
@@ -123,9 +110,7 @@ pie title Distribution
   - Advanced search with Boolean operators for NPs, targets, and bioactivities.  
   - Structure search enabled through Ketcher molecular editor.
     
-<div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
-    <img src="https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs13321-023-00779-9/MediaObjects/13321_2023_779_Fig4_HTML.png?as=webp" style="width: 800px;">
-</div>
+<img src="https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs13321-023-00779-9/MediaObjects/13321_2023_779_Fig4_HTML.png?as=webp" style="width: 800px;">
 
 - **Browsing Features**:  
   - Visual tools like bar, tree, and sunburst charts for exploring data.  
