@@ -1559,5 +1559,93 @@
       "Papers",
       "<span class='chapter-number'>23</span>  <span class='chapter-title'>Training Large Language Models to Reason in a Continuous Latent Space</span>"
     ]
+  },
+  {
+    "objectID": "papers/emnpd.html",
+    "href": "papers/emnpd.html",
+    "title": "🧬 EMNPD Database",
+    "section": "",
+    "text": "A comprehensive endophytic microorganism natural products database for prompt the discovery of new bioactive substances",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>🧬 EMNPD Database</span>"
+    ]
+  },
+  {
+    "objectID": "papers/emnpd.html#why-did-i-choose-this-paper",
+    "href": "papers/emnpd.html#why-did-i-choose-this-paper",
+    "title": "🧬 EMNPD Database",
+    "section": "Why did I choose this paper?",
+    "text": "Why did I choose this paper?\n\nIt is a natural product database that aligns with our interests and is now integrated into COCONUT 2.0.\nThe data in this database was mined from literature and using LitSuggest reviews and low-scoring articles were discarded (threshold &lt;0.6), which also involved fine-tuning the model for optimal performance.\nThis is one of the newest databases that provides extensive information about molecules, including their source organisms, a key feature highly relevant to COCONUT.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>🧬 EMNPD Database</span>"
+    ]
+  },
+  {
+    "objectID": "papers/emnpd.html#emnpd-endophytic-microorganism-natural-products-database",
+    "href": "papers/emnpd.html#emnpd-endophytic-microorganism-natural-products-database",
+    "title": "🧬 EMNPD Database",
+    "section": "EMNPD (Endophytic Microorganism Natural Products Database)",
+    "text": "EMNPD (Endophytic Microorganism Natural Products Database)\n\nEndophytic microorganisms, residing within plant tissues, play a vital role in biotic and abiotic stress responses by producing diverse natural products (NPs). Approximately 49.5% of FDA-approved drugs are derived from NPs or their derivatives, making endophytes a promising source for novel bioactive compounds. Despite this, existing databases lack a comprehensive focus on endophytes. The newly developed EMNPD database addresses this gap, providing open access to curated data on endophytic microorganism natural products and their bioactivities.\n\n\n📊 Key Statistics\n\n\n\n\n\n\n\n\n\n\n🧬 Natural Products\n🦠 Endophytes\n🎯 Biological Targets\n⚡ Bioactivities\n\n\n\n\n6,632\n1,017\n1,286\n91\n\n\n\n\n\nData: Includes physico-chemical properties, ADMET information, and fermentation conditions\nAccessibility: Open-access, registration-free database at EMNPD website",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>🧬 EMNPD Database</span>"
+    ]
+  },
+  {
+    "objectID": "papers/emnpd.html#comparative-summary-of-microbial-np-databases",
+    "href": "papers/emnpd.html#comparative-summary-of-microbial-np-databases",
+    "title": "🧬 EMNPD Database",
+    "section": "📈 Comparative Summary of Microbial NP Databases 📉",
+    "text": "📈 Comparative Summary of Microbial NP Databases 📉",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>🧬 EMNPD Database</span>"
+    ]
+  },
+  {
+    "objectID": "papers/emnpd.html#construction-and-content",
+    "href": "papers/emnpd.html#construction-and-content",
+    "title": "🧬 EMNPD Database",
+    "section": "Construction and Content",
+    "text": "Construction and Content\n\nData Extraction and Curation\n\nSources: Data gathered from PubMed, keyword searches, and computational tools.\n\nFiltration Process:\n\nInitial collection: 2600 articles.\n\nRemoval of reviews and low-scoring articles using LitSuggest (threshold &lt;0.6).\n\nFinal curation: 1000 articles selected.\n\n\n\n&lt;img src=\"https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs13321-023-00779-9/MediaObjects/13321_2023_779_Fig1_HTML.png?as=webp\" style=\"width: 600px;\"&gt;\n\n\n\nData Collection and Processing\n\nCompound Characterization:\n\nStructures sourced using PubChemPy and manually drawn using tools like ChemDraw and KingDraw .\n\nClassification was performed using ClassyFire and ADMET predictions with ADMETlab 2.0.\n\nTaxonomic Information:\n\nEndophyte taxonomy derived from NCBI Taxonomy.\n\nHost plant and geographic data integrated for added context.\n\nBiological Activity Data:\n\nCategorized into antibacterial, cytotoxic, anti-inflammatory, etc.\n\nDetailed bioactivity records linked to targets, including proteins, cell lines, and organisms.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>🧬 EMNPD Database</span>"
+    ]
+  },
+  {
+    "objectID": "papers/emnpd.html#database-content-and-statistics",
+    "href": "papers/emnpd.html#database-content-and-statistics",
+    "title": "🧬 EMNPD Database",
+    "section": "Database Content and Statistics",
+    "text": "Database Content and Statistics\n\nChemical Diversity:\n\n21 chemical superclasses represented.\n\nMajority of compounds adhere to Lipinski’s “Rule of Five.”\n\nTaxonomic Diversity:\n\n\npie title Distribution\n    \"Fungi\" : 87.5\n    \"Bacteria\" : 12.5\n\nBioactivity Data:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n📊 Activity records\n🎯 Bioactivity Types\n🧬 Proteins\n🔬 Cell Lines\n🌍 Species\n\n\n\n\n9,457\n86\n94\n282\n910",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>🧬 EMNPD Database</span>"
+    ]
+  },
+  {
+    "objectID": "papers/emnpd.html#utility-and-discussion",
+    "href": "papers/emnpd.html#utility-and-discussion",
+    "title": "🧬 EMNPD Database",
+    "section": "Utility and Discussion",
+    "text": "Utility and Discussion\n\nWeb Interface\n\nSearch Capabilities:\n\nAdvanced search with Boolean operators for NPs, targets, and bioactivities.\n\nStructure search enabled through Ketcher molecular editor.\n\n\n\n&lt;img src=\"https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs13321-023-00779-9/MediaObjects/13321_2023_779_Fig4_HTML.png?as=webp\" style=\"width: 800px;\"&gt;\n\n\nBrowsing Features:\n\nVisual tools like bar, tree, and sunburst charts for exploring data.\n\n\n\n\nDownloads\n\nAll data is available for free download, including Docker support for local deployment.\n\nGit: https://github.com/boilism/EMNPD\nData: https://figshare.com/articles/dataset/EMNPD_Download_Data/24078474",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>🧬 EMNPD Database</span>"
+    ]
+  },
+  {
+    "objectID": "papers/emnpd.html#conclusion",
+    "href": "papers/emnpd.html#conclusion",
+    "title": "🧬 EMNPD Database",
+    "section": "Conclusion",
+    "text": "Conclusion\nEndophytic microorganisms are a rich source of novel secondary metabolites, known for their diverse structures and significant biological activities, particularly in antimicrobial and anticancer research. Despite the frequent discovery of new and active natural products (NPs) from these microorganisms, the integration of this data into large-scale databases is often slow, highlighting the importance of efficient information sharing for research and development.\nTo address this EMNPD was developed. This database provides extensive data and interactive visualisation tools to aid in exploring the chemical diversity of these NPs. It is fully searchable and downloadable, designed to support various research perspectives. As interest in endophytic microorganisms continues to grow, EMNPD aims to become an essential resource for advancing drug discovery.\n\n\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>🧬 EMNPD Database</span>"
+    ]
   }
 ]

@@ -6,9 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Kevin Jablonka">
+<meta name="author" content="Kohulan Rajan">
+<meta name="dcterms.date" content="2025-01-08">
 
-<title>tmux – Lamalab Tool and Paper Notes</title>
+<title>🧬 EMNPD Database – Lamalab Tool and Paper Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -85,8 +52,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../tools/trimean.html" rel="next">
-<link href="../tools/thunder_client.html" rel="prev">
+<link href="../papers/coconut.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -136,7 +102,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tools/hydra.html">Tools</a></li><li class="breadcrumb-item"><a href="../tools/tmux.html"><span class="chapter-title">tmux</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/llm4mat.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/emnpd.html"><span class="chapter-title">🧬 EMNPD Database</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -197,7 +163,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tools/tmux.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">tmux</span></a>
+  <a href="../tools/tmux.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">tmux</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -298,7 +264,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/emnpd.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🧬 EMNPD Database</span></a>
+  <a href="../papers/emnpd.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">🧬 EMNPD Database</span></a>
   </div>
 </li>
       </ul>
@@ -313,22 +279,34 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#installation" id="toc-installation" class="nav-link active" data-scroll-target="#installation">Installation</a></li>
-  <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">Usage</a>
+  <li><a href="#a-comprehensive-endophytic-microorganism-natural-products-database-for-prompt-the-discovery-of-new-bioactive-substances" id="toc-a-comprehensive-endophytic-microorganism-natural-products-database-for-prompt-the-discovery-of-new-bioactive-substances" class="nav-link active" data-scroll-target="#a-comprehensive-endophytic-microorganism-natural-products-database-for-prompt-the-discovery-of-new-bioactive-substances"><em>A comprehensive endophytic microorganism natural products database for prompt the discovery of new bioactive substances</em></a></li>
+  <li><a href="#why-did-i-choose-this-paper" id="toc-why-did-i-choose-this-paper" class="nav-link" data-scroll-target="#why-did-i-choose-this-paper">Why did I choose this paper?</a></li>
+  <li><a href="#emnpd-endophytic-microorganism-natural-products-database" id="toc-emnpd-endophytic-microorganism-natural-products-database" class="nav-link" data-scroll-target="#emnpd-endophytic-microorganism-natural-products-database">EMNPD (Endophytic Microorganism Natural Products Database)</a>
   <ul class="collapse">
-  <li><a href="#on-the-remote-server" id="toc-on-the-remote-server" class="nav-link" data-scroll-target="#on-the-remote-server">On the remote server</a></li>
-  <li><a href="#on-the-remote-server-later" id="toc-on-the-remote-server-later" class="nav-link" data-scroll-target="#on-the-remote-server-later">On the remote server later</a></li>
-  <li><a href="#panes" id="toc-panes" class="nav-link" data-scroll-target="#panes">Panes</a></li>
+  <li><a href="#key-statistics" id="toc-key-statistics" class="nav-link" data-scroll-target="#key-statistics">📊 Key Statistics</a></li>
   </ul></li>
+  <li><a href="#comparative-summary-of-microbial-np-databases" id="toc-comparative-summary-of-microbial-np-databases" class="nav-link" data-scroll-target="#comparative-summary-of-microbial-np-databases">📈 Comparative Summary of Microbial NP Databases 📉</a></li>
+  <li><a href="#construction-and-content" id="toc-construction-and-content" class="nav-link" data-scroll-target="#construction-and-content">Construction and Content</a>
+  <ul class="collapse">
+  <li><a href="#data-extraction-and-curation" id="toc-data-extraction-and-curation" class="nav-link" data-scroll-target="#data-extraction-and-curation">Data Extraction and Curation</a></li>
+  <li><a href="#data-collection-and-processing" id="toc-data-collection-and-processing" class="nav-link" data-scroll-target="#data-collection-and-processing">Data Collection and Processing</a></li>
+  </ul></li>
+  <li><a href="#database-content-and-statistics" id="toc-database-content-and-statistics" class="nav-link" data-scroll-target="#database-content-and-statistics">Database Content and Statistics</a></li>
+  <li><a href="#utility-and-discussion" id="toc-utility-and-discussion" class="nav-link" data-scroll-target="#utility-and-discussion">Utility and Discussion</a>
+  <ul class="collapse">
+  <li><a href="#web-interface" id="toc-web-interface" class="nav-link" data-scroll-target="#web-interface">Web Interface</a></li>
+  <li><a href="#downloads" id="toc-downloads" class="nav-link" data-scroll-target="#downloads">Downloads</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tools/hydra.html">Tools</a></li><li class="breadcrumb-item"><a href="../tools/tmux.html"><span class="chapter-title">tmux</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/llm4mat.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/emnpd.html"><span class="chapter-title">🧬 EMNPD Database</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">tmux</span></h1>
+<h1 class="title"><span class="chapter-title">🧬 EMNPD Database</span></h1>
 </div>
 
 
@@ -338,10 +316,16 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Kevin Jablonka </p>
+             <p>Kohulan Rajan </p>
           </div>
   </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 8, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -351,31 +335,296 @@ div.csl-indent {
 </header>
 
 
-<p><code>tmux</code> is a terminal multiplexer. It lets you switch easily between several programs in one terminal, detach them (they keep running in the background) and reattach them to a different terminal. And do a lot more.</p>
-<section id="installation" class="level2">
-<h2 class="anchored" data-anchor-id="installation">Installation</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install tmux</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>or on Mac</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install tmux</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="a-comprehensive-endophytic-microorganism-natural-products-database-for-prompt-the-discovery-of-new-bioactive-substances" class="level2">
+<h2 class="anchored" data-anchor-id="a-comprehensive-endophytic-microorganism-natural-products-database-for-prompt-the-discovery-of-new-bioactive-substances"><em>A comprehensive endophytic microorganism natural products database for prompt the discovery of new bioactive substances</em></h2>
+<hr>
+<p><img src="https://emnpd.idrblab.cn/static/images/emnpd-high-resolution-logo-color-on-transparent-background.svg" width="400px" alt="EMNPD Logo"></p>
+<p><a href="https://github.com/boilism/EMNPD"><img src="https://img.shields.io/badge/GitHub-View_Repository-181717?style=for-the-badge&amp;logo=github.png" class="img-fluid" alt="GitHub"></a> <a href="http://emnpd.idrblab.cn/"><img src="https://img.shields.io/badge/Database-Access_EMNPD-00C7B7?style=for-the-badge.png" class="img-fluid" alt="Database"></a> <a href="https://figshare.com/articles/dataset/EMNPD_Download_Data/24078474"><img src="https://img.shields.io/badge/Download-Get_Data-ff69b4?style=for-the-badge.png" class="img-fluid" alt="Data"></a></p>
+</section></main></div>
+
+<section id="why-did-i-choose-this-paper" class="level2">
+<h2 data-anchor-id="why-did-i-choose-this-paper">Why did I choose this paper?</h2>
+<ol type="1">
+<li>It is a natural product database that aligns with our interests and is now integrated into COCONUT 2.0.</li>
+<li>The data in this database was mined from literature and using <a href="https://www.ncbi.nlm.nih.gov/research/litsuggest/">LitSuggest</a> reviews and low-scoring articles were discarded (threshold &lt;0.6), which also involved fine-tuning the model for optimal performance.</li>
+<li>This is one of the newest databases that provides extensive information about molecules, including their source organisms, a key feature highly relevant to COCONUT.</li>
+</ol>
 </section>
-<section id="usage" class="level2">
-<h2 class="anchored" data-anchor-id="usage">Usage</h2>
-<p>Let’s assume you are via ssh on a remote server and you want to run a long running process. You can use <code>tmux</code> to run the process in a session and then detach from it. You can then log out and log back in later to check on the process. Your process will still be running, even if your ssh session is closed.</p>
-<section id="on-the-remote-server" class="level3">
-<h3 class="anchored" data-anchor-id="on-the-remote-server">On the remote server</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tmux</span> new <span class="at">-s</span> myprocess</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Then run your process. When you are done, detach from the session by pressing <code>Ctrl+b</code> and then <code>d</code>.</p>
+<section id="emnpd-endophytic-microorganism-natural-products-database" class="level2">
+<h2 data-anchor-id="emnpd-endophytic-microorganism-natural-products-database"><a href="http://emnpd.idrblab.cn/">EMNPD (Endophytic Microorganism Natural Products Database)</a></h2>
+<ul>
+<li>Endophytic microorganisms, residing within plant tissues, play a vital role in biotic and abiotic stress responses by producing diverse natural products (NPs). Approximately 49.5% of FDA-approved drugs are derived from NPs or their derivatives, making endophytes a promising source for novel bioactive compounds. Despite this, existing databases lack a comprehensive focus on endophytes. The newly developed EMNPD database addresses this gap, providing open access to curated data on endophytic microorganism natural products and their bioactivities.</li>
+</ul>
+<section id="key-statistics" class="level3" style="background-color: #f0f9ff; padding: 20px; border-radius: 10px; border-left: 5px solid #0066cc;">
+<h3 data-anchor-id="key-statistics">📊 Key Statistics</h3>
+<div data-align="center">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 20%">
+<col style="width: 29%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">🧬 Natural Products</th>
+<th style="text-align: center;">🦠 Endophytes</th>
+<th style="text-align: center;">🎯 Biological Targets</th>
+<th style="text-align: center;">⚡ Bioactivities</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>6,632</strong></td>
+<td style="text-align: center;"><strong>1,017</strong></td>
+<td style="text-align: center;"><strong>1,286</strong></td>
+<td style="text-align: center;"><strong>91</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><strong>Data</strong>: Includes physico-chemical properties, ADMET information, and fermentation conditions</li>
+<li><strong>Accessibility</strong>: Open-access, registration-free database at EMNPD website</li>
+</ul>
 </section>
-<section id="on-the-remote-server-later" class="level3">
-<h3 class="anchored" data-anchor-id="on-the-remote-server-later">On the remote server later</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tmux</span> ls</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This will list all the sessions. You can then reattach to the session you want by typing:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tmux</span> attach <span class="at">-t</span> myprocess</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
 </section>
-<section id="panes" class="level3">
-<h3 class="anchored" data-anchor-id="panes">Panes</h3>
-<p>You can split your terminal into panes. This is useful if you want to run multiple processes in the same terminal. You can split the terminal vertically by pressing <code>Ctrl+b</code> and then <code>"</code> or horizontally by pressing <code>Ctrl+b</code> and then <code>%</code>.</p>
-<p>To move panes around, you can use <code>Ctrl+b</code> and then <code>o</code> to cycle through the panes.</p>
+<section id="comparative-summary-of-microbial-np-databases" class="level2" data-align="center">
+<h2 data-anchor-id="comparative-summary-of-microbial-np-databases">📈 Comparative Summary of Microbial NP Databases 📉</h2>
+</section>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 11%">
+<col style="width: 16%">
+<col style="width: 9%">
+<col style="width: 17%">
+<col style="width: 13%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Database</th>
+<th style="text-align: left;">Focus Area</th>
+<th style="text-align: center;">Natural Products</th>
+<th style="text-align: center;">Species</th>
+<th style="text-align: center;">Bioactivity Data</th>
+<th style="text-align: center;">Content Data</th>
+<th style="text-align: center;">Quantitative Activity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>🌟 EMNPD</strong></td>
+<td style="text-align: left;">Endophyte NPs</td>
+<td style="text-align: center;"><strong>6,632</strong></td>
+<td style="text-align: center;">1,017</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✓</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MyxoDB</td>
+<td style="text-align: left;">Myxobacterial</td>
+<td style="text-align: center;">674</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✗</td>
+<td style="text-align: center;">✗</td>
+<td style="text-align: center;">✗</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">mVOC</td>
+<td style="text-align: left;">Microbial volatiles</td>
+<td style="text-align: center;">2,061</td>
+<td style="text-align: center;">1,034</td>
+<td style="text-align: center;">✗</td>
+<td style="text-align: center;">✗</td>
+<td style="text-align: center;">✗</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NPcVar</td>
+<td style="text-align: left;">Plant &amp; microbial</td>
+<td style="text-align: center;">2,201</td>
+<td style="text-align: center;">694</td>
+<td style="text-align: center;">✗</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✗</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">StreptomeDB</td>
+<td style="text-align: left;">Streptomycetes</td>
+<td style="text-align: center;">6,524</td>
+<td style="text-align: center;">3,302</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✗</td>
+<td style="text-align: center;">✗</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CMNPD</td>
+<td style="text-align: left;">Marine</td>
+<td style="text-align: center;">31,561</td>
+<td style="text-align: center;">3,354</td>
+<td style="text-align: center;">✗</td>
+<td style="text-align: center;">✗</td>
+<td style="text-align: center;">✓</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NPAtlas</td>
+<td style="text-align: left;">Microbial</td>
+<td style="text-align: center;">33,372</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✗</td>
+<td style="text-align: center;">✗</td>
+<td style="text-align: center;">✗</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NPASS</td>
+<td style="text-align: left;">Plant &amp; microbial</td>
+<td style="text-align: center;">96,481</td>
+<td style="text-align: center;">32,287</td>
+<td style="text-align: center;">✗</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;">✓</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<section id="construction-and-content" class="level2">
+<h2 data-anchor-id="construction-and-content">Construction and Content</h2>
+<section id="data-extraction-and-curation" class="level3">
+<h3 data-anchor-id="data-extraction-and-curation">Data Extraction and Curation</h3>
+<ul>
+<li><strong>Sources</strong>: Data gathered from PubMed, keyword searches, and computational tools.<br>
+</li>
+<li><strong>Filtration Process</strong>:
+<ol type="1">
+<li>Initial collection: 2600 articles.<br>
+</li>
+<li>Removal of reviews and low-scoring articles using LitSuggest (threshold &lt;0.6).<br>
+</li>
+<li>Final curation: 1000 articles selected.</li>
+</ol></li>
+</ul>
+<div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+<pre><code>&lt;img src="https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs13321-023-00779-9/MediaObjects/13321_2023_779_Fig1_HTML.png?as=webp" style="width: 600px;"&gt;</code></pre>
+</div>
+</section>
+<section id="data-collection-and-processing" class="level3">
+<h3 data-anchor-id="data-collection-and-processing">Data Collection and Processing</h3>
+<ul>
+<li><strong>Compound Characterization</strong>:
+<ul>
+<li>Structures sourced using PubChemPy and manually drawn using tools like ChemDraw and <a href="http://kingdraw.cn/">KingDraw</a> .<br>
+</li>
+<li>Classification was performed using ClassyFire and ADMET predictions with ADMETlab 2.0.</li>
+</ul></li>
+<li><strong>Taxonomic Information</strong>:
+<ul>
+<li>Endophyte taxonomy derived from NCBI Taxonomy.<br>
+</li>
+<li>Host plant and geographic data integrated for added context.</li>
+</ul></li>
+<li><strong>Biological Activity Data</strong>:
+<ul>
+<li>Categorized into antibacterial, cytotoxic, anti-inflammatory, etc.<br>
+</li>
+<li>Detailed bioactivity records linked to targets, including proteins, cell lines, and organisms.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="database-content-and-statistics" class="level2">
+<h2 data-anchor-id="database-content-and-statistics">Database Content and Statistics</h2>
+<ul>
+<li><strong>Chemical Diversity</strong>:
+<ul>
+<li>21 chemical superclasses represented.<br>
+</li>
+<li>Majority of compounds adhere to Lipinski’s “Rule of Five.”</li>
+</ul></li>
+<li><strong>Taxonomic Diversity</strong>:<br>
+</li>
+</ul>
+<pre class="mermaid"><code>pie title Distribution
+    "Fungi" : 87.5
+    "Bacteria" : 12.5</code></pre>
+<ul>
+<li><strong>Bioactivity Data</strong>:<br>
+
+<div data-align="center">
+
+</div></li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 28%">
+<col style="width: 16%">
+<col style="width: 20%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">📊 Activity records</th>
+<th style="text-align: center;">🎯 Bioactivity Types</th>
+<th style="text-align: center;">🧬 Proteins</th>
+<th style="text-align: center;">🔬 Cell Lines</th>
+<th style="text-align: center;">🌍 Species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>9,457</strong></td>
+<td style="text-align: center;"><strong>86</strong></td>
+<td style="text-align: center;"><strong>94</strong></td>
+<td style="text-align: center;"><strong>282</strong></td>
+<td style="text-align: center;"><strong>910</strong></td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+</section>
+<section id="utility-and-discussion" class="level2">
+<h2 data-anchor-id="utility-and-discussion">Utility and Discussion</h2>
+<section id="web-interface" class="level3">
+<h3 data-anchor-id="web-interface">Web Interface</h3>
+<ul>
+<li><strong>Search Capabilities</strong>:
+<ul>
+<li>Advanced search with Boolean operators for NPs, targets, and bioactivities.<br>
+</li>
+<li>Structure search enabled through Ketcher molecular editor.</li>
+</ul></li>
+</ul>
+<div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+<pre><code>&lt;img src="https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs13321-023-00779-9/MediaObjects/13321_2023_779_Fig4_HTML.png?as=webp" style="width: 800px;"&gt;</code></pre>
+</div>
+<ul>
+<li><strong>Browsing Features</strong>:
+<ul>
+<li>Visual tools like bar, tree, and sunburst charts for exploring data.</li>
+</ul></li>
+</ul>
+</section>
+<section id="downloads" class="level3">
+<h3 data-anchor-id="downloads">Downloads</h3>
+<ul>
+<li>All data is available for free download, including Docker support for local deployment.
+<ul>
+<li>Git: https://github.com/boilism/EMNPD</li>
+<li>Data: https://figshare.com/articles/dataset/EMNPD_Download_Data/24078474</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 data-anchor-id="conclusion">Conclusion</h2>
+<p>Endophytic microorganisms are a rich source of novel secondary metabolites, known for their diverse structures and significant biological activities, particularly in antimicrobial and anticancer research. Despite the frequent discovery of new and active natural products (NPs) from these microorganisms, the integration of this data into large-scale databases is often slow, highlighting the importance of efficient information sharing for research and development.</p>
+<p>To address this EMNPD was developed. This database provides extensive data and interactive visualisation tools to aid in exploring the chemical diversity of these NPs. It is fully searchable and downloadable, designed to support various research perspectives. As interest in endophytic microorganisms continues to grow, EMNPD aims to become an essential resource for advancing drug discovery.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
@@ -390,9 +639,8 @@ Orsi, Markus, and Jean-Louis Reymond. 2024. <span>“One Chiral Fingerprint to F
 </div>
 </div>
 </section>
-</section>
 
-</main> <!-- /main -->
+ <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -812,17 +1060,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../tools/thunder_client.html" class="pagination-link" aria-label="Thunder Client">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Thunder Client</span></span>
+      <a href="../papers/coconut.html" class="pagination-link" aria-label="Training Large Language Models to Reason in a Continuous Latent Space">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Training Large Language Models to Reason in a Continuous Latent Space</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../tools/trimean.html" class="pagination-link" aria-label="Robust statistics and Trimean">
-        <span class="nav-page-text"><span class="chapter-title">Robust statistics and Trimean</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
-</div> <!-- /content -->
+ <!-- /content -->
 
 
 
