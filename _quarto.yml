@@ -33,6 +33,7 @@ book:
         - papers/core_bench.md
         - papers/bpm_L.md
         - papers/coconut.qmd
+        - papers/emnpd.md
 
 bibliography: references.bib
 # csl: nature.csl
