@@ -1587,7 +1587,7 @@
     "href": "papers/emnpd.html#emnpd-endophytic-microorganism-natural-products-database",
     "title": "🧬 EMNPD Database",
     "section": "EMNPD (Endophytic Microorganism Natural Products Database)",
-    "text": "EMNPD (Endophytic Microorganism Natural Products Database)\n\nEndophytic microorganisms, residing within plant tissues, play a vital role in biotic and abiotic stress responses by producing diverse natural products (NPs). Approximately 49.5% of FDA-approved drugs are derived from NPs or their derivatives, making endophytes a promising source for novel bioactive compounds. Despite this, existing databases lack a comprehensive focus on endophytes. The newly developed EMNPD database addresses this gap, providing open access to curated data on endophytic microorganism natural products and their bioactivities.\n\n\n📊 Key Statistics\n\n\n\n\n\n\n\n\n\n\n🧬 Natural Products\n🦠 Endophytes\n🎯 Biological Targets\n⚡ Bioactivities\n\n\n\n\n6,632\n1,017\n1,286\n91\n\n\n\n\n\nData: Includes physico-chemical properties, ADMET information, and fermentation conditions\nAccessibility: Open-access, registration-free database at EMNPD website",
+    "text": "EMNPD (Endophytic Microorganism Natural Products Database)\n\nEndophytic microorganisms, residing within plant tissues, play a vital role in biotic and abiotic stress responses by producing diverse natural products (NPs). Approximately 49.5% of FDA-approved drugs are derived from NPs or their derivatives, making endophytes a promising source for novel bioactive compounds. Despite this, existing databases lack a comprehensive focus on endophytes. The newly developed EMNPD database addresses this gap, providing open access to curated data on endophytic microorganism natural products and their bioactivities.\n\n\n📊 Key Statistics\n\n\n\n\n\n\n\n\n\n🧬 Natural Products\n🦠 Endophytes\n🎯 Biological Targets\n⚡ Bioactivities\n\n\n\n\n6,632\n1,017\n1,286\n91\n\n\n\n\nData: Includes physicochemical properties, ADMET information, and fermentation conditions\nAccessibility: Open-access, registration-free database at EMNPD website",
     "crumbs": [
       "Papers",
       "<span class='chapter-number'>24</span>  <span class='chapter-title'>🧬 EMNPD Database</span>"
@@ -1598,7 +1598,7 @@
     "href": "papers/emnpd.html#comparative-summary-of-microbial-np-databases",
     "title": "🧬 EMNPD Database",
     "section": "📈 Comparative Summary of Microbial NP Databases 📉",
-    "text": "📈 Comparative Summary of Microbial NP Databases 📉",
+    "text": "📈 Comparative Summary of Microbial NP Databases 📉\n\n\n\n\n\n\n\n\n\n\n\n\nDatabase\nFocus Area\nNatural Products\nSpecies\nBioactivity Data\nContent Data\nQuantitative Activity\n\n\n\n\n🌟 EMNPD\nEndophyte NPs\n6,632\n1,017\n✓\n✓\n✓\n\n\nMyxoDB\nMyxobacterial\n674\n✓\n✗\n✗\n✗\n\n\nmVOC\nMicrobial volatiles\n2,061\n1,034\n✗\n✗\n✗\n\n\nNPcVar\nPlant & microbial\n2,201\n694\n✗\n✓\n✗\n\n\nStreptomeDB\nStreptomycetes\n6,524\n3,302\n✓\n✗\n✗\n\n\nCMNPD\nMarine\n31,561\n3,354\n✗\n✗\n✓\n\n\nNPAtlas\nMicrobial\n33,372\n✓\n✗\n✗\n✗\n\n\nNPASS\nPlant & microbial\n96,481\n32,287\n✗\n✓\n✓",
     "crumbs": [
       "Papers",
       "<span class='chapter-number'>24</span>  <span class='chapter-title'>🧬 EMNPD Database</span>"
@@ -1609,7 +1609,7 @@
     "href": "papers/emnpd.html#construction-and-content",
     "title": "🧬 EMNPD Database",
     "section": "Construction and Content",
-    "text": "Construction and Content\n\nData Extraction and Curation\n\nSources: Data gathered from PubMed, keyword searches, and computational tools.\n\nFiltration Process:\n\nInitial collection: 2600 articles.\n\nRemoval of reviews and low-scoring articles using LitSuggest (threshold &lt;0.6).\n\nFinal curation: 1000 articles selected.\n\n\n\n&lt;img src=\"https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs13321-023-00779-9/MediaObjects/13321_2023_779_Fig1_HTML.png?as=webp\" style=\"width: 600px;\"&gt;\n\n\n\nData Collection and Processing\n\nCompound Characterization:\n\nStructures sourced using PubChemPy and manually drawn using tools like ChemDraw and KingDraw .\n\nClassification was performed using ClassyFire and ADMET predictions with ADMETlab 2.0.\n\nTaxonomic Information:\n\nEndophyte taxonomy derived from NCBI Taxonomy.\n\nHost plant and geographic data integrated for added context.\n\nBiological Activity Data:\n\nCategorized into antibacterial, cytotoxic, anti-inflammatory, etc.\n\nDetailed bioactivity records linked to targets, including proteins, cell lines, and organisms.",
+    "text": "Construction and Content\n\nData Extraction and Curation\n\nSources: Data gathered from PubMed, keyword searches, and computational tools.\n\nFiltration Process:\n\nInitial collection: 2600 articles.\n\nRemoval of reviews and low-scoring articles using LitSuggest (threshold &lt;0.6).\n\nFinal curation: 1000 articles selected.\n\n\n\n\n\nData Collection and Processing\n\nCompound Characterization:\n\nStructures sourced using PubChemPy and manually drawn using tools like ChemDraw and KingDraw .\n\nClassification was performed using ClassyFire and ADMET predictions with ADMETlab 2.0.\n\nTaxonomic Information:\n\nEndophyte taxonomy derived from NCBI Taxonomy.\n\nHost plant and geographic data integrated for added context.\n\nBiological Activity Data:\n\nCategorized into antibacterial, cytotoxic, anti-inflammatory, etc.\n\nDetailed bioactivity records linked to targets, including proteins, cell lines, and organisms.",
     "crumbs": [
       "Papers",
       "<span class='chapter-number'>24</span>  <span class='chapter-title'>🧬 EMNPD Database</span>"
@@ -1620,7 +1620,7 @@
     "href": "papers/emnpd.html#database-content-and-statistics",
     "title": "🧬 EMNPD Database",
     "section": "Database Content and Statistics",
-    "text": "Database Content and Statistics\n\nChemical Diversity:\n\n21 chemical superclasses represented.\n\nMajority of compounds adhere to Lipinski’s “Rule of Five.”\n\nTaxonomic Diversity:\n\n\npie title Distribution\n    \"Fungi\" : 87.5\n    \"Bacteria\" : 12.5\n\nBioactivity Data:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n📊 Activity records\n🎯 Bioactivity Types\n🧬 Proteins\n🔬 Cell Lines\n🌍 Species\n\n\n\n\n9,457\n86\n94\n282\n910",
+    "text": "Database Content and Statistics\n\nChemical Diversity:\n\n21 chemical superclasses represented.\n\nMajority of compounds adhere to Lipinski’s “Rule of Five.”\n\nTaxonomic Diversity:\n\n\npie title Distribution\n    \"Fungi\" : 87.5\n    \"Bacteria\" : 12.5\n\nBioactivity Data:\n\n\n\n\n\n\n\n\n\n\n\n📊 Activity records\n🎯 Bioactivity Types\n🧬 Proteins\n🔬 Cell Lines\n🌍 Species\n\n\n\n\n9,457\n86\n94\n282\n910",
     "crumbs": [
       "Papers",
       "<span class='chapter-number'>24</span>  <span class='chapter-title'>🧬 EMNPD Database</span>"
@@ -1631,7 +1631,7 @@
     "href": "papers/emnpd.html#utility-and-discussion",
     "title": "🧬 EMNPD Database",
     "section": "Utility and Discussion",
-    "text": "Utility and Discussion\n\nWeb Interface\n\nSearch Capabilities:\n\nAdvanced search with Boolean operators for NPs, targets, and bioactivities.\n\nStructure search enabled through Ketcher molecular editor.\n\n\n\n&lt;img src=\"https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs13321-023-00779-9/MediaObjects/13321_2023_779_Fig4_HTML.png?as=webp\" style=\"width: 800px;\"&gt;\n\n\nBrowsing Features:\n\nVisual tools like bar, tree, and sunburst charts for exploring data.\n\n\n\n\nDownloads\n\nAll data is available for free download, including Docker support for local deployment.\n\nGit: https://github.com/boilism/EMNPD\nData: https://figshare.com/articles/dataset/EMNPD_Download_Data/24078474",
+    "text": "Utility and Discussion\n\nWeb Interface\n\nSearch Capabilities:\n\nAdvanced search with Boolean operators for NPs, targets, and bioactivities.\n\nStructure search enabled through Ketcher molecular editor.\n\n\n\n\nBrowsing Features:\n\nVisual tools like bar, tree, and sunburst charts for exploring data.\n\n\n\n\nDownloads\n\nAll data is available for free download, including Docker support for local deployment.\n\nGit: https://github.com/boilism/EMNPD\nData: https://figshare.com/articles/dataset/EMNPD_Download_Data/24078474",
     "crumbs": [
       "Papers",
       "<span class='chapter-number'>24</span>  <span class='chapter-title'>🧬 EMNPD Database</span>"
