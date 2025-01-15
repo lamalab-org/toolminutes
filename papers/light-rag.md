@@ -28,13 +28,13 @@ Retrieval-Augmented Generation (RAG) systems enhance large language models (LLMs
 - **Graph-Enhanced Entity and Relationship Extraction**  
   LightRAG enhances the retrieval system by segmenting documents into smaller, more manageable pieces. This strategy allows for quick identification and access to relevant information without analyzing entire documents. The process includes the following functions:
 
-  - **Extracting Entities and Relationships \(\text{R}(\cdot)\):**  
+  - **Extracting Entities and Relationships (R):**  
     Prompts an LLM to identify entities (nodes) and their relationships (edges) within the text data. For example, entities like "Cardiologists" and "Heart Disease" and relationships such as "Cardiologists diagnose Heart Disease" can be extracted. Raw text is segmented into multiple chunks for efficiency.
     
-  - **LLM Profiling for Key-Value Pair Generation \(\text{P}(\cdot)\):**  
+  - **LLM Profiling for Key-Value Pair Generation (P):**  
     Uses a profiling function to generate key-value pairs for each entity and relation. Keys are words or short phrases for retrieval, while values summarize relevant snippets for text generation.
     
-  - **Deduplication to Optimize Graph Operations \(\text{D}(\cdot)\):**  
+  - **Deduplication to Optimize Graph Operations (D):**  
     Merges identical entities and relations from different text segments, reducing graph size and improving processing efficiency.
 
   **Advantages:**
