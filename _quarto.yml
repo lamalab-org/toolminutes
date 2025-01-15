@@ -34,6 +34,7 @@ book:
         - papers/bpm_L.md
         - papers/coconut.qmd
         - papers/emnpd.md
+        - papers/light-rag.md
 
 bibliography: references.bib
 # csl: nature.csl
