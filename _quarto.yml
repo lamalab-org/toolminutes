@@ -27,6 +27,14 @@ book:
         - papers/PaCh.md
         - papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.qmd
         - papers/open-source-cheminformatics.qmd
+        - papers/universal_chiral_fp_2024.md
+        - papers/lwreg_2024.md
+        - papers/tango.md
+        - papers/core_bench.md
+        - papers/bpm_L.md
+        - papers/coconut.qmd
+        - papers/emnpd.md
+        - papers/light-rag.md
         - papers/nmr-shift-prediction-from-small-data-quantities.qmd
 
 bibliography: references.bib
@@ -36,4 +44,3 @@ format:
   html:
     theme: cosmo
     number-sections: false
-
