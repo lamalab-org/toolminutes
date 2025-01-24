@@ -27,6 +27,7 @@ book:
         - papers/PaCh.md
         - papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.qmd
         - papers/open-source-cheminformatics.qmd
+        - papers/nmr-shift-prediction-from-small-data-quantities.qmd
 
 bibliography: references.bib
 # csl: nature.csl
