@@ -35,6 +35,7 @@ book:
         - papers/coconut.qmd
         - papers/emnpd.md
         - papers/light-rag.md
+        - papers/nmr-shift-prediction-from-small-data-quantities.qmd
 
 bibliography: references.bib
 # csl: nature.csl
