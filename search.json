@@ -1735,5 +1735,137 @@
       "Papers",
       "<span class='chapter-number'>25</span>  <span class='chapter-title'>🚀 LightRAG</span>"
     ]
+  },
+  {
+    "objectID": "papers/nmr-shift-prediction-from-small-data-quantities.html",
+    "href": "papers/nmr-shift-prediction-from-small-data-quantities.html",
+    "title": "NMR shift prediction from small data quantities",
+    "section": "",
+    "text": "Why discuss this paper?\nI chose the NMR shift prediction from small data quantities (Rull, Fischer, and Kuhn 2023) for current topics in the cheminformatics seminar because: - Many of the team memebers and I work on nmrXiv repository development and we would like to introduce NMR shift prediction in the future, which makes the article very relevant. - It is crucial to us to be familiar with available NMR shift prediction models and to understand the conditions under which they perform best. - To understand the effect of NMR experiment parameters (nuclei, solvents) on the prediction results.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>NMR shift prediction from small data quantities</span>"
+    ]
+  },
+  {
+    "objectID": "papers/nmr-shift-prediction-from-small-data-quantities.html#context",
+    "href": "papers/nmr-shift-prediction-from-small-data-quantities.html#context",
+    "title": "NMR shift prediction from small data quantities",
+    "section": "Context",
+    "text": "Context\nMachine Learning (ML) models perform best when trained with the maximum amount of data available. For heteronuclei NMR experiments, such an amount of data is not available. The paper demonstrates a novel ML model (called the 2023 model) that achieves good results for low amounts of data. They predict 13C and 19F NMR chemical shifts of small molecules in specific solvents.  Fig1: Graphic abstract of the paper",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>NMR shift prediction from small data quantities</span>"
+    ]
+  },
+  {
+    "objectID": "papers/nmr-shift-prediction-from-small-data-quantities.html#introduction",
+    "href": "papers/nmr-shift-prediction-from-small-data-quantities.html#introduction",
+    "title": "NMR shift prediction from small data quantities",
+    "section": "Introduction",
+    "text": "Introduction\nNMR chemical shift prediction can be done in two ways: - Ab-Initio: Calculate the chemical shifts based on the molecular structure and theoretical principles. They require no experimental data but are computationally intensive. - Using Existing Data: Like using ML models to predict shifts for new compounds relying on the experimental data of others. They are computationally efficient (Jonas, Kuhn, and Schlörer 2022).",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>NMR shift prediction from small data quantities</span>"
+    ]
+  },
+  {
+    "objectID": "papers/nmr-shift-prediction-from-small-data-quantities.html#problem-setting",
+    "href": "papers/nmr-shift-prediction-from-small-data-quantities.html#problem-setting",
+    "title": "NMR shift prediction from small data quantities",
+    "section": "Problem setting",
+    "text": "Problem setting\n\nThe amount of experimental data in NMR for heteronuclei, specific classes of compounds, and particular solvents is limited.\nThe number of data points used is a significant factor in the quality of the predictions.\nSome machine learning methods only show suitable predictive power with more than 5000 training examples.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>NMR shift prediction from small data quantities</span>"
+    ]
+  },
+  {
+    "objectID": "papers/nmr-shift-prediction-from-small-data-quantities.html#approach",
+    "href": "papers/nmr-shift-prediction-from-small-data-quantities.html#approach",
+    "title": "NMR shift prediction from small data quantities",
+    "section": "Approach",
+    "text": "Approach\n\nThe research was restricted to small organic molecules in solution, as other NMR fields require different and more specific models.\nIt focuses on the prediction of NMR chemical shifts using ML (graph neural networks).\nThe molecules were represented as a graph, where the atoms are nodes, and the bonds are edges. Each has its own features.\nAtoms / Nodes features: Atomic number, Atomic radius, Number of neutrons, Electronegativity, Electron affinity.\nBonds / Edges features: Bond length, Bond type.\nThis specific feature selection was chosen because of preliminary experiments, which measured the impact of each feature on the final prediction.\nThe best-performing features were combined until the prediction quality was no longer improving.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>NMR shift prediction from small data quantities</span>"
+    ]
+  },
+  {
+    "objectID": "papers/nmr-shift-prediction-from-small-data-quantities.html#information-flow",
+    "href": "papers/nmr-shift-prediction-from-small-data-quantities.html#information-flow",
+    "title": "NMR shift prediction from small data quantities",
+    "section": "Information Flow",
+    "text": "Information Flow\n Fig2: Schematic flow of information in the message‑passing graph network. The workflow can be split into the following steps: encoding, message‑passing, and prediction of shifts with an MLP.\n\nThe chosen features are encoded by multi-layer perceptron functions.\nThe encoded features are then processed through multiple rounds of message-passing in graph network (Duvenaud et al. 2015) (Gilmer et al. 2017).\nThis results in new node features that get passed to another MLP that predicts the final chemical shifts.\nThe most important hyperparameters were the number of message-passing steps, the learning rate, and the weight decay.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>NMR shift prediction from small data quantities</span>"
+    ]
+  },
+  {
+    "objectID": "papers/nmr-shift-prediction-from-small-data-quantities.html#performance-comparison-for-13c-nmr-shift-prediction",
+    "href": "papers/nmr-shift-prediction-from-small-data-quantities.html#performance-comparison-for-13c-nmr-shift-prediction",
+    "title": "NMR shift prediction from small data quantities",
+    "section": "Performance comparison for 13C NMR shift prediction",
+    "text": "Performance comparison for 13C NMR shift prediction\n\nTwo other prediction methods were used for comparison:\n\nHierarchically Ordered Spherical Environment (HOSE) codes:\n\nIt describes atoms and their environments as strings.\nCompounds with similar strings and known chemical shifts are looked up and used for prediction (Bremser 1978).\n\n2019 model\n\n\nIt uses a convolutional graphical neural network (Jonas and Kuhn 2019).\n\nData:\n\nAll data was taken from NMRShiftDB2, an open NMR database (Oellien, Fechner, and Engel 2012), which contains lists of chemical shift values.\nThe datasets consist of random selections of structures.\n\nEvaluation:\n\n75:25 training-to-test split.\nNo separate validation set due to the small size of the datasets.\nThe predictive performance of the different models was analyzed when trained on an increasing number of molecules.\n\nError metrics:\n\nThe mean absolute error (MAE): Less Sensitive to Large Errors.\nThe root mean squared error (RMSE): It gives more weight to larger errors.\nThe mean absolute scaled error (MASE): Insensitive to the scale of the data, such as dealing with different nuclei or solvents.\nThe standard deviation σ of the error: Variability of the errors in a set of predictions.\n\n\n\nResults\n MAE of a 13C NMR shift prediction, using increasing numbers of spectra\n RMSE of a 13C NMR shift prediction, using increasing numbers of spectra\n MASE of a 13C NMR shift prediction, using increasing numbers of spectra\n σ of a 13C NMR shift prediction, using increasing numbers of spectra\n\nThe 2023 model outperforms the 2019 model when trained on up to 2500 data points (2023 is better for small data).\nThe HOSE codes is even better than the 2023 model for small data. However, in some cases, a prediction based on HOSE codes is not possible if no examples with high enough similarity exist in the training set.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>NMR shift prediction from small data quantities</span>"
+    ]
+  },
+  {
+    "objectID": "papers/nmr-shift-prediction-from-small-data-quantities.html#other-heteronuclei",
+    "href": "papers/nmr-shift-prediction-from-small-data-quantities.html#other-heteronuclei",
+    "title": "NMR shift prediction from small data quantities",
+    "section": "Other heteronuclei",
+    "text": "Other heteronuclei\n\nOthe than 13C, 19F spectra was used to test 2023 model.\nIn NMRShiftDB2, there were 957 structures with measured 19F spectra.\n\n\n\n\nMAE of a 19F NMR shift prediction, using increasing number of samples, on a logarithmic scale\n\n\nMAE of a 19F NMR shift prediction, using increasing number of samples, on a logarithmic scale\n\nResults\n\nHOSE codes is again the best with small data with the 2019 model being the worst with them.\nThe 2023 model almost reached HOSE codes performance with the increasing number of spectra.\nHose codes always has the disadvantage that it might not give a prediction at all.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>NMR shift prediction from small data quantities</span>"
+    ]
+  },
+  {
+    "objectID": "papers/nmr-shift-prediction-from-small-data-quantities.html#solvents",
+    "href": "papers/nmr-shift-prediction-from-small-data-quantities.html#solvents",
+    "title": "NMR shift prediction from small data quantities",
+    "section": "Solvents",
+    "text": "Solvents\nThe used solvent is a major factor influencing the chemical shift values of a particular compound due to: - its influence on the chemical environment of the molecule - the possibility of forming hydrogen bonds - changes in the charge state of the investigated molecule.\nAccurate predictions require using solvent information, but this makes the available data even fewer. Using 13C spectra from NMRShiftDB2 they train separate models for each solvent and compare the results to the values achieved by using all 13C spectra. The models are not optimized for a solvent-specific prediction.\n\nResults\nThe overall tendency is similar to what we have seen before: The predictive quality of the 2019 model starts off with high errors and significantly improves beyond 1000 spectra. The 2023 model outperforms the 2019 model on smaller datasets. HOSE codes are generally doing well.\n\n\n\nCDCl3\n\n\nMAE of a 13C NMR shift prediction, using increasing numbers of samples\nThe solvent-specific training produces much better results compared to the overall model.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>NMR shift prediction from small data quantities</span>"
+    ]
+  },
+  {
+    "objectID": "papers/nmr-shift-prediction-from-small-data-quantities.html#model-optimization-options",
+    "href": "papers/nmr-shift-prediction-from-small-data-quantities.html#model-optimization-options",
+    "title": "NMR shift prediction from small data quantities",
+    "section": "Model optimization options:",
+    "text": "Model optimization options:\n2023 model can possibly be further optimized by: - Ensuring structural diversity in training/testing datasets, which wasn’t done in model 2023. The random distribution of data was assumed. - optimizing a model hyperparameters specifically for a nucleus or a solvent.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>NMR shift prediction from small data quantities</span>"
+    ]
+  },
+  {
+    "objectID": "papers/nmr-shift-prediction-from-small-data-quantities.html#takeaways",
+    "href": "papers/nmr-shift-prediction-from-small-data-quantities.html#takeaways",
+    "title": "NMR shift prediction from small data quantities",
+    "section": "Takeaways",
+    "text": "Takeaways\n\nPredicting NMR shifts is a challenging task for small data, which is the case with heteronuclei and even further with different solvents.\nThis paper demonstrates a new ML model that performs better than another model by the same group presented in 2019 for small data.\nEven though Hose codes can be even better than 2023 for small data, it can’t always provide a prediction.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>NMR shift prediction from small data quantities</span>"
+    ]
+  },
+  {
+    "objectID": "papers/nmr-shift-prediction-from-small-data-quantities.html#references",
+    "href": "papers/nmr-shift-prediction-from-small-data-quantities.html#references",
+    "title": "NMR shift prediction from small data quantities",
+    "section": "References",
+    "text": "References\n\n\n\n\nBremser, W. 1978. “Hose—a Novel Substructure Code.” Analytica Chimica Acta 103 (4): 355–65.\n\n\nDuvenaud, David K, Dougal Maclaurin, Jorge Iparraguirre, Rafael Bombarell, Timothy Hirzel, Alán Aspuru-Guzik, and Ryan P Adams. 2015. “Convolutional Networks on Graphs for Learning Molecular Fingerprints.” Advances in Neural Information Processing Systems 28.\n\n\nGilmer, Justin, Samuel S Schoenholz, Patrick F Riley, Oriol Vinyals, and George E Dahl. 2017. “Neural Message Passing for Quantum Chemistry,” 1263–72.\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nJonas, Eric, and Stefan Kuhn. 2019. “Rapid Prediction of NMR Spectral Properties with Quantified Uncertainty.” Journal of Cheminformatics 11: 1–7.\n\n\nJonas, Eric, Stefan Kuhn, and Nils Schlörer. 2022. “Prediction of Chemical Shift in NMR: A Review.” Magnetic Resonance in Chemistry 60 (11): 1021–31.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nOellien, Frank, Uli Fechner, and Thomas Engel. 2012. “7th German Conference on Chemoinformatics: 25 CIC-Workshop Goslar, Germany. 6-8 November 2011. Abstracts.” Journal of Cheminformatics 4 (Suppl 1): A1–P62.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.\n\n\nRull, Herman, Markus Fischer, and Stefan Kuhn. 2023. “NMR Shift Prediction from Small Data Quantities.” Journal of Cheminformatics 15 (1): 114.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>NMR shift prediction from small data quantities</span>"
+    ]
   }
 ]

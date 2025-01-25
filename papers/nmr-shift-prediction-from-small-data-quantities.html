@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Kohulan Rajan">
-<meta name="dcterms.date" content="2024-06-05">
+<meta name="author" content="Noura Rayya">
+<meta name="dcterms.date" content="2025-01-22">
 
-<title>PaCh (Packed Chemicals): Computationally Effective Binary Format for Chemical Structure Encoding – Lamalab Tool and Paper Notes</title>
+<title>NMR shift prediction from small data quantities – Lamalab Tool and Paper Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -86,8 +52,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html" rel="next">
-<link href="../papers/MolCLR_2024.html" rel="prev">
+<link href="../papers/light-rag.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -124,13 +89,6 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
-<style>
-
-      .quarto-title-block .quarto-title-banner {
-        background-image: url(PaCh/cover_pach.webp);
-background-size: cover;
-      }
-</style>
 
 
 </head>
@@ -138,13 +96,13 @@ background-size: cover;
 <body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/llm4mat.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/PaCh.html"><span class="chapter-title">PaCh (Packed Chemicals): Computationally Effective Binary Format for Chemical Structure Encoding</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/llm4mat.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/nmr-shift-prediction-from-small-data-quantities.html"><span class="chapter-title">NMR shift prediction from small data quantities</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -154,35 +112,7 @@ background-size: cover;
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/llm4mat.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/PaCh.html"><span class="chapter-title">PaCh (Packed Chemicals): Computationally Effective Binary Format for Chemical Structure Encoding</span></a></li></ol></nav>
-      <h1 class="title"><span class="chapter-title">PaCh (Packed Chemicals): Computationally Effective Binary Format for Chemical Structure Encoding</span></h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Kohulan Rajan </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">June 5, 2024</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
@@ -289,7 +219,7 @@ background-size: cover;
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/PaCh.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">PaCh (Packed Chemicals): Computationally Effective Binary Format for Chemical Structure Encoding</span></a>
+  <a href="../papers/PaCh.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">PaCh (Packed Chemicals): Computationally Effective Binary Format for Chemical Structure Encoding</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -344,7 +274,7 @@ background-size: cover;
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/nmr-shift-prediction-from-small-data-quantities.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NMR shift prediction from small data quantities</span></a>
+  <a href="../papers/nmr-shift-prediction-from-small-data-quantities.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">NMR shift prediction from small data quantities</span></a>
   </div>
 </li>
       </ul>
@@ -361,439 +291,199 @@ background-size: cover;
   <ul>
   <li><a href="#why-discuss-this-paper" id="toc-why-discuss-this-paper" class="nav-link active" data-scroll-target="#why-discuss-this-paper">Why discuss this paper?</a></li>
   <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
-  <li><a href="#key-features-of-pach" id="toc-key-features-of-pach" class="nav-link" data-scroll-target="#key-features-of-pach">Key Features of PaCh</a></li>
-  <li><a href="#available-representations" id="toc-available-representations" class="nav-link" data-scroll-target="#available-representations">Available representations</a>
-  <ul class="collapse">
-  <li><a href="#smiles" id="toc-smiles" class="nav-link" data-scroll-target="#smiles">SMILES</a></li>
-  <li><a href="#inchi" id="toc-inchi" class="nav-link" data-scroll-target="#inchi">INCHI</a></li>
-  <li><a href="#mdl-molrxn" id="toc-mdl-molrxn" class="nav-link" data-scroll-target="#mdl-molrxn">MDL MOL/RXN</a></li>
-  <li><a href="#cmlmrv" id="toc-cmlmrv" class="nav-link" data-scroll-target="#cmlmrv">CML/MRV</a></li>
-  <li><a href="#binary-formats" id="toc-binary-formats" class="nav-link" data-scroll-target="#binary-formats">Binary Formats</a></li>
-  </ul></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#problem-setting" id="toc-problem-setting" class="nav-link" data-scroll-target="#problem-setting">Problem setting</a></li>
-  <li><a href="#advantages-over-existing-formats" id="toc-advantages-over-existing-formats" class="nav-link" data-scroll-target="#advantages-over-existing-formats">Advantages over Existing Formats</a></li>
-  <li><a href="#approach" id="toc-approach" class="nav-link" data-scroll-target="#approach">Approach</a>
+  <li><a href="#approach" id="toc-approach" class="nav-link" data-scroll-target="#approach">Approach</a></li>
+  <li><a href="#information-flow" id="toc-information-flow" class="nav-link" data-scroll-target="#information-flow">Information Flow</a></li>
+  <li><a href="#performance-comparison-for-13c-nmr-shift-prediction" id="toc-performance-comparison-for-13c-nmr-shift-prediction" class="nav-link" data-scroll-target="#performance-comparison-for-13c-nmr-shift-prediction">Performance comparison for <sup>13</sup>C NMR shift prediction</a>
   <ul class="collapse">
-  <li><a href="#pach-format-overview" id="toc-pach-format-overview" class="nav-link" data-scroll-target="#pach-format-overview">PaCh Format Overview</a></li>
-  <li><a href="#molecule-encoding" id="toc-molecule-encoding" class="nav-link" data-scroll-target="#molecule-encoding">Molecule Encoding</a></li>
-  <li><a href="#key-points" id="toc-key-points" class="nav-link" data-scroll-target="#key-points">Key Points</a></li>
-  <li><a href="#reaction-encoding" id="toc-reaction-encoding" class="nav-link" data-scroll-target="#reaction-encoding">Reaction Encoding</a></li>
-  <li><a href="#stereochemistry-coding" id="toc-stereochemistry-coding" class="nav-link" data-scroll-target="#stereochemistry-coding">Stereochemistry Coding</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
   </ul></li>
-  <li><a href="#benchmarking" id="toc-benchmarking" class="nav-link" data-scroll-target="#benchmarking">Benchmarking</a></li>
-  <li><a href="#feature-comparison-of-formats." id="toc-feature-comparison-of-formats." class="nav-link" data-scroll-target="#feature-comparison-of-formats.">Feature Comparison of Formats.</a></li>
-  <li><a href="#example-of-usage" id="toc-example-of-usage" class="nav-link" data-scroll-target="#example-of-usage">Example of Usage</a></li>
+  <li><a href="#other-heteronuclei" id="toc-other-heteronuclei" class="nav-link" data-scroll-target="#other-heteronuclei">Other heteronuclei</a>
+  <ul class="collapse">
+  <li><a href="#results-1" id="toc-results-1" class="nav-link" data-scroll-target="#results-1">Results</a></li>
+  </ul></li>
+  <li><a href="#solvents" id="toc-solvents" class="nav-link" data-scroll-target="#solvents">Solvents</a>
+  <ul class="collapse">
+  <li><a href="#results-2" id="toc-results-2" class="nav-link" data-scroll-target="#results-2">Results</a></li>
+  </ul></li>
+  <li><a href="#model-optimization-options" id="toc-model-optimization-options" class="nav-link" data-scroll-target="#model-optimization-options">Model optimization options:</a></li>
   <li><a href="#takeaways" id="toc-takeaways" class="nav-link" data-scroll-target="#takeaways">Takeaways</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/llm4mat.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/nmr-shift-prediction-from-small-data-quantities.html"><span class="chapter-title">NMR shift prediction from small data quantities</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">NMR shift prediction from small data quantities</span></h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Noura Rayya </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 22, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <section id="why-discuss-this-paper" class="level2">
 <h2 class="anchored" data-anchor-id="why-discuss-this-paper">Why discuss this paper?</h2>
-<p>I chose the PaCh (Packed Chemicals) paper <span class="citation" data-cites="Nugmanov2024">(<a href="#ref-Nugmanov2024" role="doc-biblioref">Nugmanov 2024</a>)</span> current topics in the cheminformatics seminar because</p>
-<ul>
-<li>It aims to combine compact local stereochemistry encoding (in SMILES) with explicit bond connectivity and 2D layout (like in MDL MOL files).</li>
-<li>This is an interesting approach to package these two pieces of information together, which makes our group think about possible real-world applications.</li>
-<li>Benchmarking shows PaCh outperforms SMILES, MOL, and CML in encoding/decoding speed while maintaining compact size.</li>
-<li>Introduces a computationally effective format tailored for cheminformatics applications, deep learning tasks, and efficient data storage/processing.</li>
-</ul>
+<p>I chose the NMR shift prediction from small data quantities <span class="citation" data-cites="rull2023nmr">(<a href="#ref-rull2023nmr" role="doc-biblioref">Rull, Fischer, and Kuhn 2023</a>)</span> for current topics in the cheminformatics seminar because: - Many of the team memebers and I work on nmrXiv repository development and we would like to introduce NMR shift prediction in the future, which makes the article very relevant. - It is crucial to us to be familiar with available NMR shift prediction models and to understand the conditions under which they perform best. - To understand the effect of NMR experiment parameters (nuclei, solvents) on the prediction results.</p>
 </section>
 <section id="context" class="level2">
 <h2 class="anchored" data-anchor-id="context">Context</h2>
-<p>This paper proposes a new binary format called PaCh (Packed Chemicals) that aims to combine the advantages of compact string-based SMILES and explicit bond connectivity of MDL MOL files while addressing their shortcomings. PaCh introduces a condensed representation of packing atom properties, 2D coordinates, bidirectional connectivity, and relative stereochemistry coding in an efficient manner to enable fast processing for modern data analytics workflows.</p>
+<p>Machine Learning (ML) models perform best when trained with the maximum amount of data available. For heteronuclei NMR experiments, such an amount of data is not available. The paper demonstrates a novel ML model (called the 2023 model) that achieves good results for low amounts of data. They predict <sup>13</sup>C and <sup>19</sup>F NMR chemical shifts of small molecules in specific solvents. <img src="nmr-shift-prediction-from-small-data-quantities-images/graphical-abstract.png" class="img-fluid" alt="Graphic abstract of the paper"> Fig1: Graphic abstract of the paper</p>
 </section>
-<section id="key-features-of-pach" class="level2">
-<h2 class="anchored" data-anchor-id="key-features-of-pach">Key Features of PaCh</h2>
-<ul>
-<li>Binary Format: Utilizes a binary format for compact and efficient storage of molecular data.</li>
-<li>Explicit Atom Connectivity: Stores atom connectivity explicitly, including implicit hydrogens, to ensure accurate representation.</li>
-<li>Electronic State and Stereochemistry: Encodes electronic states, stereochemistry, and other essential molecular attributes.</li>
-<li>2D Layout: Includes 2D layout information, similar to MOL files, for visualization and analysis.</li>
-<li>Reaction Encoding: Supports the encoding of chemical reactions, facilitating reaction analysis and retrosynthesis.</li>
-<li>Zlib Compression: Employs Zlib compression to further reduce storage size.</li>
-</ul>
-</section>
-<section id="available-representations" class="level2">
-<h2 class="anchored" data-anchor-id="available-representations">Available representations</h2>
-<section id="smiles" class="level3">
-<h3 class="anchored" data-anchor-id="smiles">SMILES</h3>
-<ul>
-<li>Compact linear string representation<br>
-</li>
-<li>Encodes local stereochemistry and implicit hydrogens</li>
-<li>Limitations:
-<ul>
-<li>Representing radicals, 2D/3D data, metal complexes</li>
-<li>Ring closures beyond 100</li>
-<li>Explicit bonds</li>
-</ul></li>
-</ul>
-</section>
-<section id="inchi" class="level3">
-<h3 class="anchored" data-anchor-id="inchi">INCHI</h3>
-<ul>
-<li>Comprehensive format endorsed by IUPAC</li>
-<li>Encodes connectivity, stereochemistry, tautomers</li>
-<li>Issues:
-<ul>
-<li>Flexible hydrogen mapping</li>
-<li>Atomic charge determination</li>
-</ul></li>
-<li>Lacks 2D/3D encoding in main part</li>
-</ul>
-</section>
-<section id="mdl-molrxn" class="level3">
-<h3 class="anchored" data-anchor-id="mdl-molrxn">MDL MOL/RXN</h3>
-<ul>
-<li>Encodes 2D/3D coordinates, explicit radicals/charges<br>
-</li>
-<li>Limited stereochemistry support</li>
-<li>Ambiguity in implicit H counting</li>
-<li>Line length restrictions and optional zero fields hamper parsing</li>
-</ul>
-</section>
-<section id="cmlmrv" class="level3">
-<h3 class="anchored" data-anchor-id="cmlmrv">CML/MRV</h3>
-<ul>
-<li>XML-based, easier parsing than MDL</li>
-<li>Encodes 2D/3D</li>
-<li>Implicit H and stereochemistry inherit MOL ambiguities</li>
-</ul>
-<p>Note: The paper highlights the limitations of existing formats, motivating the need for a new format like PaCh that combines advantages while mitigating drawbacks.</p>
-</section>
-<section id="binary-formats" class="level3">
-<h3 class="anchored" data-anchor-id="binary-formats">Binary Formats</h3>
-<p>Previous attempts at binary encoding of chemical structures, such as the Chemical JSON format, have aimed to improve efficiency but often fall short in terms of compression and speed. Nugmanov et al. <span class="citation" data-cites="Nugmanov2024">(<a href="#ref-Nugmanov2024" role="doc-biblioref">Nugmanov 2024</a>)</span> aim to overcome these limitations with Pach.</p>
-</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>NMR chemical shift prediction can be done in two ways: - Ab-Initio: Calculate the chemical shifts based on the molecular structure and theoretical principles. They require no experimental data but are computationally intensive. - Using Existing Data: Like using ML models to predict shifts for new compounds relying on the experimental data of others. They are computationally efficient <span class="citation" data-cites="jonas2022prediction">(<a href="#ref-jonas2022prediction" role="doc-biblioref">Jonas, Kuhn, and Schlörer 2022</a>)</span>.</p>
 </section>
 <section id="problem-setting" class="level2">
 <h2 class="anchored" data-anchor-id="problem-setting">Problem setting</h2>
 <ul>
-<li>Existing chemical structure encoding formats are not optimized for computational efficiency.</li>
-<li>There is a need for a format that balances compression, speed, and ease of use.</li>
+<li>The amount of experimental data in NMR for heteronuclei, specific classes of compounds, and particular solvents is limited.</li>
+<li>The number of data points used is a significant factor in the quality of the predictions.</li>
+<li>Some machine learning methods only show suitable predictive power with more than 5000 training examples.</li>
 </ul>
-</section>
-<section id="advantages-over-existing-formats" class="level2">
-<h2 class="anchored" data-anchor-id="advantages-over-existing-formats">Advantages over Existing Formats</h2>
-<ul>
-<li>Addresses SMILES Limitations: Overcomes issues in SMILES related to representing radicals, complex stereochemistry, and disconnected components.</li>
-<li>Resolves MOL Challenges: Avoids problems with implicit hydrogen counting and parsing difficulties associated with MOL files.</li>
-<li>Combines Strengths: Integrates the best features of SMILES (e.g., local stereo- and implicit hydrogen encoding) and MOL (e.g., explicit bond encoding and 2D layout).</li>
-</ul>
-<p>Additionally, the authors propose that the previous representations might not be “rich” enough to capture the complexity of chemical reactions.</p>
 </section>
 <section id="approach" class="level2">
 <h2 class="anchored" data-anchor-id="approach">Approach</h2>
-<section id="pach-format-overview" class="level3">
-<h3 class="anchored" data-anchor-id="pach-format-overview">PaCh Format Overview</h3>
 <ul>
-<li><strong>Header Byte (8 bit)</strong>:
-<ul>
-<li>Differentiates format version and data type (molecular or reaction data).</li>
-<li>Molecule header byte: 2 (0x02).</li>
-<li>Reaction header byte: 1 (0x01).</li>
-<li>The remaining 253 values are reserved for future extensions.</li>
-<li>Hard declaration of format version in the header to avoid compatibility issues seen in SMILES or MDL formats.</li>
-<li>Changes to specifications for 0x01 and 0x02 require a different header byte to maintain compatibility and parsing efficiency.</li>
-</ul></li>
+<li>The research was restricted to small organic molecules in solution, as other NMR fields require different and more specific models.</li>
+<li>It focuses on the prediction of NMR chemical shifts using ML (graph neural networks).</li>
+<li>The molecules were represented as a graph, where the atoms are nodes, and the bonds are edges. Each has its own features.</li>
+<li>Atoms / Nodes features: Atomic number, Atomic radius, Number of neutrons, Electronegativity, Electron affinity.</li>
+<li>Bonds / Edges features: Bond length, Bond type.</li>
+<li>This specific feature selection was chosen because of preliminary experiments, which measured the impact of each feature on the final prediction.</li>
+<li>The best-performing features were combined until the prediction quality was no longer improving.</li>
 </ul>
 </section>
-<section id="molecule-encoding" class="level3">
-<h3 class="anchored" data-anchor-id="molecule-encoding">Molecule Encoding</h3>
+<section id="information-flow" class="level2">
+<h2 class="anchored" data-anchor-id="information-flow">Information Flow</h2>
+<p><img src="nmr-shift-prediction-from-small-data-quantities-images/schematic-flow.png" class="img-fluid" alt="Information Flow"> Fig2: Schematic flow of information in the message‑passing graph network. The workflow can be split into the following steps: encoding, message‑passing, and prediction of shifts with an MLP.</p>
 <ul>
-<li><strong>Header Byte</strong>: Starts with a byte equal to 2 (0x02).</li>
-<li><strong>12-bit Atom Count</strong>: Encodes the number of atoms (max 4095 atoms).</li>
-<li><strong>12-bit Chiral Cis–Trans Bond Count</strong>: Encodes the number of chiral cis-trans bonds.</li>
-<li><strong>4-byte Header Block</strong>: Consists of the above-mentioned data.</li>
-<li><strong>Atom Blocks</strong>: Each atom block is 9 bytes, repeated for each atom.</li>
-<li><strong>Atom Connectivity Coding</strong>: Bidirectional coding of atom connectivity, preserving neighbour order essential for stereochemistry coding.
-<ul>
-<li>Flattened adjacency matrix without zero connections and atom indices, coded bidirectionally for space efficiency.</li>
-</ul></li>
-<li><strong>Bond Orders</strong>: Stored without duplicates, representing the upper triangle of the adjacency matrix without zero connections.
-<ul>
-<li>Single bond: 0b000, double bond: 0b001, triple bond: 0b010, aromatic bond: 0b011, coordinate bond: 0b111.</li>
-</ul></li>
-<li><strong>Cis–Trans Bonds</strong>: Optional repeated 4-byte blocks for cis-trans bonds.
-<ul>
-<li>Codes 12-bit numbers of cumulene terminal atoms and bytes with states 0x00 and 0x01 for trans- and cis-forms respectively.</li>
-</ul></li>
+<li>The chosen features are encoded by multi-layer perceptron functions.</li>
+<li>The encoded features are then processed through multiple rounds of message-passing in graph network <span class="citation" data-cites="duvenaud2015convolutional">(<a href="#ref-duvenaud2015convolutional" role="doc-biblioref">Duvenaud et al. 2015</a>)</span> <span class="citation" data-cites="gilmer2017neural">(<a href="#ref-gilmer2017neural" role="doc-biblioref">Gilmer et al. 2017</a>)</span>.</li>
+<li>This results in new node features that get passed to another MLP that predicts the final chemical shifts.</li>
+<li>The most important hyperparameters were the number of message-passing steps, the learning rate, and the weight decay.</li>
 </ul>
 </section>
-<section id="key-points" class="level3">
-<h3 class="anchored" data-anchor-id="key-points">Key Points</h3>
+<section id="performance-comparison-for-13c-nmr-shift-prediction" class="level2">
+<h2 class="anchored" data-anchor-id="performance-comparison-for-13c-nmr-shift-prediction">Performance comparison for <sup>13</sup>C NMR shift prediction</h2>
 <ul>
-<li><strong>Header Byte Values</strong>: 2 for molecules, 1 for reactions.</li>
-<li><strong>Future-Proofing</strong>: 253 values reserved for extensions.</li>
-<li><strong>Compatibility</strong>: Hard declaration of version to avoid issues.</li>
-<li><strong>Efficiency</strong>: Simplified parsing and implementation due to structured coding.</li>
-<li><strong>Connectivity Block</strong>: Bidirectional, ensuring consistency in neighbour order.</li>
-<li><strong>Bond Orders</strong>: Stored efficiently without duplicates, utilizing up to 7 bits for alignment to full byte.</li>
-<li><strong>Cis–Trans Block</strong>: Codes cumulene terminal atoms and cis/trans states for bonds.</li>
+<li>Two other prediction methods were used for comparison:
+<ol type="1">
+<li><strong>H</strong>ierarchically <strong>O</strong>rdered <strong>S</strong>pherical <strong>E</strong>nvironment <strong>(HOSE)</strong> codes:
+<ul>
+<li>It describes atoms and their environments as strings.</li>
+<li>Compounds with similar strings and known chemical shifts are looked up and used for prediction <span class="citation" data-cites="bremser1978hose">(<a href="#ref-bremser1978hose" role="doc-biblioref">Bremser 1978</a>)</span>.</li>
+</ul></li>
+<li><strong>2019</strong> model</li>
+</ol>
+<ul>
+<li>It uses a convolutional graphical neural network <span class="citation" data-cites="jonas2019rapid">(<a href="#ref-jonas2019rapid" role="doc-biblioref">Jonas and Kuhn 2019</a>)</span>.</li>
+</ul></li>
+<li>Data:
+<ul>
+<li>All data was taken from NMRShiftDB2, an open NMR database <span class="citation" data-cites="oellien20127th">(<a href="#ref-oellien20127th" role="doc-biblioref">Oellien, Fechner, and Engel 2012</a>)</span>, which contains lists of chemical shift values.</li>
+<li>The datasets consist of random selections of structures.</li>
+</ul></li>
+<li>Evaluation:
+<ul>
+<li>75:25 training-to-test split.</li>
+<li>No separate validation set due to the small size of the datasets.</li>
+<li>The predictive performance of the different models was analyzed when trained on an increasing number of molecules.</li>
+</ul></li>
+<li>Error metrics:
+<ul>
+<li>The mean absolute error (MAE): Less Sensitive to Large Errors.</li>
+<li>The root mean squared error (RMSE): It gives more weight to larger errors.</li>
+<li>The mean absolute scaled error (MASE): Insensitive to the scale of the data, such as dealing with different nuclei or solvents.</li>
+<li>The standard deviation σ of the error: Variability of the errors in a set of predictions.</li>
+</ul></li>
+</ul>
+<section id="results" class="level3">
+<h3 class="anchored" data-anchor-id="results">Results</h3>
+<p><img src="nmr-shift-prediction-from-small-data-quantities-images/mae.png" class="img-fluid" alt="MAE"> MAE of a <sup>13</sup>C NMR shift prediction, using increasing numbers of spectra</p>
+<p><img src="nmr-shift-prediction-from-small-data-quantities-images/rmse.png" class="img-fluid" alt="RMSE"> RMSE of a <sup>13</sup>C NMR shift prediction, using increasing numbers of spectra</p>
+<p><img src="nmr-shift-prediction-from-small-data-quantities-images/mase.png" class="img-fluid" alt="MASE"> MASE of a <sup>13</sup>C NMR shift prediction, using increasing numbers of spectra</p>
+<p><img src="nmr-shift-prediction-from-small-data-quantities-images/sigma.png" class="img-fluid" alt="Sigma"> σ of a <sup>13</sup>C NMR shift prediction, using increasing numbers of spectra</p>
+<ul>
+<li><p>The 2023 model outperforms the 2019 model when trained on up to 2500 data points (2023 is better for small data).</p></li>
+<li><p>The HOSE codes is even better than the 2023 model for small data. However, in some cases, a prediction based on HOSE codes is not possible if no examples with high enough similarity exist in the training set.</p></li>
+</ul>
+</section>
+</section>
+<section id="other-heteronuclei" class="level2">
+<h2 class="anchored" data-anchor-id="other-heteronuclei">Other heteronuclei</h2>
+<ul>
+<li>Othe than <sup>13</sup>C, <sup>19</sup>F spectra was used to test 2023 model.</li>
+<li>In NMRShiftDB2, there were 957 structures with measured <sup>19</sup>F spectra.</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://pubs.acs.org/cms/10.1021/acs.jcim.3c01720/asset/images/large/ci3c01720_0001.jpeg" class="img-fluid figure-img"></p>
-<figcaption>Figure 1: Encoded molecule example from the paper by Nugmanov et al.:</figcaption>
+<p><img src="nmr-shift-prediction-from-small-data-quantities-images/19f.png" class="img-fluid figure-img"></p>
+<figcaption>MAE of a 19F NMR shift prediction, using increasing number of samples, on a logarithmic scale</figcaption>
 </figure>
 </div>
+<p>MAE of a <sup>19</sup>F NMR shift prediction, using increasing number of samples, on a logarithmic scale</p>
+<section id="results-1" class="level3">
+<h3 class="anchored" data-anchor-id="results-1">Results</h3>
 <ul>
-<li><strong>Figure 1 Overview</strong>:
-<ul>
-<li><strong>(a) Block overview</strong>: General structure of the molecule PaCh.</li>
-<li><strong>(b) Atom (#2) block structure</strong>: Detailed structure of a specific atom block.</li>
-<li><strong>(c) Adjacency matrix</strong>: Bond orders with connected atom indices and flattened connectivity.</li>
-<li><strong>(d) Flattened bond orders for acetic acid</strong>: Uses 2 bytes with padding.</li>
-<li><strong>(e) Ccis/Ttrans block</strong>: Bytes representation with white-gray row indicating the bytes.</li>
-</ul></li>
-<li><strong>Atom Block Structure (Figure 1b)</strong>:
-<ul>
-<li><strong>12-bit Atom ID</strong>: Unique label (1–4095) used in the connectivity block. Important for tasks like reaction analytics, database management, and property prediction.</li>
-<li><strong>4-bit Atom Neighbor Count</strong>: Ranges from 0 (e.g., halides) to 15 (hypervalent complexes like ferrocenes).</li>
-<li><strong>2-bit Tetrahedron Stereo Sign</strong>: Encodes one of four possible states: not chiral, unknown label, chirality sign.</li>
-<li><strong>2-bit Allene Stereo Sign</strong>: Same notation as for tetrahedrons.</li>
-<li><strong>5-bit Isotope Information</strong>: Difference from the standard isotope number +16 to avoid negative values. Special case for unspecified isotope. Covers a range from -15 to +15 relative to the standard.</li>
-<li><strong>7-bit Atomic Number</strong>: Maximum value of 127, with the current last element being Og (118).</li>
-<li><strong>4 Bytes for Coordinates</strong>: x,y coordinates of the atom in float16 format, sufficient for small molecules and saves space.</li>
-<li><strong>3-bit Implicit Hydrogen Count</strong>: Ranges from 0 to 6, with a special case for unknown hydrogen count. Important for accurate analysis in cheminformatics. Proper representation requires Kekule form for structures with aromatic bonds.</li>
-<li><strong>4-bit Atomic Charge</strong>: Ranges from -4 to 4, shifted by 4 to avoid negative numbers (e.g., 4 for neutral).</li>
-<li><strong>1-bit Radical State</strong>: Binary coding for radical state (0b0 for no radical, 0b1 for radical). Suitable for most organic molecules with a single unpaired electron. Limitation in coding carbenes: 0 for singlet, 1 for triplet.</li>
-</ul></li>
+<li>HOSE codes is again the best with small data with the 2019 model being the worst with them.</li>
+<li>The 2023 model almost reached HOSE codes performance with the increasing number of spectra.</li>
+<li>Hose codes always has the disadvantage that it might not give a prediction at all.</li>
 </ul>
 </section>
-<section id="reaction-encoding" class="level3">
-<h3 class="anchored" data-anchor-id="reaction-encoding">Reaction Encoding</h3>
-<ul>
-<li><strong>Header Byte</strong>: Reaction PaCh begins with a header byte of 1 (0x01).</li>
-<li><strong>Byte Counts</strong>: Followed by 3 bytes representing the counts of reactants, reagents, and products.</li>
-<li><strong>Limitation</strong>:Maximum of 255 molecules per category, totalling 765 molecules.</li>
-<li><strong>Continuous Addition</strong>: Molecules are added continuously to the first 4 bytes without separators.</li>
-<li><strong>MDL RXN Format</strong>: Similar to PaCh but differs in the order of molecules; reagents come last.</li>
-<li><strong>SMILES Order</strong>: Uses the order of reactants-reagents-products with a “&gt;” as a separator.</li>
-<li><strong>Size Information</strong>: Packed molecules must contain byte size information for proper restoration.</li>
-</ul>
+</section>
+<section id="solvents" class="level2">
+<h2 class="anchored" data-anchor-id="solvents">Solvents</h2>
+<p>The used solvent is a major factor influencing the chemical shift values of a particular compound due to: - its influence on the chemical environment of the molecule - the possibility of forming hydrogen bonds - changes in the charge state of the investigated molecule.</p>
+<p>Accurate predictions require using solvent information, but this makes the available data even fewer. Using <sup>13</sup>C spectra from NMRShiftDB2 they train separate models for each solvent and compare the results to the values achieved by using all <sup>13</sup>C spectra. The models are not optimized for a solvent-specific prediction.</p>
+<section id="results-2" class="level3">
+<h3 class="anchored" data-anchor-id="results-2">Results</h3>
+<p>The overall tendency is similar to what we have seen before: The predictive quality of the 2019 model starts off with high errors and significantly improves beyond 1000 spectra. The 2023 model outperforms the 2019 model on smaller datasets. HOSE codes are generally doing well.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://pubs.acs.org/cms/10.1021/acs.jcim.3c01720/asset/images/large/ci3c01720_0002.jpeg" class="img-fluid figure-img"></p>
-<figcaption>Figure 2: Structure of the reaction PaCh with one reactant and one product from the paper by Nugmanov et al.:</figcaption>
+<p><img src="nmr-shift-prediction-from-small-data-quantities-images/cdcl3.png" class="img-fluid figure-img"></p>
+<figcaption>CDCl3</figcaption>
 </figure>
 </div>
-<p>Note: PaCh is using Zlib compression for increasing memory effectiveness.</p>
-</section>
-<section id="stereochemistry-coding" class="level3">
-<h3 class="anchored" data-anchor-id="stereochemistry-coding">Stereochemistry Coding</h3>
-<ul>
-<li>The stereochemistry coding in PaCh is relative, meaning it depends on neighbours’ connectivity order. This is similar to SMILES notation and helps avoid misinterpretations compared to absolute stereochemistry coding.</li>
-</ul>
-<p>Tetrahedron: The chirality of tetrahedral centers is determined by calculating the sign of the volume of a pyramid formed by the chiral atom and its three neighbouring atoms. A positive volume indicates clockwise rotation and is coded as 0b11, while a negative volume indicates counterclockwise rotation and is coded as 0b10. Cumulene cis/trans: The cis/trans configuration of cumulenes with an odd number of double bonds is determined by the relative orientation of the first neighbour of each terminal atom. If the first neighbours are on the same side of the double bond chain, it’s cis (0x01), and if they are on opposite sides, it’s trans (0x00). Allenes: The stereochemistry of allenes is determined by the rotation of vectors corresponding to the first neighbours of the terminal atoms across the double bond axis. Clockwise rotation is coded as 0b10, and counterclockwise rotation is coded as 0b11.</p>
+<p>MAE of a <sup>13</sup>C NMR shift prediction, using increasing numbers of samples</p>
+<p>The solvent-specific training produces much better results compared to the overall model.</p>
 </section>
 </section>
-<section id="benchmarking" class="level2">
-<h2 class="anchored" data-anchor-id="benchmarking">Benchmarking</h2>
-<p>Benchmarking Results for Reading/Writing Operations on a 4200 Molecule Dataset in Milliseconds Measured in a Single Thread on Intel Xeon W-10885M CPU This is a direct comparison with RDKit to compare the speed of each tool.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 17%">
-<col style="width: 17%">
-<col style="width: 19%">
-<col style="width: 15%">
-<col style="width: 16%">
-<col style="width: 12%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Format</th>
-<th>Read (Chython)</th>
-<th>Write (Chython)</th>
-<th>Read (RDKit)</th>
-<th>Write (RDKit)</th>
-<th>Size (kB)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>MOL</td>
-<td>2446</td>
-<td>573</td>
-<td>404</td>
-<td>1256</td>
-<td>9634</td>
-</tr>
-<tr class="even">
-<td>SMILES</td>
-<td>2475</td>
-<td>515</td>
-<td>1995</td>
-<td>268</td>
-<td>195</td>
-</tr>
-<tr class="odd">
-<td>Python pickle</td>
-<td>243</td>
-<td>72</td>
-<td>210</td>
-<td>123</td>
-<td>1857</td>
-</tr>
-<tr class="even">
-<td>(RDKit) INCHI</td>
-<td>3760</td>
-<td>1720</td>
-<td>1060</td>
-<td>580</td>
-<td>-</td>
-</tr>
-<tr class="odd">
-<td>CML</td>
-<td>1710</td>
-<td>15894</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr class="even">
-<td>PaCh</td>
-<td>107 (6)</td>
-<td>51</td>
-<td>-</td>
-<td>-</td>
-<td>1424</td>
-</tr>
-<tr class="odd">
-<td>PaCh + Zlib</td>
-<td>124</td>
-<td>122</td>
-<td>-</td>
-<td>-</td>
-<td>853</td>
-</tr>
-<tr class="even">
-<td>compressed MOL</td>
-<td>2454</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="feature-comparison-of-formats." class="level2">
-<h2 class="anchored" data-anchor-id="feature-comparison-of-formats.">Feature Comparison of Formats.</h2>
-<ul>
-<li>– 2D Layout is Required; ** – Can be Calculated from a 2D Layout, Which Leads to False Labeling for Unknown Stereo</li>
-</ul>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Feature</th>
-<th>SMILE</th>
-<th>MOL</th>
-<th>CML/MRV</th>
-<th>PaCh</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>charge</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td>radical state</td>
-<td>No</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td>implicit hydrogens</td>
-<td>No</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td>isotopes</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td>2D layout</td>
-<td>No</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td>coordinate bond</td>
-<td>No</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td>tetrahedron stereo</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes*</td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td>allene stereo</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes*</td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td>cis–trans stereo</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes**</td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="example-of-usage" class="level2">
-<h2 class="anchored" data-anchor-id="example-of-usage">Example of Usage</h2>
-<p>The PaCh format is implemented in a Chython–Python-based framework for molecule and reaction processing. Below is how to read and write PaCh using Chython.</p>
-<ul>
-<li>https://github.com/chython/chython</li>
-</ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> chython <span class="im">import</span> MoleculeContainer, ReactionContainer, smiles</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># reaction example</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> smiles(<span class="st">'CC=O&gt;&gt;CCO'</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> r.pack()</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> ReactionContainer.unpack(p)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(r <span class="op">==</span> u)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># generate uncompressed PaCh</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> smiles(<span class="st">'CCN'</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> m.pack(compressed<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> MoleculeContainer.unpack(p, compressed<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(m <span class="op">==</span> u)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="model-optimization-options" class="level2">
+<h2 class="anchored" data-anchor-id="model-optimization-options">Model optimization options:</h2>
+<p>2023 model can possibly be further optimized by: - Ensuring structural diversity in training/testing datasets, which wasn’t done in model 2023. The random distribution of data was assumed. - optimizing a model hyperparameters specifically for a nucleus or a solvent.</p>
 </section>
 <section id="takeaways" class="level2">
 <h2 class="anchored" data-anchor-id="takeaways">Takeaways</h2>
 <ul>
-<li>A new binary format, PaCh (Packed Chemicals), is introduced for encoding molecular and reaction.</li>
-<li>This may be useful for deep learning where we have to use 2D coordinates (instead of CXSMILES) but have to test it in real-world scenarios.</li>
-<li>Designed to be computationally efficient, combining the strengths of existing formats like SMILES and MDL MOL while addressing their limitations.</li>
-<li>PaCh is implemented in the Chython library and is used in the Chytorch deep learning framework for efficient handling of chemical data.</li>
+<li>Predicting NMR shifts is a challenging task for small data, which is the case with heteronuclei and even further with different solvents.</li>
+<li>This paper demonstrates a new ML model that performs better than another model by the same group presented in 2019 for small data.</li>
+<li>Even though Hose codes can be even better than 2023 for small data, it can’t always provide a prediction.</li>
 </ul>
 </section>
 <section id="references" class="level2">
@@ -801,17 +491,35 @@ background-size: cover;
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-bremser1978hose" class="csl-entry" role="listitem">
+Bremser, W. 1978. <span>“Hose—a Novel Substructure Code.”</span> <em>Analytica Chimica Acta</em> 103 (4): 355–65.
+</div>
+<div id="ref-duvenaud2015convolutional" class="csl-entry" role="listitem">
+Duvenaud, David K, Dougal Maclaurin, Jorge Iparraguirre, Rafael Bombarell, Timothy Hirzel, Alán Aspuru-Guzik, and Ryan P Adams. 2015. <span>“Convolutional Networks on Graphs for Learning Molecular Fingerprints.”</span> <em>Advances in Neural Information Processing Systems</em> 28.
+</div>
+<div id="ref-gilmer2017neural" class="csl-entry" role="listitem">
+Gilmer, Justin, Samuel S Schoenholz, Patrick F Riley, Oriol Vinyals, and George E Dahl. 2017. <span>“Neural Message Passing for Quantum Chemistry,”</span> 1263–72.
+</div>
 <div id="ref-https://doi.org/10.48550/arxiv.2410.11527" class="csl-entry" role="listitem">
 Guo, Jeff, and Philippe Schwaller. 2024. <span>“It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.”</span> arXiv. <a href="https://doi.org/10.48550/ARXIV.2410.11527">https://doi.org/10.48550/ARXIV.2410.11527</a>.
+</div>
+<div id="ref-jonas2019rapid" class="csl-entry" role="listitem">
+Jonas, Eric, and Stefan Kuhn. 2019. <span>“Rapid Prediction of NMR Spectral Properties with Quantified Uncertainty.”</span> <em>Journal of Cheminformatics</em> 11: 1–7.
+</div>
+<div id="ref-jonas2022prediction" class="csl-entry" role="listitem">
+Jonas, Eric, Stefan Kuhn, and Nils Schlörer. 2022. <span>“Prediction of Chemical Shift in NMR: A Review.”</span> <em>Magnetic Resonance in Chemistry</em> 60 (11): 1021–31.
 </div>
 <div id="ref-landrum_lwreg_2024" class="csl-entry" role="listitem">
 Landrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. <span>“Lwreg: <span>A</span> <span>Lightweight</span> <span>System</span> for <span>Chemical</span> <span>Registration</span> and <span>Data</span> <span>Storage</span>.”</span> <em>Journal of Chemical Information and Modeling</em> 64 (16): 6247–52. <a href="https://doi.org/10.1021/acs.jcim.4c01133">https://doi.org/10.1021/acs.jcim.4c01133</a>.
 </div>
-<div id="ref-Nugmanov2024" class="csl-entry" role="listitem">
-Nugmanov, Ramil. 2024. <span>“PaCh (Packed Chemicals): Computationally Effective Binary Format for Chemical Structure Encoding.”</span> <em>Journal of Chemical Information and Modeling</em> 64 (8): 3173–79. <a href="https://doi.org/10.1021/acs.jcim.3c01720">https://doi.org/10.1021/acs.jcim.3c01720</a>.
+<div id="ref-oellien20127th" class="csl-entry" role="listitem">
+Oellien, Frank, Uli Fechner, and Thomas Engel. 2012. <span>“7th German Conference on Chemoinformatics: 25 CIC-Workshop Goslar, Germany. 6-8 November 2011. Abstracts.”</span> <em>Journal of Cheminformatics</em> 4 (Suppl 1): A1–P62.
 </div>
 <div id="ref-orsi2024one" class="csl-entry" role="listitem">
 Orsi, Markus, and Jean-Louis Reymond. 2024. <span>“One Chiral Fingerprint to Find Them All.”</span> <em>Journal of Cheminformatics</em> 16 (1): 53.
+</div>
+<div id="ref-rull2023nmr" class="csl-entry" role="listitem">
+Rull, Herman, Markus Fischer, and Stefan Kuhn. 2023. <span>“NMR Shift Prediction from Small Data Quantities.”</span> <em>Journal of Cheminformatics</em> 15 (1): 114.
 </div>
 </div>
 </section>
@@ -1236,14 +944,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../papers/MolCLR_2024.html" class="pagination-link" aria-label="Molecular contrastive learning of representations (MolCLR) via graph neural networks">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Molecular contrastive learning of representations (MolCLR) via graph neural networks</span></span>
+      <a href="../papers/light-rag.html" class="pagination-link" aria-label="🚀 LightRAG">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">🚀 LightRAG</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../papers/ms_prediction_graph_transformers/tandem_ms_prediction_graph_transformers.html" class="pagination-link" aria-label="Tandem mass spectrum prediction for small molecules using graph transformers">
-        <span class="nav-page-text"><span class="chapter-title">Tandem mass spectrum prediction for small molecules using graph transformers</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
