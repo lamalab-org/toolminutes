@@ -46,7 +46,7 @@ bibliography: ../references.bib
 ### Large language models
 
 -   GPT 3.5, PaLM2, GPT 4.o
--   GPT 3.5 and PaLM2 was applied subset of Massive Multitask Language Understanding (MMLU) dataset
+-   GPT 3.5 and PaLM2 were applied subset of Massive Multitask Language Understanding (MMLU) dataset
     -   multiple choice questions from science, technology, engineering, maths (STEM), humanities, social sciences…
 -   GPT 4.o was applied to TriviaQA dataset
     -   short-answer questions
