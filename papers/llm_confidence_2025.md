@@ -28,7 +28,7 @@ bibliography: ../references.bib
 -   **internal LLM confidence:** internal probability of a selected answer is compared to other possible answers, BUT is not displayed to user
 -   **human confidence:** human assessment of likelihood of answer being correct (numerical probability)
     -   humans rely only on LLM language to assess confidence
-    -   no info about LLMs internal confidence
+    -   no info about LLM's internal confidence
 -   **calibration gap:** difference between LLMs internal confidence and human perception of this confidence
 -   **discrimination gap:** ability of human and LLM to distinguish (discriminate) between right or wrong answers
 
