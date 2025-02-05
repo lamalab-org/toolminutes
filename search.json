@@ -1867,5 +1867,115 @@
       "Papers",
       "<span class='chapter-number'>26</span>  <span class='chapter-title'>NMR shift prediction from small data quantities</span>"
     ]
+  },
+  {
+    "objectID": "papers/llm_confidence_2025.html",
+    "href": "papers/llm_confidence_2025.html",
+    "title": "What large language models know and what people think they know",
+    "section": "",
+    "text": "Why did I choose this paper?",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>What large language models know and what people think they know</span>"
+    ]
+  },
+  {
+    "objectID": "papers/llm_confidence_2025.html#why-did-i-choose-this-paper",
+    "href": "papers/llm_confidence_2025.html#why-did-i-choose-this-paper",
+    "title": "What large language models know and what people think they know",
+    "section": "",
+    "text": "interesting topic for last current topics session\npsychological aspect of confidence: LLM vs human\nlink: (Steyvers et al. 2025)",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>What large language models know and what people think they know</span>"
+    ]
+  },
+  {
+    "objectID": "papers/llm_confidence_2025.html#motivation",
+    "href": "papers/llm_confidence_2025.html#motivation",
+    "title": "What large language models know and what people think they know",
+    "section": "Motivation",
+    "text": "Motivation\n\nlimited prior work (as stated by authors)\nquestion of how well LLMs communicate uncertainty is unexplored\ninvestigation of gap between what LLM knows and what human thinks it knows\nessential due to increasing reliance on LLMs for decision making\nrecent studies show that LLMs may possess internal knowledge reflection, since they can distinguish…\n\nanswerable and unanswerable questions\ntruth and lies",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>What large language models know and what people think they know</span>"
+    ]
+  },
+  {
+    "objectID": "papers/llm_confidence_2025.html#terminology",
+    "href": "papers/llm_confidence_2025.html#terminology",
+    "title": "What large language models know and what people think they know",
+    "section": "Terminology",
+    "text": "Terminology\n\ninternal LLM confidence: internal probability of a selected answer is compared to other possible answers, BUT is not displayed to user\nhuman confidence: human assessment of likelihood of answer being correct (numerical probability)\n\nhumans rely only on LLM language to assess confidence\nno info about LLM’s internal confidence\n\ncalibration gap: difference between LLMs internal confidence and human perception of this confidence\ndiscrimination gap: ability of human and LLM to distinguish (discriminate) between right or wrong answers",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>What large language models know and what people think they know</span>"
+    ]
+  },
+  {
+    "objectID": "papers/llm_confidence_2025.html#main-research-questions",
+    "href": "papers/llm_confidence_2025.html#main-research-questions",
+    "title": "What large language models know and what people think they know",
+    "section": "Main research questions",
+    "text": "Main research questions\n\ninvestigation of relationship between models confidence and its accuracy\n\nis it well calibrated?\n\nAmount of calibration and discrimination gap?\n\nMeans: Is there a notable gap in assessment of output accuracy by human vs LLM?\n\nCan the gaps be reduced?\n\nMeans: can human confidence be improved by reflecting LLMs internal confidence in output?",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>What large language models know and what people think they know</span>"
+    ]
+  },
+  {
+    "objectID": "papers/llm_confidence_2025.html#methods",
+    "href": "papers/llm_confidence_2025.html#methods",
+    "title": "What large language models know and what people think they know",
+    "section": "Methods",
+    "text": "Methods\n\nLarge language models\n\nGPT 3.5, PaLM2, GPT 4.o\nGPT 3.5 and PaLM2 were applied subset of Massive Multitask Language Understanding (MMLU) dataset\n\nmultiple choice questions from science, technology, engineering, maths (STEM), humanities, social sciences…\n\nGPT 4.o was applied to TriviaQA dataset\n\nshort-answer questions\n\nmodels confidence is computed by computing the token likelihoods for each question (numerical propability)\n\n\n\n\n\nBehavioural experiments\n\n\n\n\n“Overview of the evaluation methodology for assessing the calibration gap between model confidence and human confidence in the model.”\n\n\nsteps for multiple choice:\n\nprompt LLM with question to get internal confidence for each answer\nselect most likely answer\nprompt LLM again to generate explanation for the chosen answer\nshowing the LLM-question and -answer to the user (non expert) → estimation of probability if correct\nuser provides his/her own answer for later experiment\n\nsteps for short-answer question:\n\nsame as for multiple choice with one exception\ninstead of step 2 from before LLM is prompted again to evaluate if answer is true or false\n\nAll experiments:\n\n\n\n\n“Overview of experiments”\n\n\nExp. 1: assesses human perception of LLMs default answer (gives information about calibration and discrimination gap)\nExp. 2: Manipulation of prompts with uncertainty language (low, medium, high confidence) and length (short, mid, long)\n\n\n\n\n“Prompt styles across Experiments 1, 2, and 3”\n\n\n\n\n\n\n\nMetrics\n\nhow well do human and model confidence levels correlate with correctness of answers…\nusage of ECE (expected calibration error)\n\n\n\n\n“Equation for calibration error”\n\n\naveraging absolute differences between accuracy and confidence across M probability bins\nif whole term equals zero than confidence predicts accuracy perfectly\nN - total sample count\nB(m) - m’th confidence bin\nacc(B(m)) - accuracy for samples in m’th bin\nconf(B(m)) - average confidence in m’th bin\n\n\n\n“Visualisation of ECE”\n\n\n\nand AUC (area under curve)\n\n\n\n\n“Equation for area under curve”\n\n\nassessment of diagnostic ability of confidence scores in distinguishing between correct and incorrect answers\nif whole term equals 1 then confidence perfectly describes if an answer is correct or wrong (perfect discrimination)\nif term equals 0.5 confidence is not better than chance discrimination\nN(pos) and N(neg) - counts for negative and positive answers\nC(i) and C(j) - confidence scores for i’th correct and j’th incorrect answer\nI - equals “1” if confidence of correct answer is larger than that of incorrect answer\n\n\n\n“Visualization for area under curve”",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>What large language models know and what people think they know</span>"
+    ]
+  },
+  {
+    "objectID": "papers/llm_confidence_2025.html#results",
+    "href": "papers/llm_confidence_2025.html#results",
+    "title": "What large language models know and what people think they know",
+    "section": "Results",
+    "text": "Results\n\nCalibration and discrimination gap\n\n\n\n\n“Calibration error and discrimination for model confidence and human confidence across the behavioural experiments and LLMs.”\n\n\ncomparison of model and human confidence\ndashed lines show calibration and discrimination gap\ncalibration error (left side)\n\nbig gap between model and human calibration\nmeans accuracy is over- or underestimated by humans compared to model\nstandard explanations of LLM do not enable user to judge likelihood of correctness\n\ndiscrimination error\n\nagain big gap between how well humans and models confidence can discriminate between correct or wrong answer\nhumans only slightly better than random guessing for baseline (default) answers\n\n\n\n\n\n\nReducing calibration and discrimination gap\n\nQuestion: Can gaps be narrowed if low, medium and high confidence answer is displayed when LLM has low, medium or high confidence?\nshort answer: yes, see figure above!\nlong answer: application of selection rules (see Eq. 1)\n\n\n\n\n“Equation 1”\n\n\nfor this task only questions were chosen where the uncertainty language matched the inner model confidence\n\nas seen in figure (red bar) calibration and discrimination gap is narrowed substantially after application of selection rule\ngaps are narrowed with modified explanations sensitive to models internal confidence!\nresult: it makes sense to link uncertainty language to internal model confidence\n\n\n\n\n\nDeeper insight into calibration error: overconfidence\n\n\n\n\n“Calibration diagrams for model confidence and human confidence across experiments 1 and 2.”\n\n\ngraphs plot model or human confidence (x-axis) against accuracy (y-axis)\nhumans and models mostly overconfident (graph under line)\nonly GPT-4o is underconfident (graph above line)\nhumans mostly believe that LLMs are more accurate than they actually are!\n\n\n\n\n\nExplanation style and length affect human confidence\n\nQuestion: How is human confidence affected by uncertainty expressed by LLM?\n\n\n\n“Mean human confidence across LLM explanation styles varying in uncertainty language and length”\n\n\ngraphs show human confidence for every explanation style…\n\nlow, mid, high confidence (uncertainty language)\nshort, mid, long answers\n\ndashed line is average human confidence from baseline explanations (Exp. 1)\nuncertainty language and length has influence on human confidence\n\nlow confidence language results in lower human confidence (less trust)\nlonger sentences result in higher human confidence (more trust)\n\nanswer\n\n\n\n\n\nParticipants lack specialized knowledge\n\nQuestion: Do participants have any independent (expert) knowledge?\nfor exp. 2 participants also provided their own answer\ntests resulted that participants were not smarter than LLM (no experts present in tested groups)\napplication of selection rule did not result in accuracy increase caused by the lack of human knowledge\n\nmeaning: you might know if an LLM is certain or uncertain about its answer, but you still have to find a better answer",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>What large language models know and what people think they know</span>"
+    ]
+  },
+  {
+    "objectID": "papers/llm_confidence_2025.html#potential-causes-of-overconfidence",
+    "href": "papers/llm_confidence_2025.html#potential-causes-of-overconfidence",
+    "title": "What large language models know and what people think they know",
+    "section": "Potential causes of overconfidence",
+    "text": "Potential causes of overconfidence\n\nReinforcement Learning from Human Feedback\n\nLLMs are trained on human preferences, leading to bias in explanations\nUsers favor detailed explanations, causing models to generate overly persuasive responses\n\nAutoregressive Nature of LLMs\n\nModels generate explanations that reinforce their initial answer, leading to assertive reasoning\nSimilar to choice-supportive biases in human psychology (describes the tendency to justify past (less meaningful) purchases with rational arguments in retrospect)",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>What large language models know and what people think they know</span>"
+    ]
+  },
+  {
+    "objectID": "papers/llm_confidence_2025.html#conclusion",
+    "href": "papers/llm_confidence_2025.html#conclusion",
+    "title": "What large language models know and what people think they know",
+    "section": "Conclusion",
+    "text": "Conclusion\n\nusers overestimate LLM accuracy, especially with default explanations\nhuman overconfidence poses risks in critical decision making\nlonger explanations increased user confidence, meaning users relied on explanation length rather than content to judge accuracy\nmodified answer explanations improved human accuracy perception, which highlights the need for transparent LLM communication",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>What large language models know and what people think they know</span>"
+    ]
+  },
+  {
+    "objectID": "papers/llm_confidence_2025.html#references",
+    "href": "papers/llm_confidence_2025.html#references",
+    "title": "What large language models know and what people think they know",
+    "section": "References",
+    "text": "References\n\n\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.\n\n\nSteyvers, Mark, Heliodoro Tejeda, Aakriti Kumar, Catarina Belem, Sheer Karny, Xinyue Hu, Lukas W Mayer, and Padhraic Smyth. 2025. “What Large Language Models Know and What People Think They Know.” Nature Machine Intelligence, 1–11.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>What large language models know and what people think they know</span>"
+    ]
   }
 ]

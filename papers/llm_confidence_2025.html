@@ -6,9 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Adrian Mirza">
+<meta name="author" content="Viktor Weißenborn">
+<meta name="dcterms.date" content="2025-02-05">
 
-<title>Polars – Lamalab Tool and Paper Notes</title>
+<title>What large language models know and what people think they know – Lamalab Tool and Paper Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -85,8 +52,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../tools/thunder_client.html" rel="next">
-<link href="../tools/ip_rotator.html" rel="prev">
+<link href="../papers/nmr-shift-prediction-from-small-data-quantities.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -136,7 +102,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tools/hydra.html">Tools</a></li><li class="breadcrumb-item"><a href="../tools/polars.html"><span class="chapter-title">Polars</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/llm4mat.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/llm_confidence_2025.html"><span class="chapter-title">What large language models know and what people think they know</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -187,7 +153,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tools/polars.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Polars</span></a>
+  <a href="../tools/polars.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Polars</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -313,7 +279,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/llm_confidence_2025.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">What large language models know and what people think they know</span></a>
+  <a href="../papers/llm_confidence_2025.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">What large language models know and what people think they know</span></a>
   </div>
 </li>
       </ul>
@@ -328,17 +294,36 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#an-alternative-to-pandas" id="toc-an-alternative-to-pandas" class="nav-link active" data-scroll-target="#an-alternative-to-pandas">An alternative to pandas</a></li>
-  <li><a href="#syntax-example" id="toc-syntax-example" class="nav-link" data-scroll-target="#syntax-example">Syntax example</a></li>
+  <li><a href="#why-did-i-choose-this-paper" id="toc-why-did-i-choose-this-paper" class="nav-link active" data-scroll-target="#why-did-i-choose-this-paper">Why did I choose this paper?</a></li>
+  <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">Motivation</a></li>
+  <li><a href="#terminology" id="toc-terminology" class="nav-link" data-scroll-target="#terminology">Terminology</a></li>
+  <li><a href="#main-research-questions" id="toc-main-research-questions" class="nav-link" data-scroll-target="#main-research-questions">Main research questions</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a>
+  <ul class="collapse">
+  <li><a href="#large-language-models" id="toc-large-language-models" class="nav-link" data-scroll-target="#large-language-models">Large language models</a></li>
+  <li><a href="#behavioural-experiments" id="toc-behavioural-experiments" class="nav-link" data-scroll-target="#behavioural-experiments">Behavioural experiments</a></li>
+  <li><a href="#metrics" id="toc-metrics" class="nav-link" data-scroll-target="#metrics">Metrics</a></li>
+  </ul></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
+  <ul class="collapse">
+  <li><a href="#calibration-and-discrimination-gap" id="toc-calibration-and-discrimination-gap" class="nav-link" data-scroll-target="#calibration-and-discrimination-gap">Calibration and discrimination gap</a></li>
+  <li><a href="#reducing-calibration-and-discrimination-gap" id="toc-reducing-calibration-and-discrimination-gap" class="nav-link" data-scroll-target="#reducing-calibration-and-discrimination-gap">Reducing calibration and discrimination gap</a></li>
+  <li><a href="#deeper-insight-into-calibration-error-overconfidence" id="toc-deeper-insight-into-calibration-error-overconfidence" class="nav-link" data-scroll-target="#deeper-insight-into-calibration-error-overconfidence">Deeper insight into calibration error: overconfidence</a></li>
+  <li><a href="#explanation-style-and-length-affect-human-confidence" id="toc-explanation-style-and-length-affect-human-confidence" class="nav-link" data-scroll-target="#explanation-style-and-length-affect-human-confidence">Explanation style and length affect human confidence</a></li>
+  <li><a href="#participants-lack-specialized-knowledge" id="toc-participants-lack-specialized-knowledge" class="nav-link" data-scroll-target="#participants-lack-specialized-knowledge">Participants lack specialized knowledge</a></li>
+  </ul></li>
+  <li><a href="#potential-causes-of-overconfidence" id="toc-potential-causes-of-overconfidence" class="nav-link" data-scroll-target="#potential-causes-of-overconfidence">Potential causes of overconfidence</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tools/hydra.html">Tools</a></li><li class="breadcrumb-item"><a href="../tools/polars.html"><span class="chapter-title">Polars</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/llm4mat.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/llm_confidence_2025.html"><span class="chapter-title">What large language models know and what people think they know</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Polars</span></h1>
+<h1 class="title"><span class="chapter-title">What large language models know and what people think they know</span></h1>
 </div>
 
 
@@ -348,10 +333,16 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Adrian Mirza </p>
+             <p>Viktor Weißenborn </p>
           </div>
   </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 5, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -361,23 +352,304 @@ div.csl-indent {
 </header>
 
 
-<p><img src="image/polars/pandas_vs_polars.png" title="Polars vs pandas" class="img-fluid"></p>
-<section id="an-alternative-to-pandas" class="level2">
-<h2 class="anchored" data-anchor-id="an-alternative-to-pandas">An alternative to pandas</h2>
-<p>The advantages of polars can be directly seen in the image above. It is clear from the graph that Polars perform faster than Pandas for most operations. This is particularly true for the GroupBy operation, where Polars is nearly 20 times faster than Pandas. The Filter operation is also significantly faster in Polars, while Create operations are somewhat faster in Pandas. Overall, Polars seems to be a more performant library for data manipulation, particularly for large datasets.</p>
+<section id="why-did-i-choose-this-paper" class="level2">
+<h2 class="anchored" data-anchor-id="why-did-i-choose-this-paper">Why did I choose this paper?</h2>
+<ul>
+<li>interesting topic for last current topics session</li>
+<li>psychological aspect of confidence: LLM vs human</li>
+<li>link: <span class="citation" data-cites="steyvers2025large">(<a href="#ref-steyvers2025large" role="doc-biblioref">Steyvers et al. 2025</a>)</span></li>
+</ul>
 </section>
-<section id="syntax-example" class="level2">
-<h2 class="anchored" data-anchor-id="syntax-example">Syntax example</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> (</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    pl.scan_csv(<span class="st">"docs/data/iris.csv"</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">filter</span>(pl.col(<span class="st">"sepal_length"</span>) <span class="op">&gt;</span> <span class="dv">5</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    .group_by(<span class="st">"species"</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    .agg(pl.<span class="bu">all</span>().<span class="bu">sum</span>())</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> q.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="motivation" class="level2">
+<h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
+<ul>
+<li>limited prior work (as stated by authors)</li>
+<li>question of how well LLMs communicate uncertainty is unexplored</li>
+<li>investigation of gap between what LLM knows and what human thinks it knows</li>
+<li>essential due to increasing reliance on LLMs for decision making</li>
+<li>recent studies show that LLMs may possess internal knowledge reflection, since they can distinguish…
+<ul>
+<li>answerable and unanswerable questions</li>
+<li>truth and lies</li>
+</ul></li>
+</ul>
+</section>
+<section id="terminology" class="level2">
+<h2 class="anchored" data-anchor-id="terminology">Terminology</h2>
+<ul>
+<li><strong>internal LLM confidence:</strong> internal probability of a selected answer is compared to other possible answers, BUT is not displayed to user</li>
+<li><strong>human confidence:</strong> human assessment of likelihood of answer being correct (numerical probability)
+<ul>
+<li>humans rely only on LLM language to assess confidence</li>
+<li>no info about LLM’s internal confidence</li>
+</ul></li>
+<li><strong>calibration gap:</strong> difference between LLMs internal confidence and human perception of this confidence</li>
+<li><strong>discrimination gap:</strong> ability of human and LLM to distinguish (discriminate) between right or wrong answers</li>
+</ul>
+</section>
+<section id="main-research-questions" class="level2">
+<h2 class="anchored" data-anchor-id="main-research-questions">Main research questions</h2>
+<ul>
+<li><strong>investigation of relationship between models confidence and its accuracy</strong>
+<ul>
+<li>is it well calibrated?</li>
+</ul></li>
+<li><strong>Amount of calibration and discrimination gap?</strong>
+<ul>
+<li>Means: Is there a notable gap in assessment of output accuracy by human vs LLM?</li>
+</ul></li>
+<li><strong>Can the gaps be reduced?</strong>
+<ul>
+<li>Means: can human confidence be improved by reflecting LLMs internal confidence in output?</li>
+</ul></li>
+</ul>
+</section>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">Methods</h2>
+<section id="large-language-models" class="level3">
+<h3 class="anchored" data-anchor-id="large-language-models">Large language models</h3>
+<ul>
+<li>GPT 3.5, PaLM2, GPT 4.o</li>
+<li>GPT 3.5 and PaLM2 were applied subset of Massive Multitask Language Understanding (MMLU) dataset
+<ul>
+<li>multiple choice questions from science, technology, engineering, maths (STEM), humanities, social sciences…</li>
+</ul></li>
+<li>GPT 4.o was applied to TriviaQA dataset
+<ul>
+<li>short-answer questions</li>
+</ul></li>
+<li>models confidence is computed by computing the token likelihoods for each question (numerical propability)</li>
+</ul>
+<p><br>
+</p>
+</section>
+<section id="behavioural-experiments" class="level3">
+<h3 class="anchored" data-anchor-id="behavioural-experiments">Behavioural experiments</h3>
+<ul>
+<li><div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="llm_confidence_2025_images/questions_schema.png" class="img-fluid figure-img"></p>
+<figcaption>“Overview of the evaluation methodology for assessing the calibration gap between model confidence and human confidence in the model.”</figcaption>
+</figure>
+</div></li>
+<li><p>steps for multiple choice:</p>
+<ol type="1">
+<li>prompt LLM with question to get internal confidence for each answer</li>
+<li>select most likely answer</li>
+<li>prompt LLM again to generate explanation for the chosen answer</li>
+<li>showing the LLM-question and -answer to the user (non expert) → estimation of probability if correct</li>
+<li>user provides his/her own answer for later experiment</li>
+</ol></li>
+<li><p>steps for short-answer question:</p>
+<ul>
+<li>same as for multiple choice with one exception</li>
+<li>instead of step 2 from before LLM is prompted again to evaluate if answer is true or false</li>
+</ul></li>
+<li><p>All experiments:</p>
+<ul>
+<li><div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="llm_confidence_2025_images/exp_overview.png" class="img-fluid figure-img"></p>
+<figcaption>“Overview of experiments”</figcaption>
+</figure>
+</div></li>
+<li>Exp. 1: assesses human perception of LLMs default answer (gives information about calibration and discrimination gap)</li>
+<li>Exp. 2: Manipulation of prompts with uncertainty language (low, medium, high confidence) and length (short, mid, long)
+<ul>
+<li><div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="llm_confidence_2025_images/prompts.png" class="img-fluid figure-img"></p>
+<figcaption>“Prompt styles across Experiments 1, 2, and 3”</figcaption>
+</figure>
+</div></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="metrics" class="level3">
+<h3 class="anchored" data-anchor-id="metrics">Metrics</h3>
+<ul>
+<li>how well do human and model confidence levels correlate with correctness of answers…</li>
+<li>usage of ECE (expected calibration error)
+<ul>
+<li><div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="llm_confidence_2025_images/ece.png" class="img-fluid figure-img"></p>
+<figcaption>“Equation for calibration error”</figcaption>
+</figure>
+</div></li>
+<li>averaging absolute differences between accuracy and confidence across M probability bins</li>
+<li><strong>if whole term equals zero than confidence predicts accuracy perfectly</strong></li>
+<li>N - total sample count</li>
+<li>B(m) - m’th confidence bin</li>
+<li>acc(B(m)) - accuracy for samples in m’th bin</li>
+<li>conf(B(m)) - average confidence in m’th bin</li>
+<li><div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="llm_confidence_2025_images/ece_example.png" class="img-fluid figure-img"></p>
+<figcaption>“Visualisation of ECE”</figcaption>
+</figure>
+</div></li>
+</ul></li>
+<li>and AUC (area under curve)
+<ul>
+<li><div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="llm_confidence_2025_images/auc.png" class="img-fluid figure-img"></p>
+<figcaption>“Equation for area under curve”</figcaption>
+</figure>
+</div></li>
+<li>assessment of diagnostic ability of confidence scores in distinguishing between correct and incorrect answers</li>
+<li><strong>if whole term equals 1 then confidence perfectly describes if an answer is correct or wrong (perfect discrimination)</strong></li>
+<li><strong>if term equals 0.5 confidence is not better than chance discrimination</strong></li>
+<li>N(pos) and N(neg) - counts for negative and positive answers</li>
+<li>C(i) and C(j) - confidence scores for i’th correct and j’th incorrect answer</li>
+<li>I - equals “1” if confidence of correct answer is larger than that of incorrect answer</li>
+<li><div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="llm_confidence_2025_images/auc_example.png" class="img-fluid figure-img"></p>
+<figcaption>“Visualization for area under curve”</figcaption>
+</figure>
+</div></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<section id="calibration-and-discrimination-gap" class="level3">
+<h3 class="anchored" data-anchor-id="calibration-and-discrimination-gap">Calibration and discrimination gap</h3>
+<ul>
+<li><div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="llm_confidence_2025_images/cal_dis_gap_schema.png" class="img-fluid figure-img"></p>
+<figcaption>“Calibration error and discrimination for model confidence and human confidence across the behavioural experiments and LLMs.”</figcaption>
+</figure>
+</div></li>
+<li><p>comparison of model and human confidence</p></li>
+<li><p>dashed lines show calibration and discrimination gap</p></li>
+<li><p>calibration error (left side)</p>
+<ul>
+<li>big gap between model and human calibration</li>
+<li>means accuracy is over- or underestimated by humans compared to model</li>
+<li><strong>standard explanations of LLM do not enable user to judge likelihood of correctness</strong></li>
+</ul></li>
+<li><p>discrimination error</p>
+<ul>
+<li>again big gap between how well humans and models confidence can discriminate between correct or wrong answer</li>
+<li><strong>humans only slightly better than random guessing for baseline (default) answers</strong></li>
+</ul></li>
+</ul>
+<p><br>
+</p>
+</section>
+<section id="reducing-calibration-and-discrimination-gap" class="level3">
+<h3 class="anchored" data-anchor-id="reducing-calibration-and-discrimination-gap">Reducing calibration and discrimination gap</h3>
+<ul>
+<li>Question: Can gaps be narrowed if low, medium and high confidence answer is displayed when LLM has low, medium or high confidence?</li>
+<li>short answer: yes, see figure above!</li>
+<li>long answer: application of selection rules (see Eq. 1)
+<ul>
+<li><div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="llm_confidence_2025_images/narrow_gap.png" class="img-fluid figure-img"></p>
+<figcaption>“Equation 1”</figcaption>
+</figure>
+</div></li>
+<li>for this task only questions were chosen where the uncertainty language matched the inner model confidence</li>
+</ul></li>
+<li>as seen in figure (red bar) calibration and discrimination gap is narrowed substantially after application of selection rule</li>
+<li><strong>gaps are narrowed with modified explanations sensitive to models internal confidence!</strong></li>
+<li>result: it makes sense to link uncertainty language to internal model confidence</li>
+</ul>
+<p><br>
+</p>
+</section>
+<section id="deeper-insight-into-calibration-error-overconfidence" class="level3">
+<h3 class="anchored" data-anchor-id="deeper-insight-into-calibration-error-overconfidence">Deeper insight into calibration error: overconfidence</h3>
+<ul>
+<li><div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="llm_confidence_2025_images/accuracy_vs_confidence.png" class="img-fluid figure-img"></p>
+<figcaption>“Calibration diagrams for model confidence and human confidence across experiments 1 and 2.”</figcaption>
+</figure>
+</div></li>
+<li><p>graphs plot model or human confidence (x-axis) against accuracy (y-axis)</p></li>
+<li><p>humans and models mostly overconfident (graph under line)</p></li>
+<li><p>only GPT-4o is underconfident (graph above line)</p></li>
+<li><p>humans mostly believe that LLMs are more accurate than they actually are!</p></li>
+</ul>
+<p><br>
+</p>
+</section>
+<section id="explanation-style-and-length-affect-human-confidence" class="level3">
+<h3 class="anchored" data-anchor-id="explanation-style-and-length-affect-human-confidence">Explanation style and length affect human confidence</h3>
+<ul>
+<li><p>Question: How is human confidence affected by uncertainty expressed by LLM?</p></li>
+<li><div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="llm_confidence_2025_images/graph_exp2_language.png" class="img-fluid figure-img"></p>
+<figcaption>“Mean human confidence across LLM explanation styles varying in uncertainty language and length”</figcaption>
+</figure>
+</div></li>
+<li><p>graphs show human confidence for every explanation style…</p>
+<ul>
+<li>low, mid, high confidence (uncertainty language)</li>
+<li>short, mid, long answers</li>
+</ul></li>
+<li><p>dashed line is average human confidence from baseline explanations (Exp. 1)</p></li>
+<li><p>uncertainty language and length has influence on human confidence</p>
+<ul>
+<li>low confidence language results in lower human confidence (less trust)</li>
+<li>longer sentences result in higher human confidence (more trust)</li>
+</ul></li>
+<li><p>answer</p></li>
+</ul>
+<p><br>
+</p>
+</section>
+<section id="participants-lack-specialized-knowledge" class="level3">
+<h3 class="anchored" data-anchor-id="participants-lack-specialized-knowledge">Participants lack specialized knowledge</h3>
+<ul>
+<li>Question: Do participants have any independent (expert) knowledge?</li>
+<li>for exp. 2 participants also provided their own answer</li>
+<li>tests resulted that participants were not smarter than LLM (no experts present in tested groups)</li>
+<li><strong>application of selection rule did not result in accuracy increase caused by the lack of human knowledge</strong>
+<ul>
+<li>meaning: you might know if an LLM is certain or uncertain about its answer, but you still have to find a better answer</li>
+</ul></li>
+</ul>
+<p><br>
+</p>
+</section>
+</section>
+<section id="potential-causes-of-overconfidence" class="level2">
+<h2 class="anchored" data-anchor-id="potential-causes-of-overconfidence">Potential causes of overconfidence</h2>
+<ul>
+<li>Reinforcement Learning from Human Feedback
+<ul>
+<li>LLMs are trained on human preferences, leading to bias in explanations</li>
+<li>Users favor detailed explanations, causing models to generate overly persuasive responses</li>
+</ul></li>
+<li>Autoregressive Nature of LLMs
+<ul>
+<li>Models generate explanations that reinforce their initial answer, leading to assertive reasoning</li>
+<li>Similar to choice-supportive biases in human psychology (describes the tendency to justify past (less meaningful) purchases with rational arguments in retrospect)</li>
+</ul></li>
+</ul>
+<p>&nbsp;</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<ul>
+<li>users overestimate LLM accuracy, especially with default explanations</li>
+<li>human overconfidence poses risks in critical decision making</li>
+<li>longer explanations increased user confidence, meaning users relied on explanation length rather than content to judge accuracy</li>
+<li>modified answer explanations improved human accuracy perception, which highlights the need for <strong>transparent LLM communication</strong></li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
@@ -389,6 +661,9 @@ Landrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina
 </div>
 <div id="ref-orsi2024one" class="csl-entry" role="listitem">
 Orsi, Markus, and Jean-Louis Reymond. 2024. <span>“One Chiral Fingerprint to Find Them All.”</span> <em>Journal of Cheminformatics</em> 16 (1): 53.
+</div>
+<div id="ref-steyvers2025large" class="csl-entry" role="listitem">
+Steyvers, Mark, Heliodoro Tejeda, Aakriti Kumar, Catarina Belem, Sheer Karny, Xinyue Hu, Lukas W Mayer, and Padhraic Smyth. 2025. <span>“What Large Language Models Know and What People Think They Know.”</span> <em>Nature Machine Intelligence</em>, 1–11.
 </div>
 </div>
 </section>
@@ -813,14 +1088,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../tools/ip_rotator.html" class="pagination-link" aria-label="IP Rotator">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">IP Rotator</span></span>
+      <a href="../papers/nmr-shift-prediction-from-small-data-quantities.html" class="pagination-link" aria-label="NMR shift prediction from small data quantities">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">NMR shift prediction from small data quantities</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../tools/thunder_client.html" class="pagination-link" aria-label="Thunder Client">
-        <span class="nav-page-text"><span class="chapter-title">Thunder Client</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
