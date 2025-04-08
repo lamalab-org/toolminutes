@@ -112,6 +112,4 @@ bibliography: ../references.bib
 - Key to progress: Better data, improved benchmarks, and enhanced interpretability
 - Moving toward autonomous systems that combine the strengths of different models
 
-### Key Takeaway
-LLMs are transforming chemistry by providing powerful tools for property prediction, molecule generation, and synthesis planning. While data limitations remain a challenge, these models are already demonstrating capabilities that complement human expertise and accelerate chemical discovery.
 
