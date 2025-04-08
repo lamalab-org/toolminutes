@@ -7,23 +7,32 @@ bibliography: ../references.bib
 # LLMs and Autonomous Agents in Chemistry
 
 ### 1. Introduction 
-- **Historical context**: Evolution of AI in chemistry from early computational methods (1950s) to expert systems like DENDRAL (1980s) to deep learning (2010s)
 - **Three key challenges in chemistry**:
   1. Property prediction: Predicting physical/chemical properties of compounds
   2. Property-directed molecule generation: Creating molecules with desired properties
   3. Synthesis prediction: Determining optimal ways to make target molecules
-- **Automation**: The fourth challenge connecting the other three
 - **Chemical space is vast**: Estimated 10^180 possible stable compounds – requires AI to explore effectively
+- **Automation**: The fourth challenge connecting the other three
 
 ### 2. Large Language Models (LLMs) Fundamentals 
-- **What are LLMs?**: Deep neural networks trained on vast text corpora, primarily using transformer architecture
+- **What are LLMs?**: Deep neural networks trained on vast data, primarily using transformer architecture
 - **Transformer architecture** consists of:
+  - **Input embeddings**: Converts the input tokens into a numerical/vector representation
   - **Attention mechanism**: Allows the model to focus on relevant parts of input
   - **Positional encoding**: Helps maintain sequence order information
-  - **Self-supervised learning**: Models learn patterns without explicit labels
+
+- **Training**:
+  1. Pretraining Approaches
+  - **Self-supervised learning**: Learning patterns from unlabeled chemical data (like SMILES strings) without explicit annotations
+  - **Domain-specific Vocabulary**: Creating specialized tokenization for chemical notation rather than using general language vocabularies
+  2. Fine-tuning Approaches
+  - **Supervised Fine-tuning**: Training on labeled datasets of specific chemical properties or reactions
+  - **Instruction Tuning**: Teaching models to follow specific chemistry-related instructions through examples
+  - **Parameter-Efficient Fine-Tuning (PEFT)**: Updating only a small subset of model parameters for chemistry tasks
+
 - **Three main transformer architectures**:
-  1. **Encoder-only** (e.g., BERT): Good for classification and property prediction
-  2. **Decoder-only** (e.g., GPT): Excellent for generative tasks and molecule design
+  1. **Encoder-only (bidirectional context)** (e.g., BERT): Good for classification and property prediction (understanding)
+  2. **Decoder-only (causal context)** (e.g., GPT): Excellent for generative tasks and molecule design (generation)
   3. **Encoder-decoder** (e.g., BART): Ideal for translation tasks like reaction prediction
 
 ### 3. The Data Challenge in Chemistry 
@@ -40,30 +49,28 @@ bibliography: ../references.bib
 ### 4. LLMs for Chemistry Applications 
 #### Property Prediction (Encoder-only Models)
 
-| Name | Architecture | Aim | Key Achievements |
-|------|--------------|-----|------------------|
-| Mol-BERT | BERT | Molecular property prediction | Outperformed existing methods by ~2% in ROC-AUC scores on benchmark datasets using molecular fingerprints as "words" |
-| ChemBERTa | RoBERTa | Property prediction | Demonstrated performance improvements with increasing dataset size (100K to 10M samples) |
-| ChemBERTa-2 | RoBERTa | Foundational model for chemistry tasks | Matched state-of-the-art on MoleculeNet with 77M training samples and multi-task regression |
-| MolFormer | BERT with rotary positional embeddings | Fast property prediction | Achieved competitive results with quantum calculations using 1.1B molecules for training |
-| MTL-BERT | BERT | Multi-task property prediction | Outperformed state-of-the-art on 60 molecular datasets through multitask learning |
-| SolvBERT | BERT | Solvation property prediction | Predicted solvation free energy comparable to graph-based models using only SMILES strings |
-| SELFormer | RoBERTa with SELFIES | Property prediction with robust representation | Outperformed competing methods using SELFIES instead of SMILES |
-| CatBERTa | RoBERTa | Catalyst property prediction | Specialized for the OpenCatalyst2020 dataset |
+| Name | Architecture | Training Data | Aim | Achievements | Innovations |
+|------|--------------|--------------|-----|--------------|------------|
+| Mol-BERT | BERT | 4B SMILES from ZINC15/ChEMBL27 | Property prediction | Outperformed existing methods by 2%+ on benchmark datasets | Used Morgan fingerprint fragments as "words" and molecules as "sentences" |
+| MolFormer | BERT | 1.1B molecules from ZINC/PubChem | Molecular property prediction | Outperformed GNNs on MoleculeNet tasks | Implemented rotary positional embeddings for better sequence relationships |
+| ChemBERTa | RoBERTa | 10M SMILES from PubChem | Property prediction | Showed performance improved with dataset size | Explored impact of tokenization strategies and representation types |
+| ChemBERTa-2 | RoBERTa | 77M SMILES from PubChem | Foundational model for multiple tasks | Matched state-of-the-art on MoleculeNet | Added Multi-Task Regression to pretraining |
+| SELFormer | RoBERTa | 2M drug-like compounds | Property prediction | Outperformed competitors on several tasks | Used SELFIES instead of SMILES for better robustness |
+| SolvBERT | BERT | 1M solute-solvent pairs | Solubility/solvation prediction | Comparable to graph-based models | Predicted 3D-dependent properties from 1D representations |
+| MatSciBERT | BERT | 150K materials science papers | Material property extraction | 3% improvement over SciBERT | Fine-tuned for materials science domain |
 
 #### Molecule Generation (Decoder-only Models)
 
 
-| Name | Architecture | Aim | Key Achievements |
-|------|--------------|-----|------------------|
-| MolGPT | GPT | Molecular generation | Outperformed VAE approaches in generating valid, unique molecules |
-| ChemGPT | GPT-neo | Molecular generation | Explored hyperparameter tuning and dataset scaling effects |
-| cMolGPT | GPT | Target-specific molecule generation | Generated molecules guided by predefined conditions based on target proteins |
-| Taiga | Autoregressive model with RL | Optimized molecule generation | Used REINFORCE algorithm to enhance specific molecular features |
-| iupacGPT | GPT | Generation with IUPAC names | Created novel compounds using human-readable chemical notation |
-| GPTChem | GPT-3 | Property prediction and inverse design | Demonstrated that general-purpose LLMs can compete with specialized chemical models |
-| LlasMol | Finetuned Galactica/LLaMa/Mistral | Multi-task chemistry | Achieved state-of-the-art in property prediction with efficient fine-tuning |
-| ChatMOF | Mistral | MOF structure generation | Used genetic algorithms to generate diverse Metal-Organic Frameworks |
+| Name | Architecture | Training Data | Aim | Achievements | Innovations |
+|------|--------------|--------------|-----|--------------|------------|
+| MolGPT | GPT | MOSES/GuacaMol datasets | Molecular generation | Better performance than VAE approaches | Used masked self-attention for long-range dependencies in SMILES |
+| ChemGPT | GPT-neo | 10M molecules from PubChem | Explore hyperparameter tuning | Refined generative models for specific domains | Explored impact of data scale on generation |
+| cMolGPT | GPT | MOSES | Target-specific molecule generation | Generated compounds with binding activity | Integrated protein-ligand interactions with conditional generation |
+| iupacGPT | GPT | IUPAC names | Generate molecules using IUPAC | Human-readable molecular generation | Used IUPAC names directly instead of SMILES |
+| Taiga | GPT + RL | Various | Property-directed molecule generation | Optimized molecules for targeted properties | Employed REINFORCE for property optimization |
+| LlaSMol | LLaMA/Mistral | SMolInstruct | Multi-task molecular modeling | State-of-the-art on property prediction | Used parameter-efficient fine-tuning on pretrained models |
+| GPTChem | GPT-3 | Multiple benchmarks | Property prediction and inverse design | Competed with specialized models | Showed generalist models can perform chemical tasks |
 
 #### Synthesis Prediction (Encoder-decoder Models)
 - **Evolution from template-based to template-free approaches**:
@@ -72,14 +79,14 @@ bibliography: ../references.bib
   - Template-free: Learn directly from data without predefined rules
 
 
-| Name | Architecture | Aim | Key Achievements |
-|------|--------------|-----|------------------|
-| Molecular Transformer | Transformer | Reaction prediction | First transformer for synthesis prediction, outperforming previous algorithms |
-| ChemFormer | BART | Sequence-to-sequence tasks | Achieved state-of-the-art in synthesis and property prediction after transfer learning |
-| ReactionT5 | T5 | Reaction prediction | Combined reaction prediction with property prediction |
-| T5Chem | T5 | Product prediction & retrosynthesis | Applied T5 architecture to chemical reaction tasks |
-| MOLGEN | BART | Molecular generation | Used domain-agnostic molecular prefix tuning to avoid hallucinations |
-| Text+Chem T5 | T5 | Multiple chemistry tasks | Multi-task model for molecule captioning, product prediction and retrosynthesis |
+| Name | Architecture | Training Data | Aim | Achievements | Innovations |
+|------|--------------|--------------|-----|--------------|------------|
+| Molecular Transformer | Transformer | USPTO datasets | Synthesis prediction | Outperformed prior algorithms | Required no handcrafted rules for chemical transformations |
+| Chemformer | BART | 100M SMILES from ZINC-15 | Multi-task chemical modeling | State-of-the-art in synthesis and property tasks | Emphasized computational efficiency through pretraining |
+| Text+Chem T5 | T5 | 11.5M-33.5M samples | Multi-task chemical processing | Effective in diverse synthesis tasks | Combined reaction data from multiple sources |
+| MOLGEN | BART | 100M molecules (SELFIES) | Molecular generation | Addressed bias against natural product-like molecules | Used domain-specific molecular prefix tuning |
+| ReactionT5 | T5 | ZINC and ORD | Reaction prediction | Improved synthesis prediction | Combined property and reaction prediction |
+| TSChem | T5 | USPTO | Versatile chemical modeling | Strong performance on multiple tasks | Integrated property and synthesis prediction |
 
 ### 5. Multi-modal Approaches 
 - **Text2Mol** (2021): Connects molecular representations with text descriptions
@@ -91,12 +98,13 @@ bibliography: ../references.bib
 - **Applications**: Molecular retrieval from text queries, structure generation from descriptions
 ## Multi-modal Models
 
-| Name | Architecture | Aim | Key Achievements |
-|------|--------------|-----|------------------|
-| MolT5 | T5 | Bidirectional molecule-text translation | Generated molecular captions from SMILES and predicted structures from descriptions |
-| BioT5/BioT5+ | T5 | Molecule-text tasks | Expanded on MolT5 with additional biomedical data |
-| Text2Mol | SciBERT with decoder | Retrieval of molecules from text | Created paired dataset linking molecules with text descriptions |
-| GIT-Mol | Multi-modal | Integration of graphs, images, and text | Improved accuracy through multimodal data fusion |
+| Name | Architecture | Training Data | Aim | Achievements | Innovations |
+|------|--------------|--------------|-----|--------------|------------|
+| Text2Mol | SciBERT w/ decoder | CheBI-20 | Connecting text with molecules | Enabled retrieval of molecules using text | Created paired dataset linking molecules with descriptions |
+| MolT5 | T5 | C4 dataset | Molecule captioning and generation | Generated structures from descriptions | Used denoising objective to handle complex chemical descriptions |
+| BioT5+ | T5 | ZINC20, UniRef50, PubMed, etc. | Bridging text and molecules | Multi-task performance across domains | Integrated diverse biological and chemical data sources |
+| CLAMP | Combined model | Biochemical data | Predict biochemical activity | Enhanced prediction with language | Combined separate chemical and language modules |
+| GIT-Mol | Multi-modal | Graphs, images, text | Integrated chemical understanding | Improved accuracy with multiple data types | Combined three modalities for better chemical modeling |
 
 ### 6. Conclusion and Future Directions
 - LLMs show tremendous potential for transforming chemical research
@@ -106,3 +114,4 @@ bibliography: ../references.bib
 
 ### Key Takeaway
 LLMs are transforming chemistry by providing powerful tools for property prediction, molecule generation, and synthesis planning. While data limitations remain a challenge, these models are already demonstrating capabilities that complement human expertise and accelerate chemical discovery.
+
