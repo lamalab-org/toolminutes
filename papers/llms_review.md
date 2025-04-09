@@ -4,7 +4,7 @@ date: 2025-04-09
 bibliography: ../references.bib
 ---
 
-# LLMs and Autonomous Agents in Chemistry
+# LLMs in Chemistry
 
 ### 1. Introduction 
 - **Three key challenges in chemistry**:
