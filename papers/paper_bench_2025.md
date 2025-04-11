@@ -141,7 +141,7 @@ By evaluating different leading LLMs, the authors show that the performance of t
 
 ## Results
 
-They evaluate the performance of some of the leading models using a simple in a simple agent scaffolding taht uses the availble tools until the agent decides to end the run. The tools available to the agent are: a bash shell command execution tool, a Python code execution tool, a web browser tool, and a paginated file reader tool for reading long documents.
+They evaluate the performance of some of the leading models using a simple agent scaffolding that uses the available tools until the agent decides to end the run. The tools available to the agent are: a bash shell command execution tool, a Python code execution tool, a web browser tool, and a paginated file reader tool for reading long documents.
 
 | Model                | PaperBench      |
 |----------------------|-----------------|
