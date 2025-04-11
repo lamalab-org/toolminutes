@@ -80,8 +80,7 @@ Refer to @siegel2024corebenchfosteringcredibilitypublished for further discussio
 
 ## Approach
 
-The authors compile a dataset of 20 articles published as Spotlight and Oral papers from ICML 2024. For each of the papers they compile a set of rubrics that are used to evaluate the replication attempts. Each of the rubrics is structured as a hierarchical tree, with the top-level nodes representing the main categories of evaluation and the lower-level or leaf-nodes nodes representing the specific criteria within each category. This decomposition allows to do a very robust scoring which allows a more inshightful evaluation of the agents.
-
+The authors compile a dataset of 20 articles published as Spotlight and Oral papers from ICML 2024. For each of the papers they compile a set of rubrics that are used to evaluate the replication attempts. Each of the rubrics is structured as a hierarchical tree, with the top-level nodes representing the main categories of evaluation and the lower-level or leaf-nodes nodes representing the specific criteria within each category. This decomposition allows to do a very robust scoring which allows a more insightful evaluation of the agents.
 ![Figure taken from PaperBench [@starace2025paperbench0] summarizing all tasks original article, topic and the number of nodes in their evaluation rubric.](paper_bench_images/figure_5.png){#fig-id:paperbench_figure_5}
 
 ### Overall workflow
