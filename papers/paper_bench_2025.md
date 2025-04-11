@@ -35,8 +35,7 @@ MLAgentBench [@huang2023mlagentbench0] is a benchmark designed to evaluate the a
 
 ![Figure taken from MLAgentBench [@huang2023mlagentbench0] illustrating the different tasks in the benchmark.](paper_bench_images/figure_2.png){#fig-id:paperbench_figure_2}
 
-For each of the tasks they provide the agents with some initial files and a task description and the agent has to build from there. One of the problems of this paper is that they only evaluated one agent (only ReAct) and only thirteen tasks which limits the the evaluation.
-
+For each of the tasks they provide the agents with some initial files and a task description and the agent has to build from there. One of the problems of this paper is that they only evaluated one agent (only ReAct) and only thirteen tasks which limits the evaluation.
 ![Figure taken from MLAgentBench [@huang2023mlagentbench0] illustrating the results for the different tasks in the benchmark.](paper_bench_images/figure_3.png){#fig-id:paperbench_figure_3}
 
 The results vary a lot between the different tasks despite being averaged over 8 trials (pass@k). While for some the score is perfect, for others the score is 0.
