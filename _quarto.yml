@@ -20,6 +20,7 @@ book:
         - tools/showyourwork.qmd
     - part: Papers
       chapters:
+        - papers/llms_review.md
         - papers/llm4mat.qmd
         - papers/chem_yield_prediction_2024.md
         - papers/dagdelen_data_extraction.md
