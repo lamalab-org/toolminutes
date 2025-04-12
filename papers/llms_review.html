@@ -6,9 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Kevin Jablonka">
+<meta name="author" content="Sri Ram Sagar Kanakam">
+<meta name="dcterms.date" content="2025-04-09">
 
-<title>BFG Repo-Cleaner – Lamalab Tool and Paper Notes</title>
+<title>LLMs in Chemistry – Lamalab Tool and Paper Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -51,8 +52,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../tools/showyourwork.html" rel="next">
-<link href="../tools/pandarallel.html" rel="prev">
+<link href="../papers/llm4mat.html" rel="next">
+<link href="../tools/showyourwork.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -102,7 +103,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tools/hydra.html">Tools</a></li><li class="breadcrumb-item"><a href="../tools/bfg.html"><span class="chapter-title">BFG Repo-Cleaner</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/llms_review.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/llms_review.html"><span class="chapter-title">LLMs in Chemistry</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -178,7 +179,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tools/bfg.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">BFG Repo-Cleaner</span></a>
+  <a href="../tools/bfg.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">BFG Repo-Cleaner</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -199,7 +200,7 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/llms_review.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">LLMs in Chemistry</span></a>
+  <a href="../papers/llms_review.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">LLMs in Chemistry</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -294,15 +295,26 @@ div.csl-indent {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">1. Introduction</a></li>
+  <li><a href="#large-language-models-llms-fundamentals" id="toc-large-language-models-llms-fundamentals" class="nav-link" data-scroll-target="#large-language-models-llms-fundamentals">2. Large Language Models (LLMs) Fundamentals</a></li>
+  <li><a href="#the-data-challenge-in-chemistry" id="toc-the-data-challenge-in-chemistry" class="nav-link" data-scroll-target="#the-data-challenge-in-chemistry">3. The Data Challenge in Chemistry</a></li>
+  <li><a href="#llms-for-chemistry-applications" id="toc-llms-for-chemistry-applications" class="nav-link" data-scroll-target="#llms-for-chemistry-applications">4. LLMs for Chemistry Applications</a></li>
+  <li><a href="#multi-modal-approaches" id="toc-multi-modal-approaches" class="nav-link" data-scroll-target="#multi-modal-approaches">5. Multi-modal Approaches</a></li>
+  <li><a href="#conclusion-and-future-directions" id="toc-conclusion-and-future-directions" class="nav-link" data-scroll-target="#conclusion-and-future-directions">6. Conclusion and Future Directions</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tools/hydra.html">Tools</a></li><li class="breadcrumb-item"><a href="../tools/bfg.html"><span class="chapter-title">BFG Repo-Cleaner</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/llms_review.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/llms_review.html"><span class="chapter-title">LLMs in Chemistry</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">BFG Repo-Cleaner</span></h1>
+<h1 class="title"><span class="chapter-title">LLMs in Chemistry</span></h1>
 </div>
 
 
@@ -312,10 +324,16 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Kevin Jablonka </p>
+             <p>Sri Ram Sagar Kanakam </p>
           </div>
   </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 9, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -325,20 +343,401 @@ div.csl-indent {
 </header>
 
 
-<p>If you did not take with your <code>.gitignore</code> or just used <code>git add .</code> you might have by accident committed large files. This might lead to an error like</p>
-<pre><code>remote: error: See https://gh.io/lfs for more information.
-remote: error: File reports/gemini-pro/.langchain.db is 123.01 MB; this exceeds GitHub's file size limit of 100.00 MB
-remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
-To github.com:lamalab-org/chem-bench.git
- ! [remote rejected]     kjappelbaum/issue258 -&gt; kjappelbaum/issue258 (pre-receive hook declined)
-error: failed to push some refs to 'github.com:lamalab-org/chem-bench.git'</code></pre>
-<p>To fix this, you need to remove the large files. A convenient tool for doing this is <a href="https://rtyley.github.io/bfg-repo-cleaner/">BFG</a>.</p>
-<p>Once you download the file you can run it using something like</p>
-<pre><code>java -jar ~/Downloads/bfg-1.14.0.jar --strip-blobs-bigger-than 100M --no-blob-protection</code></pre>
-<p>to remove large files.</p>
-<p>Note that this here uses <code>--no-blob-protection</code> as BFG defaults to not touching the last commit.</p>
-<p>After the BFG run, it will prompt you to run something like</p>
-<pre><code>git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive</code></pre>
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">1. Introduction</h3>
+<ul>
+<li><strong>Three key challenges in chemistry</strong>:
+<ol type="1">
+<li>Property prediction: Predicting physical/chemical properties of compounds</li>
+<li>Property-directed molecule generation: Creating molecules with desired properties</li>
+<li>Synthesis prediction: Determining optimal ways to make target molecules</li>
+</ol></li>
+<li><strong>Chemical space is vast</strong>: Estimated 10^180 possible stable compounds – requires AI to explore effectively</li>
+<li><strong>Automation</strong>: The fourth challenge connecting the other three</li>
+</ul>
+</section>
+<section id="large-language-models-llms-fundamentals" class="level3">
+<h3 class="anchored" data-anchor-id="large-language-models-llms-fundamentals">2. Large Language Models (LLMs) Fundamentals</h3>
+<ul>
+<li><strong>What are LLMs?</strong>: Deep neural networks trained on vast data, primarily using transformer architecture</li>
+<li><strong>Transformer architecture</strong> consists of:
+<ul>
+<li><strong>Input embeddings</strong>: Converts the input tokens into a numerical/vector representation</li>
+<li><strong>Attention mechanism</strong>: Allows the model to focus on relevant parts of input</li>
+<li><strong>Positional encoding</strong>: Helps maintain sequence order information</li>
+</ul></li>
+<li><strong>Training</strong>:
+<ol type="1">
+<li>Pretraining Approaches</li>
+</ol>
+<ul>
+<li><strong>Self-supervised learning</strong>: Learning patterns from unlabeled chemical data (like SMILES strings) without explicit annotations</li>
+<li><strong>Domain-specific Vocabulary</strong>: Creating specialized tokenization for chemical notation rather than using general language vocabularies</li>
+</ul>
+<ol start="2" type="1">
+<li>Fine-tuning Approaches</li>
+</ol>
+<ul>
+<li><strong>Supervised Fine-tuning</strong>: Training on labeled datasets of specific chemical properties or reactions</li>
+<li><strong>Instruction Tuning</strong>: Teaching models to follow specific chemistry-related instructions through examples</li>
+<li><strong>Parameter-Efficient Fine-Tuning (PEFT)</strong>: Updating only a small subset of model parameters for chemistry tasks</li>
+</ul></li>
+<li><strong>Three main transformer architectures</strong>:
+<ol type="1">
+<li><strong>Encoder-only (bidirectional context)</strong> (e.g., BERT): Good for classification and property prediction (understanding)</li>
+<li><strong>Decoder-only (causal context)</strong> (e.g., GPT): Excellent for generative tasks and molecule design (generation)</li>
+<li><strong>Encoder-decoder</strong> (e.g., BART): Ideal for translation tasks like reaction prediction</li>
+</ol></li>
+</ul>
+</section>
+<section id="the-data-challenge-in-chemistry" class="level3">
+<h3 class="anchored" data-anchor-id="the-data-challenge-in-chemistry">3. The Data Challenge in Chemistry</h3>
+<ul>
+<li><strong>Limited chemical data</strong>: Chemistry datasets are orders of magnitude smaller than general language datasets
+<ul>
+<li>General LLMs (e.g., LLaMA2): Trained on trillions of tokens</li>
+<li>Chemical datasets: Only billions of tokens (mostly hypothetical compounds)</li>
+<li>Verified synthesized compounds: ~5 orders of magnitude less data than general LLMs</li>
+</ul></li>
+<li><strong>Data quality issues</strong>:
+<ul>
+<li>Current benchmarks like MoleculeNet have errors and inconsistencies</li>
+<li>Many datasets include theoretical rather than experimental values</li>
+<li>Need for more reliable, experimentally-verified data</li>
+</ul></li>
+<li><strong>Chemical representation</strong>: Models use text-based notations like SMILES, SELFIES, and InChI</li>
+</ul>
+</section>
+<section id="llms-for-chemistry-applications" class="level3">
+<h3 class="anchored" data-anchor-id="llms-for-chemistry-applications">4. LLMs for Chemistry Applications</h3>
+<section id="property-prediction-encoder-only-models" class="level4">
+<h4 class="anchored" data-anchor-id="property-prediction-encoder-only-models">Property Prediction (Encoder-only Models)</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 7%">
+<col style="width: 21%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Architecture</th>
+<th>Training Data</th>
+<th>Aim</th>
+<th>Achievements</th>
+<th>Innovations</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mol-BERT</td>
+<td>BERT</td>
+<td>4B SMILES from ZINC15/ChEMBL27</td>
+<td>Property prediction</td>
+<td>Outperformed existing methods by 2%+ on benchmark datasets</td>
+<td>Used Morgan fingerprint fragments as “words” and molecules as “sentences”</td>
+</tr>
+<tr class="even">
+<td>MolFormer</td>
+<td>BERT</td>
+<td>1.1B molecules from ZINC/PubChem</td>
+<td>Molecular property prediction</td>
+<td>Outperformed GNNs on MoleculeNet tasks</td>
+<td>Implemented rotary positional embeddings for better sequence relationships</td>
+</tr>
+<tr class="odd">
+<td>ChemBERTa</td>
+<td>RoBERTa</td>
+<td>10M SMILES from PubChem</td>
+<td>Property prediction</td>
+<td>Showed performance improved with dataset size</td>
+<td>Explored impact of tokenization strategies and representation types</td>
+</tr>
+<tr class="even">
+<td>ChemBERTa-2</td>
+<td>RoBERTa</td>
+<td>77M SMILES from PubChem</td>
+<td>Foundational model for multiple tasks</td>
+<td>Matched state-of-the-art on MoleculeNet</td>
+<td>Added Multi-Task Regression to pretraining</td>
+</tr>
+<tr class="odd">
+<td>SELFormer</td>
+<td>RoBERTa</td>
+<td>2M drug-like compounds</td>
+<td>Property prediction</td>
+<td>Outperformed competitors on several tasks</td>
+<td>Used SELFIES instead of SMILES for better robustness</td>
+</tr>
+<tr class="even">
+<td>SolvBERT</td>
+<td>BERT</td>
+<td>1M solute-solvent pairs</td>
+<td>Solubility/solvation prediction</td>
+<td>Comparable to graph-based models</td>
+<td>Predicted 3D-dependent properties from 1D representations</td>
+</tr>
+<tr class="odd">
+<td>MatSciBERT</td>
+<td>BERT</td>
+<td>150K materials science papers</td>
+<td>Material property extraction</td>
+<td>3% improvement over SciBERT</td>
+<td>Fine-tuned for materials science domain</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="molecule-generation-decoder-only-models" class="level4">
+<h4 class="anchored" data-anchor-id="molecule-generation-decoder-only-models">Molecule Generation (Decoder-only Models)</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 7%">
+<col style="width: 21%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Architecture</th>
+<th>Training Data</th>
+<th>Aim</th>
+<th>Achievements</th>
+<th>Innovations</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MolGPT</td>
+<td>GPT</td>
+<td>MOSES/GuacaMol datasets</td>
+<td>Molecular generation</td>
+<td>Better performance than VAE approaches</td>
+<td>Used masked self-attention for long-range dependencies in SMILES</td>
+</tr>
+<tr class="even">
+<td>ChemGPT</td>
+<td>GPT-neo</td>
+<td>10M molecules from PubChem</td>
+<td>Explore hyperparameter tuning</td>
+<td>Refined generative models for specific domains</td>
+<td>Explored impact of data scale on generation</td>
+</tr>
+<tr class="odd">
+<td>cMolGPT</td>
+<td>GPT</td>
+<td>MOSES</td>
+<td>Target-specific molecule generation</td>
+<td>Generated compounds with binding activity</td>
+<td>Integrated protein-ligand interactions with conditional generation</td>
+</tr>
+<tr class="even">
+<td>iupacGPT</td>
+<td>GPT</td>
+<td>IUPAC names</td>
+<td>Generate molecules using IUPAC</td>
+<td>Human-readable molecular generation</td>
+<td>Used IUPAC names directly instead of SMILES</td>
+</tr>
+<tr class="odd">
+<td>Taiga</td>
+<td>GPT + RL</td>
+<td>Various</td>
+<td>Property-directed molecule generation</td>
+<td>Optimized molecules for targeted properties</td>
+<td>Employed REINFORCE for property optimization</td>
+</tr>
+<tr class="even">
+<td>LlaSMol</td>
+<td>LLaMA/Mistral</td>
+<td>SMolInstruct</td>
+<td>Multi-task molecular modeling</td>
+<td>State-of-the-art on property prediction</td>
+<td>Used parameter-efficient fine-tuning on pretrained models</td>
+</tr>
+<tr class="odd">
+<td>GPTChem</td>
+<td>GPT-3</td>
+<td>Multiple benchmarks</td>
+<td>Property prediction and inverse design</td>
+<td>Competed with specialized models</td>
+<td>Showed generalist models can perform chemical tasks</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="synthesis-prediction-encoder-decoder-models" class="level4">
+<h4 class="anchored" data-anchor-id="synthesis-prediction-encoder-decoder-models">Synthesis Prediction (Encoder-decoder Models)</h4>
+<ul>
+<li><strong>Evolution from template-based to template-free approaches</strong>:
+<ul>
+<li>Template-based: Limited to known reaction types</li>
+<li>Semi-template-based: More flexible but still constrained</li>
+<li>Template-free: Learn directly from data without predefined rules</li>
+</ul></li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 7%">
+<col style="width: 21%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Architecture</th>
+<th>Training Data</th>
+<th>Aim</th>
+<th>Achievements</th>
+<th>Innovations</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Molecular Transformer</td>
+<td>Transformer</td>
+<td>USPTO datasets</td>
+<td>Synthesis prediction</td>
+<td>Outperformed prior algorithms</td>
+<td>Required no handcrafted rules for chemical transformations</td>
+</tr>
+<tr class="even">
+<td>Chemformer</td>
+<td>BART</td>
+<td>100M SMILES from ZINC-15</td>
+<td>Multi-task chemical modeling</td>
+<td>State-of-the-art in synthesis and property tasks</td>
+<td>Emphasized computational efficiency through pretraining</td>
+</tr>
+<tr class="odd">
+<td>Text+Chem T5</td>
+<td>T5</td>
+<td>11.5M-33.5M samples</td>
+<td>Multi-task chemical processing</td>
+<td>Effective in diverse synthesis tasks</td>
+<td>Combined reaction data from multiple sources</td>
+</tr>
+<tr class="even">
+<td>MOLGEN</td>
+<td>BART</td>
+<td>100M molecules (SELFIES)</td>
+<td>Molecular generation</td>
+<td>Addressed bias against natural product-like molecules</td>
+<td>Used domain-specific molecular prefix tuning</td>
+</tr>
+<tr class="odd">
+<td>ReactionT5</td>
+<td>T5</td>
+<td>ZINC and ORD</td>
+<td>Reaction prediction</td>
+<td>Improved synthesis prediction</td>
+<td>Combined property and reaction prediction</td>
+</tr>
+<tr class="even">
+<td>TSChem</td>
+<td>T5</td>
+<td>USPTO</td>
+<td>Versatile chemical modeling</td>
+<td>Strong performance on multiple tasks</td>
+<td>Integrated property and synthesis prediction</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="multi-modal-approaches" class="level3">
+<h3 class="anchored" data-anchor-id="multi-modal-approaches">5. Multi-modal Approaches</h3>
+<ul>
+<li><strong>Text2Mol</strong> (2021): Connects molecular representations with text descriptions</li>
+<li><strong>MolT5</strong> (2022): Generates molecular captions and predicts structures from descriptions</li>
+<li><strong>Challenges</strong>:
+<ul>
+<li>Building quality datasets pairing chemical structures with descriptions</li>
+<li>Multiple valid ways to describe molecules (therapeutic effects, structure, etc.)</li>
+<li>Need for chemical domain expertise to evaluate outputs</li>
+</ul></li>
+<li><strong>Applications</strong>: Molecular retrieval from text queries, structure generation from descriptions ## Multi-modal Models</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 7%">
+<col style="width: 21%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Architecture</th>
+<th>Training Data</th>
+<th>Aim</th>
+<th>Achievements</th>
+<th>Innovations</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Text2Mol</td>
+<td>SciBERT w/ decoder</td>
+<td>CheBI-20</td>
+<td>Connecting text with molecules</td>
+<td>Enabled retrieval of molecules using text</td>
+<td>Created paired dataset linking molecules with descriptions</td>
+</tr>
+<tr class="even">
+<td>MolT5</td>
+<td>T5</td>
+<td>C4 dataset</td>
+<td>Molecule captioning and generation</td>
+<td>Generated structures from descriptions</td>
+<td>Used denoising objective to handle complex chemical descriptions</td>
+</tr>
+<tr class="odd">
+<td>BioT5+</td>
+<td>T5</td>
+<td>ZINC20, UniRef50, PubMed, etc.</td>
+<td>Bridging text and molecules</td>
+<td>Multi-task performance across domains</td>
+<td>Integrated diverse biological and chemical data sources</td>
+</tr>
+<tr class="even">
+<td>CLAMP</td>
+<td>Combined model</td>
+<td>Biochemical data</td>
+<td>Predict biochemical activity</td>
+<td>Enhanced prediction with language</td>
+<td>Combined separate chemical and language modules</td>
+</tr>
+<tr class="odd">
+<td>GIT-Mol</td>
+<td>Multi-modal</td>
+<td>Graphs, images, text</td>
+<td>Integrated chemical understanding</td>
+<td>Improved accuracy with multiple data types</td>
+<td>Combined three modalities for better chemical modeling</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="conclusion-and-future-directions" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion-and-future-directions">6. Conclusion and Future Directions</h3>
+<ul>
+<li>LLMs show tremendous potential for transforming chemical research</li>
+<li>Integration of multiple models can address different aspects of chemical discovery</li>
+<li>Key to progress: Better data, improved benchmarks, and enhanced interpretability</li>
+<li>Moving toward autonomous systems that combine the strengths of different models</li>
+</ul>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
@@ -352,6 +751,7 @@ Landrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina
 Orsi, Markus, and Jean-Louis Reymond. 2024. <span>“One Chiral Fingerprint to Find Them All.”</span> <em>Journal of Cheminformatics</em> 16 (1): 53.
 </div>
 </div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -773,13 +1173,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../tools/pandarallel.html" class="pagination-link" aria-label="Easy fast `.apply` for pandas">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Easy fast <code>.apply</code> for pandas</span></span>
+      <a href="../tools/showyourwork.html" class="pagination-link" aria-label="showyourwork">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">showyourwork</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../tools/showyourwork.html" class="pagination-link" aria-label="showyourwork">
-        <span class="nav-page-text"><span class="chapter-title">showyourwork</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../papers/llm4mat.html" class="pagination-link" aria-label="Leveraging language representation for materials exploration and discovery">
+        <span class="nav-page-text"><span class="chapter-title">Leveraging language representation for materials exploration and discovery</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
