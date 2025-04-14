@@ -160,8 +160,7 @@ They evaluate the performance of some of the leading models using a simple agent
 
 The results show that the best model is (ironically) Claude 3.5 Sonnet, with an average replication score of 21.0% in the basic agent scaffolding. The authors claim that by manual inspection of the log files, the most common failure case was due to early termination by the agents, while some other model such as o3-mini struggle with tool usage. These results show the weakness of the current LLMs in carrying long-horizon tasks.
 
-Since in the basic agent implementation the models tend to finish prematurely, the authors propose the *IterativeAgent* which consists on forcing the agent to run the full available time by removing their ability to finishing earlier and uses prompts to encourage the agents to work in a step-based manner. By using this agent, while the scores decrease for Claude 3.5 Sonnet, o1-high model improved more than 10% that gets increased another 2% by extending the time limit to 36 hours.
-
+Since in the basic agent implementation the models tend to finish prematurely, the authors propose the *IterativeAgent* which consists of forcing the agent to run the full available time by removing their ability to finishing earlier and uses prompts to encourage the agents to work in a step-based manner. By using this agent, while the scores decrease for Claude 3.5 Sonnet, o1-high model improved more than 10% that gets increased another 2% by extending the time limit to 36 hours.
 ### Human Baseline Performance
 
 The authors also evaluate the performance of humans in the benchmark. For that they recruited 8 PhDs in machine learning. To evaluate the participands, they provided them with the same resources as the agents, including the original paper and the clarifications, and access to the same computing resources. The humans were allowed to work during four weeks in the tasks using tracked hours to compare them with the agents.
