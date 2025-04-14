@@ -28,16 +28,14 @@ The benchmark is very well designed since each of the scripts is divided in subt
 
 ![Figure taken from SciCode [@tian2024scicode0] illustrating how the main task and subtasks are described to the agents.](paper_bench_images/figure_1.png){#fig-id:paperbench_figure_1}
 
-Interestengly, by the time of the paper, the authors had already evaluated several LLMs, including OpenAI's GPT-4o and Anthropic's Claude 3.5 Sonnet. The results show that the models struggle in general to reproduce the scripts, with a success rate lower than 5% for all models for the main tasks, and around 25% the best results for reproducing subtasks.
-
+Interestingly, by the time of the paper, the authors had already evaluated several LLMs, including OpenAI's GPT-4o and Anthropic's Claude 3.5 Sonnet. The results show that the models struggle in general to reproduce the scripts, with a success rate lower than 5% for all models for the main tasks, and around 25% the best results for reproducing subtasks.
 ### MLAgentBench: Evaluating Language Agents on Machine Learning Experimentation
 
 MLAgentBench [@huang2023mlagentbench0] is a benchmark designed to evaluate the ability of LLM-powered agents to reproduce machine learning experiments. The benchmark consists of a set of tasks that expands around Kaggle competitions and other ML-related tasks. Each of the tasks include their own evaluator, which can be checking if the Kaggle submsision is correct or if the proposed code improve the predictive performance of the model.
 
 ![Figure taken from MLAgentBench [@huang2023mlagentbench0] illustrating the different tasks in the benchmark.](paper_bench_images/figure_2.png){#fig-id:paperbench_figure_2}
 
-For each of the tasks they provide the agents with some initial files and a task description and the agent has to build from there. One of the problems of this paper is that they only evaluated one agent (only ReAct) and only thirteen tasks which limits the the evaluation.
-
+For each of the tasks they provide the agents with some initial files and a task description and the agent has to build from there. One of the problems of this paper is that they only evaluated one agent (only ReAct) and only thirteen tasks which limits the evaluation.
 ![Figure taken from MLAgentBench [@huang2023mlagentbench0] illustrating the results for the different tasks in the benchmark.](paper_bench_images/figure_3.png){#fig-id:paperbench_figure_3}
 
 The results vary a lot between the different tasks despite being averaged over 8 trials (pass@k). While for some the score is perfect, for others the score is 0.
@@ -82,8 +80,7 @@ Refer to @siegel2024corebenchfosteringcredibilitypublished for further discussio
 
 ## Approach
 
-The authors compile a dataset of 20 articles published as Spotlight and Oral papers from ICML 2024. For each of the papers they compile a set of rubrics that are used to evaluate the replication attempts. Each of the rubrics is structured as a hierarchical tree, with the top-level nodes representing the main categories of evaluation and the lower-level or leaf-nodes nodes representing the specific criteria within each category. This decomposition allows to do a very robust scoring which allows a more inshightful evaluation of the agents.
-
+The authors compile a dataset of 20 articles published as Spotlight and Oral papers from ICML 2024. For each of the papers they compile a set of rubrics that are used to evaluate the replication attempts. Each of the rubrics is structured as a hierarchical tree, with the top-level nodes representing the main categories of evaluation and the lower-level or leaf-nodes nodes representing the specific criteria within each category. This decomposition allows to do a very robust scoring which allows a more insightful evaluation of the agents.
 ![Figure taken from PaperBench [@starace2025paperbench0] summarizing all tasks original article, topic and the number of nodes in their evaluation rubric.](paper_bench_images/figure_5.png){#fig-id:paperbench_figure_5}
 
 ### Overall workflow
@@ -143,7 +140,7 @@ By evaluating different leading LLMs, the authors show that the performance of t
 
 ## Results
 
-They evaluate the performance of some of the leading models using a simple in a simple agent scaffolding taht uses the availble tools until the agent decides to end the run. The tools available to the agent are: a bash shell command execution tool, a Python code execution tool, a web browser tool, and a paginated file reader tool for reading long documents.
+They evaluate the performance of some of the leading models using a simple agent scaffolding that uses the available tools until the agent decides to end the run. The tools available to the agent are: a bash shell command execution tool, a Python code execution tool, a web browser tool, and a paginated file reader tool for reading long documents.
 
 | Model                | PaperBench      |
 |----------------------|-----------------|
