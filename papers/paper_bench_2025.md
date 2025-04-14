@@ -31,8 +31,7 @@ The benchmark is very well designed since each of the scripts is divided in subt
 Interestingly, by the time of the paper, the authors had already evaluated several LLMs, including OpenAI's GPT-4o and Anthropic's Claude 3.5 Sonnet. The results show that the models struggle in general to reproduce the scripts, with a success rate lower than 5% for all models for the main tasks, and around 25% the best results for reproducing subtasks.
 ### MLAgentBench: Evaluating Language Agents on Machine Learning Experimentation
 
-MLAgentBench [@huang2023mlagentbench0] is a benchmark designed to evaluate the ability of LLM-powered agents to reproduce machine learning experiments. The benchmark consists of a set of tasks that expands around Kaggle competitions and other ML-related tasks. Each of the tasks include their own evaluator, which can be checking if the Kaggle submsision is correct or if the proposed code improve the predictive performance of the model.
-
+MLAgentBench [@huang2023mlagentbench0] is a benchmark designed to evaluate the ability of LLM-powered agents to reproduce machine learning experiments. The benchmark consists of a set of tasks that expands around Kaggle competitions and other ML-related tasks. Each of the tasks includes their own evaluator, which can be checking if the Kaggle submission is correct or if the proposed code improves the predictive performance of the model.
 ![Figure taken from MLAgentBench [@huang2023mlagentbench0] illustrating the different tasks in the benchmark.](paper_bench_images/figure_2.png){#fig-id:paperbench_figure_2}
 
 For each of the tasks they provide the agents with some initial files and a task description and the agent has to build from there. One of the problems of this paper is that they only evaluated one agent (only ReAct) and only thirteen tasks which limits the evaluation.
