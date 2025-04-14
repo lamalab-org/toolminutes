@@ -20,6 +20,7 @@ book:
         - tools/showyourwork.qmd
     - part: Papers
       chapters:
+        - papers/llms_review.md
         - papers/llm4mat.qmd
         - papers/chem_yield_prediction_2024.md
         - papers/dagdelen_data_extraction.md
@@ -32,6 +33,11 @@ book:
         - papers/tango.md
         - papers/core_bench.md
         - papers/bpm_L.md
+        - papers/coconut.qmd
+        - papers/emnpd.md
+        - papers/light-rag.md
+        - papers/nmr-shift-prediction-from-small-data-quantities.qmd
+        - papers/llm_confidence_2025.md
 
 bibliography: references.bib
 # csl: nature.csl
@@ -40,4 +46,3 @@ format:
   html:
     theme: cosmo
     number-sections: false
-

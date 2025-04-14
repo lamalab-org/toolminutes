@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.554">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Kevin Jablonka">
+<meta name="dcterms.date" content="2024-12-14">
+
+<title>coconut</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="coconut_files/libs/clipboard/clipboard.min.js"></script>
+<script src="coconut_files/libs/quarto-html/quarto.js"></script>
+<script src="coconut_files/libs/quarto-html/popper.min.js"></script>
+<script src="coconut_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="coconut_files/libs/quarto-html/anchor.min.js"></script>
+<link href="coconut_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="coconut_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="coconut_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="coconut_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="coconut_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Kevin Jablonka </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 14, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="training-large-language-models-to-reason-in-a-continuous-latent-space" class="level1">
+<h1>Training Large Language Models to Reason in a Continuous Latent Space</h1>
+<section id="making-llms-better-at-reasoning" class="level2">
+<h2 class="anchored" data-anchor-id="making-llms-better-at-reasoning">Making LLMs better at reasoning</h2>
+<p>A lot of research currently goes into making LLMs better at reasoning. Much of this is linked to the fact that current systems “think” with the “same intensity” for every token they produce. Many think that systems would be better if models could “think harder” for harder tasks.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="coconut/1734229741257.png" class="img-fluid figure-img"></p>
+<figcaption>Ilya Sutskever at NeurIPS 2024. Reasoning is very prominent on many research agendas. Full video <a href="https://www.youtube.com/watch?v=1yvBqasHLZs&amp;feature=youtu.be">on YouTube</a></figcaption>
+</figure>
+</div>
+<section id="chain-of-thought-cot" class="level3">
+<h3 class="anchored" data-anchor-id="chain-of-thought-cot">Chain of Thought (CoT)</h3>
+<p>Chain of thought prompting is a surprisingly simple method that has shown to improve the performance of LLMs on various benchmarks. Effectively, Wei <span class="citation" data-cites="wei2022chain">(<a href="#ref-wei2022chain" role="doc-biblioref">Wei et al. 2022</a>)</span> showed in their paper (<a href="https://scholar.google.com/scholar?cites=4478103128423899805&amp;as_sdt=2005&amp;sciodt=0,5&amp;hl=en">almost 10k citations</a>) that thought demonstrations improve performance.</p>
+<p>Kojima (<a href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Large+Language+Models+are+Zero-Shot+Reasoners&amp;btnG=">around 3.5k citations</a>) <span class="citation" data-cites="kojima2022large">(<a href="#ref-kojima2022large" role="doc-biblioref">Kojima et al. 2022</a>)</span> showed that simply adding “Let’s think step by step” into the prompt can yield comparable performance boosts.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Various CoT variants have been proposed. I think <a href="https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/">Lilian Weng’s take that many of those things should be blog posts and not papers is true</a>.</p>
+<p>Some useful variants are shown in <span class="citation" data-cites="fu2023complexitybasedpromptingmultistepreasoning">(<a href="#ref-fu2023complexitybasedpromptingmultistepreasoning" role="doc-biblioref">Fu et al. 2023</a>)</span>. The paper also shows some of the prompt sensitivity (e.g., changing <code>Q:</code> to <code>Question:</code> or using <code>\n</code> instead of <code>.</code> to separate steps.)</p>
+</div>
+</div>
+<p>Some follow up work as been discussing that one explanation for the improved performance via CoT reasoning is that the effective compute increases.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>CoT can also be thought of as one flavor of test-time compute. This is currently one of the most promising and active streams of research to increase the performance of LLMs. Models like o1 <span class="citation" data-cites="qin2024o1replicationjourneystrategic">(<a href="#ref-qin2024o1replicationjourneystrategic" role="doc-biblioref">Qin et al. 2024</a>)</span> heavily lean on utilizing test-time compute (i.e.&nbsp;“thinking” more inference time - ideally, making the amount of thinking proportional to the difficulty of the question).</p>
+</div>
+</div>
+</section>
+<section id="internalized-cot" class="level3">
+<h3 class="anchored" data-anchor-id="internalized-cot">Internalized CoT</h3>
+<p>Since generating extra tokens for reasoning in inference time is expensive, researchers attempted to internalize the reasoning pathway.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To converge training, the authors found that it is important to reset optimizer state. Optimizers such as AdamwW keep running averages - and those cause problems when the loss function suddenly changes.</p>
+</div>
+</div>
+</section>
+<section id="cot-traces-are-not-faithful-and-might-be-limiting" class="level3">
+<h3 class="anchored" data-anchor-id="cot-traces-are-not-faithful-and-might-be-limiting">CoT traces are not faithful and might be limiting</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="coconut/tweet.png" class="img-fluid figure-img"></p>
+<figcaption>A <a href="https://x.com/ylecun/status/1652183354370916354">tweet</a> by one of the godfathers. Reasoning might not need to be verbalized.</figcaption>
+</figure>
+</div>
+<p>It is well known, that CoT traces are not faithful., Turpin showed this by adding biases into the prompt. Those biases led to drops in model performance but were not mentioned by the model. This experiments directly allows to conclude that the verbalized explanations are not faithful as a reason for change in predictions is not verbalized.</p>
+<p>Some anthropomorphize this by linking this to neuroscience results that show that “Language is primarily a tool for communication rather than thought” <span class="citation" data-cites="Fedorenko_2024">(<a href="#ref-Fedorenko_2024" role="doc-biblioref">Fedorenko, Piantadosi, and Gibson 2024</a>)</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="coconut/language_network.png" class="img-fluid figure-img"></p>
+<figcaption>Roles of the language network. Taken from <span class="citation" data-cites="Fedorenko_2024">(<a href="#ref-Fedorenko_2024" role="doc-biblioref">Fedorenko, Piantadosi, and Gibson 2024</a>)</span>. Subfigure b shows that the language network is not strongly activated for non-linguistic tasks.</figcaption>
+</figure>
+</div>
+<p>In addition, it is notable that CoT restricts models to one discrete reasoning path. However, it might be effective to explore multiple paths. A relevant work that does this is Tree of Thoughts (ToT) <span class="citation" data-cites="yao2023treethoughtsdeliberateproblem">(<a href="#ref-yao2023treethoughtsdeliberateproblem" role="doc-biblioref">Yao et al. 2023</a>)</span>. ToT works by creating a branching structure of multiple potential solutions:</p>
+<ol type="1">
+<li>Similar to CoT it breaks down problems into sequential thought steps</li>
+<li>But it generates multiple alternative thoughts at each step</li>
+<li>This can be used to create a tree-like structure of reasoning paths</li>
+<li>These trees can be explored using either:
+<ul>
+<li>Breadth-first search (BFS)</li>
+<li>Depth-first search (DFS)</li>
+</ul></li>
+<li>Each node (state) can be evaluated using a classifier or majority vote</li>
+</ol>
+</section>
+</section>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">Methods</h2>
+<p>The key idea presented in the paper is to not verbalize “thoughts” as language tokens but instead use the hidden representations that the model produces as richer “thought vectors” that could, in principle, also encode multiple reasoning pathways at the same time.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="coconut/method.png" class="img-fluid figure-img"></p>
+<figcaption>Method proposed by Coconut compared to CoT.</figcaption>
+</figure>
+</div>
+<p>That is, the approach continues to “think” in its internal representation but only verbalized the final answer.</p>
+<section id="training-approach" class="level3">
+<h3 class="anchored" data-anchor-id="training-approach">Training approach</h3>
+<p>To train this model, the authors use a protocol that is inspired by the one utilized for internalized CoT: Over multiple steps, they replace verbalized thinking steps with latent ones.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="coconut/training.png" class="img-fluid figure-img"></p>
+<figcaption>Training protocol used by the authors.</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<p>In their benchmarks, the authors observed promising results for their approach. They showed that their approached outperforms other “internalized thought” techniques.</p>
+<table class="table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Method</th>
+<th style="text-align: center;">GSM8k</th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;">ProntoQA</th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;">ProsQA</th>
+<th style="text-align: center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"></td>
+<td style="text-align: center;">Acc. (%)</td>
+<td style="text-align: center;"># Tokens</td>
+<td style="text-align: center;">Acc. (%)</td>
+<td style="text-align: center;"># Tokens</td>
+<td style="text-align: center;">Acc. (%)</td>
+<td style="text-align: center;"># Tokens</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">CoT</td>
+<td style="text-align: center;"><span class="math inline">\(42.9 \pm 0.2\)</span></td>
+<td style="text-align: center;">25.0</td>
+<td style="text-align: center;"><span class="math inline">\(98.8 \pm 0.8\)</span></td>
+<td style="text-align: center;">92.5</td>
+<td style="text-align: center;"><span class="math inline">\(77.5 \pm 1.9\)</span></td>
+<td style="text-align: center;">49.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">No-CoT</td>
+<td style="text-align: center;"><span class="math inline">\(16.5 \pm 0.5\)</span></td>
+<td style="text-align: center;">2.2</td>
+<td style="text-align: center;"><span class="math inline">\(93.8 \pm 0.7\)</span></td>
+<td style="text-align: center;">3.0</td>
+<td style="text-align: center;"><span class="math inline">\(76.7 \pm 1.0\)</span></td>
+<td style="text-align: center;">8.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">iCoT</td>
+<td style="text-align: center;"><span class="math inline">\(30.0^*\)</span></td>
+<td style="text-align: center;">2.2</td>
+<td style="text-align: center;"><span class="math inline">\(99.8 \pm 0.3\)</span></td>
+<td style="text-align: center;">3.0</td>
+<td style="text-align: center;"><span class="math inline">\(98.2 \pm 0.3\)</span></td>
+<td style="text-align: center;">8.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Pause Token</td>
+<td style="text-align: center;"><span class="math inline">\(16.4 \pm 1.8\)</span></td>
+<td style="text-align: center;">2.2</td>
+<td style="text-align: center;"><span class="math inline">\(77.7 \pm 21.0\)</span></td>
+<td style="text-align: center;">3.0</td>
+<td style="text-align: center;"><span class="math inline">\(75.9 \pm 0.7\)</span></td>
+<td style="text-align: center;">8.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Coconut (Ours)</td>
+<td style="text-align: center;"><span class="math inline">\(34.1 \pm 1.5\)</span></td>
+<td style="text-align: center;">8.2</td>
+<td style="text-align: center;"><span class="math inline">\(99.8 \pm 0.2\)</span></td>
+<td style="text-align: center;">9.0</td>
+<td style="text-align: center;"><span class="math inline">\(97.0 \pm 0.3\)</span></td>
+<td style="text-align: center;">14.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">- w/o curriculum</td>
+<td style="text-align: center;"><span class="math inline">\(14.4 \pm 0.8\)</span></td>
+<td style="text-align: center;">8.2</td>
+<td style="text-align: center;"><span class="math inline">\(52.4 \pm 0.4\)</span></td>
+<td style="text-align: center;">9.0</td>
+<td style="text-align: center;"><span class="math inline">\(76.1 \pm 0.2\)</span></td>
+<td style="text-align: center;">14.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">- w/o thought</td>
+<td style="text-align: center;"><span class="math inline">\(21.6 \pm 0.5\)</span></td>
+<td style="text-align: center;">2.3</td>
+<td style="text-align: center;"><span class="math inline">\(99.9 \pm 0.1\)</span></td>
+<td style="text-align: center;">3.0</td>
+<td style="text-align: center;"><span class="math inline">\(95.5 \pm 1.1\)</span></td>
+<td style="text-align: center;">8.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">- pause as thought</td>
+<td style="text-align: center;"><span class="math inline">\(24.1 \pm 0.7\)</span></td>
+<td style="text-align: center;">2.2</td>
+<td style="text-align: center;"><span class="math inline">\(100.0 \pm 0.1\)</span></td>
+<td style="text-align: center;">3.0</td>
+<td style="text-align: center;"><span class="math inline">\(96.6 \pm 0.8\)</span></td>
+<td style="text-align: center;">8.2</td>
+</tr>
+</tbody>
+</table>
+<p>They also found that increasing the number of latent thoughts per thinking step increases performance.</p>
+<p>By decoding the hidden thoughts they could assign probabilities to different options that COCONUT “explored”. This can be used to construct search trees.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="coconut/tree.png" class="img-fluid figure-img"></p>
+<figcaption>Search tree proposed for ProsQA.</figcaption>
+</figure>
+</div>
+<p>The trees are a bit more “anecdotal” (as there are no systematic statistics) but an interesting perspective on the results</p>
+</section>
+<section id="conclusions" class="level2">
+<h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
+<ul>
+<li>The current protocol is computationally expensive in training (requires multiple forward passes). If one would like to do this on scale, development of suitable infrastructure is needed.</li>
+<li>It is nice to explore some new paradigms (with smaller models)</li>
+<li>Some of this also links to agents (instead of letting them talk via text we could also used hidden representation)</li>
+</ul>
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Fedorenko_2024" class="csl-entry" role="listitem">
+Fedorenko, Evelina, Steven T. Piantadosi, and Edward A. F. Gibson. 2024. <span>“Language Is Primarily a Tool for Communication Rather Than Thought.”</span> <em>Nature</em> 630 (8017): 575–86. <a href="https://doi.org/10.1038/s41586-024-07522-w">https://doi.org/10.1038/s41586-024-07522-w</a>.
+</div>
+<div id="ref-fu2023complexitybasedpromptingmultistepreasoning" class="csl-entry" role="listitem">
+Fu, Yao, Hao Peng, Ashish Sabharwal, Peter Clark, and Tushar Khot. 2023. <span>“Complexity-Based Prompting for Multi-Step Reasoning.”</span> <a href="https://arxiv.org/abs/2210.00720">https://arxiv.org/abs/2210.00720</a>.
+</div>
+<div id="ref-kojima2022large" class="csl-entry" role="listitem">
+Kojima, Takeshi, Shixiang Shane Gu, Machel Reid, Yutaka Matsuo, and Yusuke Iwasawa. 2022. <span>“Large Language Models Are Zero-Shot Reasoners.”</span> <em>Advances in Neural Information Processing Systems</em> 35: 22199–213.
+</div>
+<div id="ref-qin2024o1replicationjourneystrategic" class="csl-entry" role="listitem">
+Qin, Yiwei, Xuefeng Li, Haoyang Zou, Yixiu Liu, Shijie Xia, Zhen Huang, Yixin Ye, et al. 2024. <span>“O1 Replication Journey: A Strategic Progress Report – Part 1.”</span> <a href="https://arxiv.org/abs/2410.18982">https://arxiv.org/abs/2410.18982</a>.
+</div>
+<div id="ref-wei2022chain" class="csl-entry" role="listitem">
+Wei, Jason, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Fei Xia, Ed Chi, Quoc V Le, Denny Zhou, et al. 2022. <span>“Chain-of-Thought Prompting Elicits Reasoning in Large Language Models.”</span> <em>Advances in Neural Information Processing Systems</em> 35: 24824–37.
+</div>
+<div id="ref-yao2023treethoughtsdeliberateproblem" class="csl-entry" role="listitem">
+Yao, Shunyu, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths, Yuan Cao, and Karthik Narasimhan. 2023. <span>“Tree of Thoughts: Deliberate Problem Solving with Large Language Models.”</span> <a href="https://arxiv.org/abs/2305.10601">https://arxiv.org/abs/2305.10601</a>.
+</div>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

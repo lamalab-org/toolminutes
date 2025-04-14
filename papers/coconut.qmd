@@ -1,0 +1,112 @@
+---
+author: Kevin Jablonka
+date: 2024-12-14
+bibliography: ../references.bib
+---
+
+# Training Large Language Models to Reason in a Continuous Latent Space
+
+## Making LLMs better at reasoning 
+
+A lot of research currently goes into making LLMs better at reasoning. 
+Much of this is linked to the fact that current systems "think" with the "same intensity" for every token they produce. Many think that systems would be better if models could "think harder" for harder tasks. 
+
+![Ilya Sutskever at NeurIPS 2024. Reasoning is very prominent on many research agendas. Full video [on YouTube](https://www.youtube.com/watch?v=1yvBqasHLZs&feature=youtu.be)](coconut/1734229741257.png)
+
+### Chain of Thought (CoT)
+
+Chain of thought prompting is a surprisingly simple method that has shown to improve the performance of LLMs on various benchmarks.
+Effectively, Wei [@wei2022chain] showed in their paper ([almost 10k citations](https://scholar.google.com/scholar?cites=4478103128423899805&as_sdt=2005&sciodt=0,5&hl=en)) that thought demonstrations improve performance. 
+
+Kojima ([around 3.5k citations](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Large+Language+Models+are+Zero-Shot+Reasoners&btnG=)) [@kojima2022large] showed that simply adding "Let's think step by step" into the prompt can yield comparable performance boosts.
+
+::: {.callout-note} 
+Various CoT variants have been proposed. I think [Lilian Weng's take that many of those things should be blog posts and not papers is true](https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/).
+
+Some useful variants are shown in [@fu2023complexitybasedpromptingmultistepreasoning].
+The paper also shows some of the prompt sensitivity (e.g., changing `Q:` to `Question:` or using `\n` instead of `.` to separate steps.)
+:::
+
+Some follow up work as been discussing that one explanation for the improved performance via CoT reasoning is that the effective compute increases. 
+
+::: {.callout-note} 
+CoT can also be thought of as one flavor of test-time compute. This is currently one of the most promising and active streams of research to increase the performance of LLMs. Models like o1 [@qin2024o1replicationjourneystrategic] heavily lean on utilizing test-time compute (i.e. "thinking" more inference time - ideally, making the amount of thinking proportional to the difficulty of the question).
+:::
+
+
+### Internalized CoT 
+
+Since generating extra tokens for reasoning in inference time is expensive, researchers attempted to internalize the reasoning pathway. 
+
+::: {.callout-tip} 
+To converge training, the authors found that it is important to reset optimizer state. 
+Optimizers such as AdamwW keep running averages - and those cause problems when the loss function suddenly changes. 
+:::
+
+
+### CoT traces are not faithful and might be limiting 
+
+![A [tweet](https://x.com/ylecun/status/1652183354370916354) by one of the godfathers. Reasoning might not need to be verbalized.](coconut/tweet.png)
+
+It is well known, that CoT traces are not faithful., Turpin showed this by adding biases into the prompt. Those biases led to drops in model performance but were not mentioned by the model. This experiments directly allows to conclude that the verbalized explanations are not faithful as a reason for change in predictions is not verbalized.  
+
+Some anthropomorphize this by linking this to neuroscience results that show that "Language is primarily a tool for communication rather than thought" [@Fedorenko_2024]
+
+![Roles of the language network. Taken from [@Fedorenko_2024]. Subfigure b shows that the language network is not strongly activated for non-linguistic tasks.](coconut/language_network.png)
+
+
+In addition, it is notable that CoT restricts models to one discrete reasoning path. However, it might be effective to explore multiple paths. A relevant work that does this is Tree of Thoughts (ToT) [@yao2023treethoughtsdeliberateproblem]. ToT works by creating a branching structure of multiple potential solutions:
+
+1. Similar to CoT it breaks down problems into sequential thought steps
+2. But it generates multiple alternative thoughts at each step
+3. This can be used to create a tree-like structure of reasoning paths
+4. These trees can be explored using either:
+    - Breadth-first search (BFS)
+    - Depth-first search (DFS)
+5. Each node (state) can be evaluated using a classifier or majority vote
+
+## Methods 
+
+The key idea presented in the paper is to not verbalize "thoughts" as language tokens but instead use the hidden representations that the model produces as richer "thought vectors" that could, in principle, also encode multiple reasoning pathways at the same time.
+
+![Method proposed by Coconut compared to CoT.](coconut/method.png)
+
+That is, the approach continues to "think" in its internal representation but only verbalized the final answer.
+
+### Training approach 
+
+To train this model, the authors use a protocol that is inspired by the one utilized for internalized CoT: Over multiple steps, they replace verbalized thinking steps with latent ones.
+
+![Training protocol used by the authors.](coconut/training.png)
+
+
+## Results 
+
+In their benchmarks, the authors observed promising results for their approach. They showed that their approached outperforms other "internalized thought" techniques.
+
+
+| Method | GSM8k |  | ProntoQA |  | ProsQA |  |
+| ---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|  | Acc. (%) | # Tokens | Acc. (%) | # Tokens | Acc. (%) | # Tokens |
+| CoT | $42.9 \pm 0.2$ | 25.0 | $98.8 \pm 0.8$ | 92.5 | $77.5 \pm 1.9$ | 49.4 |
+| No-CoT | $16.5 \pm 0.5$ | 2.2 | $93.8 \pm 0.7$ | 3.0 | $76.7 \pm 1.0$ | 8.2 |
+| iCoT | $30.0^*$ | 2.2 | $99.8 \pm 0.3$ | 3.0 | $98.2 \pm 0.3$ | 8.2 |
+| Pause Token | $16.4 \pm 1.8$ | 2.2 | $77.7 \pm 21.0$ | 3.0 | $75.9 \pm 0.7$ | 8.2 |
+| Coconut (Ours) | $34.1 \pm 1.5$ | 8.2 | $99.8 \pm 0.2$ | 9.0 | $97.0 \pm 0.3$ | 14.2 |
+| - w/o curriculum | $14.4 \pm 0.8$ | 8.2 | $52.4 \pm 0.4$ | 9.0 | $76.1 \pm 0.2$ | 14.2 |
+| - w/o thought | $21.6 \pm 0.5$ | 2.3 | $99.9 \pm 0.1$ | 3.0 | $95.5 \pm 1.1$ | 8.2 |
+| - pause as thought | $24.1 \pm 0.7$ | 2.2 | $100.0 \pm 0.1$ | 3.0 | $96.6 \pm 0.8$ | 8.2 |
+
+They also found that increasing the number of latent thoughts per thinking step increases performance.
+
+By decoding the hidden thoughts they could assign probabilities to different options that COCONUT "explored". This can be used to construct search trees.
+
+![Search tree proposed for ProsQA.](coconut/tree.png)
+
+The trees are a bit more "anecdotal" (as there are no systematic statistics) but an interesting perspective on the results
+
+## Conclusions 
+
+- The current protocol is computationally expensive in training (requires multiple forward passes). If one would like to do this on scale, development of suitable infrastructure is needed. 
+- It is nice to explore some new paradigms (with smaller models)
+- Some of this also links to agents (instead of letting them talk via text we could also used hidden representation)
