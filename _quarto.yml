@@ -38,6 +38,7 @@ book:
         - papers/light-rag.md
         - papers/nmr-shift-prediction-from-small-data-quantities.qmd
         - papers/llm_confidence_2025.md
+        - papers/paper_bench_2025.md
 
 bibliography: references.bib
 # csl: nature.csl
