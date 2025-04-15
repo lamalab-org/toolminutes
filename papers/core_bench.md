@@ -5,7 +5,7 @@ title-block-banner: core_bench_papers/ai_agents_blog_pic.jpg
 bibliography: ../references.bib
 ---
 
-# CORE-Bench: Fostering the Credibility of Published Research Through a Computational Reproducibility Agent Benchmark
+# CORE-Bench: Fostering the Credibility of Published Research Through a Computational Reproducibility Agent Benchmark {#siegel2024corebenchfosteringcredibilitypublished}
 
 ## Why discussing this paper?
 
