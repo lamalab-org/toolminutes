@@ -1988,5 +1988,104 @@
       "Papers",
       "<span class='chapter-number'>28</span>  <span class='chapter-title'>What large language models know and what people think they know</span>"
     ]
+  },
+  {
+    "objectID": "papers/paper_bench_2025.html",
+    "href": "papers/paper_bench_2025.html",
+    "title": "PaperBench: Evaluating AI’s Ability to Replicate AI Research",
+    "section": "",
+    "text": "Why discussing this paper?\nI chose PaperBench from OpenAI (Starace et al. 2025) because:",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>PaperBench: Evaluating AI’s Ability to Replicate AI Research</span>"
+    ]
+  },
+  {
+    "objectID": "papers/paper_bench_2025.html#why-discussing-this-paper",
+    "href": "papers/paper_bench_2025.html#why-discussing-this-paper",
+    "title": "PaperBench: Evaluating AI’s Ability to Replicate AI Research",
+    "section": "",
+    "text": "It is a recent paper that proposes a new benchmark for evaluating LLM-powered agents that work in developing AI research.\nSpecifically, the task of reproducing existing work should be the first milestone in the development of LLM-powered agents that can autonomously conduct research.\n\nThey use LLM-as-Judge for evaluating some of the tasks.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>PaperBench: Evaluating AI’s Ability to Replicate AI Research</span>"
+    ]
+  },
+  {
+    "objectID": "papers/paper_bench_2025.html#context",
+    "href": "papers/paper_bench_2025.html#context",
+    "title": "PaperBench: Evaluating AI’s Ability to Replicate AI Research",
+    "section": "Context",
+    "text": "Context\nAgents are becoming increasingly capable of performing complex tasks, including some sparks of autonomous independent research (Lu et al. 2024). However, perhaps one of the first steps in AI and coding research is the ability to reproduce existing work. This is a crucial step in validating and building upon previous research findings. While there are many benchmarks for evaluating LLMs in various domains, there are few that focus specifically on the task of reproducing AI research, and more specifically, only having access to the paper.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>PaperBench: Evaluating AI’s Ability to Replicate AI Research</span>"
+    ]
+  },
+  {
+    "objectID": "papers/paper_bench_2025.html#prior-work",
+    "href": "papers/paper_bench_2025.html#prior-work",
+    "title": "PaperBench: Evaluating AI’s Ability to Replicate AI Research",
+    "section": "Prior Work",
+    "text": "Prior Work\n\nSciCode: A Research Coding Benchmark Curated by Scientists\nSciCode (Tian et al. 2024) is a benchmark designed to evaluate the ability of LLMs to reproduce scientific code. It consists on a set of tasks based on reproducing AI scientific scripts. Interestingly, the scripts are not synthetic, but rather real-world scripts that have been used in actual research papers. The benchmark is curated by scientists and includes a diverse set of tasks from various domains, including biology, chemistry, and physics.\nThe benchmark is very well designed since each of the scripts is divided into subtasks, which allows for a more detailed evaluation of the agents. The agents are provided only with the task and the different docstrings explaining the subtasks. The benchmark is designed to be challenging, with a focus on evaluating the ability of LLMs to understand and reproduce complex scientific code. The authors also introduce a novel evaluation framework that uses LLMs-as-Judge to assess the quality of the agent’s output.\n\n\n\n\n\n\nFigure 29.1: Figure taken from SciCode (Tian et al. 2024) illustrating how the main task and subtasks are described to the agents.\n\n\n\nInterestingly, by the time of the paper, the authors had already evaluated several LLMs, including OpenAI’s GPT-4o and Anthropic’s Claude 3.5 Sonnet. The results show that the models struggle in general to reproduce the scripts, with a success rate lower than 5% for all models for the main tasks, and around 25% the best results for reproducing subtasks.\n\n\nMLAgentBench: Evaluating Language Agents on Machine Learning Experimentation\nMLAgentBench (Huang et al. 2023) is a benchmark designed to evaluate the ability of LLM-powered agents to reproduce machine learning experiments. The benchmark consists of a set of tasks that expands around Kaggle competitions and other ML-related tasks. Each of the tasks includes their own evaluator, which can be checking if the Kaggle submission is correct or if the proposed code improves the predictive performance of the model. \nFor each of the tasks they provide the agents with some initial files and a task description and the agent has to build from there. One of the problems of this paper is that they only evaluated one agent (only ReAct) and only thirteen tasks which limits the evaluation. \nThe results vary a lot between the different tasks despite being averaged over 8 trials (pass@k). While for some the score is perfect, for others the score is 0.\n\n\nMLE-Bench: Evaluating Machine Learning Agents on Machine Learning Engineering\nChen et al. (Chan et al. 2024) in previous work from OpenAI focused in the Kaggle competition as the origin of tasks, and curate 75 machine-learning related tasks from there. To improve the evaluation, they also run the human baseline that helps to evaluate the performance of the agents. Similarly as the proposed in MLAgentBench for the Kaggle tasks, the agents need to provide a submission according to the Kaggle rules. Thus, each of the tasks provides the agents and humans with the description of the task and the competition dataset. Interestingly, the authors also use a source code plagiarism detection tool to check that the code that either the models or the humans submitted is not plagiarized from the original Kaggle competition.\n\n\n\nTable 29.1: Accuracy in submitting and winning a medal (top submission)\n\n\n\n\n\n\n\n\n\n\n\n\nModel\nMade Submission (%)\nValid Submission (%)\nGold (%)\nAny Medal (%)\n\n\n\n\nAIDE\n\n\n\n\n\n\no1-preview\n98.4 ± 0.4\n82.8 ± 1.1\n9.4 ± 0.8\n16.9 ± 1.1\n\n\ngpt-4o-2024-08-06\n70.7 ± 0.9\n54.9 ± 1.0\n5.0 ± 0.4\n8.7 ± 0.5\n\n\nllama-3.1-405b-instruct\n46.3 ± 2.9\n27.3 ± 2.6\n1.7 ± 0.7\n3.0 ± 1.0\n\n\nclaude-3.5-sonnet-20240620\n68.9 ± 3.1\n51.1 ± 3.3\n4.4 ± 1.4\n7.6 ± 1.8\n\n\nMLAB\n\n\n\n\n\n\ngpt-4o-2024-08-06\n65.6 ± 2.5\n44.3 ± 2.6\n0.8 ± 0.5\n0.8 ± 0.5\n\n\nOpenHands\n\n\n\n\n\n\ngpt-4o-2024-08-06\n59.1 ± 3.3\n52.0 ± 3.3\n2.7 ± 1.1\n4.4 ± 1.4\n\n\n\n\n\n\nThe results show that the models can prepare a correct submission in a good amount fo times. However, of all of these times, only a small fraction—around 15% for the best agent—win a medal in the competition. While this results show promising results, still they struggle to produce high-quality submissions.\n\n\nCore-Bench\nCore-Bench is a benchmark designed to evaluate the ability of LLM-powered agents to reproduce scientific results. The benchmark consists of a set of tasks that require the agent to read and understand a research paper and its codebase, extract relevant information, and implement the proposed methods.\n\n\n\n\n\n\nFigure 29.2: Figure taken from Core Bench (Siegel et al. 2024) illustrating how each task is organized.\n\n\n\nFor a more in depth evaluation, they divided the benchmark by levels of difficulty in easy, medium, and hard. The differences between the different levels are the amount of information provided to the agent. For the easy level, the agent is provided with the results of executing the code. For the medium level, the agent is provided with a dockerfile that can be used to reproduce the results. Finally, for the hard level, only a README file is provided and the agent has to create and run the dockerfile by itself.\nCore Bench design allows the agents to have access to the codebases. Thus the agents can read the code and understand how it works resulting in a benchmark that is more focused in code understanding that in code reproduction. To focus on the second Starace et al. proposed PaperBench (Starace et al. 2025).\nRefer to Siegel et al. (2024) for further discussion on Core Bench.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>PaperBench: Evaluating AI’s Ability to Replicate AI Research</span>"
+    ]
+  },
+  {
+    "objectID": "papers/paper_bench_2025.html#paperbench-problem-setting",
+    "href": "papers/paper_bench_2025.html#paperbench-problem-setting",
+    "title": "PaperBench: Evaluating AI’s Ability to Replicate AI Research",
+    "section": "PaperBench problem setting",
+    "text": "PaperBench problem setting\n\nReproducing existing work can be a challenging and interesting task for LLM-based agents.\nGrading the replication attemps can be really time-consuming.\nAt the same time, if you use an LLM to grade, how do you evaluate the LLM?",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>PaperBench: Evaluating AI’s Ability to Replicate AI Research</span>"
+    ]
+  },
+  {
+    "objectID": "papers/paper_bench_2025.html#approach",
+    "href": "papers/paper_bench_2025.html#approach",
+    "title": "PaperBench: Evaluating AI’s Ability to Replicate AI Research",
+    "section": "Approach",
+    "text": "Approach\nThe authors compile a dataset of 20 articles published as Spotlight and Oral papers from ICML 2024. For each of the papers they compile a set of rubrics that are used to evaluate the replication attempts. Each of the rubrics is structured as a hierarchical tree, with the top-level nodes representing the main categories of evaluation and the lower-level or leaf-nodes nodes representing the specific criteria within each category. This decomposition allows to do a very robust scoring which allows a more insightful evaluation of the agents. \n\nOverall workflow\nFor each of the tasks, the agents are given with the original paper to replicate and some clarifications compiled by the authors of the paper to better understand what was done in the paper. To avoid reward hacking, the agents are not allowed to see the rubric used to evaluate the replication attempts. The agents are asked to produce a reproduce.sh script that when run reproduces the results of the paper. To check if the results are correctly reproduced, the produced script is run in a fresh environment in a virtual machine with access to one GPU. The agent is not constrain by the time and it has $1000 of OpenAI credits and a HuggingFace API key.\n\n\n\nTable 29.2: Evaluation requirements for each file type in PaperBench\n\n\n\n\n\n\nCode Dev.\nExecution\nRes. Match\n\n\n\n\nREADMEs & Docs\n✓\n✓\n✓\n\n\nSource code\n✓\n✓\n✗\n\n\nreproduce.sh\n✓\n✓\n✓\n\n\nreproduce.log\n✗\n✓\n✓\n\n\nRepro outputs\n✗\n✗\n✓\n\n\n\n\n\n\nThe grading for each of the tasks is done by evaluating each of the leaf nodes of the rubric. Depending on the leaf node, there are different evaluation requirements:\n\nResult Match: in these leaf nodes is checked if the specific results are reproduced.\nExecution: if the script is executable and runs without errors.\nCode Development: checks if the code seems to can reproduce the results.\n\n\n\n\n\n\n\nFigure 29.3: Figure from PaperBench (Starace et al. 2025) explaining how the rubric evaluation is done.\n\n\n\nThe evaluation following the rubric is done by checking each of the leaf nodes. The score in the leaf nodes is always binary, either 0 for not matching or 1 for matching. The score in the leaf nodes is then aggregated to the parent node, and so on until the root node resulting in very descriptive score for each of the tasks.\n\n\nRules\nThe agent is allowed to do almost anything, including:\n\nBrowsing the web.\nNo computing constraints.\n\nHowever, there are two limitations. The first is all API keys need to be provided to the agents. Second, the agents, despite they can browse the web, have a black list of websites that they are not allowed to use. This is done to avoid the agents to check the original codebases of the papers or related replications.\n\n\nDev PaperBench\nSince the entire benchmark is expensive to run, the authors also compile a smaller version of the benchmark called PaperBench Code-Dev which consideraly reduces the costs. However, the results in this benchmark are not directly comparable to the full PaperBench benchmark.\n\n\nLLM Judge\nSince they arrived at such large rubrics, the human evaluation became non-scalable during the first stages of the study. Therefore, they proposed to evaluate using LLMs as judges. However, for this evaluation to be robust, the accuracy needs to be assesed (Shankar et al. 2024). To do so, they compile a set of partial modified replications of the articles, and manually graded them using the rubrics. The authors then use these scores to build JudgeEval which is a benchmark for evaluating the performance of LLMs as judges.\n\n\n\nTable 29.3: Results of the JudgeEval benchmark.\n\n\n\n\n\n\nACC.\nPREC.\nREC.\nF1\nCOST\n\n\n\n\nRANDOM\n0.48\n0.49\n0.49\n0.49\n0\n\n\nSIMPLEJUDGE\n\n\n\n\n\n\n\nGPT-4o-mini\n0.63\n0.64\n0.60\n0.59\n8\n\n\nGPT-4o\n0.74\n0.74\n0.72\n0.73\n120\n\n\no1-mini\n0.81\n0.85\n0.76\n0.78\n72\n\n\no1\n0.84\n0.84\n0.84\n0.84\n830\n\n\no3-mini\n0.83\n0.83\n0.83\n0.83\n66\n\n\n\n\n\n\nBy evaluating different leading LLMs, the authors show that the performance of the LLMs as judges is good and they can be trusted as evaluators. The best model in terms of accuracy versus cost is the o3-mini model. However, despite this being the best model, the authors report a cost of $66 per task. While the cost reduces to only $10 in the PaperBench Code-Dev benchmark, this is still a very expensive evaluation.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>PaperBench: Evaluating AI’s Ability to Replicate AI Research</span>"
+    ]
+  },
+  {
+    "objectID": "papers/paper_bench_2025.html#results",
+    "href": "papers/paper_bench_2025.html#results",
+    "title": "PaperBench: Evaluating AI’s Ability to Replicate AI Research",
+    "section": "Results",
+    "text": "Results\nThey evaluate the performance of some of the leading models using a simple agent scaffolding that uses the available tools until the agent decides to end the run. The tools available to the agent are: a bash shell command execution tool, a Python code execution tool, a web browser tool, and a paginated file reader tool for reading long documents.\n\n\n\nTable 29.4: Average Replication Scores (%) of the evaluation of PaperBench benchmark.\n\n\n\n\n\nModel\nPaperBench\n\n\n\n\no3-mini-high\n2.6 ± 0.2\n\n\nGPT-4o\n4.1 ± 0.1\n\n\nGemini-2.0-Flash\n3.2 ± 0.2\n\n\nDeepSeek-R1\n6.0 ± 0.3\n\n\no1-high\n13.2 ± 0.3\n\n\nClaude-3.5-Sonnet\n21.0 ± 0.8\n\n\nIterativeAgent\n\n\n\no3-mini-high\n8.5 ± 0.8\n\n\nClaude-3.5-Sonnet\n16.1 ± 0.1\n\n\no1-high\n24.4 ± 0.7\n\n\nIterativeAgent with an extended 36 hour limit\n\n\n\no1-high\n24.4 ± 0.7\n\n\n\n\n\n\nThe results show that the best model is (ironically) Claude 3.5 Sonnet, with an average replication score of 21.0% in the basic agent scaffolding. The authors claim that by manual inspection of the log files, the most common failure case was due to early termination by the agents, while some other model such as o3-mini struggle with tool usage. These results show the weakness of the current LLMs in carrying long-horizon tasks.\nSince in the basic agent implementation the models tend to finish prematurely, the authors propose the IterativeAgent which consists of forcing the agent to run the full available time by removing their ability to finishing earlier and uses prompts to encourage the agents to work in a step-based manner. By using this agent, while the scores decrease for Claude 3.5 Sonnet, o1-high model improved more than 10% that gets increased another 2% by extending the time limit to 36 hours. ### Human Baseline Performance\nThe authors also evaluate the performance of humans in the benchmark. For that they recruited 8 PhDs in machine learning. To evaluate the participands, they provided them with the same resources as the agents, including the original paper and the clarifications, and access to the same computing resources. The humans were allowed to work during four weeks in the tasks using tracked hours to compare them with the agents.\n\n\n\n\n\n\nFigure 29.4: Figure from PaperBench (Starace et al. 2025) comparing humans and agents.\n\n\n\nThe results show that while the agents clearly outperform the humans during the first hours, the humans are able to catch up and even outperform the agents after 24 hours. This is mainly due to the fact that the agents are not able to improve significantly their performance after the first hour of work.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>PaperBench: Evaluating AI’s Ability to Replicate AI Research</span>"
+    ]
+  },
+  {
+    "objectID": "papers/paper_bench_2025.html#takeaways",
+    "href": "papers/paper_bench_2025.html#takeaways",
+    "title": "PaperBench: Evaluating AI’s Ability to Replicate AI Research",
+    "section": "Takeaways",
+    "text": "Takeaways\n\nCurrent models still fail to follow long-horizon tasks.\nThe use of LLMs as judges is a promising approach to evaluate the performance of LLM-powered agents.\nReproducing existing work is a challenging task for LLM-powered agents (and can result in very high cost attemps).",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>PaperBench: Evaluating AI’s Ability to Replicate AI Research</span>"
+    ]
+  },
+  {
+    "objectID": "papers/paper_bench_2025.html#references",
+    "href": "papers/paper_bench_2025.html#references",
+    "title": "PaperBench: Evaluating AI’s Ability to Replicate AI Research",
+    "section": "References",
+    "text": "References\n\n\n\n\nChan, Jun Shern, Neil Chowdhury, Oliver Jaffe, James Aung, Dane Sherburn, Evan Mays, Giulio Starace, et al. 2024. “MLE-Bench: Evaluating Machine Learning Agents on Machine Learning Engineering.” arXiv Preprint arXiv: 2410.07095.\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nHuang, Qian, Jian Vora, Percy Liang, and J. Leskovec. 2023. “MLAgentBench: Evaluating Language Agents on Machine Learning Experimentation.” International Conference on Machine Learning.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nLu, Chris, Cong Lu, Robert Tjarko Lange, Jakob Foerster, Jeff Clune, and David Ha. 2024. “The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery.” arXiv Preprint arXiv: 2408.06292.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.\n\n\nShankar, Shreya, J. D. Zamfirescu-Pereira, Bjorn Hartmann, Aditya G. Parameswaran, and Ian Arawjo. 2024. “Who Validates the Validators? Aligning LLM-Assisted Evaluation of LLM Outputs with Human Preferences.” ACM Symposium on User Interface Software and Technology. https://doi.org/10.48550/arXiv.2404.12272.\n\n\nSiegel, Zachary S., Sayash Kapoor, Nitya Nagdir, Benedikt Stroebl, and Arvind Narayanan. 2024. “CORE-Bench: Fostering the Credibility of Published Research Through a Computational Reproducibility Agent Benchmark.” https://arxiv.org/abs/2409.11363.\n\n\nStarace, Giulio, Oliver Jaffe, Dane Sherburn, James Aung, Jun Shern Chan, Leon Maksin, Rachel Dias, et al. 2025. “PaperBench: Evaluating AI’s Ability to Replicate AI Research.” arXiv Preprint arXiv: 2504.01848.\n\n\nTian, Minyang, Luyu Gao, Shizhuo Dylan Zhang, Xinan Chen, Cunwei Fan, Xuefei Guo, Roland Haas, et al. 2024. “SciCode: A Research Coding Benchmark Curated by Scientists.” Neural Information Processing Systems. https://doi.org/10.48550/arXiv.2407.13168.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>PaperBench: Evaluating AI’s Ability to Replicate AI Research</span>"
+    ]
   }
 ]
