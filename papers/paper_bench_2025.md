@@ -25,7 +25,7 @@ Agents are becoming increasingly capable of performing complex tasks, including 
 
 SciCode [@tian2024scicode0] is a benchmark designed to evaluate the ability of LLMs to reproduce scientific code. It consists on a set of tasks based on reproducing AI scientific scripts. Interestingly, the scripts are not synthetic, but rather real-world scripts that have been used in actual research papers. The benchmark is curated by scientists and includes a diverse set of tasks from various domains, including biology, chemistry, and physics.
 
-The benchmark is very well designed since each of the scripts is divided in subtasks that allows for a more detailed evaluation of the agents. The agents are provided only with the task and the different docstrings explaining the subtasks. The benchmark is designed to be challenging, with a focus on evaluating the ability of LLMs to understand and reproduce complex scientific code. The authors also introduce a novel evaluation framework that uses LLMs as judges to assess the quality of the agent's output.
+The benchmark is very well designed since each of the scripts is divided into subtasks, which allows for a more detailed evaluation of the agents. The agents are provided only with the task and the different docstrings explaining the subtasks. The benchmark is designed to be challenging, with a focus on evaluating the ability of LLMs to understand and reproduce complex scientific code. The authors also introduce a novel evaluation framework that uses LLMs-as-Judge to assess the quality of the agent's output.
 
 ![Figure taken from SciCode [@tian2024scicode0] illustrating how the main task and subtasks are described to the agents.](paper_bench_images/figure_1.png){#fig-id:paperbench_figure_1}
 
