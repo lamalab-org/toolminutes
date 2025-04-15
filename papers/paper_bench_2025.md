@@ -12,7 +12,8 @@ bibliography: ../references.bib
 I chose PaperBench from OpenAI [@starace2025paperbench0] because:
 
 - It is a recent paper that proposes a new benchmark for evaluating LLM-powered agents that work in developing AI research.
-- Specifically, the task of reproducing existing work should be the first milestone in the development of LLM-powered agents that can autonomously conduct research.  - They use LLM-as-Judge for evaluating some of the tasks.
+- Specifically, the task of reproducing existing work should be the first milestone in the development of LLM-powered agents that can autonomously conduct research.  
+- They use LLM-as-Judge for evaluating some of the tasks.
 
 ## Context
 
