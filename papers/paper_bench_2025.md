@@ -23,7 +23,7 @@ Agents are becoming increasingly capable of performing complex tasks, including 
 
 ### SciCode: A Research Coding Benchmark Curated by Scientists
 
-SciCode [@tian2024scicode0] is a benchmark designed to evaluate the ability of LLMs to reproduce scientific code. It consists on a set of tasks based on reproducing AI scientific scripts. Interestingly, the scripts are not synthetic, but rather real-world scripts that have been used in actual research papers. The benchmark is curated by scientists and includes a diverse set of tasks from various domains, including biology, chemistry, and physics.
+SciCode [@tian2024scicode0] is a benchmark designed to evaluate the ability of LLMs to reproduce scientific code. It consists of a set of tasks based on reproducing AI scientific scripts. Interestingly, the scripts are not synthetic, but rather real-world scripts that have been used in actual research papers. The benchmark is curated by scientists and includes a diverse set of tasks from various domains, including biology, chemistry, and physics.
 
 The benchmark is very well designed since each of the scripts is divided into subtasks, which allows for a more detailed evaluation of the agents. The agents are provided only with the task and the different docstrings explaining the subtasks. The benchmark is designed to be challenging, with a focus on evaluating the ability of LLMs to understand and reproduce complex scientific code. The authors also introduce a novel evaluation framework that uses LLMs-as-Judge to assess the quality of the agent's output.
 
@@ -59,7 +59,7 @@ Chen et al. [@chan2024mle0bench0] in previous work from OpenAI focused in the Ka
 
 : Accuracy in submitting and winning a medal (top submission) {#tbl-id:paperbench_table_1}
 
-The results show that the models can prepare a correct submission in a good amount fo times. However, of all of these times, only a small fraction---around 15% for the best agent---win a medal in the competition. While this results show promising results, still they struggle to produce high-quality submissions.
+The results show that the models can prepare a correct submission in a good amount of times. However, of all of these times, only a small fraction---around 15% for the best agent---win a medal in the competition. While this results show promising results, still they struggle to produce high-quality submissions.
 
 ### Core-Bench
 
@@ -86,7 +86,7 @@ The authors compile a dataset of 20 articles published as Spotlight and Oral pap
 
 ### Overall workflow
 
-For each of the tasks, the agents are given with the original paper to replicate and some clarifications compiled by the authors of the paper to better understand what was done in the paper. To avoid reward hacking, the agents are not allowed to see the rubric used to evaluate the replication attempts. The agents are asked to produce a *reproduce.sh* script that when run reproduces the results of the paper. To check if the results are correctly reproduced, the produced script is run in a fresh environment in a virtual machine with access to one GPU. The agent is not constrain by the time and it has $1000 of OpenAI credits and a HuggingFace API key.
+For each of the tasks, the agents are given with the original paper to replicate and some clarifications compiled by the authors of the paper to better understand what was done in the paper. To avoid reward hacking, the agents are not allowed to see the rubric used to evaluate the replication attempts. The agents are asked to produce a *reproduce.sh* script that when run reproduces the results of the paper. To check if the results are correctly reproduced, the produced script is run in a fresh environment in a virtual machine with access to one GPU. The agent is not constrained in time and it has $1000 of OpenAI credits and a HuggingFace API key.
 
 |                         | Code Dev. | Execution | Res. Match |
 |-------------------------|-----------|-----------|------------|
@@ -163,6 +163,7 @@ They evaluate the performance of some of the leading models using a simple agent
 The results show that the best model is (ironically) Claude 3.5 Sonnet, with an average replication score of 21.0% in the basic agent scaffolding. The authors claim that by manual inspection of the log files, the most common failure case was due to early termination by the agents, while some other model such as o3-mini struggle with tool usage. These results show the weakness of the current LLMs in carrying long-horizon tasks.
 
 Since in the basic agent implementation the models tend to finish prematurely, the authors propose the *IterativeAgent* which consists of forcing the agent to run the full available time by removing their ability to finishing earlier and uses prompts to encourage the agents to work in a step-based manner. By using this agent, while the scores decrease for Claude 3.5 Sonnet, o1-high model improved more than 10% that gets increased another 2% by extending the time limit to 36 hours.
+
 ### Human Baseline Performance
 
 The authors also evaluate the performance of humans in the benchmark. For that they recruited 8 PhDs in machine learning. To evaluate the participands, they provided them with the same resources as the agents, including the original paper and the clarifications, and access to the same computing resources. The humans were allowed to work during four weeks in the tasks using tracked hours to compare them with the agents.
