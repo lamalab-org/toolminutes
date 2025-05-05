@@ -37,7 +37,7 @@ Schwaller et al. [4] introduced the Molecular Transformer, the first encoder-dec
 
 The Molecular Transformer formulates both reaction prediction and retrosynthesis as SMILES-to-SMILES translation problems:
 
-![SMILES-to-SMILES translation](https://github.com/Steinbeck-Lab/toolminutes/blob/main/papers/chemical_reaction_assets/images_large_oc9b00576_0009.jpeg)
+![SMILES-to-SMILES translation](https://github.com/Steinbeck-Lab/toolminutes/raw/main/papers/chemical_reaction_assets/images_large_oc9b00576_0009.jpeg)
 
 ### Chemformer (2022)
 
