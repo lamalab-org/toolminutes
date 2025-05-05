@@ -304,7 +304,7 @@ Again, accuracy is preserved:
 | Top-5, % | 82.069 | 82.069 |
 | Top-10, % | 88.918 | 88.978 |
 
-## Take aways
+## Takeaways
 
 - Speculative decoding can accelerate transformer-based chemical reaction models by 2-3× without compromising accuracy
 - The natural similarities between reactant and product SMILES enable effective chemical-specific drafting strategies
