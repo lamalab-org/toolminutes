@@ -39,6 +39,7 @@ book:
         - papers/nmr-shift-prediction-from-small-data-quantities.qmd
         - papers/llm_confidence_2025.md
         - papers/paper_bench_2025.md
+        - papers/NaFM_2025.md
         - papers/chen_reasoning.md
 
 bibliography: references.bib
