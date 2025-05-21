@@ -51,7 +51,7 @@ bibliography: ../references.bib
 
 ## Faithfulness: Measuring CoT Faithfulness
 
-**It is hard to define a metric because It's very hard to know a model's "actual internal reasoning" directly**
+**It is hard to define a metric because it's very hard to know a model's "actual internal reasoning" directly**
 
 They create pairs of prompts for multiple-choice questions:
 - Unhinted Prompt (x_u): "Which of these is a primary color? (A) Green, (B) Orange, (C) Blue, (D) Purple.” 
