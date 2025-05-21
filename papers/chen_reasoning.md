@@ -86,7 +86,7 @@ GPQA (Graduate-Level Google-Proof Q&A)
 ## Model response to hints
 Models are very likely to be influenced by the hints.
 
-![fractoin of examples changing answer with hints](chen_reasoning/response.png)
+![fraction of examples changing answer with hints](chen_reasoning/response.png)
 
 ## Experiment 1: Benchmarking CoT Faithfulness of Existing Models
 Faithfulness  is low (However Reasoning > Non-reasoning )
