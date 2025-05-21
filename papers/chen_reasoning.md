@@ -91,7 +91,7 @@ Models are very likely to be influenced by the hints.
 ## Experiment 1: Benchmarking CoT Faithfulness of Existing Models
 Faithfulness  is low (However Reasoning > Non-reasoning )
 
-![faithfulness for reasoning and non reasoning models](chen_reasoning/reasoning_nonreasoning.png)
+![faithfulness for reasoning and non-reasoning models](chen_reasoning/reasoning_nonreasoning.png)
 
 ## Experiment 2 : Faithfulness comparison across difficulty levels
 CoT faithfulness is lower on harder questions
@@ -118,7 +118,7 @@ Created synthetic RL environments where the 6 hint types (always pointing to fac
 - Low faithfulness scores mean that safety-relevant factors affecting a model's behavior might often go unverbalized.
 - Novel methodology to understand internal reasoning is required
 - From ChemBench and MaCBench we know non-reasoning models fail on complex tasks. Hence benchmarks should add another dimension of evaluation
-    -Evaluate CoT / faith fulness 
+    -Evaluate CoT faithfulness
     -Experiments here can be easily added to our benchmarks
 
 ## References
