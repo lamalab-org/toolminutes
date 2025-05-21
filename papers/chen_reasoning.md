@@ -39,7 +39,7 @@ bibliography: ../references.bib
 
 - Searching through thoughts
 
-- Reflection edicting 
+- Reflection editing
 
 
 
