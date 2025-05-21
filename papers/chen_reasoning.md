@@ -10,7 +10,7 @@ bibliography: ../references.bib
 ## Why discussing this paper?
 
 - Solving scientific tasks requires reasoning
-- We observed in MaCBench, there is desrepancy in reasoning and final answer
+- We observed in MaCBench that there is a discrepancy between reasoning and the final answer
 - Hence, would be interesting to discuss papers that evaluate reasoning
 
 
