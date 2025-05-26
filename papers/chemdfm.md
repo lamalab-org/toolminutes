@@ -26,7 +26,7 @@ Moreover, they showed that the model exhibits good conversational capabilities, 
 
 ## Limitations
 
-The authors were among the first to perform full pretraining on a sizable corpus, but the shortcomings of this work lay in the lack of ablations. For example, while a performance exceeding the one of GPT-4 is promising for the open-source community in general, it is perhaps a very narrow set of tasks. GPT-4 outperformed ChemDFM on the 10-shot task, indicating that just with a simple prompting technique as in-context learning, the frontier model outperforms ChemDFM on the majority of metrics.
+The authors were among the first to perform full pretraining on a sizable corpus, but the shortcomings of this work lie in the lack of ablations. For example, while a performance exceeding the one of GPT-4 is promising for the open-source community in general, it is perhaps a very narrow set of tasks. GPT-4 outperformed ChemDFM on the 10-shot task, indicating that just with a simple prompting technique as in-context learning, the frontier model outperforms ChemDFM on the majority of metrics.
 
 Moreover, ablations of the pre-training should be performed. It is not fully understood from this paper whether the pretraining helped or not, or just fine-tuning is responsible for the spurt in the zero-shot performance.
 
