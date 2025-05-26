@@ -7,9 +7,8 @@ bibliography: ../references.bib
 
 ## Context and prior work
 
-Frontier models, albeit relatively general, still lack behind in the chemical sciences. Recent work focused in large on fine-tuning LLMs for specific tasks, but they often lacked in depth and diversity of the tasks, employing routine approaches.
+Prior work includes Darwin from Xie et al. [@xie2023darwin], that finetuned the Llama-7B model [@touvron2023llama] on several chemistry tasks. Other works include ChemLLM [@zhang2024chemllm0] from Zhang et al. that finetuned the InternLM2-Base-7B model [@cai2024internlm2] on 9 different tasks. Other works followed a similar line, with truly generalist chemical LLMs still missing from the literature.
 
-Prior work includes Darwin from Xie et al. [1], that finetuned the Llama-7B model[2] on several chemistry tasks. Other works include ChemLLM [3] from Zhang et al. that finetuned the InternLM2-Base-7B model [4] on 9 different tasks. Other works followed a similar line, with truly generalist chemical LLMs still missing from the literature.
 
 ## Why this paper matters?
 
@@ -19,7 +18,7 @@ This is one of the few attempts to train a chemistry-specific foundation models 
 
 The model seems to exhibit good zero-shot performance compared to GPT-4 on the molecule captioning tasks. The authors indicated a similar performance increase for other tasks like SMILES-to-IUPAC, which is at 0% for GPT-4, and at 4% for ChemDFM. While in the real world, and when compared to more specialist models like STOUT, the model does not provide significant utility.
 
-![Model performance on the molecule captioning task. Star indicates reproduced results from Guo et al. [5]](./chemdfm/Figure%201.png)
+![Model performance on the molecule captioning task. Star indicates reproduced results from Guo et al. [@guo2023can]](./chemdfm/Figure%201.png)
 
 Moreover, they showed that the model exhibits good conversational capabilities, and the ability to correct its mistakes. For instance, in the snipped below, the model improves its wrong answer upon a correction coming from the user. 
 
