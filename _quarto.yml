@@ -42,6 +42,7 @@ book:
         - papers/paper_bench_2025.md
         - papers/NaFM_2025.md
         - papers/chen_reasoning.md
+        - papers/chemdfm.md
 
 bibliography: references.bib
 # csl: nature.csl
