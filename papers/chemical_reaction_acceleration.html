@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Martiño Ríos-García">
-<meta name="dcterms.date" content="2024-11-13">
+<meta name="author" content="Kohulan Rajan">
+<meta name="dcterms.date" content="2025-05-05">
 
-<title>CORE-Bench: Fostering the Credibility of Published Research Through a Computational Reproducibility Agent Benchmark – Lamalab Tool and Paper Notes</title>
+<title>Accelerating the inference of string generation-based chemical reaction models for industrial applications – Lamalab Tool and Paper Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -52,8 +52,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../papers/bpm_L.html" rel="next">
-<link href="../papers/tango.html" rel="prev">
+<link href="../papers/llms_review.html" rel="next">
+<link href="../tools/showyourwork.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -94,11 +94,39 @@ div.csl-indent {
 <style>
 
       .quarto-title-block .quarto-title-banner {
-        background-image: url(core_bench_papers/ai_agents_blog_pic.jpg);
-background-size: cover;
+        background: https://raw.githubusercontent.com/Steinbeck-Lab/toolminutes/refs/heads/main/papers/chemical_reaction_assets/acc.webp;
       }
 </style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -111,7 +139,7 @@ background-size: cover;
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/chemical_reaction_acceleration.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/core_bench.html"><span class="chapter-title">CORE-Bench: Fostering the Credibility of Published Research Through a Computational Reproducibility Agent Benchmark</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/chemical_reaction_acceleration.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/chemical_reaction_acceleration.html"><span class="chapter-title">Accelerating the inference of string generation-based chemical reaction models for industrial applications</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -123,8 +151,8 @@ background-size: cover;
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/chemical_reaction_acceleration.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/core_bench.html"><span class="chapter-title">CORE-Bench: Fostering the Credibility of Published Research Through a Computational Reproducibility Agent Benchmark</span></a></li></ol></nav>
-      <h1 class="title"><span id="siegel2024corebenchfosteringcredibilitypublished" class="quarto-section-identifier"><span class="chapter-title">CORE-Bench: Fostering the Credibility of Published Research Through a Computational Reproducibility Agent Benchmark</span></span></h1>
+    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/chemical_reaction_acceleration.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/chemical_reaction_acceleration.html"><span class="chapter-title">Accelerating the inference of string generation-based chemical reaction models for industrial applications</span></a></li></ol></nav>
+      <h1 class="title"><span class="chapter-title">Accelerating the inference of string generation-based chemical reaction models for industrial applications</span></h1>
                       </div>
   </div>
     
@@ -134,14 +162,14 @@ background-size: cover;
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Martiño Ríos-García </p>
+               <p>Kohulan Rajan </p>
             </div>
     </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">November 13, 2024</p>
+        <p class="date">May 5, 2025</p>
       </div>
     </div>
     
@@ -236,7 +264,7 @@ background-size: cover;
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/chemical_reaction_acceleration.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Accelerating the inference of string generation-based chemical reaction models for industrial applications</span></a>
+  <a href="../papers/chemical_reaction_acceleration.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Accelerating the inference of string generation-based chemical reaction models for industrial applications</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -296,7 +324,7 @@ background-size: cover;
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/core_bench.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">CORE-Bench: Fostering the Credibility of Published Research Through a Computational Reproducibility Agent Benchmark</span></a>
+  <a href="../papers/core_bench.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">CORE-Bench: Fostering the Credibility of Published Research Through a Computational Reproducibility Agent Benchmark</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -361,18 +389,30 @@ background-size: cover;
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#why-discussing-this-paper" id="toc-why-discussing-this-paper" class="nav-link active" data-scroll-target="#why-discussing-this-paper">Why discussing this paper?</a></li>
+  <li><a href="#why-am-i-discussing-this-paper" id="toc-why-am-i-discussing-this-paper" class="nav-link active" data-scroll-target="#why-am-i-discussing-this-paper">Why am I discussing this paper?</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
   <li><a href="#prior-work" id="toc-prior-work" class="nav-link" data-scroll-target="#prior-work">Prior work</a>
   <ul class="collapse">
-  <li><a href="#swe-bench" id="toc-swe-bench" class="nav-link" data-scroll-target="#swe-bench">SWE-Bench</a></li>
-  <li><a href="#ai-agents-that-matter" id="toc-ai-agents-that-matter" class="nav-link" data-scroll-target="#ai-agents-that-matter">AI Agents That Matter</a></li>
-  <li><a href="#lab-bench" id="toc-lab-bench" class="nav-link" data-scroll-target="#lab-bench">LAB-Bench</a></li>
+  <li><a href="#segler-et-al.-2018" id="toc-segler-et-al.-2018" class="nav-link" data-scroll-target="#segler-et-al.-2018">Segler et al.&nbsp;(2018)</a></li>
+  <li><a href="#molecular-transformer-2019" id="toc-molecular-transformer-2019" class="nav-link" data-scroll-target="#molecular-transformer-2019">Molecular Transformer (2019)</a></li>
+  <li><a href="#chemformer-2022" id="toc-chemformer-2022" class="nav-link" data-scroll-target="#chemformer-2022">Chemformer (2022)</a></li>
   </ul></li>
   <li><a href="#problem-setting" id="toc-problem-setting" class="nav-link" data-scroll-target="#problem-setting">Problem setting</a></li>
-  <li><a href="#approach" id="toc-approach" class="nav-link" data-scroll-target="#approach">Approach</a></li>
+  <li><a href="#technical-foundations" id="toc-technical-foundations" class="nav-link" data-scroll-target="#technical-foundations">Technical Foundations</a>
+  <ul class="collapse">
+  <li><a href="#transformer-architecture-for-chemical-reactions" id="toc-transformer-architecture-for-chemical-reactions" class="nav-link" data-scroll-target="#transformer-architecture-for-chemical-reactions">Transformer Architecture for Chemical Reactions</a></li>
+  <li><a href="#understanding-decoding-strategies" id="toc-understanding-decoding-strategies" class="nav-link" data-scroll-target="#understanding-decoding-strategies">Understanding Decoding Strategies</a></li>
+  </ul></li>
+  <li><a href="#approach" id="toc-approach" class="nav-link" data-scroll-target="#approach">Approach</a>
+  <ul class="collapse">
+  <li><a href="#speculative-decoding" id="toc-speculative-decoding" class="nav-link" data-scroll-target="#speculative-decoding">Speculative Decoding</a></li>
+  <li><a href="#chemically-specific-drafting-strategy" id="toc-chemically-specific-drafting-strategy" class="nav-link" data-scroll-target="#chemically-specific-drafting-strategy">Chemically Specific Drafting Strategy</a></li>
+  <li><a href="#speculative-beam-search" id="toc-speculative-beam-search" class="nav-link" data-scroll-target="#speculative-beam-search">Speculative Beam Search</a></li>
+  </ul></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
   <ul class="collapse">
-  <li><a href="#additional-results" id="toc-additional-results" class="nav-link" data-scroll-target="#additional-results">Additional results</a></li>
+  <li><a href="#product-prediction-uspto-mit" id="toc-product-prediction-uspto-mit" class="nav-link" data-scroll-target="#product-prediction-uspto-mit">Product Prediction (USPTO MIT)</a></li>
+  <li><a href="#single-step-retrosynthesis-uspto-50k" id="toc-single-step-retrosynthesis-uspto-50k" class="nav-link" data-scroll-target="#single-step-retrosynthesis-uspto-50k">Single-Step Retrosynthesis (USPTO 50K)</a></li>
   </ul></li>
   <li><a href="#takeaways" id="toc-takeaways" class="nav-link" data-scroll-target="#takeaways">Takeaways</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
@@ -386,209 +426,478 @@ background-size: cover;
 
 
 
-<section id="why-discussing-this-paper" class="level2">
-<h2 class="anchored" data-anchor-id="why-discussing-this-paper">Why discussing this paper?</h2>
-<p>I chose Siegel et al.’s paper <span class="citation" data-cites="siegel2024corebenchfosteringcredibilitypublished">(<a href="#ref-siegel2024corebenchfosteringcredibilitypublished" role="doc-biblioref">Siegel et al. 2024</a>)</span> for our journal club because:</p>
+<p><a href="https://github.com/Academich/translation-transformer"><img src="https://img.shields.io/badge/GitHub-View_Repository-181717?style=for-the-badge&amp;logo=github.png" class="img-fluid" alt="GitHub"></a> <a href="https://doi.org/10.1186/s13321-025-00974-w"><img src="https://img.shields.io/badge/Paper-Read_Article-00C7B7?style=for-the-badge.png" class="img-fluid" alt="Paper"></a> <a href="https://doi.org/10.17863/CAM.16293"><img src="https://img.shields.io/badge/Download-USPTO_Datasets-ff69b4?style=for-the-badge.png" class="img-fluid" alt="Data"></a></p>
+<section id="why-am-i-discussing-this-paper" class="level2">
+<h2 class="anchored" data-anchor-id="why-am-i-discussing-this-paper">Why am I discussing this paper?</h2>
+<p>I chose Andronov et al.’s paper[1] because:</p>
 <ul>
-<li>I really like what these folks are proposing about agents’ evaluation.</li>
-<li>I think that the evaluation of agents is the current bottleneck in the development of new agents.</li>
-<li>They write some really interesting statements such as <em>“Before agents can automate scientific research, they must be able to reproduce existing results.”</em>.</li>
-<li>One of the conclusions is really interesting for one of the projects that I am working on.</li>
+<li>It addresses a critical bottleneck in speeding up predictions of transformer [2] based chemical reaction models</li>
+<li>It creatively applies NLP acceleration techniques (speculative decoding) to chemistry</li>
+<li>The solution requires no model retraining or architectural changes</li>
+<li>The impact on industrial applications could be significant</li>
 </ul>
+</section>
+<section id="context" class="level2">
+<h2 class="anchored" data-anchor-id="context">Context</h2>
+<p>Computer-aided synthesis planning (CASP) is a core technology enabling drug discovery. Modern CASP systems typically combine a machine learning-based single-step retrosynthesis model with a planning algorithm like Monte-Carlo Tree Search. The model proposes possible reactant sets for a target molecule, while the planning algorithm constructs a synthesis tree.</p>
+<p>While earlier CASP systems relied on manually encoded rules, researchers now focus on AI-powered methods. Single-step retrosynthesis models come in two paradigms: template-based and template-free models. Template-free models, particularly those based on transformers, offer state-of-the-art accuracy but suffer from slow inference speed, limiting their practical utility in industrial settings.</p>
 </section>
 <section id="prior-work" class="level2">
 <h2 class="anchored" data-anchor-id="prior-work">Prior work</h2>
-<p>With the appearance of the LLMs, agents have gained a lot of importance, especially during the last year. However, the evaluation of these agents is still a challenge, and a bunch of benchmarks and different evaluations have been proposed to evaluate them.</p>
-<section id="swe-bench" class="level3">
-<h3 class="anchored" data-anchor-id="swe-bench">SWE-Bench</h3>
-<p>In this work by Jimenez et al. <span class="citation" data-cites="jimenez2024swebenchlanguagemodelsresolve">(<a href="#ref-jimenez2024swebenchlanguagemodelsresolve" role="doc-biblioref">Jimenez et al. 2024</a>)</span>, they introduced another agent benchmark. The tasks that they evaluate are based on GitHub Pull Requests extracted from some popular repositories. They evaluate the agents in solving the issues that are opened in these PRs. Nowadays, it is one of the most used benchmarks for evaluating new LLMs.</p>
+<section id="segler-et-al.-2018" class="level3">
+<h3 class="anchored" data-anchor-id="segler-et-al.-2018">Segler et al.&nbsp;(2018)</h3>
+<p>Segler et al.&nbsp;[3] outlined the design principles for modern CASP systems: combining a machine learning-based single-step retrosynthesis model with a planning algorithm. This seminal work established the framework that most current CASP systems follow.</p>
 </section>
-<section id="ai-agents-that-matter" class="level3">
-<h3 class="anchored" data-anchor-id="ai-agents-that-matter">AI Agents That Matter</h3>
-<p>This is previous work from the same authors of the CORE-Bench. In this work, Kappor et al. <span class="citation" data-cites="kapoor2024aiagentsmatter">(<a href="#ref-kapoor2024aiagentsmatter" role="doc-biblioref">Kapoor et al. 2024</a>)</span> propose different case studies, each with a different evaluation method for some of the more common NLP benchmarks. The particularity is that these evaluations are thought to evaluate more than only the agents’ final answers.</p>
-</section>
-<section id="lab-bench" class="level3">
-<h3 class="anchored" data-anchor-id="lab-bench">LAB-Bench</h3>
-<p>This benchmark proposed by Laurent et al. <span class="citation" data-cites="laurent2024labbenchmeasuringcapabilitieslanguage">(<a href="#ref-laurent2024labbenchmeasuringcapabilitieslanguage" role="doc-biblioref">Laurent et al. 2024</a>)</span> is focused on evaluating agents in the scientific domain, specifically in the medical/biochemistry domain. It is multimodal, including tasks such as analyzing lab images, scientific tables, lab protocols, or retrieving data from biological databases.</p>
+<section id="molecular-transformer-2019" class="level3">
+<h3 class="anchored" data-anchor-id="molecular-transformer-2019">Molecular Transformer (2019)</h3>
+<p>Schwaller et al.&nbsp;[4] introduced the Molecular Transformer, the first encoder-decoder transformer for conditional SMILES generation in reaction modeling. This model served as the foundation for subsequent developments in the field.</p>
+<p>The Molecular Transformer formulates both reaction prediction and retrosynthesis as SMILES-to-SMILES translation problems:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="core_bench_papers/core_bench_2.png" class="img-fluid figure-img"></p>
-<figcaption>Figure taken from Laurent et al.&nbsp;paper <span class="citation" data-cites="laurent2024labbenchmeasuringcapabilitieslanguage">(<a href="#ref-laurent2024labbenchmeasuringcapabilitieslanguage" role="doc-biblioref">Laurent et al. 2024</a>)</span> illustrating the results of the different leading LLMs in LAB-Bench.</figcaption>
+<p><img src="https://github.com/Steinbeck-Lab/toolminutes/raw/main/papers/chemical_reaction_assets/images_large_oc9b00576_0009.jpeg" class="img-fluid figure-img"></p>
+<figcaption>SMILES-to-SMILES translation</figcaption>
 </figure>
 </div>
+</section>
+<section id="chemformer-2022" class="level3">
+<h3 class="anchored" data-anchor-id="chemformer-2022">Chemformer (2022)</h3>
+<p>Irwin et al.&nbsp;[6] developed Chemformer, a pre-trained transformer for computational chemistry. While demonstrating impressive accuracy, it retained the slow inference speed characteristic of autoregressive models. <img src="https://content.cld.iop.org/journals/2632-2153/3/1/015022/revision3/mlstac3ffbf1_hr.jpg" class="img-fluid" alt="Chemformer"></p>
 </section>
 </section>
 <section id="problem-setting" class="level2">
 <h2 class="anchored" data-anchor-id="problem-setting">Problem setting</h2>
 <ul>
-<li>Evaluating LLM-powered agents is a real challenge.</li>
-<li>It is possible to evaluate only the final result, but interesting conclusions can be lost in the reasoning process.</li>
-<li>This reasoning evaluations is really important within the develpment of new agents since it can help to understand the agents’ limitations.</li>
-<li>The current evaluation of the agents is a bottleneck in the development of new agents.</li>
+<li>Template-free transformer models achieve state-of-the-art accuracy in reaction prediction and retrosynthesis</li>
+<li>However, their slow inference speed limits practical utility in industrial applications</li>
+<li>The bottleneck is the autoregressive nature of token generation—each prediction requires a full forward pass</li>
+<li>Previous acceleration approaches (model distillation, architectural modifications) typically compromise accuracy</li>
+<li>There’s a need for acceleration methods that preserve model accuracy without architectural changes</li>
 </ul>
+<blockquote class="blockquote">
+<p><strong>Research Gap</strong>: How can we accelerate transformer inference without compromising the model’s predictive power?</p>
+</blockquote>
+</section>
+<section id="technical-foundations" class="level2">
+<h2 class="anchored" data-anchor-id="technical-foundations">Technical Foundations</h2>
+<section id="transformer-architecture-for-chemical-reactions" class="level3">
+<h3 class="anchored" data-anchor-id="transformer-architecture-for-chemical-reactions">Transformer Architecture for Chemical Reactions</h3>
+<p>The Molecular Transformer and its variants use the encoder-decoder architecture: - <strong>Encoder</strong>: Processes the input SMILES (reactants or products) - <strong>Decoder</strong>: Generates the output SMILES (products or reactants) token by token</p>
+</section>
+<section id="understanding-decoding-strategies" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-decoding-strategies">Understanding Decoding Strategies</h3>
+<section id="what-is-greedy-search" class="level4">
+<h4 class="anchored" data-anchor-id="what-is-greedy-search">What is Greedy Search?</h4>
+<p>Greedy search is the simplest decoding strategy for sequence generation models like transformers. At each step of generation:</p>
+<ol type="1">
+<li>The model calculates the probability of every possible next token</li>
+<li>Greedy search simply selects the single most probable token</li>
+<li>This token is added to the sequence</li>
+<li>The process repeats until an end token is generated or maximum length is reached</li>
+</ol>
+<p>Greedy decoding selects the most probable token at each step:</p>
+<pre><code>initialize output = [BOS]  # Beginning-of-sequence token
+while not finished:
+    next_token = argmax(model_probability(next_token | output))
+    output.append(next_token)
+    if next_token == EOS:  # End-of-sequence token
+        break</code></pre>
+<p><strong>Advantages</strong>: - Computationally efficient (only one model forward pass per token) - Simple implementation - Minimal computational overhead</p>
+<p><strong>Disadvantages</strong>: - Often produces suboptimal sequences - Cannot explore alternative generations</p>
+</section>
+<section id="beam-search" class="level4">
+<h4 class="anchored" data-anchor-id="beam-search">Beam Search</h4>
+<p>Beam search improves upon greedy search by maintaining multiple promising candidate sequences simultaneously:</p>
+<ol type="1">
+<li>At each generation step, expand all current sequences with all possible next tokens</li>
+<li>Score each new candidate sequence based on its overall probability</li>
+<li>Select the top-K highest-scoring sequences to keep (where K is the “beam width”)</li>
+<li>Continue until all sequences have produced an end token or reached maximum length</li>
+</ol>
+<pre><code>initialize beams = [[BOS]]  # K copies of beginning-of-sequence token
+while not all beams finished:
+    all_candidates = []
+    for beam in beams:
+        if beam ended with EOS:
+            all_candidates.append(beam)
+        else:
+            for possible_next_token in vocabulary:
+                candidate = beam + [possible_next_token]
+                score = compute_sequence_probability(candidate)
+                all_candidates.append((candidate, score))
+    
+    beams = select_top_k_candidates(all_candidates, k=K)</code></pre>
+<p><strong>Advantages</strong>: - Explores multiple promising paths simultaneously - More robust to local decision errors - Produces K different candidate sequences (essential for retrosynthesis) - Generally higher quality outputs than greedy search</p>
+<p><strong>Disadvantages</strong>: - Computationally more expensive (K times more computation than greedy search) - Slower inference speed - Requires more memory - Still not guaranteed to find the globally optimal sequence</p>
+<p><strong>Parameter K (beam width)</strong>: - Controls the trade-off between exploration breadth and computational cost - Typical values range from 5-20 for chemical reaction models - Higher K values generally produce more diverse candidates but with diminishing returns</p>
+</section>
+</section>
 </section>
 <section id="approach" class="level2">
 <h2 class="anchored" data-anchor-id="approach">Approach</h2>
-<p>They proposed a new benchmark that allows the agents to be evaluated more deeply. They propose to evaluate the agents in three different tasks: CORE-Bench-Easy, CORE-Bench-Medium, and CORE-Bench-Hard. The first one is a simple task, the second one is a medium task, and the last one is a hard task. The evaluation is done so that the agents have to provide the answer and the reasoning behind it.</p>
-<div id="tbl-letters" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-letters-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;23.1: Description of the different tasks according to the difficulty and the actual task for each
-</figcaption>
-<div aria-describedby="tbl-letters-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 18%">
-<col style="width: 62%">
-<col style="width: 18%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Task level</th>
-<th style="text-align: center;">Information provided to the agent</th>
-<th style="text-align: center;">Agent task</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">CORE-Bench-Easy</td>
-<td style="text-align: center;">Results are provided</td>
-<td style="text-align: center;">Extract the results</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">CORE-Bench-Medium</td>
-<td style="text-align: center;">The dockerfile is provided</td>
-<td style="text-align: center;">Run the docker and extract the results</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">CORE-Bench-Hard</td>
-<td style="text-align: center;">Only a README is provided</td>
-<td style="text-align: center;">Create and run the docker and extract the results</td>
-</tr>
-</tbody>
-</table>
+<p>The authors propose applying speculative decoding to accelerate chemical reaction models, with domain-specific optimizations.</p>
+<section id="speculative-decoding" class="level3">
+<h3 class="anchored" data-anchor-id="speculative-decoding">Speculative Decoding</h3>
+<p>Speculative decoding[5] accelerates autoregressive sequence generation by predicting multiple tokens in one forward pass:</p>
+<ol type="1">
+<li>Append a draft sequence to the currently generated sequence</li>
+<li>Verify if the model “accepts” the draft tokens</li>
+<li>In the best case, add N+1 tokens in one forward pass</li>
+<li>In the worst case, add one token as in standard autoregressive generation</li>
+</ol>
+<p>Acceptance rate is defined as the number of accepted draft tokens divided by the total number of tokens in the generated sequence.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-</figure>
+<div class="callout-title-container flex-fill">
+Note
 </div>
-<p>They reproduced some published works to generate the ground truth of the different tasks. To give some numerical room, they sampled by repeating each manual run three times, which was the ground truth for the 95 % prediction interval.</p>
+</div>
+<div class="callout-body-container callout-body">
+<p>Speculative decoding doesn’t change the model’s output—it just produces identical results faster by reducing the number of required forward passes.</p>
+</div>
+</div>
+</section>
+<section id="chemically-specific-drafting-strategy" class="level3">
+<h3 class="anchored" data-anchor-id="chemically-specific-drafting-strategy">Chemically Specific Drafting Strategy</h3>
+<p>The authors leverage a key insight about chemical reactions: large molecular fragments typically remain unchanged, meaning reactant and product SMILES share common substrings.</p>
+<p>Their drafting strategy: 1. Extract subsequences of a chosen length from the query SMILES 2. Use these subsequences as drafts with a high acceptance rate</p>
+<p><img src="https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs13321-025-00974-w/MediaObjects/13321_2025_974_Fig2_HTML.png?as=webp" class="img-fluid" alt="Speculative decoding with SMILES subsequences as drafts"> - Speculative decoding accelerates product prediction using the Molecular Transformer or a similar autoregressive SMILES generator. - Before output generation, a list of subsequences (e.g., of length four) is prepared from the tokenized query SMILES of reactants. - At each generation step, the model can copy up to four tokens from one of the draft sequences to the output. - This allows the model to generate one to five tokens in a single forward pass. - Colors are used to highlight the best draft sequence at each decoding step.</p>
+<p>The authors also propose a “smarter” drafting strategy that only considers substrings starting with the token currently concluding the generated output:</p>
+<p><img src="https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs13321-025-00974-w/MediaObjects/13321_2025_974_Fig3_HTML.png?as=webp" class="img-fluid" alt="Smart drafting strategy"> - An improvement over the naive drafting strategy (as shown in Fig. 2) is to consider only drafts that begin with the token currently at the end of the generated output. - For the initial model call, only substrings of the source sequence that start with the <code>[BOS]</code> token are considered—typically, there is only one such subsequence. - The first token of the selected subsequence (highlighted in gray) is stripped, and the remaining tokens are used as the draft. - After two model calls, only subsequences starting with the token “(” are considered, and this starting token is stripped to form the final drafts. - This selective drafting continues at each step, aligning the draft with the last generated token to ensure coherence.</p>
+</section>
+<section id="speculative-beam-search" class="level3">
+<h3 class="anchored" data-anchor-id="speculative-beam-search">Speculative Beam Search</h3>
+<p>For practical applications in CASP, generating multiple candidate sequences per query is essential. The authors introduce Speculative Beam Search (SBS), which combines beam search with speculative decoding:</p>
+<p><strong>Algorithm 1: Speculative Beam Search</strong></p>
+<pre><code>Input: SB×Ls - query token sequence (tensor of integers)
+       K - number of best sequences to maintain
+       N - number of drafts
+       D - number of tokens in a draft
+       B - batch size
+       Ls - source sequence length
+       Lg - length of output generated so far
+       Lgm - maximum requested length of generated sequence
+       V - model's vocabulary size
+       E - dimensionality of token embeddings
+
+1: MB×Ls×E ← ENCODER(S)
+2: GB×K×1 ← [BOS]  # Initialize with beginning-of-sequence token
+3: DB×N×D ← MAKEDRAFTS(S, N, D)
+4: repeat
+5:     GDB×K×Lg+D ← CONCAT(G, D)
+6:     LB×K×(Lg+D)×V ← DECODER(GD, M)
+7:     D*B×K×D ← BESTDRAFT(L)
+8:     TB×M×Lg+D+1 ← SEQTREE(D*, L, G)
+9:     GB×K×Lg+D+1 ← EXTRACTTOP(T, K)
+10: until Lg = Lgm; return G</code></pre>
+<p>The algorithm features several key functions: - <strong>MAKEDRAFTS</strong>: Produces subsequences from the query - <strong>CONCAT</strong>: Concatenates sequences with drafts - <strong>DECODER</strong>: Forward pass of the decoder - <strong>BESTDRAFT</strong>: Selects the best draft for each sequence - <strong>SEQTREE</strong>: Creates candidate sequence trees - <strong>EXTRACTTOP</strong>: Keeps top K sequences</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="core_bench_papers/core_bench_3.png" class="img-fluid figure-img"></p>
-<figcaption>Figure taken from by Siegel et al.&nbsp;paper <span class="citation" data-cites="siegel2024corebenchfosteringcredibilitypublished">(<a href="#ref-siegel2024corebenchfosteringcredibilitypublished" role="doc-biblioref">Siegel et al. 2024</a>)</span>. In the Figure <em>(a)</em> it is detailed an example for a medium-level task. The figure <em>(b)</em> illustrates how the evaluation is performed.</figcaption>
+<p><img src="https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs13321-025-00974-w/MediaObjects/13321_2025_974_Fig4_HTML.png?as=webp" class="img-fluid figure-img"></p>
+<figcaption>Speculative Beam Search example</figcaption>
 </figure>
 </div>
-<p>Similarly to other benchmarks such as MLAgentBench <span class="citation" data-cites="huang2024mlagentbenchevaluatinglanguageagents">(<a href="#ref-huang2024mlagentbenchevaluatinglanguageagents" role="doc-biblioref">Huang et al. 2024</a>)</span> or MLE-BENCH <span class="citation" data-cites="chan2024mlebenchevaluatingmachinelearning">(<a href="#ref-chan2024mlebenchevaluatingmachinelearning" role="doc-biblioref">Chan et al. 2024</a>)</span>, they provide the agent with access to different files and the agent need to read and run those files to reach the final answer.</p>
-<p>Interestingly, they evaluate two different agents: AutoGPT and CORE-Agent. The first one is a general agent widely used, while the second is an adapted, improved version of the first one.</p>
+<ul>
+<li><p>This example illustrates the first two iterations of candidate sequence tree sampling in speculative beam search (SBS), using a batch with one query sequence and maintaining two generated sequences.</p></li>
+<li><p>At each iteration, the two best candidate sequences are selected.</p></li>
+<li><p>The draft length <span class="math inline">\(D\)</span> is 10 in this example.</p></li>
+<li><p><strong>First iteration</strong>:</p>
+<ul>
+<li>The best draft is <code>c1cn(C(=O)</code>, which is concatenated with the <code>[BOS]</code> token.</li>
+<li>The first forward pass generates 12 candidate sequences.</li>
+<li>The top two sequences from this iteration are <code>c1c[nH]</code> and <code>c1cn(C(=O)O</code>, which are retained as the current “beams”.</li>
+</ul></li>
+<li><p><strong>Second iteration</strong>:</p>
+<ul>
+<li><p>The best draft for the first beam (<code>c1c[nH]</code>) is <code>c2ccc(C(C)</code>.</p></li>
+<li><p>The best draft for the second beam (<code>c1cn(C(=O)O</code>) is <code>C(C)(C)C)c</code>.</p></li>
+<li><p>The second forward pass produces 24 candidate sequences.</p></li>
+<li><p>All candidates are sorted by probability, and the top two are selected:</p>
+<ul>
+<li><code>c1c[nH]c2ccc(C(C)=</code></li>
+<li><code>c1cn(C(=O)OC(C)(C)C)c2</code></li>
+</ul></li>
+</ul></li>
+<li><p>After two iterations, SBS produces sequences of lengths 15 and 22, respectively.</p></li>
+<li><p>In contrast, standard beam search would have generated only two sequences of length 2 at this point.</p></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In standard beam search, we maintain the K most probable sequences at each step. Greedy decoding is essentially beam search with K=1. Beam search is crucial for generating diverse candidates in both reaction prediction and retrosynthesis.</p>
+</div>
+</div>
+</section>
 </section>
 <section id="results" class="level2">
 <h2 class="anchored" data-anchor-id="results">Results</h2>
-<p>The general results of the evaluation are shown in the following table:</p>
-<div id="tbl-letters" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-letters-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;23.2: Accuracy in the most difficult partitions of the benchmark
-</figcaption>
-<div aria-describedby="tbl-letters-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p>The authors evaluate their methods on standard benchmarks for chemical reaction prediction and retrosynthesis.</p>
+<section id="product-prediction-uspto-mit" class="level3">
+<h3 class="anchored" data-anchor-id="product-prediction-uspto-mit">Product Prediction (USPTO MIT)</h3>
+<p><strong>Greedy Decoding Acceleration:</strong></p>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 22%">
+<col style="width: 22%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">Agent</th>
-<th style="text-align: center;">LLM</th>
-<th style="text-align: center;">CORE-Bench-Medium</th>
-<th style="text-align: center;">CORE-Bench-Hard</th>
+<th>Decoding</th>
+<th>Time (B=1), min</th>
+<th>Time (B=4), min</th>
+<th>Time (B=16), min</th>
+<th>Time (B=32), min</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">CORE-Agent</td>
-<td style="text-align: center;">GPT-4o</td>
-<td style="text-align: center;"><strong>0.57</strong></td>
-<td style="text-align: center;"><strong>0.21</strong></td>
+<td>Greedy</td>
+<td>190.5 ± 36.0</td>
+<td>81.8 ± 12.3</td>
+<td>28.7 ± 2.3</td>
+<td>16.8 ± 1.8</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;">GPT-4o-mini</td>
-<td style="text-align: center;">0.32</td>
-<td style="text-align: center;">0.16</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">AutoGPT</td>
-<td style="text-align: center;">GPT-4o</td>
-<td style="text-align: center;">0.37</td>
-<td style="text-align: center;">0.06</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;">GPT-4o-mini</td>
-<td style="text-align: center;">0.02</td>
-<td style="text-align: center;">0.02</td>
+<td>Speculative Greedy</td>
+<td>53.9 ± 3.6</td>
+<td>28.8 ± 3.2</td>
+<td>18.2 ± 1.0</td>
+<td>14.2 ± 0.3</td>
 </tr>
 </tbody>
 </table>
-</div>
-</figure>
-</div>
-<p>The number of models that they tested is limited. However, some important conclusions can be taken from there.</p>
-<p>As expected and the most obvious is that the performance decreases as the difficulty of the task increases. Also, the bigger model shows better results than the smaller ones, and the adapted agent shows better results than the general one, specially for the smallest or weakest model.</p>
-<p>They propose a case study in which they study the relation of the agents’ performance with the economical cost of the models. However, this has not much sense since the models powering the agents are not the same, and they have very different costs per tokens expended.</p>
-<p>The most interesting result these days is that the models perform much better in the text than in the images. They claim that this is the case because the vision tasks are more complex, and the agents are not yet able to perform them. However, in my opinion, more ablations would be needed to clarify this point.</p>
-<section id="additional-results" class="level3">
-<h3 class="anchored" data-anchor-id="additional-results">Additional results</h3>
-<ul>
-<li>The results of the Python tasks are better than those of the R tasks.</li>
-<li>Agents struggle to retrieve results from many files.</li>
-<li>Better safety measures and guardrails are needed to prevent agents from running malicious code when commercially deploying these agents.</li>
-</ul>
+<p>The optimal drafting parameters vary with batch size due to the throughput-latency trade-off: - B=1: 23 drafts of length 17 - B=4: 15 drafts of length 14 - B=16: 7 drafts of length 7 - B=32: 3 drafts of length 5</p>
+<p><strong>Beam Search Acceleration:</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Decoding (K=5)</th>
+<th>Time (B=1), min</th>
+<th>Time (B=2), min</th>
+<th>Time (B=3), min</th>
+<th>Time (B=4), min</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Beam search</td>
+<td>297.9 ± 20.2</td>
+<td>166.5 ± 32.0</td>
+<td>151.8 ± 19.4</td>
+<td>87.7 ± 13.8</td>
+</tr>
+<tr class="even">
+<td>SBS</td>
+<td>140.4 ± 7.2</td>
+<td>109.1 ± 3.6</td>
+<td>93.3 ± 1.3</td>
+<td>82.1 ± 0.6</td>
+</tr>
+</tbody>
+</table>
+<p>Most importantly, the accuracy remains virtually identical between standard and speculative methods:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>Beam search</th>
+<th>SBS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Top-1, %</td>
+<td>88.425</td>
+<td>88.425</td>
+</tr>
+<tr class="even">
+<td>Top-3, %</td>
+<td>93.690</td>
+<td>93.690</td>
+</tr>
+<tr class="odd">
+<td>Top-5, %</td>
+<td>94.733</td>
+<td>94.720</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="single-step-retrosynthesis-uspto-50k" class="level3">
+<h3 class="anchored" data-anchor-id="single-step-retrosynthesis-uspto-50k">Single-Step Retrosynthesis (USPTO 50K)</h3>
+<p><strong>Beam Search at Different Beam Widths:</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 19%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Decoding (B=1)</th>
+<th>Time (K=5), min</th>
+<th>Time (K=10), min</th>
+<th>Time (K=15), min</th>
+<th>Time (K=20), min</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Beam search</td>
+<td>66.7 ± 11.1</td>
+<td>70.0 ± 13.2</td>
+<td>71.3 ± 14.9</td>
+<td>72.2 ± 15.9</td>
+</tr>
+<tr class="even">
+<td>SBS</td>
+<td>28.9 ± 2.9</td>
+<td>39.2 ± 3.4</td>
+<td>45.5 ± 1.2</td>
+<td>47.2 ± 1.2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>SBS with Smart Drafts:</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Decoding (K=10)</th>
+<th>Time (B=1), min</th>
+<th>Time (B=2), min</th>
+<th>Time (B=4), min</th>
+<th>Time (B=8), min</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Beam search</td>
+<td>70.0 ± 13.2</td>
+<td>42.1 ± 6.7</td>
+<td>26.9 ± 3.5</td>
+<td>18.7 ± 1.2</td>
+</tr>
+<tr class="even">
+<td>SBS</td>
+<td>39.2 ± 3.4</td>
+<td>30.1 ± 0.8</td>
+<td>28.1 ± 0.3</td>
+<td>20.1 ± 0.2</td>
+</tr>
+<tr class="odd">
+<td>SBS (smart drafts)</td>
+<td>22.7 ± 1.3</td>
+<td>16.6 ± 0.4</td>
+<td>14.8 ± 0.1</td>
+<td>13.4 ± 0.1</td>
+</tr>
+</tbody>
+</table>
+<p>Again, accuracy is preserved:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>Beam search</th>
+<th>SBS (smart drafts)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Top-1, %</td>
+<td>52.077</td>
+<td>52.077</td>
+</tr>
+<tr class="even">
+<td>Top-5, %</td>
+<td>82.069</td>
+<td>82.069</td>
+</tr>
+<tr class="odd">
+<td>Top-10, %</td>
+<td>88.918</td>
+<td>88.978</td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 <section id="takeaways" class="level2">
 <h2 class="anchored" data-anchor-id="takeaways">Takeaways</h2>
 <ul>
-<li>A simple adaptation of the agents can really improve the evaluation results.</li>
-<li>Models perform much better in the text than in the images.</li>
-<li>Despite they present this benchmark as a way to evaluate the agents, and especially if the agents can reproduce the results of the published works, I do not think that it is yet possible to use an agent to check the code reproduction of a paper.</li>
+<li>Speculative decoding can accelerate transformer-based chemical reaction models by 2-3× without compromising accuracy</li>
+<li>The natural similarities between reactant and product SMILES enable effective chemical-specific drafting strategies</li>
+<li>The acceleration diminishes with larger batch sizes due to the throughput-latency trade-off</li>
+<li>The proposed Speculative Beam Search algorithm successfully addresses the need for generating multiple candidates</li>
+<li>This approach requires no model retraining or architectural changes, making it immediately applicable to existing systems</li>
+<li>These acceleration techniques could make transformer-based models more viable for industrial CASP applications</li>
 </ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Future work could focus on developing more efficient drafting strategies with fewer, more accurate drafts to further improve performance at larger batch sizes and beam widths.</p>
+</div>
+</div>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
+<ol type="1">
+<li>Andronov, M., Andronova, N., Wand, M., Schmidhuber, J., &amp; Clevert, D. A. (2025). Accelerating the inference of string generation-based chemical reaction models for industrial applications. <em>Journal of Cheminformatics, 17</em>(31). https://doi.org/10.1186/s13321-025-00974-w</li>
+<li>Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., &amp; Polosukhin, I. (2017). Attention is all you need. <em>Advances in Neural Information Processing Systems, 30</em>.</li>
+<li>Segler, M. H., Preuss, M., &amp; Waller, M. P. (2018). Planning chemical syntheses with deep neural networks and symbolic AI. <em>Nature, 555</em>(7698), 604-610.</li>
+<li>Schwaller, P., Laino, T., Gaudin, T., Bolgar, P., Hunter, C. A., Bekas, C., &amp; Lee, A. A. (2019). Molecular transformer: A model for uncertainty-calibrated chemical reaction prediction. <em>ACS Central Science, 5</em>(9), 1572-1583.</li>
+<li>Leviathan, Y., Kalman, M., &amp; Matias, Y. (2023). Fast inference from transformers via speculative decoding. <em>International Conference on Machine Learning</em>, 19274-19286.</li>
+<li>Irwin, R., Dimitriadis, S., He, J., &amp; Bjerrum, E. J. (2022). Chemformer: a pre-trained transformer for computational chemistry. <em>Machine Learning: Science and Technology, 3</em>(1), 015022.</li>
+</ol>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-chan2024mlebenchevaluatingmachinelearning" class="csl-entry" role="listitem">
-Chan, Jun Shern, Neil Chowdhury, Oliver Jaffe, James Aung, Dane Sherburn, Evan Mays, Giulio Starace, et al. 2024. <span>“MLE-Bench: Evaluating Machine Learning Agents on Machine Learning Engineering.”</span> <a href="https://arxiv.org/abs/2410.07095">https://arxiv.org/abs/2410.07095</a>.
-</div>
 <div id="ref-ding_nafm_2025" class="csl-entry" role="listitem">
 Ding, Yuheng, Yusong Wang, Bo Qiang, Jie Yu, Qi Li, Yiran Zhou, and Zhenmin Liu. 2025. <span>“<span>NaFM</span>: <span>Pre</span>-Training a <span>Foundation</span> <span>Model</span> for <span>Small</span>-<span>Molecule</span> <span>Natural</span> <span>Products</span>.”</span> <a href="https://doi.org/10.48550/ARXIV.2503.17656">https://doi.org/10.48550/ARXIV.2503.17656</a>.
 </div>
 <div id="ref-https://doi.org/10.48550/arxiv.2410.11527" class="csl-entry" role="listitem">
 Guo, Jeff, and Philippe Schwaller. 2024. <span>“It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.”</span> arXiv. <a href="https://doi.org/10.48550/ARXIV.2410.11527">https://doi.org/10.48550/ARXIV.2410.11527</a>.
 </div>
-<div id="ref-huang2024mlagentbenchevaluatinglanguageagents" class="csl-entry" role="listitem">
-Huang, Qian, Jian Vora, Percy Liang, and Jure Leskovec. 2024. <span>“MLAgentBench: Evaluating Language Agents on Machine Learning Experimentation.”</span> <a href="https://arxiv.org/abs/2310.03302">https://arxiv.org/abs/2310.03302</a>.
-</div>
-<div id="ref-jimenez2024swebenchlanguagemodelsresolve" class="csl-entry" role="listitem">
-Jimenez, Carlos E., John Yang, Alexander Wettig, Shunyu Yao, Kexin Pei, Ofir Press, and Karthik Narasimhan. 2024. <span>“SWE-Bench: Can Language Models Resolve Real-World GitHub Issues?”</span> <a href="https://arxiv.org/abs/2310.06770">https://arxiv.org/abs/2310.06770</a>.
-</div>
-<div id="ref-kapoor2024aiagentsmatter" class="csl-entry" role="listitem">
-Kapoor, Sayash, Benedikt Stroebl, Zachary S. Siegel, Nitya Nadgir, and Arvind Narayanan. 2024. <span>“AI Agents That Matter.”</span> <a href="https://arxiv.org/abs/2407.01502">https://arxiv.org/abs/2407.01502</a>.
-</div>
 <div id="ref-landrum_lwreg_2024" class="csl-entry" role="listitem">
 Landrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. <span>“Lwreg: <span>A</span> <span>Lightweight</span> <span>System</span> for <span>Chemical</span> <span>Registration</span> and <span>Data</span> <span>Storage</span>.”</span> <em>Journal of Chemical Information and Modeling</em> 64 (16): 6247–52. <a href="https://doi.org/10.1021/acs.jcim.4c01133">https://doi.org/10.1021/acs.jcim.4c01133</a>.
 </div>
-<div id="ref-laurent2024labbenchmeasuringcapabilitieslanguage" class="csl-entry" role="listitem">
-Laurent, Jon M., Joseph D. Janizek, Michael Ruzo, Michaela M. Hinks, Michael J. Hammerling, Siddharth Narayanan, Manvitha Ponnapati, Andrew D. White, and Samuel G. Rodriques. 2024. <span>“LAB-Bench: Measuring Capabilities of Language Models for Biology Research.”</span> <a href="https://arxiv.org/abs/2407.10362">https://arxiv.org/abs/2407.10362</a>.
-</div>
 <div id="ref-orsi2024one" class="csl-entry" role="listitem">
 Orsi, Markus, and Jean-Louis Reymond. 2024. <span>“One Chiral Fingerprint to Find Them All.”</span> <em>Journal of Cheminformatics</em> 16 (1): 53.
-</div>
-<div id="ref-siegel2024corebenchfosteringcredibilitypublished" class="csl-entry" role="listitem">
-Siegel, Zachary S., Sayash Kapoor, Nitya Nagdir, Benedikt Stroebl, and Arvind Narayanan. 2024. <span>“CORE-Bench: Fostering the Credibility of Published Research Through a Computational Reproducibility Agent Benchmark.”</span> <a href="https://arxiv.org/abs/2409.11363">https://arxiv.org/abs/2409.11363</a>.
 </div>
 </div>
 </section>
@@ -995,13 +1304,13 @@ Siegel, Zachary S., Sayash Kapoor, Nitya Nagdir, Benedikt Stroebl, and Arvind Na
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../papers/tango.html" class="pagination-link" aria-label="It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design [@https://doi.org/10.48550/arxiv.2410.11527]">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design <span class="citation" data-cites="https://doi.org/10.48550/arxiv.2410.11527">(</span></span></span></a><a href="#ref-https://doi.org/10.48550/arxiv.2410.11527" role="doc-biblioref">Guo and Schwaller 2024</a>)
-                
+      <a href="../tools/showyourwork.html" class="pagination-link" aria-label="showyourwork">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">showyourwork</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../papers/bpm_L.html" class="pagination-link" aria-label="A Bond-Based Machine Learning Model for Molecular Polarizabilities and A Priori Raman Spectra">
-        <span class="nav-page-text"><span class="chapter-title">A Bond-Based Machine Learning Model for Molecular Polarizabilities and A Priori Raman Spectra</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../papers/llms_review.html" class="pagination-link" aria-label="LLMs in Chemistry">
+        <span class="nav-page-text"><span class="chapter-title">LLMs in Chemistry</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

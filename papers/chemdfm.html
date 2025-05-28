@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Martiño Ríos-García">
-<meta name="dcterms.date" content="2024-11-13">
+<meta name="author" content="Adrian Mirza">
+<meta name="dcterms.date" content="2025-05-26">
 
-<title>CORE-Bench: Fostering the Credibility of Published Research Through a Computational Reproducibility Agent Benchmark – Lamalab Tool and Paper Notes</title>
+<title>ChemDFM: A Large Language Foundation Model for Chemistry – Lamalab Tool and Paper Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -52,8 +52,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../papers/bpm_L.html" rel="next">
-<link href="../papers/tango.html" rel="prev">
+<link href="../papers/chen_reasoning.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -91,13 +90,6 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
-<style>
-
-      .quarto-title-block .quarto-title-banner {
-        background-image: url(core_bench_papers/ai_agents_blog_pic.jpg);
-background-size: cover;
-      }
-</style>
 
 
 </head>
@@ -105,13 +97,13 @@ background-size: cover;
 <body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/chemical_reaction_acceleration.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/core_bench.html"><span class="chapter-title">CORE-Bench: Fostering the Credibility of Published Research Through a Computational Reproducibility Agent Benchmark</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/chemical_reaction_acceleration.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/chemdfm.html"><span class="chapter-title"></span></a><a href="https://arxiv.org/pdf/2401.14818">ChemDFM: A Large Language Foundation Model for Chemistry</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -121,35 +113,7 @@ background-size: cover;
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/chemical_reaction_acceleration.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/core_bench.html"><span class="chapter-title">CORE-Bench: Fostering the Credibility of Published Research Through a Computational Reproducibility Agent Benchmark</span></a></li></ol></nav>
-      <h1 class="title"><span id="siegel2024corebenchfosteringcredibilitypublished" class="quarto-section-identifier"><span class="chapter-title">CORE-Bench: Fostering the Credibility of Published Research Through a Computational Reproducibility Agent Benchmark</span></span></h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Martiño Ríos-García </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">November 13, 2024</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
@@ -291,12 +255,12 @@ background-size: cover;
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/tango.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design <span class="citation" data-cites="https://doi.org/10.48550/arxiv.2410.11527">(</span></span></a><a href="#ref-https://doi.org/10.48550/arxiv.2410.11527" role="doc-biblioref">Guo and Schwaller 2024</a>)
+  <a href="../papers/tango.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design <span class="citation" data-cites="https://doi.org/10.48550/arxiv.2410.11527">(</span></span></a><a href="#ref-https://doi.org/10.48550/arxiv.2410.11527" role="doc-biblioref">J. Guo and Schwaller 2024</a>)
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/core_bench.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">CORE-Bench: Fostering the Credibility of Published Research Through a Computational Reproducibility Agent Benchmark</span></a>
+  <a href="../papers/core_bench.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">CORE-Bench: Fostering the Credibility of Published Research Through a Computational Reproducibility Agent Benchmark</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -346,7 +310,7 @@ background-size: cover;
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/chemdfm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title"></span></a><a href="https://arxiv.org/pdf/2401.14818">ChemDFM: A Large Language Foundation Model for Chemistry</a>
+  <a href="../papers/chemdfm.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title"></span></a><a href="https://arxiv.org/pdf/2401.14818">ChemDFM: A Large Language Foundation Model for Chemistry</a>
   </div>
 </li>
       </ul>
@@ -361,207 +325,85 @@ background-size: cover;
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#why-discussing-this-paper" id="toc-why-discussing-this-paper" class="nav-link active" data-scroll-target="#why-discussing-this-paper">Why discussing this paper?</a></li>
-  <li><a href="#prior-work" id="toc-prior-work" class="nav-link" data-scroll-target="#prior-work">Prior work</a>
-  <ul class="collapse">
-  <li><a href="#swe-bench" id="toc-swe-bench" class="nav-link" data-scroll-target="#swe-bench">SWE-Bench</a></li>
-  <li><a href="#ai-agents-that-matter" id="toc-ai-agents-that-matter" class="nav-link" data-scroll-target="#ai-agents-that-matter">AI Agents That Matter</a></li>
-  <li><a href="#lab-bench" id="toc-lab-bench" class="nav-link" data-scroll-target="#lab-bench">LAB-Bench</a></li>
-  </ul></li>
-  <li><a href="#problem-setting" id="toc-problem-setting" class="nav-link" data-scroll-target="#problem-setting">Problem setting</a></li>
-  <li><a href="#approach" id="toc-approach" class="nav-link" data-scroll-target="#approach">Approach</a></li>
-  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
-  <ul class="collapse">
-  <li><a href="#additional-results" id="toc-additional-results" class="nav-link" data-scroll-target="#additional-results">Additional results</a></li>
-  </ul></li>
-  <li><a href="#takeaways" id="toc-takeaways" class="nav-link" data-scroll-target="#takeaways">Takeaways</a></li>
+  <li><a href="#context-and-prior-work" id="toc-context-and-prior-work" class="nav-link active" data-scroll-target="#context-and-prior-work">Context and prior work</a></li>
+  <li><a href="#why-this-paper-matters" id="toc-why-this-paper-matters" class="nav-link" data-scroll-target="#why-this-paper-matters">Why this paper matters?</a></li>
+  <li><a href="#model-performance" id="toc-model-performance" class="nav-link" data-scroll-target="#model-performance">Model performance</a></li>
+  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/chemical_reaction_acceleration.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/chemdfm.html"><span class="chapter-title"></span></a><a href="https://arxiv.org/pdf/2401.14818">ChemDFM: A Large Language Foundation Model for Chemistry</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title"><a href="https://arxiv.org/pdf/2401.14818">ChemDFM: A Large Language Foundation Model for Chemistry</a></span></h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Adrian Mirza </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 26, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
 
 
-<section id="why-discussing-this-paper" class="level2">
-<h2 class="anchored" data-anchor-id="why-discussing-this-paper">Why discussing this paper?</h2>
-<p>I chose Siegel et al.’s paper <span class="citation" data-cites="siegel2024corebenchfosteringcredibilitypublished">(<a href="#ref-siegel2024corebenchfosteringcredibilitypublished" role="doc-biblioref">Siegel et al. 2024</a>)</span> for our journal club because:</p>
-<ul>
-<li>I really like what these folks are proposing about agents’ evaluation.</li>
-<li>I think that the evaluation of agents is the current bottleneck in the development of new agents.</li>
-<li>They write some really interesting statements such as <em>“Before agents can automate scientific research, they must be able to reproduce existing results.”</em>.</li>
-<li>One of the conclusions is really interesting for one of the projects that I am working on.</li>
-</ul>
+</header>
+
+
+<section id="context-and-prior-work" class="level2">
+<h2 class="anchored" data-anchor-id="context-and-prior-work">Context and prior work</h2>
+<p>Prior work includes Darwin from Xie et al. <span class="citation" data-cites="xie2023darwin">(<a href="#ref-xie2023darwin" role="doc-biblioref">Xie et al. 2023</a>)</span>, that finetuned the Llama-7B model <span class="citation" data-cites="touvron2023llama">(<a href="#ref-touvron2023llama" role="doc-biblioref">Touvron et al. 2023</a>)</span> on several chemistry tasks. Other works include ChemLLM <span class="citation" data-cites="zhang2024chemllm0">(<a href="#ref-zhang2024chemllm0" role="doc-biblioref">Zhang et al. 2024</a>)</span> from Zhang et al.&nbsp;that finetuned the InternLM2-Base-7B model <span class="citation" data-cites="cai2024internlm2">(<a href="#ref-cai2024internlm2" role="doc-biblioref">Cai et al. 2024</a>)</span> on 9 different tasks. Other works followed a similar line, with truly generalist chemical LLMs still missing from the literature.</p>
 </section>
-<section id="prior-work" class="level2">
-<h2 class="anchored" data-anchor-id="prior-work">Prior work</h2>
-<p>With the appearance of the LLMs, agents have gained a lot of importance, especially during the last year. However, the evaluation of these agents is still a challenge, and a bunch of benchmarks and different evaluations have been proposed to evaluate them.</p>
-<section id="swe-bench" class="level3">
-<h3 class="anchored" data-anchor-id="swe-bench">SWE-Bench</h3>
-<p>In this work by Jimenez et al. <span class="citation" data-cites="jimenez2024swebenchlanguagemodelsresolve">(<a href="#ref-jimenez2024swebenchlanguagemodelsresolve" role="doc-biblioref">Jimenez et al. 2024</a>)</span>, they introduced another agent benchmark. The tasks that they evaluate are based on GitHub Pull Requests extracted from some popular repositories. They evaluate the agents in solving the issues that are opened in these PRs. Nowadays, it is one of the most used benchmarks for evaluating new LLMs.</p>
+<section id="why-this-paper-matters" class="level2">
+<h2 class="anchored" data-anchor-id="why-this-paper-matters">Why this paper matters?</h2>
+<p>This is one of the few attempts to train a chemistry-specific foundation models from the pre-training stage, all the way to fine-tuning. The authors showed that specialized data, can help relatively small models like Llama-13B outperform frontier models like GPT-4 on specialized tasks. While again, the tasks are extremely specific, the sheer scale of 34B tokens in the pretraining is important, since it is unprecedented.</p>
 </section>
-<section id="ai-agents-that-matter" class="level3">
-<h3 class="anchored" data-anchor-id="ai-agents-that-matter">AI Agents That Matter</h3>
-<p>This is previous work from the same authors of the CORE-Bench. In this work, Kappor et al. <span class="citation" data-cites="kapoor2024aiagentsmatter">(<a href="#ref-kapoor2024aiagentsmatter" role="doc-biblioref">Kapoor et al. 2024</a>)</span> propose different case studies, each with a different evaluation method for some of the more common NLP benchmarks. The particularity is that these evaluations are thought to evaluate more than only the agents’ final answers.</p>
-</section>
-<section id="lab-bench" class="level3">
-<h3 class="anchored" data-anchor-id="lab-bench">LAB-Bench</h3>
-<p>This benchmark proposed by Laurent et al. <span class="citation" data-cites="laurent2024labbenchmeasuringcapabilitieslanguage">(<a href="#ref-laurent2024labbenchmeasuringcapabilitieslanguage" role="doc-biblioref">Laurent et al. 2024</a>)</span> is focused on evaluating agents in the scientific domain, specifically in the medical/biochemistry domain. It is multimodal, including tasks such as analyzing lab images, scientific tables, lab protocols, or retrieving data from biological databases.</p>
+<section id="model-performance" class="level2">
+<h2 class="anchored" data-anchor-id="model-performance">Model performance</h2>
+<p>The model seems to exhibit good zero-shot performance compared to GPT-4 on the molecule captioning tasks. The authors indicated a similar performance increase for other tasks like SMILES-to-IUPAC, which is at 0% for GPT-4, and at 4% for ChemDFM. While in the real world, and when compared to more specialist models like STOUT, the model does not provide significant utility.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="core_bench_papers/core_bench_2.png" class="img-fluid figure-img"></p>
-<figcaption>Figure taken from Laurent et al.&nbsp;paper <span class="citation" data-cites="laurent2024labbenchmeasuringcapabilitieslanguage">(<a href="#ref-laurent2024labbenchmeasuringcapabilitieslanguage" role="doc-biblioref">Laurent et al. 2024</a>)</span> illustrating the results of the different leading LLMs in LAB-Bench.</figcaption>
+<p><img src="./chemdfm/Figure 1.png" class="img-fluid figure-img"></p>
+<figcaption>Model performance on the molecule captioning task. Star indicates reproduced results from Guo et al. <span class="citation" data-cites="guo2023can">(<a href="#ref-guo2023can" role="doc-biblioref">T. Guo et al. 2023</a>)</span></figcaption>
 </figure>
 </div>
-</section>
-</section>
-<section id="problem-setting" class="level2">
-<h2 class="anchored" data-anchor-id="problem-setting">Problem setting</h2>
-<ul>
-<li>Evaluating LLM-powered agents is a real challenge.</li>
-<li>It is possible to evaluate only the final result, but interesting conclusions can be lost in the reasoning process.</li>
-<li>This reasoning evaluations is really important within the develpment of new agents since it can help to understand the agents’ limitations.</li>
-<li>The current evaluation of the agents is a bottleneck in the development of new agents.</li>
-</ul>
-</section>
-<section id="approach" class="level2">
-<h2 class="anchored" data-anchor-id="approach">Approach</h2>
-<p>They proposed a new benchmark that allows the agents to be evaluated more deeply. They propose to evaluate the agents in three different tasks: CORE-Bench-Easy, CORE-Bench-Medium, and CORE-Bench-Hard. The first one is a simple task, the second one is a medium task, and the last one is a hard task. The evaluation is done so that the agents have to provide the answer and the reasoning behind it.</p>
-<div id="tbl-letters" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-letters-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;23.1: Description of the different tasks according to the difficulty and the actual task for each
-</figcaption>
-<div aria-describedby="tbl-letters-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 18%">
-<col style="width: 62%">
-<col style="width: 18%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Task level</th>
-<th style="text-align: center;">Information provided to the agent</th>
-<th style="text-align: center;">Agent task</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">CORE-Bench-Easy</td>
-<td style="text-align: center;">Results are provided</td>
-<td style="text-align: center;">Extract the results</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">CORE-Bench-Medium</td>
-<td style="text-align: center;">The dockerfile is provided</td>
-<td style="text-align: center;">Run the docker and extract the results</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">CORE-Bench-Hard</td>
-<td style="text-align: center;">Only a README is provided</td>
-<td style="text-align: center;">Create and run the docker and extract the results</td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
-<p>They reproduced some published works to generate the ground truth of the different tasks. To give some numerical room, they sampled by repeating each manual run three times, which was the ground truth for the 95 % prediction interval.</p>
+<p>Moreover, they showed that the model exhibits good conversational capabilities, and the ability to correct its mistakes. For instance, in the snipped below, the model improves its wrong answer upon a correction coming from the user.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="core_bench_papers/core_bench_3.png" class="img-fluid figure-img"></p>
-<figcaption>Figure taken from by Siegel et al.&nbsp;paper <span class="citation" data-cites="siegel2024corebenchfosteringcredibilitypublished">(<a href="#ref-siegel2024corebenchfosteringcredibilitypublished" role="doc-biblioref">Siegel et al. 2024</a>)</span>. In the Figure <em>(a)</em> it is detailed an example for a medium-level task. The figure <em>(b)</em> illustrates how the evaluation is performed.</figcaption>
+<p><img src="./chemdfm/Figure 2.png" class="img-fluid figure-img"></p>
+<figcaption>An example of a model’s capability to correct itself towards the right answer, after being pointed out as a wrong by the user.</figcaption>
 </figure>
 </div>
-<p>Similarly to other benchmarks such as MLAgentBench <span class="citation" data-cites="huang2024mlagentbenchevaluatinglanguageagents">(<a href="#ref-huang2024mlagentbenchevaluatinglanguageagents" role="doc-biblioref">Huang et al. 2024</a>)</span> or MLE-BENCH <span class="citation" data-cites="chan2024mlebenchevaluatingmachinelearning">(<a href="#ref-chan2024mlebenchevaluatingmachinelearning" role="doc-biblioref">Chan et al. 2024</a>)</span>, they provide the agent with access to different files and the agent need to read and run those files to reach the final answer.</p>
-<p>Interestingly, they evaluate two different agents: AutoGPT and CORE-Agent. The first one is a general agent widely used, while the second is an adapted, improved version of the first one.</p>
 </section>
-<section id="results" class="level2">
-<h2 class="anchored" data-anchor-id="results">Results</h2>
-<p>The general results of the evaluation are shown in the following table:</p>
-<div id="tbl-letters" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-letters-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;23.2: Accuracy in the most difficult partitions of the benchmark
-</figcaption>
-<div aria-describedby="tbl-letters-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: center;">Agent</th>
-<th style="text-align: center;">LLM</th>
-<th style="text-align: center;">CORE-Bench-Medium</th>
-<th style="text-align: center;">CORE-Bench-Hard</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">CORE-Agent</td>
-<td style="text-align: center;">GPT-4o</td>
-<td style="text-align: center;"><strong>0.57</strong></td>
-<td style="text-align: center;"><strong>0.21</strong></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;">GPT-4o-mini</td>
-<td style="text-align: center;">0.32</td>
-<td style="text-align: center;">0.16</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">AutoGPT</td>
-<td style="text-align: center;">GPT-4o</td>
-<td style="text-align: center;">0.37</td>
-<td style="text-align: center;">0.06</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"></td>
-<td style="text-align: center;">GPT-4o-mini</td>
-<td style="text-align: center;">0.02</td>
-<td style="text-align: center;">0.02</td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
-<p>The number of models that they tested is limited. However, some important conclusions can be taken from there.</p>
-<p>As expected and the most obvious is that the performance decreases as the difficulty of the task increases. Also, the bigger model shows better results than the smaller ones, and the adapted agent shows better results than the general one, specially for the smallest or weakest model.</p>
-<p>They propose a case study in which they study the relation of the agents’ performance with the economical cost of the models. However, this has not much sense since the models powering the agents are not the same, and they have very different costs per tokens expended.</p>
-<p>The most interesting result these days is that the models perform much better in the text than in the images. They claim that this is the case because the vision tasks are more complex, and the agents are not yet able to perform them. However, in my opinion, more ablations would be needed to clarify this point.</p>
-<section id="additional-results" class="level3">
-<h3 class="anchored" data-anchor-id="additional-results">Additional results</h3>
-<ul>
-<li>The results of the Python tasks are better than those of the R tasks.</li>
-<li>Agents struggle to retrieve results from many files.</li>
-<li>Better safety measures and guardrails are needed to prevent agents from running malicious code when commercially deploying these agents.</li>
-</ul>
-</section>
-</section>
-<section id="takeaways" class="level2">
-<h2 class="anchored" data-anchor-id="takeaways">Takeaways</h2>
-<ul>
-<li>A simple adaptation of the agents can really improve the evaluation results.</li>
-<li>Models perform much better in the text than in the images.</li>
-<li>Despite they present this benchmark as a way to evaluate the agents, and especially if the agents can reproduce the results of the published works, I do not think that it is yet possible to use an agent to check the code reproduction of a paper.</li>
-</ul>
+<section id="limitations" class="level2">
+<h2 class="anchored" data-anchor-id="limitations">Limitations</h2>
+<p>The authors were among the first to perform full pretraining on a sizable corpus, but the shortcomings of this work lie in the lack of ablations. For example, while a performance exceeding the one of GPT-4 is promising for the open-source community in general, it is perhaps a very narrow set of tasks. GPT-4 outperformed ChemDFM on the 10-shot task, indicating that just with a simple prompting technique as in-context learning, the frontier model outperforms ChemDFM on the majority of metrics.</p>
+<p>Moreover, ablations of the pre-training should be performed. It is not fully understood from this paper whether the pretraining helped or not, or just fine-tuning is responsible for the spurt in the zero-shot performance.</p>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-chan2024mlebenchevaluatingmachinelearning" class="csl-entry" role="listitem">
-Chan, Jun Shern, Neil Chowdhury, Oliver Jaffe, James Aung, Dane Sherburn, Evan Mays, Giulio Starace, et al. 2024. <span>“MLE-Bench: Evaluating Machine Learning Agents on Machine Learning Engineering.”</span> <a href="https://arxiv.org/abs/2410.07095">https://arxiv.org/abs/2410.07095</a>.
+<div id="ref-cai2024internlm2" class="csl-entry" role="listitem">
+Cai, Zheng, Maosong Cao, Haojiong Chen, Kai Chen, Keyu Chen, Xin Chen, Xun Chen, et al. 2024. <span>“InternLM2 Technical Report.”</span> <em>arXiv Preprint arXiv: 2403.17297</em>.
 </div>
 <div id="ref-ding_nafm_2025" class="csl-entry" role="listitem">
 Ding, Yuheng, Yusong Wang, Bo Qiang, Jie Yu, Qi Li, Yiran Zhou, and Zhenmin Liu. 2025. <span>“<span>NaFM</span>: <span>Pre</span>-Training a <span>Foundation</span> <span>Model</span> for <span>Small</span>-<span>Molecule</span> <span>Natural</span> <span>Products</span>.”</span> <a href="https://doi.org/10.48550/ARXIV.2503.17656">https://doi.org/10.48550/ARXIV.2503.17656</a>.
@@ -569,26 +411,23 @@ Ding, Yuheng, Yusong Wang, Bo Qiang, Jie Yu, Qi Li, Yiran Zhou, and Zhenmin Liu.
 <div id="ref-https://doi.org/10.48550/arxiv.2410.11527" class="csl-entry" role="listitem">
 Guo, Jeff, and Philippe Schwaller. 2024. <span>“It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.”</span> arXiv. <a href="https://doi.org/10.48550/ARXIV.2410.11527">https://doi.org/10.48550/ARXIV.2410.11527</a>.
 </div>
-<div id="ref-huang2024mlagentbenchevaluatinglanguageagents" class="csl-entry" role="listitem">
-Huang, Qian, Jian Vora, Percy Liang, and Jure Leskovec. 2024. <span>“MLAgentBench: Evaluating Language Agents on Machine Learning Experimentation.”</span> <a href="https://arxiv.org/abs/2310.03302">https://arxiv.org/abs/2310.03302</a>.
-</div>
-<div id="ref-jimenez2024swebenchlanguagemodelsresolve" class="csl-entry" role="listitem">
-Jimenez, Carlos E., John Yang, Alexander Wettig, Shunyu Yao, Kexin Pei, Ofir Press, and Karthik Narasimhan. 2024. <span>“SWE-Bench: Can Language Models Resolve Real-World GitHub Issues?”</span> <a href="https://arxiv.org/abs/2310.06770">https://arxiv.org/abs/2310.06770</a>.
-</div>
-<div id="ref-kapoor2024aiagentsmatter" class="csl-entry" role="listitem">
-Kapoor, Sayash, Benedikt Stroebl, Zachary S. Siegel, Nitya Nadgir, and Arvind Narayanan. 2024. <span>“AI Agents That Matter.”</span> <a href="https://arxiv.org/abs/2407.01502">https://arxiv.org/abs/2407.01502</a>.
+<div id="ref-guo2023can" class="csl-entry" role="listitem">
+Guo, Taicheng, Bozhao Nan, Zhenwen Liang, Zhichun Guo, Nitesh Chawla, Olaf Wiest, Xiangliang Zhang, et al. 2023. <span>“What Can Large Language Models Do in Chemistry? A Comprehensive Benchmark on Eight Tasks.”</span> <em>Advances in Neural Information Processing Systems</em> 36: 59662–88.
 </div>
 <div id="ref-landrum_lwreg_2024" class="csl-entry" role="listitem">
 Landrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. <span>“Lwreg: <span>A</span> <span>Lightweight</span> <span>System</span> for <span>Chemical</span> <span>Registration</span> and <span>Data</span> <span>Storage</span>.”</span> <em>Journal of Chemical Information and Modeling</em> 64 (16): 6247–52. <a href="https://doi.org/10.1021/acs.jcim.4c01133">https://doi.org/10.1021/acs.jcim.4c01133</a>.
 </div>
-<div id="ref-laurent2024labbenchmeasuringcapabilitieslanguage" class="csl-entry" role="listitem">
-Laurent, Jon M., Joseph D. Janizek, Michael Ruzo, Michaela M. Hinks, Michael J. Hammerling, Siddharth Narayanan, Manvitha Ponnapati, Andrew D. White, and Samuel G. Rodriques. 2024. <span>“LAB-Bench: Measuring Capabilities of Language Models for Biology Research.”</span> <a href="https://arxiv.org/abs/2407.10362">https://arxiv.org/abs/2407.10362</a>.
-</div>
 <div id="ref-orsi2024one" class="csl-entry" role="listitem">
 Orsi, Markus, and Jean-Louis Reymond. 2024. <span>“One Chiral Fingerprint to Find Them All.”</span> <em>Journal of Cheminformatics</em> 16 (1): 53.
 </div>
-<div id="ref-siegel2024corebenchfosteringcredibilitypublished" class="csl-entry" role="listitem">
-Siegel, Zachary S., Sayash Kapoor, Nitya Nagdir, Benedikt Stroebl, and Arvind Narayanan. 2024. <span>“CORE-Bench: Fostering the Credibility of Published Research Through a Computational Reproducibility Agent Benchmark.”</span> <a href="https://arxiv.org/abs/2409.11363">https://arxiv.org/abs/2409.11363</a>.
+<div id="ref-touvron2023llama" class="csl-entry" role="listitem">
+Touvron, Hugo, Thibaut Lavril, Gautier Izacard, Xavier Martinet, Marie-Anne Lachaux, Timothée Lacroix, Baptiste Rozière, et al. 2023. <span>“Llama: Open and Efficient Foundation Language Models.”</span> <em>arXiv Preprint arXiv:2302.13971</em>.
+</div>
+<div id="ref-xie2023darwin" class="csl-entry" role="listitem">
+Xie, Tong, Yuwei Wan, Wei Huang, Zhenyu Yin, Yixuan Liu, Shaozhou Wang, Qingyuan Linghu, et al. 2023. <span>“DARWIN Series: Domain Specific Large Language Models for Natural Science.”</span> <em>arXiv Preprint arXiv: 2308.13565</em>.
+</div>
+<div id="ref-zhang2024chemllm0" class="csl-entry" role="listitem">
+Zhang, Di, Wei Liu, Qian Tan, Jingdan Chen, Hang Yan, Yuliang Yan, Jiatong Li, et al. 2024. <span>“ChemLLM: A Chemical Large Language Model.”</span> <em>arXiv Preprint arXiv: 2402.06852</em>.
 </div>
 </div>
 </section>
@@ -995,14 +834,11 @@ Siegel, Zachary S., Sayash Kapoor, Nitya Nagdir, Benedikt Stroebl, and Arvind Na
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../papers/tango.html" class="pagination-link" aria-label="It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design [@https://doi.org/10.48550/arxiv.2410.11527]">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design <span class="citation" data-cites="https://doi.org/10.48550/arxiv.2410.11527">(</span></span></span></a><a href="#ref-https://doi.org/10.48550/arxiv.2410.11527" role="doc-biblioref">Guo and Schwaller 2024</a>)
-                
+      <a href="../papers/chen_reasoning.html" class="pagination-link" aria-label="Reasoning Models Don’t Always Say What They Think">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Reasoning Models Don’t Always Say What They Think</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../papers/bpm_L.html" class="pagination-link" aria-label="A Bond-Based Machine Learning Model for Molecular Polarizabilities and A Priori Raman Spectra">
-        <span class="nav-page-text"><span class="chapter-title">A Bond-Based Machine Learning Model for Molecular Polarizabilities and A Priori Raman Spectra</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Kohulan Rajan">
-<meta name="dcterms.date" content="2025-01-08">
+<meta name="author" content="Jonas Schaub">
+<meta name="dcterms.date" content="2025-04-23">
 
-<title>🧬 EMNPD Database – Lamalab Tool and Paper Notes</title>
+<title>NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products (Ding et al. 2025) – Lamalab Tool and Paper Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -52,8 +52,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../papers/light-rag.html" rel="next">
-<link href="../papers/coconut.html" rel="prev">
+<link href="../papers/chen_reasoning.html" rel="next">
+<link href="../papers/paper_bench_2025.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -104,7 +104,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/chemical_reaction_acceleration.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/emnpd.html"><span class="chapter-title">🧬 EMNPD Database</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/chemical_reaction_acceleration.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/NaFM_2025.html"><span class="chapter-title">NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products <span class="citation" data-cites="ding_nafm_2025">(</span></span></a><a href="#ref-ding_nafm_2025" role="doc-biblioref">Ding et al. 2025</a>)</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -276,7 +276,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/emnpd.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">🧬 EMNPD Database</span></a>
+  <a href="../papers/emnpd.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🧬 EMNPD Database</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -301,7 +301,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/NaFM_2025.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products <span class="citation" data-cites="ding_nafm_2025">(</span></span></a><a href="#ref-ding_nafm_2025" role="doc-biblioref">Ding et al. 2025</a>)
+  <a href="../papers/NaFM_2025.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products <span class="citation" data-cites="ding_nafm_2025">(</span></span></a><a href="#ref-ding_nafm_2025" role="doc-biblioref">Ding et al. 2025</a>)
   </div>
 </li>
           <li class="sidebar-item">
@@ -326,34 +326,32 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#a-comprehensive-endophytic-microorganism-natural-products-database-for-prompt-the-discovery-of-new-bioactive-substances" id="toc-a-comprehensive-endophytic-microorganism-natural-products-database-for-prompt-the-discovery-of-new-bioactive-substances" class="nav-link active" data-scroll-target="#a-comprehensive-endophytic-microorganism-natural-products-database-for-prompt-the-discovery-of-new-bioactive-substances"><em>A comprehensive endophytic microorganism natural products database for prompt the discovery of new bioactive substances</em></a></li>
-  <li><a href="#why-did-i-choose-this-paper" id="toc-why-did-i-choose-this-paper" class="nav-link" data-scroll-target="#why-did-i-choose-this-paper">Why did I choose this paper?</a></li>
-  <li><a href="#emnpd-endophytic-microorganism-natural-products-database" id="toc-emnpd-endophytic-microorganism-natural-products-database" class="nav-link" data-scroll-target="#emnpd-endophytic-microorganism-natural-products-database">EMNPD (Endophytic Microorganism Natural Products Database)</a>
+  <li><a href="#why-did-i-choose-this-paper" id="toc-why-did-i-choose-this-paper" class="nav-link active" data-scroll-target="#why-did-i-choose-this-paper">Why did I choose this paper?</a></li>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link" data-scroll-target="#abstract">Abstract</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#model-architecture-and-pre-training" id="toc-model-architecture-and-pre-training" class="nav-link" data-scroll-target="#model-architecture-and-pre-training">Model Architecture and Pre-Training</a>
   <ul class="collapse">
-  <li><a href="#key-statistics" id="toc-key-statistics" class="nav-link" data-scroll-target="#key-statistics">📊 Key Statistics</a></li>
+  <li><a href="#general-down-stream-fine-tuning-approach" id="toc-general-down-stream-fine-tuning-approach" class="nav-link" data-scroll-target="#general-down-stream-fine-tuning-approach">General Down-stream Fine-tuning Approach</a></li>
   </ul></li>
-  <li><a href="#comparative-summary-of-microbial-np-databases" id="toc-comparative-summary-of-microbial-np-databases" class="nav-link" data-scroll-target="#comparative-summary-of-microbial-np-databases">📈 Comparative Summary of Microbial NP Databases 📉</a></li>
-  <li><a href="#construction-and-content" id="toc-construction-and-content" class="nav-link" data-scroll-target="#construction-and-content">Construction and Content</a>
+  <li><a href="#performance-evaluation-on-downstream-tasks" id="toc-performance-evaluation-on-downstream-tasks" class="nav-link" data-scroll-target="#performance-evaluation-on-downstream-tasks">Performance Evaluation on Downstream Tasks</a>
   <ul class="collapse">
-  <li><a href="#data-extraction-and-curation" id="toc-data-extraction-and-curation" class="nav-link" data-scroll-target="#data-extraction-and-curation">Data Extraction and Curation</a></li>
-  <li><a href="#data-collection-and-processing" id="toc-data-collection-and-processing" class="nav-link" data-scroll-target="#data-collection-and-processing">Data Collection and Processing</a></li>
-  </ul></li>
-  <li><a href="#database-content-and-statistics" id="toc-database-content-and-statistics" class="nav-link" data-scroll-target="#database-content-and-statistics">Database Content and Statistics</a></li>
-  <li><a href="#utility-and-discussion" id="toc-utility-and-discussion" class="nav-link" data-scroll-target="#utility-and-discussion">Utility and Discussion</a>
-  <ul class="collapse">
-  <li><a href="#web-interface" id="toc-web-interface" class="nav-link" data-scroll-target="#web-interface">Web Interface</a></li>
-  <li><a href="#downloads" id="toc-downloads" class="nav-link" data-scroll-target="#downloads">Downloads</a></li>
+  <li><a href="#np-taxonomy-classification" id="toc-np-taxonomy-classification" class="nav-link" data-scroll-target="#np-taxonomy-classification">NP Taxonomy Classification</a></li>
+  <li><a href="#prediction-of-source-organism-kingdom" id="toc-prediction-of-source-organism-kingdom" class="nav-link" data-scroll-target="#prediction-of-source-organism-kingdom">Prediction of Source Organism Kingdom</a></li>
+  <li><a href="#prediction-of-np-producing-biosynthetic-gene-cluster-bgc-and-protein-family" id="toc-prediction-of-np-producing-biosynthetic-gene-cluster-bgc-and-protein-family" class="nav-link" data-scroll-target="#prediction-of-np-producing-biosynthetic-gene-cluster-bgc-and-protein-family">Prediction of NP-producing Biosynthetic Gene Cluster (BGC) and protein family</a></li>
+  <li><a href="#predicting-bioactivity-for-specific-targets" id="toc-predicting-bioactivity-for-specific-targets" class="nav-link" data-scroll-target="#predicting-bioactivity-for-specific-targets">Predicting bioactivity for specific targets</a></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#personal-comments-questions-to-discuss" id="toc-personal-comments-questions-to-discuss" class="nav-link" data-scroll-target="#personal-comments-questions-to-discuss">Personal comments / questions to discuss</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/chemical_reaction_acceleration.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/emnpd.html"><span class="chapter-title">🧬 EMNPD Database</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/chemical_reaction_acceleration.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/NaFM_2025.html"><span class="chapter-title">NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products <span class="citation" data-cites="ding_nafm_2025">(</span></span></a><a href="#ref-ding_nafm_2025" role="doc-biblioref">Ding et al. 2025</a>)</li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">🧬 EMNPD Database</span></h1>
+<h1 class="title"><span class="chapter-title">NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products <span class="citation" data-cites="ding_nafm_2025">(<a href="#ref-ding_nafm_2025" role="doc-biblioref">Ding et al. 2025</a>)</span></span></h1>
 </div>
 
 
@@ -363,14 +361,14 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Kohulan Rajan </p>
+             <p>Jonas Schaub </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 8, 2025</p>
+      <p class="date">April 23, 2025</p>
     </div>
   </div>
   
@@ -382,296 +380,510 @@ div.csl-indent {
 </header>
 
 
-<section id="a-comprehensive-endophytic-microorganism-natural-products-database-for-prompt-the-discovery-of-new-bioactive-substances" class="level2">
-<h2 class="anchored" data-anchor-id="a-comprehensive-endophytic-microorganism-natural-products-database-for-prompt-the-discovery-of-new-bioactive-substances"><em>A comprehensive endophytic microorganism natural products database for prompt the discovery of new bioactive substances</em></h2>
-<hr>
-<p><img src="https://emnpd.idrblab.cn/static/images/emnpd-high-resolution-logo-color-on-transparent-background.svg" width="400px" alt="EMNPD Logo"></p>
-<p><a href="https://github.com/boilism/EMNPD"><img src="https://img.shields.io/badge/GitHub-View_Repository-181717?style=for-the-badge&amp;logo=github.png" class="img-fluid" alt="GitHub"></a> <a href="http://emnpd.idrblab.cn/"><img src="https://img.shields.io/badge/Database-Access_EMNPD-00C7B7?style=for-the-badge.png" class="img-fluid" alt="Database"></a> <a href="https://figshare.com/articles/dataset/EMNPD_Download_Data/24078474"><img src="https://img.shields.io/badge/Download-Get_Data-ff69b4?style=for-the-badge.png" class="img-fluid" alt="Data"></a></p>
-</section>
 <section id="why-did-i-choose-this-paper" class="level2">
 <h2 class="anchored" data-anchor-id="why-did-i-choose-this-paper">Why did I choose this paper?</h2>
-<ol type="1">
-<li>It is a natural product database that aligns with our interests and is now integrated into COCONUT 2.0.</li>
-<li>The data in this database was mined from literature and using <a href="https://www.ncbi.nlm.nih.gov/research/litsuggest/">LitSuggest</a> reviews and low-scoring articles were discarded (threshold &lt;0.6), which also involved fine-tuning the model for optimal performance.</li>
-<li>This is one of the newest databases that provides extensive information about molecules, including their source organisms, a key feature highly relevant to COCONUT.</li>
-</ol>
-</section>
-<section id="emnpd-endophytic-microorganism-natural-products-database" class="level2">
-<h2 class="anchored" data-anchor-id="emnpd-endophytic-microorganism-natural-products-database"><a href="http://emnpd.idrblab.cn/">EMNPD (Endophytic Microorganism Natural Products Database)</a></h2>
 <ul>
-<li>Endophytic microorganisms, residing within plant tissues, play a vital role in biotic and abiotic stress responses by producing diverse natural products (NPs). Approximately 49.5% of FDA-approved drugs are derived from NPs or their derivatives, making endophytes a promising source for novel bioactive compounds. Despite this, existing databases lack a comprehensive focus on endophytes. The newly developed EMNPD database addresses this gap, providing open access to curated data on endophytic microorganism natural products and their bioactivities.</li>
+<li>Was curious about what a “Foundation Model” in Natural Product Chemistry would be exactly, what could it be used for?</li>
 </ul>
-<section id="key-statistics" class="level3">
-<h3 class="anchored">📊 Key Statistics</h3>
+</section>
+<section id="abstract" class="level2">
+<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
+<ul>
+<li>Statement: existing deep learning methods for Natural Products (NP) research primarily rely on supervised learning approaches designed for specific downstream tasks</li>
+<li>Statement 2: one-model-for-a-task paradigm often lacks generalizability and leaves significant room for performance improvement</li>
+<li>Statement 3: existing models for chemical problems do not work well for NP</li>
+<li>This article describes NaFM (“Natural product Foundation Model”), a “pre-trained foundation model” for natural products</li>
+<li>Pre-training was done using masked graph learning and contrastive learning (see below)</li>
+<li>“Validation” of the approach was done in 3 experiments using NaFM as a (kind-of) encoder and a Multi-Layer Perceptron (MLP) as a (kind-of) decoder to solve the following tasks:
+<ul>
+<li>NP taxonomy classification</li>
+<li>Predicting biological sources of NP</li>
+<li>Predicting bioactivity of NP</li>
+</ul></li>
+</ul>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<ul>
+<li>NP-based drug discovery/design with traditional methods (NP extracts from (cultivated) organisms, bioactivity-guided fractionation, target validation, structure elucidation, etc.) is costly and time-consuming</li>
+<li>With today’s computing resources and databases like COCONUT, LOTUS, and Supernatural II, NP drug discovery can be sped up, perspectively</li>
+<li>Prior work:
+<ul>
+<li><span class="citation" data-cites="xu_composite_2024">(<a href="#ref-xu_composite_2024" role="doc-biblioref">Xu et al. 2024</a>)</span>: predicting kingdom of NP origin species</li>
+<li><span class="citation" data-cites="stokes_deep_2020">(<a href="#ref-stokes_deep_2020" role="doc-biblioref">Stokes et al. 2020</a>)</span>: predicting antibiotic activities</li>
+<li><span class="citation" data-cites="kim_npclassifier_2021">(<a href="#ref-kim_npclassifier_2021" role="doc-biblioref">Kim et al. 2021</a>)</span>: predicting structural classes and source pathways of NP</li>
+<li>Mostly use traditional fingerprints like Morgan/ECFP (Extended Connectivity FingerPrints)</li>
+<li>“these methods could achieve satisfying performance but always suffer when applied to out-of-distribution test data or less-related downstream tasks.”</li>
+<li>They exclusively employ supervised learning but this is problematic because we do not have a lot of labelled data, and it is often biased (e.g.&nbsp;plant NP are usually overrepresented in NP databases)</li>
+</ul></li>
+<li>Pre-training on unlabelled data:
+<ul>
+<li>Historically, often done with SMILES as data, RNN or Transformers as model architectures, and masked language modelling as a pre-training strategy</li>
+<li>Lately, Graph Neural Networks (GNN) as model architectures, hence graphs as input data, and pre-training strategies specifically for molecular graphs seem promising</li>
+</ul></li>
+<li>But no pre-trained foundation model for NP has been developed so far</li>
+<li>Some thoughts on NP structures in general:
+<ul>
+<li>NP structures in general are more complex and diverse than synthetic compounds, have specific scaffolds (= ring systems) and functional groups; which is why models trained on synthetic compounds usually struggle with NP</li>
+<li>But the advantage of NP structures is that they are “evolved”, i.e.&nbsp;they often carry “preserved” substructures like scaffolds which depend on / relate to the source pathway or source organism</li>
+<li>And these scaffolds are related to the exhibited bioactivity</li>
+<li>A NP-specific pre-training strategy should therefore focus on scaffolds</li>
+</ul></li>
+</ul>
+<p><br>
+<img src="NaFM_2025_images/Fig1d.png" class="img-fluid quarto-figure quarto-figure-center" width="600" alt="Figure 1 D. The “central dogma” of natural products. The biological source, biosynthetic gene clusters, biosynthetic pathways, and bioactivity of natural products are interconnected through the scaffold, which acts as a bridge linking these three key aspects. source: (Ding et al. 2025) CC-BY 4.0"><br>
+</p>
+<ul>
+<li>Contrastive learning, masked learning and activity cliffs
+<ul>
+<li>Contrastive learning: in the learned embeddings, similar structures should have similar embeddings, and dissimilar structures should have dissimilar embeddings</li>
+<li>Masked learning: substructures are “masked”, i.e.&nbsp;bond or atom attributes are omitted and have to be predicted by the model based on the context</li>
+<li>Existing approaches use the masking of structures simply as data augmentation and define similarity/dissimilarity for contrastive learning with pairs of the original structures</li>
+<li>Activity cliffs: very similar structures can have completely different (bio-)activities</li>
+<li>Activity cliffs contradict the principles of contrastive learning</li>
+<li>Idea pursued to avoid this here: use the masked structures as “similar” structures to their original, unmasked structures</li>
+<li>Also: mask whole substructures, not just single atoms and bonds, to make pre-training more complex and hence more successful</li>
+</ul></li>
+</ul>
+</section>
+<section id="model-architecture-and-pre-training" class="level2">
+<h2 class="anchored" data-anchor-id="model-architecture-and-pre-training">Model Architecture and Pre-Training</h2>
+<ul>
+<li>NaFM: a pre-training framework (“pre-trained foundation model”?) specific to NP</li>
+<li>Two novel pre-training approaches: scaffold-subgraph reconstruction and scaffold-aware contrastive learning.</li>
+</ul>
+<p><br>
+<img src="NaFM_2025_images/Fig1b.png" class="img-fluid quarto-figure quarto-figure-center" width="600" alt="Figure 1 B. Details of scaffold-subgraph reconstruction. First, a subgraph is randomly selected from the scaffold, consisting of multiple atoms and chemical bonds. In the subgraph, both node and edge attributes are masked, and all nodes within the subgraph are fully connected (i.e., expanded into a fully connected graph), thereby masking the topological information. During the reconstruction process, the model needs to predict both node and edge attributes, while also distinguishing between real edges and those artificially added virtual edges. source: (Ding et al. 2025) CC-BY 4.0"><br>
+</p>
+<ul>
+<li>scaffold-subgraph reconstruction:
+<ul>
+<li>(not really evident in the figure, but) masking employed only to substructures of the scaffold of an NP!</li>
+<li>atom information (elements / atom types, formal charge, chirality) is masked</li>
+<li>bond information (multiplicity, direction (stereochemistry)) is masked</li>
+<li>topological information is masked, all bonds in the substructure are removed and instead, the atoms become fully connected</li>
+</ul></li>
+</ul>
+<p><br>
+<img src="NaFM_2025_images/Fig1c.png" class="img-fluid quarto-figure quarto-figure-center" width="600" alt="Figure 1 C. Details of scaffold-aware contrastive learning. Different colors represent varying weights defined by scaffold similarity. source: (Ding et al. 2025) CC-BY 4.0"><br>
+</p>
+<ul>
+<li>scaffold-aware contrastive learning:
+<ul>
+<li>For every original input structure, its masked form is set as positive example of a “similar” structure that should be encoded similarly</li>
+<li>the other molecules and their masked forms are set as negative examples, so “dissimilar” structures that should be encoded dissimilarly</li>
+<li>scaffold similarity is used as a metric for similarity of the complete structures
+<ul>
+<li>cosine similarity between the MACCS fingerprints of scaffolds is incorporated into the contrastive learning loss function</li>
+</ul></li>
+<li>This way, scaffold-subgraph reconstruction and scaffold-aware contrastive learning are combined</li>
+</ul></li>
+</ul>
+<p><br>
+<img src="NaFM_2025_images/Fig1a.png" class="img-fluid quarto-figure quarto-figure-center" width="600" alt="Figure 1 A. Overview of NaFM pre-training. After the natural product molecule undergoes scaffold-aware masking, both the masked and unmasked information are simultaneously input into a multi-layer Graph Isomorphism Network. The masked information is then processed through a projection head to predict the masked atom attributes, bond attributes, and topological information. Meanwhile, the masked and unmasked information passes through a pooling function and is used for scaffold-aware contrastive learning. source: (Ding et al. 2025) CC-BY 4.0"><br>
+</p>
+<ul>
+<li>Training data: COCONUT NP (0.6 mio molecules) (<span class="citation" data-cites="chandrasekhar_coconut_2024">(<a href="#ref-chandrasekhar_coconut_2024" role="doc-biblioref">Chandrasekhar et al. 2024</a>)</span>)</li>
+<li>Model architecture: Graph Neural Network (GNN) / Graph Isomorphism Network (GIN) (6 layers, hidden dimensionality of 512)</li>
+<li>Molecule goes in once as original structure and once as scaffold-masked structure</li>
+<li>Average pooling operation as the readout function to extract a global molecular representation of 1024 dimensions</li>
+<li>Projection head (3 Multi-Layer Perceptrons (MLP)) has to reconstruct/predict the masked properties (atom properties, bond properties, topologies)</li>
+<li>a MLP has to embed the original structures and their masked forms (in 256 dimensions) so that original-masked pairs are seen as similar and other structures as dissimilar, based on scaffold similarity (scaffold-aware contrastive learning)</li>
+</ul>
+<section id="general-down-stream-fine-tuning-approach" class="level3">
+<h3 class="anchored" data-anchor-id="general-down-stream-fine-tuning-approach">General Down-stream Fine-tuning Approach</h3>
+<ul>
+<li>Original contrastive learning head and reconstruction head are replaced with a randomly initialized MLP</li>
+<li>For all pre-trained baselines (other models that NaFM is compared to below) the same settings as described above are used</li>
+<li>For baselines trained from scratch, their default configurations are used.</li>
+</ul>
+</section>
+</section>
+<section id="performance-evaluation-on-downstream-tasks" class="level2">
+<h2 class="anchored" data-anchor-id="performance-evaluation-on-downstream-tasks">Performance Evaluation on Downstream Tasks</h2>
+<section id="np-taxonomy-classification" class="level3">
+<h3 class="anchored" data-anchor-id="np-taxonomy-classification">NP Taxonomy Classification</h3>
+<ul>
+<li>Data: NPClassifier dataset (<span class="citation" data-cites="kim_npclassifier_2021">(<a href="#ref-kim_npclassifier_2021" role="doc-biblioref">Kim et al. 2021</a>)</span>)
+<ul>
+<li>Biosynthetic pathway (7 types), super class (70), and class (563) annotations of 77,000 NP structures</li>
+</ul></li>
+<li>First experiment on class level
+<ul>
+<li>Multiple pre-trained (general, not NP-specific!) molecular models were used as baselines</li>
+<li>Additionally, Extended Connectivity Fingerprints (ECFP) were used as baseline (authors state that they are currently the most popular choice for encoding NP structures)</li>
+<li>All baseline models, ECFP, and NaFM were used for training a MLP as described above for NP classification</li>
+<li>Results in Table 1</li>
+<li>NaFM shows top scores for all dataset sizes, especially for small datasets</li>
+</ul></li>
+</ul>
+<p>Table 1 The AUPRC results for natural product taxonomy classification compared to other baselines.</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 26%">
-<col style="width: 20%">
-<col style="width: 29%">
-<col style="width: 23%">
+<col style="width: 25%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">🧬 Natural Products</th>
-<th style="text-align: center;">🦠 Endophytes</th>
-<th style="text-align: center;">🎯 Biological Targets</th>
-<th style="text-align: center;">⚡ Bioactivities</th>
+<th>Training samples per Class</th>
+<th>4</th>
+<th>8</th>
+<th>16</th>
+<th>24</th>
+<th>40</th>
+<th>64</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><strong>6,632</strong></td>
-<td style="text-align: center;"><strong>1,017</strong></td>
-<td style="text-align: center;"><strong>1,286</strong></td>
-<td style="text-align: center;"><strong>91</strong></td>
+<td>N-Gram</td>
+<td>44.72 ± 1.91</td>
+<td>56.61 ± 0.66</td>
+<td>66.36 ± 1.57</td>
+<td>71.11 ± 0.77</td>
+<td>73.34 ± 1.14</td>
+<td>75.77 ± 0.54</td>
+</tr>
+<tr class="even">
+<td>PretrainGNN</td>
+<td>44.83 ± 0.82</td>
+<td>61.85 ± 0.78</td>
+<td>75.76 ± 0.62</td>
+<td>80.50 ± 0.17</td>
+<td>85.31 ± 0.36</td>
+<td>87.82 ± 0.13</td>
+</tr>
+<tr class="odd">
+<td>D-MPNN</td>
+<td>46.63 ± 0.23</td>
+<td>60.88 ± 0.48</td>
+<td>75.73 ± 0.12</td>
+<td>80.96 ± 0.24</td>
+<td>86.64 ± 0.44</td>
+<td>89.23 ± 0.79</td>
+</tr>
+<tr class="even">
+<td>MolCLR</td>
+<td>45.76 ± 1.98</td>
+<td>65.80 ± 1.51</td>
+<td>78.14 ± 1.08</td>
+<td>83.20 ± 0.74</td>
+<td>85.56 ± 0.11</td>
+<td>88.22 ± 0.34</td>
+</tr>
+<tr class="odd">
+<td>Mole-BERT</td>
+<td>66.32 ± 1.23</td>
+<td>73.39 ± 0.66</td>
+<td>78.25 ± 0.45</td>
+<td>80.83 ± 0.51</td>
+<td>83.57 ± 0.59</td>
+<td>85.69 ± 0.70</td>
+</tr>
+<tr class="even">
+<td>ECFP</td>
+<td>69.17 ± 0.19</td>
+<td>78.21 ± 0.79</td>
+<td>83.82 ± 0.37</td>
+<td>86.28 ± 0.49</td>
+<td>88.52 ± 0.48</td>
+<td>89.75 ± 0.45</td>
+</tr>
+<tr class="odd">
+<td>GraphMVP</td>
+<td>64.50 ± 0.74</td>
+<td>78.41 ± 0.09</td>
+<td>85.71 ± 0.43</td>
+<td>87.88 ± 0.26</td>
+<td>89.72 ± 0.45</td>
+<td>91.07 ± 0.43</td>
+</tr>
+<tr class="even">
+<td><strong>NaFM</strong></td>
+<td>70.10 ± 0.92</td>
+<td>79.89 ± 0.07</td>
+<td>87.37 ± 1.51</td>
+<td>89.15 ± 0.22</td>
+<td>90.77 ± 0.26</td>
+<td>91.75 ± 0.47</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li><strong>Data</strong>: Includes physicochemical properties, ADMET information, and fermentation conditions</li>
-<li><h2 id="accessibility-open-access-registration-free-database-at-emnpd-website" class="anchored" data-anchor-id="key-statistics"><strong>Accessibility</strong>: Open-access, registration-free database at EMNPD website</h2></li>
+<li>Second experiment comparison to NPClassifier
+<ul>
+<li>NPClassifier was taken as-is, NaFM was fine-tuned as described above</li>
+<li>comparison on pathway and super-class levels</li>
+<li>Results in Figure 2 (PR AUC: Area Under the Curve where x is recall and y is precision)</li>
+<li>The fine-tuned NaFM outperforms NPClassifier</li>
+<li>Especially for amino acids and peptides (pathway) and Carotenoids (C45), Tetramate alkaloids, Peptide alkaloids, and Anthranilic acid alkaloids (super-classes)</li>
+<li>The gap in the recognition of γ-lactam-β-lactones can be attributed to the limited data for this category, with only 8 instances out of 78,000 data points</li>
+</ul></li>
 </ul>
+<p><br>
+<img src="NaFM_2025_images/Fig2.png" class="img-fluid quarto-figure quarto-figure-center" width="600" alt="Figure 2. The bar plots illustrate the models’ performance comparison of NaFM and NPClassifier on various superclass categories (a) and biosynthetic pathways (b) including Carbohydrates, Amino Acids and Peptides, Alkaloids, Terpenoids, Shikimates and Phenylpropanoids, Polyketides, and Fatty Acids in terms of AUPRC. The gray segments indicate the shared performance (minimum AUPRC) and the light blue/orange segments highlight the additional AURPC achieved by NaFM and NPClassifier beyond each other, respectively. Higher values indicate better model performance. source: (Ding et al. 2025) CC-BY 4.0"><br>
+</p>
 </section>
+<section id="prediction-of-source-organism-kingdom" class="level3">
+<h3 class="anchored" data-anchor-id="prediction-of-source-organism-kingdom">Prediction of Source Organism Kingdom</h3>
+<ul>
+<li>Based on LOTUS (<span class="citation" data-cites="rutz_lotus_2022">(<a href="#ref-rutz_lotus_2022" role="doc-biblioref">Rutz et al. 2022</a>)</span>)
+<ul>
+<li>130,000 data pairs of NP structure and source organism (and literature reference)</li>
+</ul></li>
+<li>NaFM model was fine-tuned to predict kingdom of NP-producing species (i.e.&nbsp;animals, bacteria, <a href="https://ucmp.berkeley.edu/chromista/chromista.html">chromista</a>, fungi, and plants)</li>
+<li>Figure 3 shows the resulting embeddings plotted using TMAP <span class="citation" data-cites="probst_visualization_2020">(<a href="#ref-probst_visualization_2020" role="doc-biblioref">Probst and Reymond 2020</a>)</span></li>
+<li>NaFM appears to be able to separate the NP of the different kingdoms within the representation space</li>
+<li>Kingdom representative structures were obtained by performing a cluster analysis and giving the representative of the biggest cluster, respectively</li>
+<li>Without the pre-training weights (“from scratch”), the model is not able to separate the classes (larger figure available in SI)</li>
+</ul>
+<p><br>
+<img src="NaFM_2025_images/Fig3.png" class="img-fluid quarto-figure quarto-figure-center" width="600" alt="Figure 3. The obtained representations are projected into two dimensions using TMAP and visualized with Faerun. For each biological source, a representative example is highlighted in a designated box, showcasing a characteristic scaffold that typifies compounds derived from that particular source. source: (Ding et al. 2025) CC-BY 4.0"><br>
+</p>
 </section>
-<section id="comparative-summary-of-microbial-np-databases" class="level2">
-<h2 class="anchored" data-anchor-id="comparative-summary-of-microbial-np-databases">📈 Comparative Summary of Microbial NP Databases 📉</h2>
+<section id="prediction-of-np-producing-biosynthetic-gene-cluster-bgc-and-protein-family" class="level3">
+<h3 class="anchored" data-anchor-id="prediction-of-np-producing-biosynthetic-gene-cluster-bgc-and-protein-family">Prediction of NP-producing Biosynthetic Gene Cluster (BGC) and protein family</h3>
+<ul>
+<li>dataset a combination of MIBiG (Minimum Information about a Biosynthetic Gene cluster database, <span class="citation" data-cites="terlouw_mibig_2023">(<a href="#ref-terlouw_mibig_2023" role="doc-biblioref">Terlouw et al. 2023</a>)</span>) and Pfam (Protein families database, <span class="citation" data-cites="mistry_pfam_2021">(<a href="#ref-mistry_pfam_2021" role="doc-biblioref">Mistry et al. 2021</a>)</span>): 2,000 bacterial and fungal BGCs and their corresponding metabolite structures, plus protein families encoded by the respective BGC</li>
+<li>Again, NaFM, ECFP, and baseline molecular pre-trained models were fine-tuned on the task of predicting the producing protein family based on an NP structure</li>
+<li>Results in Figure 4 for the top 128 protein families, NaFM again outperforms all others (AUROC: Area Under ROC curve)
+<ul>
+<li>No idea why they call it NaRel instead of NaFM here…</li>
+<li>e.g.&nbsp;ID 65 and 115 are protein families are known to be highly conserved</li>
+</ul></li>
+</ul>
+<p><br>
+<img src="NaFM_2025_images/Fig4.png" class="img-fluid quarto-figure quarto-figure-center" width="600" alt="Figure 4. The figure visualizes the AUROC gap between NaFM and various molecular representations. The results show the AUROC for the 128 most frequent protein families found in bacteria and fungi. The color in each block represents the magnitude of the AUROC gap, ranging from negative to positive, with colors transitioning from red to blue. Deeper colors indicate a greater absolute difference. source: (Ding et al. 2025) CC-BY 4.0"><br>
+</p>
+</section>
+<section id="predicting-bioactivity-for-specific-targets" class="level3">
+<h3 class="anchored" data-anchor-id="predicting-bioactivity-for-specific-targets">Predicting bioactivity for specific targets</h3>
+<ul>
+<li>data: human protein targets and HIV type- 1 reverse transcriptase activity data from the NPASS natural product activity database</li>
+<li>As before, NaFM and the baseline models were fine-tuned on this data</li>
+<li>Results in Table 2</li>
+<li>NaFM surpasses all baselines, except for N-Gram on HIV type-1 reverse transcriptase</li>
+</ul>
+<p>Table 2 The RMSE results for natural product bioactivity regression compared to other baselines.</p>
 <table class="caption-top table">
 <colgroup>
+<col style="width: 8%">
+<col style="width: 10%">
+<col style="width: 11%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
 <col style="width: 9%">
 <col style="width: 11%">
-<col style="width: 16%">
-<col style="width: 9%">
-<col style="width: 17%">
-<col style="width: 13%">
-<col style="width: 21%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Database</th>
-<th style="text-align: left;">Focus Area</th>
-<th style="text-align: center;">Natural Products</th>
-<th style="text-align: center;">Species</th>
-<th style="text-align: center;">Bioactivity Data</th>
-<th style="text-align: center;">Content Data</th>
-<th style="text-align: center;">Quantitative Activity</th>
+<th>Target Name</th>
+<th>Number of samples</th>
+<th>N-Gram</th>
+<th>PretrainGNN</th>
+<th>D-MPNN</th>
+<th>MolCLR</th>
+<th>Mol-BERT</th>
+<th>ECFP</th>
+<th>GraphMVP</th>
+<th>NaFM</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><strong>🌟 EMNPD</strong></td>
-<td style="text-align: left;">Endophyte NPs</td>
-<td style="text-align: center;"><strong>6,632</strong></td>
-<td style="text-align: center;">1,017</td>
-<td style="text-align: center;">✓</td>
-<td style="text-align: center;">✓</td>
-<td style="text-align: center;">✓</td>
+<td>PTP1B</td>
+<td>612</td>
+<td>0.8493 ± 0.2623</td>
+<td>0.8652 ± 0.2110</td>
+<td>0.8577 ± 0.2165</td>
+<td>0.9912 ± 0.2467</td>
+<td>0.8624 ± 0.0732</td>
+<td>1.1409 ± 0.2281</td>
+<td>1.8865 ± 0.1303</td>
+<td><strong>0.8243 ± 0.1960</strong></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">MyxoDB</td>
-<td style="text-align: left;">Myxobacterial</td>
-<td style="text-align: center;">674</td>
-<td style="text-align: center;">✓</td>
-<td style="text-align: center;">✗</td>
-<td style="text-align: center;">✗</td>
-<td style="text-align: center;">✗</td>
+<td>AChE</td>
+<td>341</td>
+<td>1.3774 ± 0.3995</td>
+<td>1.5462 ± 0.2265</td>
+<td>1.2881 ± 0.1992</td>
+<td>1.1507 ± 0.1683</td>
+<td>1.2938 ± 0.3615</td>
+<td>1.3721 ± 0.0703</td>
+<td>2.8140 ± 0.3649</td>
+<td><strong>1.1227 ± 0.1604</strong></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">mVOC</td>
-<td style="text-align: left;">Microbial volatiles</td>
-<td style="text-align: center;">2,061</td>
-<td style="text-align: center;">1,034</td>
-<td style="text-align: center;">✗</td>
-<td style="text-align: center;">✗</td>
-<td style="text-align: center;">✗</td>
+<td>COX-2</td>
+<td>190</td>
+<td>1.0022 ± 0.3192</td>
+<td>1.7231 ± 0.3754</td>
+<td>1.0272 ± 0.2468</td>
+<td>0.9399 ± 0.1705</td>
+<td>1.0529 ± 0.1536</td>
+<td>1.2718 ± 0.1531</td>
+<td>3.0341 ± 0.6418</td>
+<td><strong>0.9239 ± 0.1721</strong></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">NPcVar</td>
-<td style="text-align: left;">Plant &amp; microbial</td>
-<td style="text-align: center;">2,201</td>
-<td style="text-align: center;">694</td>
-<td style="text-align: center;">✗</td>
-<td style="text-align: center;">✓</td>
-<td style="text-align: center;">✗</td>
+<td>HIV type-1 RT</td>
+<td>186</td>
+<td><strong>1.0606 ± 0.1613</strong></td>
+<td>1.5210 ± 0.2606</td>
+<td>1.1826 ± 0.1683</td>
+<td>1.2649 ± 0.1353</td>
+<td>1.4348 ± 0.1398</td>
+<td>1.5446 ± 0.1133</td>
+<td>2.7829 ± 0.1195</td>
+<td>1.0802 ± 0.1506</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">StreptomeDB</td>
-<td style="text-align: left;">Streptomycetes</td>
-<td style="text-align: center;">6,524</td>
-<td style="text-align: center;">3,302</td>
-<td style="text-align: center;">✓</td>
-<td style="text-align: center;">✗</td>
-<td style="text-align: center;">✗</td>
+<td>Tyrosinase</td>
+<td>186</td>
+<td>0.7822 ± 0.1408</td>
+<td>1.6957 ± 0.2915</td>
+<td>0.8206 ± 0.1891</td>
+<td>0.9165 ± 0.2820</td>
+<td>1.0440 ± 0.2569</td>
+<td>1.2553 ± 0.0985</td>
+<td>3.3965 ± 0.3437</td>
+<td><strong>0.6927 ± 0.2828</strong></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">CMNPD</td>
-<td style="text-align: left;">Marine</td>
-<td style="text-align: center;">31,561</td>
-<td style="text-align: center;">3,354</td>
-<td style="text-align: center;">✗</td>
-<td style="text-align: center;">✗</td>
-<td style="text-align: center;">✓</td>
+<td>CYP3A4</td>
+<td>178</td>
+<td>0.7846 ± 0.2037</td>
+<td>1.4157 ± 0.2923</td>
+<td>0.6946 ± 0.1415</td>
+<td>0.7072 ± 0.1362</td>
+<td>0.9377 ± 0.1873</td>
+<td>1.0439 ± 0.1244</td>
+<td>3.0817 ± 0.2720</td>
+<td><strong>0.6922 ± 0.1326</strong></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">NPAtlas</td>
-<td style="text-align: left;">Microbial</td>
-<td style="text-align: center;">33,372</td>
-<td style="text-align: center;">✓</td>
-<td style="text-align: center;">✗</td>
-<td style="text-align: center;">✗</td>
-<td style="text-align: center;">✗</td>
+<td>MRP4</td>
+<td>177</td>
+<td>0.2747 ± 0.0846</td>
+<td>1.6869 ± 0.2476</td>
+<td>0.2399 ± 0.0603</td>
+<td>0.2321 ± 0.0847</td>
+<td>0.5190 ± 0.0645</td>
+<td>1.4682 ± 0.2422</td>
+<td>3.5723 ± 0.4337</td>
+<td><strong>0.2265 ± 0.0921</strong></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">NPASS</td>
-<td style="text-align: left;">Plant &amp; microbial</td>
-<td style="text-align: center;">96,481</td>
-<td style="text-align: center;">32,287</td>
-<td style="text-align: center;">✗</td>
-<td style="text-align: center;">✓</td>
-<td style="text-align: center;">✓</td>
+<td>COX-1</td>
+<td>140</td>
+<td>0.9529 ± 0.1643</td>
+<td>2.6831 ± 0.2056</td>
+<td>0.9405 ± 0.1414</td>
+<td>0.9574 ± 0.1655</td>
+<td>1.4542 ± 0.3456</td>
+<td>1.1965 ± 0.1850</td>
+<td>3.0083 ± 0.2802</td>
+<td><strong>0.9286 ± 0.1342</strong></td>
 </tr>
 </tbody>
 </table>
-<hr>
-</section>
-<section id="construction-and-content" class="level2">
-<h2 class="anchored" data-anchor-id="construction-and-content">Construction and Content</h2>
-<section id="data-extraction-and-curation" class="level3">
-<h3 class="anchored" data-anchor-id="data-extraction-and-curation">Data Extraction and Curation</h3>
 <ul>
-<li><strong>Sources</strong>: Data gathered from PubMed, keyword searches, and computational tools.<br>
-</li>
-<li><strong>Filtration Process</strong>:
-<ol type="1">
-<li>Initial collection: 2600 articles.<br>
-</li>
-<li>Removal of reviews and low-scoring articles using LitSuggest (threshold &lt;0.6).<br>
-</li>
-<li>Final curation: 1000 articles selected.</li>
-</ol></li>
-</ul>
-<p><img src="https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs13321-023-00779-9/MediaObjects/13321_2023_779_Fig1_HTML.png?as=webp" style="width: 600px;"></p>
-</section>
-<section id="data-collection-and-processing" class="level3">
-<h3 class="anchored" data-anchor-id="data-collection-and-processing">Data Collection and Processing</h3>
+<li>Second experiment in this area:
 <ul>
-<li><strong>Compound Characterization</strong>:
+<li>acetylcholinesterase(AChE) as the target</li>
+<li>data: AChE IC50 data from the NPASS database</li>
+<li>NaFM model is fine-tuned on this data</li>
+<li>Fine-tuned model is used to predict AChE activity for all COCONUT NP</li>
+<li>The 600 molecules with the best predicted activity are tested in virtual screening (docking)</li>
+<li>as control, 600 randomly chosen NP are also tested</li>
+<li>Figure 5 a: docking scores for the two groups
 <ul>
-<li>Structures sourced using PubChemPy and manually drawn using tools like ChemDraw and <a href="http://kingdraw.cn/">KingDraw</a> .<br>
-</li>
-<li>Classification was performed using ClassyFire and ADMET predictions with ADMETlab 2.0.</li>
+<li>the two distributions are significantly different, the NP with predicted activity are significantly better than the randomly chosen ones</li>
+<li>Model-selected NP scores have a higher mean and lower variance</li>
 </ul></li>
-<li><strong>Taxonomic Information</strong>:
-<ul>
-<li>Endophyte taxonomy derived from NCBI Taxonomy.<br>
-</li>
-<li>Host plant and geographic data integrated for added context.</li>
-</ul></li>
-<li><strong>Biological Activity Data</strong>:
-<ul>
-<li>Categorized into antibacterial, cytotoxic, anti-inflammatory, etc.<br>
-</li>
-<li>Detailed bioactivity records linked to targets, including proteins, cell lines, and organisms.</li>
 </ul></li>
 </ul>
-<hr>
-</section>
-</section>
-<section id="database-content-and-statistics" class="level2">
-<h2 class="anchored" data-anchor-id="database-content-and-statistics">Database Content and Statistics</h2>
+<p><br>
+<img src="NaFM_2025_images/Fig5a.png" class="img-fluid quarto-figure quarto-figure-center" width="600" alt="Figure 5a. Docking scores of model ranked top 0.1% (approximately 600 molecules) of acetylcholinesterase inhibitors, along with 600 randomly selected molecules. The histogram and distribution of docking scores with acetylcholinesterase are shown in the figure. Orange represents the model-selected group, while blue represents the random group. The x-axis represents the docking score, and the y-axis represents frequency. A lower docking score (more left-shifted distribution) indicates higher inhibitory activity. Docking was performed using Schrödinger Maestro, with detailed settings provided in the Supplementary section 1.3. source: (Ding et al. 2025) CC-BY 4.0"><br>
+</p>
 <ul>
-<li><strong>Chemical Diversity</strong>:
+<li>Figure 5c shows some COCONUT NP with high model and docking scores, alongside the most structurally similar NP from the fine-tuning set (NPASS)
 <ul>
-<li>21 chemical superclasses represented.<br>
-</li>
-<li>Majority of compounds adhere to Lipinski’s “Rule of Five.”</li>
-</ul></li>
-<li><strong>Taxonomic Diversity</strong>:<br>
-</li>
-</ul>
-<pre class="mermaid"><code>pie title Distribution
-    "Fungi" : 87.5
-    "Bacteria" : 12.5</code></pre>
-<ul>
-<li><strong>Bioactivity Data</strong>:</li>
-</ul>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 18%">
-<col style="width: 28%">
-<col style="width: 16%">
-<col style="width: 20%">
-<col style="width: 16%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">📊 Activity records</th>
-<th style="text-align: center;">🎯 Bioactivity Types</th>
-<th style="text-align: center;">🧬 Proteins</th>
-<th style="text-align: center;">🔬 Cell Lines</th>
-<th style="text-align: center;">🌍 Species</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><strong>9,457</strong></td>
-<td style="text-align: center;"><strong>86</strong></td>
-<td style="text-align: center;"><strong>94</strong></td>
-<td style="text-align: center;"><strong>282</strong></td>
-<td style="text-align: center;"><strong>910</strong></td>
-</tr>
-</tbody>
-</table>
-<hr>
-</section>
-<section id="utility-and-discussion" class="level2">
-<h2 class="anchored" data-anchor-id="utility-and-discussion">Utility and Discussion</h2>
-<section id="web-interface" class="level3">
-<h3 class="anchored" data-anchor-id="web-interface">Web Interface</h3>
-<ul>
-<li><strong>Search Capabilities</strong>:
-<ul>
-<li>Advanced search with Boolean operators for NPs, targets, and bioactivities.<br>
-</li>
-<li>Structure search enabled through Ketcher molecular editor.</li>
+<li>demonstrated ability of the model to generalise or find novel actives</li>
 </ul></li>
 </ul>
-<p><img src="https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs13321-023-00779-9/MediaObjects/13321_2023_779_Fig4_HTML.png?as=webp" style="width: 800px;"></p>
-<ul>
-<li><strong>Browsing Features</strong>:
-<ul>
-<li>Visual tools like bar, tree, and sunburst charts for exploring data.</li>
-</ul></li>
-</ul>
-</section>
-<section id="downloads" class="level3">
-<h3 class="anchored">Downloads</h3>
-<ul>
-<li>All data is available for free download, including Docker support for local deployment.
-<ul>
-<li>Git: https://github.com/boilism/EMNPD</li>
-<li><h2 id="data-httpsfigshare.comarticlesdatasetemnpd_download_data24078474" class="anchored" data-anchor-id="downloads">Data: https://figshare.com/articles/dataset/EMNPD_Download_Data/24078474</h2></li>
-</ul></li>
-</ul>
+<p><br>
+<img src="NaFM_2025_images/Fig5c.png" class="img-fluid quarto-figure quarto-figure-center" width="600" alt="Figure 5c. The first and second columns display several molecules with high model scores and good docking activity, along with their most similar positive counterparts encountered during the model fine-tuning process. The third column shows the maximum common substructure between these two molecules. source: (Ding et al. 2025) CC-BY 4.0"><br>
+</p>
 </section>
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>Endophytic microorganisms are a rich source of novel secondary metabolites, known for their diverse structures and significant biological activities, particularly in antimicrobial and anticancer research. Despite the frequent discovery of new and active natural products (NPs) from these microorganisms, the integration of this data into large-scale databases is often slow, highlighting the importance of efficient information sharing for research and development.</p>
-<p>To address this EMNPD was developed. This database provides extensive data and interactive visualisation tools to aid in exploring the chemical diversity of these NPs. It is fully searchable and downloadable, designed to support various research perspectives. As interest in endophytic microorganisms continues to grow, EMNPD aims to become an essential resource for advancing drug discovery.</p>
+<ul>
+<li>proposed NaFM, a foundation model for small molecule natural products</li>
+<li>Generated using novel pre-training strategies</li>
+<li>NaFM has been evaluated across a range of tasks, including upstream genome mining, biological source identification, structural classification, metabolic pathway prediction, and activity prediction and screening.</li>
+<li>On most of the benchmarks, NaFM outperforms both traditional molecular fingerprints and deep-learning based pre-training frameworks</li>
+<li>It is expected that NaFM can accelerate the NP drug discovery process in multiple stages</li>
+</ul>
+</section>
+<section id="personal-comments-questions-to-discuss" class="level2">
+<h2 class="anchored" data-anchor-id="personal-comments-questions-to-discuss">Personal comments / questions to discuss</h2>
+<ul>
+<li>There is no code available, apparently; sad</li>
+<li>Larger text sections, e.g.&nbsp;the abstract, are quite hard to understand, i.e.&nbsp;there are many “nice” words but no details</li>
+<li>Is the presented model really a “foundation model” and not rather an “encoder”?</li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-chandrasekhar_coconut_2024" class="csl-entry" role="listitem">
+Chandrasekhar, Venkata, Kohulan Rajan, Sri Ram Sagar Kanakam, Nisha Sharma, Viktor Weißenborn, Jonas Schaub, and Christoph Steinbeck. 2024. <span>“<span>COCONUT</span> 2.0: A Comprehensive Overhaul and Curation of the Collection of Open Natural Products Database.”</span> <em>Nucleic Acids Research</em>, November, gkae1063. <a href="https://doi.org/10.1093/nar/gkae1063">https://doi.org/10.1093/nar/gkae1063</a>.
+</div>
 <div id="ref-ding_nafm_2025" class="csl-entry" role="listitem">
 Ding, Yuheng, Yusong Wang, Bo Qiang, Jie Yu, Qi Li, Yiran Zhou, and Zhenmin Liu. 2025. <span>“<span>NaFM</span>: <span>Pre</span>-Training a <span>Foundation</span> <span>Model</span> for <span>Small</span>-<span>Molecule</span> <span>Natural</span> <span>Products</span>.”</span> <a href="https://doi.org/10.48550/ARXIV.2503.17656">https://doi.org/10.48550/ARXIV.2503.17656</a>.
 </div>
 <div id="ref-https://doi.org/10.48550/arxiv.2410.11527" class="csl-entry" role="listitem">
 Guo, Jeff, and Philippe Schwaller. 2024. <span>“It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.”</span> arXiv. <a href="https://doi.org/10.48550/ARXIV.2410.11527">https://doi.org/10.48550/ARXIV.2410.11527</a>.
 </div>
+<div id="ref-kim_npclassifier_2021" class="csl-entry" role="listitem">
+Kim, Hyun Woo, Mingxun Wang, Christopher A. Leber, Louis-Félix Nothias, Raphael Reher, Kyo Bin Kang, Justin J. J. Van Der Hooft, Pieter C. Dorrestein, William H. Gerwick, and Garrison W. Cottrell. 2021. <span>“<span>NPClassifier</span>: <span>A</span> <span>Deep</span> <span>Neural</span> <span>Network</span>-<span>Based</span> <span>Structural</span> <span>Classification</span> <span>Tool</span> for <span>Natural</span> <span>Products</span>.”</span> <em>Journal of Natural Products</em> 84 (11): 2795–2807. <a href="https://doi.org/10.1021/acs.jnatprod.1c00399">https://doi.org/10.1021/acs.jnatprod.1c00399</a>.
+</div>
 <div id="ref-landrum_lwreg_2024" class="csl-entry" role="listitem">
 Landrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. <span>“Lwreg: <span>A</span> <span>Lightweight</span> <span>System</span> for <span>Chemical</span> <span>Registration</span> and <span>Data</span> <span>Storage</span>.”</span> <em>Journal of Chemical Information and Modeling</em> 64 (16): 6247–52. <a href="https://doi.org/10.1021/acs.jcim.4c01133">https://doi.org/10.1021/acs.jcim.4c01133</a>.
 </div>
+<div id="ref-mistry_pfam_2021" class="csl-entry" role="listitem">
+Mistry, Jaina, Sara Chuguransky, Lowri Williams, Matloob Qureshi, Gustavo A Salazar, Erik L L Sonnhammer, Silvio C E Tosatto, et al. 2021. <span>“Pfam: <span>The</span> Protein Families Database in 2021.”</span> <em>Nucleic Acids Research</em> 49 (D1): D412–19. <a href="https://doi.org/10.1093/nar/gkaa913">https://doi.org/10.1093/nar/gkaa913</a>.
+</div>
 <div id="ref-orsi2024one" class="csl-entry" role="listitem">
 Orsi, Markus, and Jean-Louis Reymond. 2024. <span>“One Chiral Fingerprint to Find Them All.”</span> <em>Journal of Cheminformatics</em> 16 (1): 53.
+</div>
+<div id="ref-probst_visualization_2020" class="csl-entry" role="listitem">
+Probst, Daniel, and Jean-Louis Reymond. 2020. <span>“Visualization of Very Large High-Dimensional Data Sets as Minimum Spanning Trees.”</span> <em>Journal of Cheminformatics</em> 12 (1): 12. <a href="https://doi.org/10.1186/s13321-020-0416-x">https://doi.org/10.1186/s13321-020-0416-x</a>.
+</div>
+<div id="ref-rutz_lotus_2022" class="csl-entry" role="listitem">
+Rutz, Adriano, Maria Sorokina, Jakub Galgonek, Daniel Mietchen, Egon Willighagen, Arnaud Gaudry, James G Graham, et al. 2022. <span>“The <span>LOTUS</span> Initiative for Open Knowledge Management in Natural Products Research.”</span> <em>eLife</em> 11 (May): e70780. <a href="https://doi.org/10.7554/eLife.70780">https://doi.org/10.7554/eLife.70780</a>.
+</div>
+<div id="ref-stokes_deep_2020" class="csl-entry" role="listitem">
+Stokes, Jonathan M., Kevin Yang, Kyle Swanson, Wengong Jin, Andres Cubillos-Ruiz, Nina M. Donghia, Craig R. MacNair, et al. 2020. <span>“A <span>Deep</span> <span>Learning</span> <span>Approach</span> to <span>Antibiotic</span> <span>Discovery</span>.”</span> <em>Cell</em> 180 (4): 688–702.e13. <a href="https://doi.org/10.1016/j.cell.2020.01.021">https://doi.org/10.1016/j.cell.2020.01.021</a>.
+</div>
+<div id="ref-terlouw_mibig_2023" class="csl-entry" role="listitem">
+Terlouw, Barbara R, Kai Blin, Jorge C Navarro-Muñoz, Nicole E Avalon, Marc G Chevrette, Susan Egbert, Sanghoon Lee, et al. 2023. <span>“<span>MIBiG</span> 3.0: A Community-Driven Effort to Annotate Experimentally Validated Biosynthetic Gene Clusters.”</span> <em>Nucleic Acids Research</em> 51 (D1): D603–10. <a href="https://doi.org/10.1093/nar/gkac1049">https://doi.org/10.1093/nar/gkac1049</a>.
+</div>
+<div id="ref-xu_composite_2024" class="csl-entry" role="listitem">
+Xu, Qisong, Alan K. X. Tan, Liangfeng Guo, Yee Hwee Lim, Dillon W. P. Tay, and Shi Jun Ang. 2024. <span>“Composite Machine Learning Strategy for Natural Products Taxonomical Classification and Structural Insights.”</span> <em>Digital Discovery</em> 3 (11): 2192–2200. <a href="https://doi.org/10.1039/D4DD00155A">https://doi.org/10.1039/D4DD00155A</a>.
 </div>
 </div>
 </section>
@@ -1078,13 +1290,13 @@ Orsi, Markus, and Jean-Louis Reymond. 2024. <span>“One Chiral Fingerprint to F
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../papers/coconut.html" class="pagination-link" aria-label="Training Large Language Models to Reason in a Continuous Latent Space">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Training Large Language Models to Reason in a Continuous Latent Space</span></span>
+      <a href="../papers/paper_bench_2025.html" class="pagination-link" aria-label="PaperBench: Evaluating AI’s Ability to Replicate AI Research">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">PaperBench: Evaluating AI’s Ability to Replicate AI Research</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../papers/light-rag.html" class="pagination-link" aria-label="🚀 LightRAG">
-        <span class="nav-page-text"><span class="chapter-title">🚀 LightRAG</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../papers/chen_reasoning.html" class="pagination-link" aria-label="Reasoning Models Don’t Always Say What They Think">
+        <span class="nav-page-text"><span class="chapter-title">Reasoning Models Don’t Always Say What They Think</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
