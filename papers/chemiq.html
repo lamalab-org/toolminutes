@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Adrian Mirza">
+<meta name="author" content="Chandu Nainala">
 <meta name="dcterms.date" content="2025-05-26">
 
-<title>ChemDFM: A Large Language Foundation Model for Chemistry – Lamalab Tool and Paper Notes</title>
+<title>ChemIQ: Assessing the Chemical Reasoning Abilities of Large Language Models – Lamalab Tool and Paper Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -52,8 +52,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../papers/NaFM_2025.html" rel="next">
-<link href="../papers/paper_bench_2025.html" rel="prev">
+<link href="../papers/chen_reasoning.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -104,7 +103,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/chemical_reaction_acceleration.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/chemdfm.html"><span class="chapter-title"></span></a><a href="https://arxiv.org/pdf/2401.14818">ChemDFM: A Large Language Foundation Model for Chemistry</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/chemical_reaction_acceleration.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/chemiq.html"><span class="chapter-title">ChemIQ: Assessing the Chemical Reasoning Abilities of Large Language Models</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -256,7 +255,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/tango.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design <span class="citation" data-cites="https://doi.org/10.48550/arxiv.2410.11527">(</span></span></a><a href="#ref-https://doi.org/10.48550/arxiv.2410.11527" role="doc-biblioref">J. Guo and Schwaller 2024</a>)
+  <a href="../papers/tango.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design <span class="citation" data-cites="https://doi.org/10.48550/arxiv.2410.11527">(</span></span></a><a href="#ref-https://doi.org/10.48550/arxiv.2410.11527" role="doc-biblioref">Guo and Schwaller 2024</a>)
   </div>
 </li>
           <li class="sidebar-item">
@@ -301,7 +300,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/chemdfm.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title"></span></a><a href="https://arxiv.org/pdf/2401.14818">ChemDFM: A Large Language Foundation Model for Chemistry</a>
+  <a href="../papers/chemdfm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title"></span></a><a href="https://arxiv.org/pdf/2401.14818">ChemDFM: A Large Language Foundation Model for Chemistry</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -316,7 +315,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../papers/chemiq.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">ChemIQ: Assessing the Chemical Reasoning Abilities of Large Language Models</span></a>
+  <a href="../papers/chemiq.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">ChemIQ: Assessing the Chemical Reasoning Abilities of Large Language Models</span></a>
   </div>
 </li>
       </ul>
@@ -331,10 +330,30 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#context-and-prior-work" id="toc-context-and-prior-work" class="nav-link active" data-scroll-target="#context-and-prior-work">Context and prior work</a></li>
-  <li><a href="#why-this-paper-matters" id="toc-why-this-paper-matters" class="nav-link" data-scroll-target="#why-this-paper-matters">Why this paper matters?</a></li>
-  <li><a href="#model-performance" id="toc-model-performance" class="nav-link" data-scroll-target="#model-performance">Model performance</a></li>
-  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
+  <li><a href="#why-did-i-choose-this-paper" id="toc-why-did-i-choose-this-paper" class="nav-link active" data-scroll-target="#why-did-i-choose-this-paper">Why did I choose this paper?</a></li>
+  <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">Motivation</a></li>
+  <li><a href="#terminology" id="toc-terminology" class="nav-link" data-scroll-target="#terminology">Terminology</a></li>
+  <li><a href="#main-research-questions" id="toc-main-research-questions" class="nav-link" data-scroll-target="#main-research-questions">Main research questions</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a>
+  <ul class="collapse">
+  <li><a href="#benchmark-design-chemiq" id="toc-benchmark-design-chemiq" class="nav-link" data-scroll-target="#benchmark-design-chemiq">Benchmark Design (ChemIQ)</a></li>
+  <li><a href="#question-categories" id="toc-question-categories" class="nav-link" data-scroll-target="#question-categories">Question Categories</a></li>
+  <li><a href="#models-evaluated" id="toc-models-evaluated" class="nav-link" data-scroll-target="#models-evaluated">Models Evaluated</a></li>
+  <li><a href="#evaluation-metrics" id="toc-evaluation-metrics" class="nav-link" data-scroll-target="#evaluation-metrics">Evaluation Metrics</a></li>
+  </ul></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
+  <ul class="collapse">
+  <li><a href="#overall-performance" id="toc-overall-performance" class="nav-link" data-scroll-target="#overall-performance">Overall Performance</a></li>
+  <li><a href="#key-findings-by-task-category" id="toc-key-findings-by-task-category" class="nav-link" data-scroll-target="#key-findings-by-task-category">Key Findings by Task Category</a></li>
+  <li><a href="#impact-of-smiles-representation" id="toc-impact-of-smiles-representation" class="nav-link" data-scroll-target="#impact-of-smiles-representation">Impact of SMILES Representation</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a>
+  <ul class="collapse">
+  <li><a href="#major-achievements" id="toc-major-achievements" class="nav-link" data-scroll-target="#major-achievements">Major Achievements</a></li>
+  <li><a href="#current-limitations" id="toc-current-limitations" class="nav-link" data-scroll-target="#current-limitations">Current Limitations</a></li>
+  <li><a href="#future-implications" id="toc-future-implications" class="nav-link" data-scroll-target="#future-implications">Future Implications</a></li>
+  <li><a href="#transformational-impact" id="toc-transformational-impact" class="nav-link" data-scroll-target="#transformational-impact">Transformational Impact</a></li>
+  </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
@@ -342,9 +361,9 @@ div.csl-indent {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/chemical_reaction_acceleration.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/chemdfm.html"><span class="chapter-title"></span></a><a href="https://arxiv.org/pdf/2401.14818">ChemDFM: A Large Language Foundation Model for Chemistry</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../papers/chemical_reaction_acceleration.html">Papers</a></li><li class="breadcrumb-item"><a href="../papers/chemiq.html"><span class="chapter-title">ChemIQ: Assessing the Chemical Reasoning Abilities of Large Language Models</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title"><a href="https://arxiv.org/pdf/2401.14818">ChemDFM: A Large Language Foundation Model for Chemistry</a></span></h1>
+<h1 class="title"><span class="chapter-title">ChemIQ: Assessing the Chemical Reasoning Abilities of Large Language Models</span></h1>
 </div>
 
 
@@ -354,7 +373,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Adrian Mirza </p>
+             <p>Chandu Nainala </p>
           </div>
   </div>
     
@@ -373,67 +392,221 @@ div.csl-indent {
 </header>
 
 
-<section id="context-and-prior-work" class="level2">
-<h2 class="anchored" data-anchor-id="context-and-prior-work">Context and prior work</h2>
-<p>Prior work includes Darwin from Xie et al. <span class="citation" data-cites="xie2023darwin">(<a href="#ref-xie2023darwin" role="doc-biblioref">Xie et al. 2023</a>)</span>, that finetuned the Llama-7B model <span class="citation" data-cites="touvron2023llama">(<a href="#ref-touvron2023llama" role="doc-biblioref">Touvron et al. 2023</a>)</span> on several chemistry tasks. Other works include ChemLLM <span class="citation" data-cites="zhang2024chemllm0">(<a href="#ref-zhang2024chemllm0" role="doc-biblioref">Zhang et al. 2024</a>)</span> from Zhang et al.&nbsp;that finetuned the InternLM2-Base-7B model <span class="citation" data-cites="cai2024internlm2">(<a href="#ref-cai2024internlm2" role="doc-biblioref">Cai et al. 2024</a>)</span> on 9 different tasks. Other works followed a similar line, with truly generalist chemical LLMs still missing from the literature.</p>
+<p>Authors: - Nicholas T. Runcie (Department of Statistics, University of Oxford) - Charlotte M. Deane (Department of Statistics, University of Oxford) - Fergus Imrie (Department of Statistics, University of Oxford)</p>
+<p>Date: 2025-05-12 · arXiv: <a href="https://arxiv.org/abs/2505.07735v1">2505.07735v1</a></p>
+<hr>
+<section id="why-did-i-choose-this-paper" class="level2">
+<h2 class="anchored" data-anchor-id="why-did-i-choose-this-paper">Why did I choose this paper?</h2>
+<ul>
+<li>Interested in the potential of LLMs to interpret and extract chemical information from scientific texts.</li>
+<li>Evaluating the impact of Cheminformatics MCP server (tools) on enhancing LLMs’ chemical understanding, compared to reasoning-enabled LLMs.</li>
+<li>Curating a set of Chemistry focused tasks that current LLMs struggle with, to inform the development of tool-augmented or agentic workflows for chemical data extraction.</li>
+</ul>
 </section>
-<section id="why-this-paper-matters" class="level2">
-<h2 class="anchored" data-anchor-id="why-this-paper-matters">Why this paper matters?</h2>
-<p>This is one of the few attempts to train a chemistry-specific foundation models from the pre-training stage, all the way to fine-tuning. The authors showed that specialized data, can help relatively small models like Llama-13B outperform frontier models like GPT-4 on specialized tasks. While again, the tasks are extremely specific, the sheer scale of 34B tokens in the pretraining is important, since it is unprecedented.</p>
+<section id="motivation" class="level2">
+<h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
+<ul>
+<li><strong>Limited understanding of LLM chemical capabilities</strong>: Previous studies showed LLMs struggle with molecular structure interpretation, restricting their use in chemistry</li>
+<li><strong>Gap in evaluation methods</strong>: Existing chemistry benchmarks primarily use multiple-choice formats that can be solved through elimination rather than true chemical reasoning</li>
+<li><strong>Need for molecular comprehension</strong>: LLMs that can directly interpret molecular structures would substantially advance both standalone LLMs and LLM-based systems</li>
+<li><strong>Emergence of reasoning models</strong>: Recent development of reasoning models (o1, o3-mini, DeepSeek R1) showing substantial improvements in mathematics and science benchmarks</li>
+<li><strong>Potential for scientific discovery</strong>: LLMs could aid in generating novel hypotheses, planning experiments, and interpreting data if they develop sufficient chemical understanding</li>
+</ul>
 </section>
-<section id="model-performance" class="level2">
-<h2 class="anchored" data-anchor-id="model-performance">Model performance</h2>
-<p>The model seems to exhibit good zero-shot performance compared to GPT-4 on the molecule captioning tasks. The authors indicated a similar performance increase for other tasks like SMILES-to-IUPAC, which is at 0% for GPT-4, and at 4% for ChemDFM. While in the real world, and when compared to more specialist models like STOUT, the model does not provide significant utility.</p>
+<section id="terminology" class="level2">
+<h2 class="anchored" data-anchor-id="terminology">Terminology</h2>
+<ul>
+<li><strong>ChemIQ</strong>: Novel benchmark consisting of 796 questions assessing core concepts in organic chemistry, focused on molecular comprehension and chemical reasoning</li>
+<li><strong>SMILES (Simplified Molecular Input Line Entry System)</strong>: Text-based molecular representation format used throughout the benchmark</li>
+<li><strong>Reasoning models</strong>: LLMs explicitly trained to optimize Chain-of-Thought (CoT) reasoning across multiple domains (e.g., o3-mini, o1, DeepSeek R1)</li>
+<li><strong>Canonical vs.&nbsp;Randomized SMILES</strong>: Different representations of the same molecule - canonical follows standard rules, randomized uses different atom ordering</li>
+<li><strong>IUPAC naming</strong>: International Union of Pure and Applied Chemistry standardized naming convention for molecules</li>
+<li><strong>NMR structure elucidation</strong>: Process of determining molecular structure from Nuclear Magnetic Resonance spectroscopy data</li>
+<li><strong>SAR (Structure-Activity Relationship)</strong>: Analysis of how molecular structure affects biological activity or properties</li>
+</ul>
+</section>
+<section id="main-research-questions" class="level2">
+<h2 class="anchored" data-anchor-id="main-research-questions">Main research questions</h2>
+<ol type="1">
+<li><strong>Can reasoning models directly perform chemistry tasks?</strong>
+<ul>
+<li>Investigation of whether LLMs can understand molecular structures without external tools</li>
+</ul></li>
+<li><strong>What is the impact of reasoning on chemical intelligence?</strong>
+<ul>
+<li>Comparison of reasoning models (o3-mini low/medium/high) vs.&nbsp;non-reasoning models (GPT-4o)</li>
+</ul></li>
+<li><strong>Can LLMs interpret molecular representations?</strong>
+<ul>
+<li>Assessment of ability to extract graph-based features from SMILES strings</li>
+<li>Evaluation of atom counting, ring counting, shortest path determination, and atom mapping</li>
+</ul></li>
+<li><strong>Can LLMs translate molecular structures to chemical concepts?</strong>
+<ul>
+<li>Testing conversion of SMILES strings to IUPAC names (historically near-zero accuracy for LLMs)</li>
+</ul></li>
+<li><strong>Do LLMs demonstrate advanced chemical reasoning?</strong>
+<ul>
+<li>Evaluation of structure-activity relationship analysis</li>
+<li>Assessment of reaction prediction capabilities</li>
+<li>Testing of NMR structure elucidation from spectroscopic data</li>
+</ul></li>
+</ol>
+</section>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">Methods</h2>
+<section id="benchmark-design-chemiq" class="level3">
+<h3 class="anchored" data-anchor-id="benchmark-design-chemiq">Benchmark Design (ChemIQ)</h3>
+<ul>
+<li><strong>796 questions</strong> across eight distinct categories</li>
+<li><strong>Algorithmically generated</strong> questions allowing for reproducibility and expansion</li>
+<li><strong>Short-answer format</strong> requiring construction rather than selection of responses</li>
+<li><strong>Three core competencies tested</strong>:
+<ol type="1">
+<li>Interpreting molecular structures</li>
+<li>Translating molecular structures to chemical concepts</li>
+<li>Reasoning about molecules using chemical theory</li>
+</ol></li>
+</ul>
+</section>
+<section id="question-categories" class="level3">
+<h3 class="anchored" data-anchor-id="question-categories">Question Categories</h3>
+<ol type="1">
+<li><strong>Carbon counting</strong> (n=50): Count carbon atoms in SMILES strings</li>
+<li><strong>Ring counting</strong> (n=48): Determine number of rings in molecules</li>
+<li><strong>Shortest path</strong> (n=108): Calculate bonds between dummy atoms</li>
+<li><strong>Atom mapping</strong> (n=184): Map atoms between different SMILES representations</li>
+<li><strong>SMILES to IUPAC</strong> (n=200): Generate IUPAC names from SMILES</li>
+<li><strong>SAR Analysis</strong> (n=40): Predict molecular scores from structure-activity data</li>
+<li><strong>Product of reaction</strong> (n=90): Predict reaction products as SMILES</li>
+<li><strong>NMR Elucidation</strong> (n=76): Generate SMILES from NMR spectroscopic data</li>
+</ol>
+<p><img src="chemiq/image1.png" class="img-fluid" alt="Question categories in the ChemIQ benchmark"> Figure 1: Question categories in the ChemIQ benchmark. The number of questions in each category is shown in the panel header, and * indicates the set contains 50% canonical and 50% randomized SMILES. Full prompts and reasoning excerpts generated by o3-mini can be found in Appendix D.</p>
+</section>
+<section id="models-evaluated" class="level3">
+<h3 class="anchored" data-anchor-id="models-evaluated">Models Evaluated</h3>
+<ul>
+<li><strong>GPT-4o</strong> (baseline non-reasoning model)</li>
+<li><strong>o3-mini-low, o3-mini-medium, o3-mini-high</strong> (reasoning models with increasing reasoning effort)</li>
+</ul>
+</section>
+<section id="evaluation-metrics" class="level3">
+<h3 class="anchored" data-anchor-id="evaluation-metrics">Evaluation Metrics</h3>
+<ul>
+<li><strong>Success rate</strong> across question categories</li>
+<li><strong>Reasoning token usage</strong> to assess computational cost</li>
+<li><strong>Statistical significance testing</strong> using McNemar tests</li>
+</ul>
+</section>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<section id="overall-performance" class="level3">
+<h3 class="anchored" data-anchor-id="overall-performance">Overall Performance</h3>
+<ul>
+<li><strong>Reasoning models substantially outperformed non-reasoning models</strong>: o3-mini achieved 28%-59% accuracy vs.&nbsp;GPT-4o’s 7%</li>
+<li><strong>Higher reasoning levels consistently improved performance</strong> across all tasks</li>
+<li><strong>Clear correlation between reasoning effort and success rate</strong></li>
+</ul>
+<p><img src="chemiq/image2.png" class="img-fluid" alt="Summary of model performance"> Figure 2: Summary of model performance. Results show a trend that increased reasoning correlates with higher success rates. A summary of question prompts is provided in Figure 1, and full prompts with reasoning excerpts are listed in Appendix B. (A) Radar plot showing performance by question category. (B) Average success rate across all benchmark questions and the average number of reasoning tokens used per question. Vertical error bars show 95% confidence interval. Adjacent bars were compared using a one-tailed McNemar test. Significance levels are denoted as: ∗p &lt; 0.05, ∗∗p &lt; 0.01, and ∗∗∗p &lt; 0.001.</p>
+</section>
+<section id="key-findings-by-task-category" class="level3">
+<h3 class="anchored" data-anchor-id="key-findings-by-task-category">Key Findings by Task Category</h3>
+<section id="molecular-structure-interpretation" class="level4">
+<h4 class="anchored" data-anchor-id="molecular-structure-interpretation">Molecular Structure Interpretation</h4>
+<ul>
+<li><strong>Carbon counting</strong>: o3-mini-high achieved 92% vs.&nbsp;GPT-4o’s 4%</li>
+<li><strong>Ring counting</strong>: Perfect performance (100%) for medium and high reasoning models</li>
+<li><strong>Shortest path</strong>: 89% accuracy for canonical SMILES, 56% for randomized SMILES</li>
+<li><strong>Atom mapping</strong>: 52% accuracy, with performance decreasing for larger molecules</li>
+</ul>
+<p><img src="chemiq/image3.png" class="img-fluid" alt="Ability to understand molecular structures from SMILES"> Figure 3: (A) Models were prompted to find the shortest distance between two atoms in a SMILES string. Performance was substantially lower when prompted with random SMILES as opposed to canonical SMILES. (B) Models were given two randomized SMILES strings representing the same molecules, and were prompted to map the atoms from one to the other. Performance decreased for larger molecules. Vertical error bars show 95% confidence interval. Adjacent bars were compared using a one-tailed McNemar test. Significance levels are denoted as: ∗p &lt; 0.05, ∗∗p &lt; 0.01, and ∗∗∗p &lt; 0.001.</p>
+</section>
+<section id="smiles-to-iupac-translation" class="level4">
+<h4 class="anchored" data-anchor-id="smiles-to-iupac-translation">SMILES to IUPAC Translation</h4>
+<ul>
+<li><strong>Historic breakthrough</strong>: First general-purpose LLM to demonstrate meaningful success</li>
+<li><strong>o3-mini-high achieved 29% accuracy</strong> on ZINC dataset molecules</li>
+<li><strong>Functional group identification</strong>: ~80% accuracy for common functional groups</li>
+<li><strong>Locant numbering</strong>: High success for simple scaffolds (benzene, pyridine), lower for fused systems</li>
+</ul>
+<p><img src="chemiq/image4.png" class="img-fluid" alt="Performance on the SMILES to IUPAC questions"> Figure 4: Performance on the SMILES to IUPAC questions. The o3-mini model can successfully write IUPAC names of some molecules. The GPT-4o model answered all questions incorrectly. ZINC molecules were sampled from the ZINC dataset; correctly named molecules are showed in Figure 8. Functional group questions were constructed by attaching 6 different functional groups to a benzene scaffold (Figure 6). Locant numbering questions were constructed by attaching 3 halogens to the listed scaffolds (Figure 7). Names were accepted as correct if they could be parsed to the intended molecule by the OPSIN tool [30]. Results shown are for canonical SMILES; see Table 3 and Table 5 for randomized SMILES. Vertical error bars show 95% confidence interval. Adjacent bars were compared using a one-tailed McNemar test. Significance levels are denoted as: ∗p &lt; 0.05, ∗∗p &lt; 0.01, and ∗∗∗p &lt; 0.001.</p>
+</section>
+<section id="chemical-reasoning-tasks" class="level4">
+<h4 class="anchored" data-anchor-id="chemical-reasoning-tasks">Chemical Reasoning Tasks</h4>
+<ul>
+<li><strong>SAR analysis</strong>: Perfect performance (100%) for both medium and high reasoning models</li>
+<li><strong>Reaction prediction</strong>: 56% accuracy for o3-mini-high vs.&nbsp;18% for GPT-4o</li>
+<li><strong>NMR structure elucidation</strong>: 74% accuracy for small molecules (≤10 heavy atoms)</li>
+</ul>
+<p><img src="chemiq/image5.png" class="img-fluid" alt="Example structure activity relationship question"> Figure 5: Example structure activity relationship question. Molecules were constructed by attaching three halogens at three positions on a benzene scaffold. Each substituent at each position was assigned a random integer value, and the total score was calculated as the sum of these individual values. The task is to determine the score of the unknown molecule.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./chemdfm/Figure 1.png" class="img-fluid figure-img"></p>
-<figcaption>Model performance on the molecule captioning task. Star indicates reproduced results from Guo et al. <span class="citation" data-cites="guo2023can">(<a href="#ref-guo2023can" role="doc-biblioref">T. Guo et al. 2023</a>)</span></figcaption>
-</figure>
-</div>
-<p>Moreover, they showed that the model exhibits good conversational capabilities, and the ability to correct its mistakes. For instance, in the snipped below, the model improves its wrong answer upon a correction coming from the user.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./chemdfm/Figure 2.png" class="img-fluid figure-img"></p>
-<figcaption>An example of a model’s capability to correct itself towards the right answer, after being pointed out as a wrong by the user.</figcaption>
+<p><img src="chemiq/image6.png" class="img-fluid figure-img"></p>
+<figcaption>NMR structure elucidation question</figcaption>
 </figure>
 </div>
 </section>
-<section id="limitations" class="level2">
-<h2 class="anchored" data-anchor-id="limitations">Limitations</h2>
-<p>The authors were among the first to perform full pretraining on a sizable corpus, but the shortcomings of this work lie in the lack of ablations. For example, while a performance exceeding the one of GPT-4 is promising for the open-source community in general, it is perhaps a very narrow set of tasks. GPT-4 outperformed ChemDFM on the 10-shot task, indicating that just with a simple prompting technique as in-context learning, the frontier model outperforms ChemDFM on the majority of metrics.</p>
-<p>Moreover, ablations of the pre-training should be performed. It is not fully understood from this paper whether the pretraining helped or not, or just fine-tuning is responsible for the spurt in the zero-shot performance.</p>
+</section>
+<section id="impact-of-smiles-representation" class="level3">
+<h3 class="anchored" data-anchor-id="impact-of-smiles-representation">Impact of SMILES Representation</h3>
+<ul>
+<li><strong>Canonical SMILES generally easier</strong> than randomized SMILES</li>
+<li><strong>Performance drop of ~40%</strong> for shortest path questions with randomized SMILES</li>
+<li><strong>Suggests reliance on heuristics</strong> rather than complete molecular graph parsing</li>
+</ul>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<section id="major-achievements" class="level3">
+<h3 class="anchored" data-anchor-id="major-achievements">Major Achievements</h3>
+<ul>
+<li><strong>Paradigm shift</strong>: Latest reasoning models now possess the capability to directly solve advanced chemistry problems without external tools</li>
+<li><strong>SMILES to IUPAC breakthrough</strong>: First general-purpose LLM to generate valid IUPAC names (29% accuracy)</li>
+<li><strong>Advanced reasoning demonstration</strong>: Models show reasoning processes similar to human chemists, particularly in NMR structure elucidation</li>
+<li><strong>Scalable evaluation framework</strong>: ChemIQ provides a robust benchmark for future LLM chemistry assessment</li>
+</ul>
+</section>
+<section id="current-limitations" class="level3">
+<h3 class="anchored" data-anchor-id="current-limitations">Current Limitations</h3>
+<ul>
+<li><strong>Performance ceiling</strong>: Best model (o3-mini-high) achieved only 59% overall accuracy</li>
+<li><strong>Molecular size constraints</strong>: Performance decreases significantly for larger molecules (&gt;20 heavy atoms)</li>
+<li><strong>Reliability concerns</strong>: Models not yet reliable enough for critical chemistry applications</li>
+<li><strong>Representation sensitivity</strong>: Lower performance with randomized vs.&nbsp;canonical SMILES suggests incomplete molecular understanding</li>
+</ul>
+</section>
+<section id="future-implications" class="level3">
+<h3 class="anchored" data-anchor-id="future-implications">Future Implications</h3>
+<ul>
+<li><strong>Scientific discovery potential</strong>: LLMs could serve as general-purpose chemical reasoning agents</li>
+<li><strong>Integration opportunities</strong>: Combination of formal theory and heuristic insights in single inference process</li>
+<li><strong>Safety considerations</strong>: Need for proactive addressing of potential misuse in chemical threat production</li>
+<li><strong>Research directions</strong>: Domain-specific models and LLM-tool augmentation likely to deliver significant performance gains</li>
+</ul>
+</section>
+<section id="transformational-impact" class="level3">
+<h3 class="anchored" data-anchor-id="transformational-impact">Transformational Impact</h3>
+<p>The emerging capabilities point to a new paradigm where LLMs integrate diverse information sources (patents, literature, domain knowledge) into context-aware decision-making, potentially transformational for data-limited chemical domains where conventional machine learning approaches are insufficient.</p>
+</section>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-cai2024internlm2" class="csl-entry" role="listitem">
-Cai, Zheng, Maosong Cao, Haojiong Chen, Kai Chen, Keyu Chen, Xin Chen, Xun Chen, et al. 2024. <span>“InternLM2 Technical Report.”</span> <em>arXiv Preprint arXiv: 2403.17297</em>.
-</div>
 <div id="ref-ding_nafm_2025" class="csl-entry" role="listitem">
 Ding, Yuheng, Yusong Wang, Bo Qiang, Jie Yu, Qi Li, Yiran Zhou, and Zhenmin Liu. 2025. <span>“<span>NaFM</span>: <span>Pre</span>-Training a <span>Foundation</span> <span>Model</span> for <span>Small</span>-<span>Molecule</span> <span>Natural</span> <span>Products</span>.”</span> <a href="https://doi.org/10.48550/ARXIV.2503.17656">https://doi.org/10.48550/ARXIV.2503.17656</a>.
 </div>
 <div id="ref-https://doi.org/10.48550/arxiv.2410.11527" class="csl-entry" role="listitem">
 Guo, Jeff, and Philippe Schwaller. 2024. <span>“It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.”</span> arXiv. <a href="https://doi.org/10.48550/ARXIV.2410.11527">https://doi.org/10.48550/ARXIV.2410.11527</a>.
 </div>
-<div id="ref-guo2023can" class="csl-entry" role="listitem">
-Guo, Taicheng, Bozhao Nan, Zhenwen Liang, Zhichun Guo, Nitesh Chawla, Olaf Wiest, Xiangliang Zhang, et al. 2023. <span>“What Can Large Language Models Do in Chemistry? A Comprehensive Benchmark on Eight Tasks.”</span> <em>Advances in Neural Information Processing Systems</em> 36: 59662–88.
-</div>
 <div id="ref-landrum_lwreg_2024" class="csl-entry" role="listitem">
 Landrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. <span>“Lwreg: <span>A</span> <span>Lightweight</span> <span>System</span> for <span>Chemical</span> <span>Registration</span> and <span>Data</span> <span>Storage</span>.”</span> <em>Journal of Chemical Information and Modeling</em> 64 (16): 6247–52. <a href="https://doi.org/10.1021/acs.jcim.4c01133">https://doi.org/10.1021/acs.jcim.4c01133</a>.
 </div>
 <div id="ref-orsi2024one" class="csl-entry" role="listitem">
 Orsi, Markus, and Jean-Louis Reymond. 2024. <span>“One Chiral Fingerprint to Find Them All.”</span> <em>Journal of Cheminformatics</em> 16 (1): 53.
-</div>
-<div id="ref-touvron2023llama" class="csl-entry" role="listitem">
-Touvron, Hugo, Thibaut Lavril, Gautier Izacard, Xavier Martinet, Marie-Anne Lachaux, Timothée Lacroix, Baptiste Rozière, et al. 2023. <span>“Llama: Open and Efficient Foundation Language Models.”</span> <em>arXiv Preprint arXiv:2302.13971</em>.
-</div>
-<div id="ref-xie2023darwin" class="csl-entry" role="listitem">
-Xie, Tong, Yuwei Wan, Wei Huang, Zhenyu Yin, Yixuan Liu, Shaozhou Wang, Qingyuan Linghu, et al. 2023. <span>“DARWIN Series: Domain Specific Large Language Models for Natural Science.”</span> <em>arXiv Preprint arXiv: 2308.13565</em>.
-</div>
-<div id="ref-zhang2024chemllm0" class="csl-entry" role="listitem">
-Zhang, Di, Wei Liu, Qian Tan, Jingdan Chen, Hang Yan, Yuliang Yan, Jiatong Li, et al. 2024. <span>“ChemLLM: A Chemical Large Language Model.”</span> <em>arXiv Preprint arXiv: 2402.06852</em>.
 </div>
 </div>
 </section>
@@ -840,14 +1013,11 @@ Zhang, Di, Wei Liu, Qian Tan, Jingdan Chen, Hang Yan, Yuliang Yan, Jiatong Li, e
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../papers/paper_bench_2025.html" class="pagination-link" aria-label="PaperBench: Evaluating AI’s Ability to Replicate AI Research">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">PaperBench: Evaluating AI’s Ability to Replicate AI Research</span></span>
+      <a href="../papers/chen_reasoning.html" class="pagination-link" aria-label="Reasoning Models Don’t Always Say What They Think">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Reasoning Models Don’t Always Say What They Think</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../papers/NaFM_2025.html" class="pagination-link" aria-label="NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products [@ding_nafm_2025]">
-        <span class="nav-page-text"><span class="chapter-title">NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products <span class="citation" data-cites="ding_nafm_2025">(</span></span></span></a><a href="#ref-ding_nafm_2025" role="doc-biblioref">Ding et al. 2025</a>) <i class="bi bi-arrow-right-short"></i>
-      
   </div>
 </nav>
 </div> <!-- /content -->

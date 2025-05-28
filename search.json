@@ -2199,237 +2199,6 @@
     ]
   },
   {
-    "objectID": "papers/NaFM_2025.html",
-    "href": "papers/NaFM_2025.html",
-    "title": "NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products (Ding et al. 2025)",
-    "section": "",
-    "text": "Why did I choose this paper?",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>31</span>  <span class='chapter-title'>NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products [@ding_nafm_2025]</span>"
-    ]
-  },
-  {
-    "objectID": "papers/NaFM_2025.html#why-did-i-choose-this-paper",
-    "href": "papers/NaFM_2025.html#why-did-i-choose-this-paper",
-    "title": "NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products (Ding et al. 2025)",
-    "section": "",
-    "text": "Was curious about what a “Foundation Model” in Natural Product Chemistry would be exactly, what could it be used for?",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>31</span>  <span class='chapter-title'>NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products [@ding_nafm_2025]</span>"
-    ]
-  },
-  {
-    "objectID": "papers/NaFM_2025.html#abstract",
-    "href": "papers/NaFM_2025.html#abstract",
-    "title": "NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products (Ding et al. 2025)",
-    "section": "Abstract",
-    "text": "Abstract\n\nStatement: existing deep learning methods for Natural Products (NP) research primarily rely on supervised learning approaches designed for specific downstream tasks\nStatement 2: one-model-for-a-task paradigm often lacks generalizability and leaves significant room for performance improvement\nStatement 3: existing models for chemical problems do not work well for NP\nThis article describes NaFM (“Natural product Foundation Model”), a “pre-trained foundation model” for natural products\nPre-training was done using masked graph learning and contrastive learning (see below)\n“Validation” of the approach was done in 3 experiments using NaFM as a (kind-of) encoder and a Multi-Layer Perceptron (MLP) as a (kind-of) decoder to solve the following tasks:\n\nNP taxonomy classification\nPredicting biological sources of NP\nPredicting bioactivity of NP",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>31</span>  <span class='chapter-title'>NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products [@ding_nafm_2025]</span>"
-    ]
-  },
-  {
-    "objectID": "papers/NaFM_2025.html#introduction",
-    "href": "papers/NaFM_2025.html#introduction",
-    "title": "NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products (Ding et al. 2025)",
-    "section": "Introduction",
-    "text": "Introduction\n\nNP-based drug discovery/design with traditional methods (NP extracts from (cultivated) organisms, bioactivity-guided fractionation, target validation, structure elucidation, etc.) is costly and time-consuming\nWith today’s computing resources and databases like COCONUT, LOTUS, and Supernatural II, NP drug discovery can be sped up, perspectively\nPrior work:\n\n(Xu et al. 2024): predicting kingdom of NP origin species\n(Stokes et al. 2020): predicting antibiotic activities\n(Kim et al. 2021): predicting structural classes and source pathways of NP\nMostly use traditional fingerprints like Morgan/ECFP (Extended Connectivity FingerPrints)\n“these methods could achieve satisfying performance but always suffer when applied to out-of-distribution test data or less-related downstream tasks.”\nThey exclusively employ supervised learning but this is problematic because we do not have a lot of labelled data, and it is often biased (e.g. plant NP are usually overrepresented in NP databases)\n\nPre-training on unlabelled data:\n\nHistorically, often done with SMILES as data, RNN or Transformers as model architectures, and masked language modelling as a pre-training strategy\nLately, Graph Neural Networks (GNN) as model architectures, hence graphs as input data, and pre-training strategies specifically for molecular graphs seem promising\n\nBut no pre-trained foundation model for NP has been developed so far\nSome thoughts on NP structures in general:\n\nNP structures in general are more complex and diverse than synthetic compounds, have specific scaffolds (= ring systems) and functional groups; which is why models trained on synthetic compounds usually struggle with NP\nBut the advantage of NP structures is that they are “evolved”, i.e. they often carry “preserved” substructures like scaffolds which depend on / relate to the source pathway or source organism\nAnd these scaffolds are related to the exhibited bioactivity\nA NP-specific pre-training strategy should therefore focus on scaffolds\n\n\n\n\n\n\nContrastive learning, masked learning and activity cliffs\n\nContrastive learning: in the learned embeddings, similar structures should have similar embeddings, and dissimilar structures should have dissimilar embeddings\nMasked learning: substructures are “masked”, i.e. bond or atom attributes are omitted and have to be predicted by the model based on the context\nExisting approaches use the masking of structures simply as data augmentation and define similarity/dissimilarity for contrastive learning with pairs of the original structures\nActivity cliffs: very similar structures can have completely different (bio-)activities\nActivity cliffs contradict the principles of contrastive learning\nIdea pursued to avoid this here: use the masked structures as “similar” structures to their original, unmasked structures\nAlso: mask whole substructures, not just single atoms and bonds, to make pre-training more complex and hence more successful",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>31</span>  <span class='chapter-title'>NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products [@ding_nafm_2025]</span>"
-    ]
-  },
-  {
-    "objectID": "papers/NaFM_2025.html#model-architecture-and-pre-training",
-    "href": "papers/NaFM_2025.html#model-architecture-and-pre-training",
-    "title": "NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products (Ding et al. 2025)",
-    "section": "Model Architecture and Pre-Training",
-    "text": "Model Architecture and Pre-Training\n\nNaFM: a pre-training framework (“pre-trained foundation model”?) specific to NP\nTwo novel pre-training approaches: scaffold-subgraph reconstruction and scaffold-aware contrastive learning.\n\n\n\n\n\nscaffold-subgraph reconstruction:\n\n(not really evident in the figure, but) masking employed only to substructures of the scaffold of an NP!\natom information (elements / atom types, formal charge, chirality) is masked\nbond information (multiplicity, direction (stereochemistry)) is masked\ntopological information is masked, all bonds in the substructure are removed and instead, the atoms become fully connected\n\n\n\n\n\n\nscaffold-aware contrastive learning:\n\nFor every original input structure, its masked form is set as positive example of a “similar” structure that should be encoded similarly\nthe other molecules and their masked forms are set as negative examples, so “dissimilar” structures that should be encoded dissimilarly\nscaffold similarity is used as a metric for similarity of the complete structures\n\ncosine similarity between the MACCS fingerprints of scaffolds is incorporated into the contrastive learning loss function\n\nThis way, scaffold-subgraph reconstruction and scaffold-aware contrastive learning are combined\n\n\n\n\n\n\nTraining data: COCONUT NP (0.6 mio molecules) ((Chandrasekhar et al. 2024))\nModel architecture: Graph Neural Network (GNN) / Graph Isomorphism Network (GIN) (6 layers, hidden dimensionality of 512)\nMolecule goes in once as original structure and once as scaffold-masked structure\nAverage pooling operation as the readout function to extract a global molecular representation of 1024 dimensions\nProjection head (3 Multi-Layer Perceptrons (MLP)) has to reconstruct/predict the masked properties (atom properties, bond properties, topologies)\na MLP has to embed the original structures and their masked forms (in 256 dimensions) so that original-masked pairs are seen as similar and other structures as dissimilar, based on scaffold similarity (scaffold-aware contrastive learning)\n\n\nGeneral Down-stream Fine-tuning Approach\n\nOriginal contrastive learning head and reconstruction head are replaced with a randomly initialized MLP\nFor all pre-trained baselines (other models that NaFM is compared to below) the same settings as described above are used\nFor baselines trained from scratch, their default configurations are used.",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>31</span>  <span class='chapter-title'>NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products [@ding_nafm_2025]</span>"
-    ]
-  },
-  {
-    "objectID": "papers/NaFM_2025.html#performance-evaluation-on-downstream-tasks",
-    "href": "papers/NaFM_2025.html#performance-evaluation-on-downstream-tasks",
-    "title": "NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products (Ding et al. 2025)",
-    "section": "Performance Evaluation on Downstream Tasks",
-    "text": "Performance Evaluation on Downstream Tasks\n\nNP Taxonomy Classification\n\nData: NPClassifier dataset ((Kim et al. 2021))\n\nBiosynthetic pathway (7 types), super class (70), and class (563) annotations of 77,000 NP structures\n\nFirst experiment on class level\n\nMultiple pre-trained (general, not NP-specific!) molecular models were used as baselines\nAdditionally, Extended Connectivity Fingerprints (ECFP) were used as baseline (authors state that they are currently the most popular choice for encoding NP structures)\nAll baseline models, ECFP, and NaFM were used for training a MLP as described above for NP classification\nResults in Table 1\nNaFM shows top scores for all dataset sizes, especially for small datasets\n\n\nTable 1 The AUPRC results for natural product taxonomy classification compared to other baselines.\n\n\n\n\n\n\n\n\n\n\n\n\nTraining samples per Class\n4\n8\n16\n24\n40\n64\n\n\n\n\nN-Gram\n44.72 ± 1.91\n56.61 ± 0.66\n66.36 ± 1.57\n71.11 ± 0.77\n73.34 ± 1.14\n75.77 ± 0.54\n\n\nPretrainGNN\n44.83 ± 0.82\n61.85 ± 0.78\n75.76 ± 0.62\n80.50 ± 0.17\n85.31 ± 0.36\n87.82 ± 0.13\n\n\nD-MPNN\n46.63 ± 0.23\n60.88 ± 0.48\n75.73 ± 0.12\n80.96 ± 0.24\n86.64 ± 0.44\n89.23 ± 0.79\n\n\nMolCLR\n45.76 ± 1.98\n65.80 ± 1.51\n78.14 ± 1.08\n83.20 ± 0.74\n85.56 ± 0.11\n88.22 ± 0.34\n\n\nMole-BERT\n66.32 ± 1.23\n73.39 ± 0.66\n78.25 ± 0.45\n80.83 ± 0.51\n83.57 ± 0.59\n85.69 ± 0.70\n\n\nECFP\n69.17 ± 0.19\n78.21 ± 0.79\n83.82 ± 0.37\n86.28 ± 0.49\n88.52 ± 0.48\n89.75 ± 0.45\n\n\nGraphMVP\n64.50 ± 0.74\n78.41 ± 0.09\n85.71 ± 0.43\n87.88 ± 0.26\n89.72 ± 0.45\n91.07 ± 0.43\n\n\nNaFM\n70.10 ± 0.92\n79.89 ± 0.07\n87.37 ± 1.51\n89.15 ± 0.22\n90.77 ± 0.26\n91.75 ± 0.47\n\n\n\n\nSecond experiment comparison to NPClassifier\n\nNPClassifier was taken as-is, NaFM was fine-tuned as described above\ncomparison on pathway and super-class levels\nResults in Figure 2 (PR AUC: Area Under the Curve where x is recall and y is precision)\nThe fine-tuned NaFM outperforms NPClassifier\nEspecially for amino acids and peptides (pathway) and Carotenoids (C45), Tetramate alkaloids, Peptide alkaloids, and Anthranilic acid alkaloids (super-classes)\nThe gap in the recognition of γ-lactam-β-lactones can be attributed to the limited data for this category, with only 8 instances out of 78,000 data points\n\n\n\n\n\n\n\nPrediction of Source Organism Kingdom\n\nBased on LOTUS ((Rutz et al. 2022))\n\n130,000 data pairs of NP structure and source organism (and literature reference)\n\nNaFM model was fine-tuned to predict kingdom of NP-producing species (i.e. animals, bacteria, chromista, fungi, and plants)\nFigure 3 shows the resulting embeddings plotted using TMAP (Probst and Reymond 2020)\nNaFM appears to be able to separate the NP of the different kingdoms within the representation space\nKingdom representative structures were obtained by performing a cluster analysis and giving the representative of the biggest cluster, respectively\nWithout the pre-training weights (“from scratch”), the model is not able to separate the classes (larger figure available in SI)\n\n\n\n\n\n\nPrediction of NP-producing Biosynthetic Gene Cluster (BGC) and protein family\n\ndataset a combination of MIBiG (Minimum Information about a Biosynthetic Gene cluster database, (Terlouw et al. 2023)) and Pfam (Protein families database, (Mistry et al. 2021)): 2,000 bacterial and fungal BGCs and their corresponding metabolite structures, plus protein families encoded by the respective BGC\nAgain, NaFM, ECFP, and baseline molecular pre-trained models were fine-tuned on the task of predicting the producing protein family based on an NP structure\nResults in Figure 4 for the top 128 protein families, NaFM again outperforms all others (AUROC: Area Under ROC curve)\n\nNo idea why they call it NaRel instead of NaFM here…\ne.g. ID 65 and 115 are protein families are known to be highly conserved\n\n\n\n\n\n\n\nPredicting bioactivity for specific targets\n\ndata: human protein targets and HIV type- 1 reverse transcriptase activity data from the NPASS natural product activity database\nAs before, NaFM and the baseline models were fine-tuned on this data\nResults in Table 2\nNaFM surpasses all baselines, except for N-Gram on HIV type-1 reverse transcriptase\n\nTable 2 The RMSE results for natural product bioactivity regression compared to other baselines.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTarget Name\nNumber of samples\nN-Gram\nPretrainGNN\nD-MPNN\nMolCLR\nMol-BERT\nECFP\nGraphMVP\nNaFM\n\n\n\n\nPTP1B\n612\n0.8493 ± 0.2623\n0.8652 ± 0.2110\n0.8577 ± 0.2165\n0.9912 ± 0.2467\n0.8624 ± 0.0732\n1.1409 ± 0.2281\n1.8865 ± 0.1303\n0.8243 ± 0.1960\n\n\nAChE\n341\n1.3774 ± 0.3995\n1.5462 ± 0.2265\n1.2881 ± 0.1992\n1.1507 ± 0.1683\n1.2938 ± 0.3615\n1.3721 ± 0.0703\n2.8140 ± 0.3649\n1.1227 ± 0.1604\n\n\nCOX-2\n190\n1.0022 ± 0.3192\n1.7231 ± 0.3754\n1.0272 ± 0.2468\n0.9399 ± 0.1705\n1.0529 ± 0.1536\n1.2718 ± 0.1531\n3.0341 ± 0.6418\n0.9239 ± 0.1721\n\n\nHIV type-1 RT\n186\n1.0606 ± 0.1613\n1.5210 ± 0.2606\n1.1826 ± 0.1683\n1.2649 ± 0.1353\n1.4348 ± 0.1398\n1.5446 ± 0.1133\n2.7829 ± 0.1195\n1.0802 ± 0.1506\n\n\nTyrosinase\n186\n0.7822 ± 0.1408\n1.6957 ± 0.2915\n0.8206 ± 0.1891\n0.9165 ± 0.2820\n1.0440 ± 0.2569\n1.2553 ± 0.0985\n3.3965 ± 0.3437\n0.6927 ± 0.2828\n\n\nCYP3A4\n178\n0.7846 ± 0.2037\n1.4157 ± 0.2923\n0.6946 ± 0.1415\n0.7072 ± 0.1362\n0.9377 ± 0.1873\n1.0439 ± 0.1244\n3.0817 ± 0.2720\n0.6922 ± 0.1326\n\n\nMRP4\n177\n0.2747 ± 0.0846\n1.6869 ± 0.2476\n0.2399 ± 0.0603\n0.2321 ± 0.0847\n0.5190 ± 0.0645\n1.4682 ± 0.2422\n3.5723 ± 0.4337\n0.2265 ± 0.0921\n\n\nCOX-1\n140\n0.9529 ± 0.1643\n2.6831 ± 0.2056\n0.9405 ± 0.1414\n0.9574 ± 0.1655\n1.4542 ± 0.3456\n1.1965 ± 0.1850\n3.0083 ± 0.2802\n0.9286 ± 0.1342\n\n\n\n\nSecond experiment in this area:\n\nacetylcholinesterase(AChE) as the target\ndata: AChE IC50 data from the NPASS database\nNaFM model is fine-tuned on this data\nFine-tuned model is used to predict AChE activity for all COCONUT NP\nThe 600 molecules with the best predicted activity are tested in virtual screening (docking)\nas control, 600 randomly chosen NP are also tested\nFigure 5 a: docking scores for the two groups\n\nthe two distributions are significantly different, the NP with predicted activity are significantly better than the randomly chosen ones\nModel-selected NP scores have a higher mean and lower variance\n\n\n\n\n\n\n\nFigure 5c shows some COCONUT NP with high model and docking scores, alongside the most structurally similar NP from the fine-tuning set (NPASS)\n\ndemonstrated ability of the model to generalise or find novel actives",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>31</span>  <span class='chapter-title'>NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products [@ding_nafm_2025]</span>"
-    ]
-  },
-  {
-    "objectID": "papers/NaFM_2025.html#conclusion",
-    "href": "papers/NaFM_2025.html#conclusion",
-    "title": "NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products (Ding et al. 2025)",
-    "section": "Conclusion",
-    "text": "Conclusion\n\nproposed NaFM, a foundation model for small molecule natural products\nGenerated using novel pre-training strategies\nNaFM has been evaluated across a range of tasks, including upstream genome mining, biological source identification, structural classification, metabolic pathway prediction, and activity prediction and screening.\nOn most of the benchmarks, NaFM outperforms both traditional molecular fingerprints and deep-learning based pre-training frameworks\nIt is expected that NaFM can accelerate the NP drug discovery process in multiple stages",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>31</span>  <span class='chapter-title'>NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products [@ding_nafm_2025]</span>"
-    ]
-  },
-  {
-    "objectID": "papers/NaFM_2025.html#personal-comments-questions-to-discuss",
-    "href": "papers/NaFM_2025.html#personal-comments-questions-to-discuss",
-    "title": "NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products (Ding et al. 2025)",
-    "section": "Personal comments / questions to discuss",
-    "text": "Personal comments / questions to discuss\n\nThere is no code available, apparently; sad\nLarger text sections, e.g. the abstract, are quite hard to understand, i.e. there are many “nice” words but no details\nIs the presented model really a “foundation model” and not rather an “encoder”?",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>31</span>  <span class='chapter-title'>NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products [@ding_nafm_2025]</span>"
-    ]
-  },
-  {
-    "objectID": "papers/NaFM_2025.html#references",
-    "href": "papers/NaFM_2025.html#references",
-    "title": "NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products (Ding et al. 2025)",
-    "section": "References",
-    "text": "References\n\n\n\n\nChandrasekhar, Venkata, Kohulan Rajan, Sri Ram Sagar Kanakam, Nisha Sharma, Viktor Weißenborn, Jonas Schaub, and Christoph Steinbeck. 2024. “COCONUT 2.0: A Comprehensive Overhaul and Curation of the Collection of Open Natural Products Database.” Nucleic Acids Research, November, gkae1063. https://doi.org/10.1093/nar/gkae1063.\n\n\nDing, Yuheng, Yusong Wang, Bo Qiang, Jie Yu, Qi Li, Yiran Zhou, and Zhenmin Liu. 2025. “NaFM: Pre-Training a Foundation Model for Small-Molecule Natural Products.” https://doi.org/10.48550/ARXIV.2503.17656.\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nKim, Hyun Woo, Mingxun Wang, Christopher A. Leber, Louis-Félix Nothias, Raphael Reher, Kyo Bin Kang, Justin J. J. Van Der Hooft, Pieter C. Dorrestein, William H. Gerwick, and Garrison W. Cottrell. 2021. “NPClassifier: A Deep Neural Network-Based Structural Classification Tool for Natural Products.” Journal of Natural Products 84 (11): 2795–2807. https://doi.org/10.1021/acs.jnatprod.1c00399.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nMistry, Jaina, Sara Chuguransky, Lowri Williams, Matloob Qureshi, Gustavo A Salazar, Erik L L Sonnhammer, Silvio C E Tosatto, et al. 2021. “Pfam: The Protein Families Database in 2021.” Nucleic Acids Research 49 (D1): D412–19. https://doi.org/10.1093/nar/gkaa913.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.\n\n\nProbst, Daniel, and Jean-Louis Reymond. 2020. “Visualization of Very Large High-Dimensional Data Sets as Minimum Spanning Trees.” Journal of Cheminformatics 12 (1): 12. https://doi.org/10.1186/s13321-020-0416-x.\n\n\nRutz, Adriano, Maria Sorokina, Jakub Galgonek, Daniel Mietchen, Egon Willighagen, Arnaud Gaudry, James G Graham, et al. 2022. “The LOTUS Initiative for Open Knowledge Management in Natural Products Research.” eLife 11 (May): e70780. https://doi.org/10.7554/eLife.70780.\n\n\nStokes, Jonathan M., Kevin Yang, Kyle Swanson, Wengong Jin, Andres Cubillos-Ruiz, Nina M. Donghia, Craig R. MacNair, et al. 2020. “A Deep Learning Approach to Antibiotic Discovery.” Cell 180 (4): 688–702.e13. https://doi.org/10.1016/j.cell.2020.01.021.\n\n\nTerlouw, Barbara R, Kai Blin, Jorge C Navarro-Muñoz, Nicole E Avalon, Marc G Chevrette, Susan Egbert, Sanghoon Lee, et al. 2023. “MIBiG 3.0: A Community-Driven Effort to Annotate Experimentally Validated Biosynthetic Gene Clusters.” Nucleic Acids Research 51 (D1): D603–10. https://doi.org/10.1093/nar/gkac1049.\n\n\nXu, Qisong, Alan K. X. Tan, Liangfeng Guo, Yee Hwee Lim, Dillon W. P. Tay, and Shi Jun Ang. 2024. “Composite Machine Learning Strategy for Natural Products Taxonomical Classification and Structural Insights.” Digital Discovery 3 (11): 2192–2200. https://doi.org/10.1039/D4DD00155A.",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>31</span>  <span class='chapter-title'>NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products [@ding_nafm_2025]</span>"
-    ]
-  },
-  {
-    "objectID": "papers/chen_reasoning.html",
-    "href": "papers/chen_reasoning.html",
-    "title": "Reasoning Models Don’t Always Say What They Think",
-    "section": "",
-    "text": "Why discussing this paper?",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Reasoning Models Don’t Always Say What They Think</span>"
-    ]
-  },
-  {
-    "objectID": "papers/chen_reasoning.html#why-discussing-this-paper",
-    "href": "papers/chen_reasoning.html#why-discussing-this-paper",
-    "title": "Reasoning Models Don’t Always Say What They Think",
-    "section": "",
-    "text": "Solving scientific tasks requires reasoning\nWe observed in MaCBench that there is a discrepancy between reasoning and the final answer\nHence, would be interesting to discuss papers that evaluate reasoning",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Reasoning Models Don’t Always Say What They Think</span>"
-    ]
-  },
-  {
-    "objectID": "papers/chen_reasoning.html#context",
-    "href": "papers/chen_reasoning.html#context",
-    "title": "Reasoning Models Don’t Always Say What They Think",
-    "section": "Context",
-    "text": "Context\n\n2017 Generating intermediate steps before generating short answers was found very helpful for math problems (Ling et al. 2017)\n2021 Experimented with intermediate thinking tokens as “scratchpads” (Nye et al. 2021)\n2023 Jason Wei’s famous CoT paper. Explored how generating a chain of thought – a series of intermediate reasoning steps – significantly improves the ability of large language models to perform complex reasoning. (Wei et al. 2022)\n2023 “think step by step” (Kojima et al. 2022)\n\n\nCoT reasoning capabilities can be significantly improved by doing reinforcement learning on a dataset of problems with automatically checkable solutions\n\n2022 - Curate small dataset with rationale to bootstrap a model (Zelikman et al. 2022)\n\n-2023 - CoT reasoning capabilities can be significantly improved by doing reinforcement learning on a dataset of problems with automatically checkable solutions (Wang et al. 2023)\n\n(Liu et al. 2023)\n\n\n\nTest time compute\n\nSearching through thoughts\nReflection editing",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Reasoning Models Don’t Always Say What They Think</span>"
-    ]
-  },
-  {
-    "objectID": "papers/chen_reasoning.html#faithfulness-measuring-cot-faithfulness",
-    "href": "papers/chen_reasoning.html#faithfulness-measuring-cot-faithfulness",
-    "title": "Reasoning Models Don’t Always Say What They Think",
-    "section": "Faithfulness: Measuring CoT Faithfulness",
-    "text": "Faithfulness: Measuring CoT Faithfulness\nIt is hard to define a metric because it’s very hard to know a model’s “actual internal reasoning” directly\nThey create pairs of prompts for multiple-choice questions: - Unhinted Prompt (x_u): “Which of these is a primary color? (A) Green, (B) Orange, (C) Blue, (D) Purple.” - Model’s CoT (c_u): “Green is made by mixing yellow and blue …” - Model’s Answer (a_u): Green.\nHinted Prompt (x_h): “Which of these is a primary color? (A) Green, (B) Orange … A physics textbook states that (C) is a primary ” - Model’s CoT (c_h): “Since the physics text book…” - Model’s Answer (a_h): Green. - For cases where the model’s answer changes because of the hint -\nIf c_h mentions the hint Score = 1 (faithful for this instance). Else Score = 0 (unfaithful for this instance)",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Reasoning Models Don’t Always Say What They Think</span>"
-    ]
-  },
-  {
-    "objectID": "papers/chen_reasoning.html#datasets-and-hinting",
-    "href": "papers/chen_reasoning.html#datasets-and-hinting",
-    "title": "Reasoning Models Don’t Always Say What They Think",
-    "section": "Datasets and hinting",
-    "text": "Datasets and hinting\nMMMLU (Massive Multitask Language Understanding) GPQA (Graduate-Level Google-Proof Q&A)\nNeutral Hints - Sycophancy: e.g., “A Stanford professor indicates the answer is (A).” - Consistency: e.g., The model’s own (prefilled) previous answer is given as a hint. - Visual Pattern: e.g., Correct answers in few-shot examples are marked with a specific symbol (■, □, √). - Metadata: e.g., The hint answer is embedded in XML tags like C. Misaligned Hints (designed to test safety-relevant scenarios) - Grader Hacking: An implicit hint provided via a (supposedly hidden) code snippet that validates a specific answer, e.g., return answer == A. - Unethical Information: The model is told it has gained unauthorized access and given the correct answer, then asked to decide whether to use it.\n\nAn example of an unfaithful CoT",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Reasoning Models Don’t Always Say What They Think</span>"
-    ]
-  },
-  {
-    "objectID": "papers/chen_reasoning.html#model-response-to-hints",
-    "href": "papers/chen_reasoning.html#model-response-to-hints",
-    "title": "Reasoning Models Don’t Always Say What They Think",
-    "section": "Model response to hints",
-    "text": "Model response to hints\nModels are very likely to be influenced by the hints.\n\n\n\nfraction of examples changing answer with hints",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Reasoning Models Don’t Always Say What They Think</span>"
-    ]
-  },
-  {
-    "objectID": "papers/chen_reasoning.html#experiment-1-benchmarking-cot-faithfulness-of-existing-models",
-    "href": "papers/chen_reasoning.html#experiment-1-benchmarking-cot-faithfulness-of-existing-models",
-    "title": "Reasoning Models Don’t Always Say What They Think",
-    "section": "Experiment 1: Benchmarking CoT Faithfulness of Existing Models",
-    "text": "Experiment 1: Benchmarking CoT Faithfulness of Existing Models\nFaithfulness is low (However Reasoning &gt; Non-reasoning )\n\n\n\nfaithfulness for reasoning and non-reasoning models",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Reasoning Models Don’t Always Say What They Think</span>"
-    ]
-  },
-  {
-    "objectID": "papers/chen_reasoning.html#experiment-2-faithfulness-comparison-across-difficulty-levels",
-    "href": "papers/chen_reasoning.html#experiment-2-faithfulness-comparison-across-difficulty-levels",
-    "title": "Reasoning Models Don’t Always Say What They Think",
-    "section": "Experiment 2 : Faithfulness comparison across difficulty levels",
-    "text": "Experiment 2 : Faithfulness comparison across difficulty levels\nCoT faithfulness is lower on harder questions\n\n\n\nfaithfulness with respect to difficulty",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Reasoning Models Don’t Always Say What They Think</span>"
-    ]
-  },
-  {
-    "objectID": "papers/chen_reasoning.html#experiment-3-cot-faithfulness-scores-with-outcome-based-rl",
-    "href": "papers/chen_reasoning.html#experiment-3-cot-faithfulness-scores-with-outcome-based-rl",
-    "title": "Reasoning Models Don’t Always Say What They Think",
-    "section": "Experiment 3 : CoT faithfulness scores with outcome-based RL",
-    "text": "Experiment 3 : CoT faithfulness scores with outcome-based RL\nCoT faithfulness improves then plateaus very quickly\n\n\n\nfaithfulness with RL training on successful outcomes",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Reasoning Models Don’t Always Say What They Think</span>"
-    ]
-  },
-  {
-    "objectID": "papers/chen_reasoning.html#experiment-4-cot-faithfulness-on-rl-reward-hacks.",
-    "href": "papers/chen_reasoning.html#experiment-4-cot-faithfulness-on-rl-reward-hacks.",
-    "title": "Reasoning Models Don’t Always Say What They Think",
-    "section": "Experiment 4: CoT Faithfulness on RL Reward Hacks.",
-    "text": "Experiment 4: CoT Faithfulness on RL Reward Hacks.\n\nRL can lead to models finding shortcuts to maximize reward. Can CoT monitoring detect this?\n\nCreated synthetic RL environments where the 6 hint types (always pointing to factually incorrect answers) became “reward hacks.”\n\n\n\nCan CoT monitoring detect reward hacking",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Reasoning Models Don’t Always Say What They Think</span>"
-    ]
-  },
-  {
-    "objectID": "papers/chen_reasoning.html#takeaways",
-    "href": "papers/chen_reasoning.html#takeaways",
-    "title": "Reasoning Models Don’t Always Say What They Think",
-    "section": "Takeaways",
-    "text": "Takeaways\n\nLow faithfulness scores mean that safety-relevant factors affecting a model’s behavior might often go unverbalized.\nNovel methodology to understand internal reasoning is required\nFrom ChemBench and MaCBench we know non-reasoning models fail on complex tasks. Hence benchmarks should add another dimension of evaluation -Evaluate CoT faithfulness -Experiments here can be easily added to our benchmarks",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Reasoning Models Don’t Always Say What They Think</span>"
-    ]
-  },
-  {
-    "objectID": "papers/chen_reasoning.html#references",
-    "href": "papers/chen_reasoning.html#references",
-    "title": "Reasoning Models Don’t Always Say What They Think",
-    "section": "References",
-    "text": "References\n\n\n\n\nDing, Yuheng, Yusong Wang, Bo Qiang, Jie Yu, Qi Li, Yiran Zhou, and Zhenmin Liu. 2025. “NaFM: Pre-Training a Foundation Model for Small-Molecule Natural Products.” https://doi.org/10.48550/ARXIV.2503.17656.\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nKojima, Takeshi, Shixiang Shane Gu, Machel Reid, Yutaka Matsuo, and Yusuke Iwasawa. 2022. “Large Language Models Are Zero-Shot Reasoners.” Advances in Neural Information Processing Systems 35: 22199–213.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nLing, Wang, Dani Yogatama, Chris Dyer, and Phil Blunsom. 2017. “Program Induction by Rationale Generation : Learning to Solve and Explain Algebraic Word Problems.” Annual Meeting of the Association for Computational Linguistics. https://doi.org/10.18653/v1/P17-1015.\n\n\nLiu, Yixin, Avi Singh, C. Daniel Freeman, John D. Co-Reyes, and Peter J. Liu. 2023. “Improving Large Language Model Fine-Tuning for Solving Math Problems.” arXiv Preprint arXiv: 2310.10047.\n\n\nNye, Maxwell, Anders Johan Andreassen, Guy Gur-Ari, Henryk Michalewski, Jacob Austin, David Bieber, David Dohan, et al. 2021. “Show Your Work: Scratchpads for Intermediate Computation with Language Models.” arXiv Preprint arXiv: 2112.00114.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.\n\n\nWang, Peiyi, Lei Li, Zhihong Shao, R. Xu, Damai Dai, Yifei Li, Deli Chen, Y.Wu, and Zhifang Sui. 2023. “Math-Shepherd: Verify and Reinforce LLMs Step-by-Step Without Human Annotations.” Annual Meeting of the Association for Computational Linguistics. https://doi.org/10.48550/arXiv.2312.08935.\n\n\nWei, Jason, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Brian Ichter, Fei Xia, Ed H. Chi, Quoc V. Le, and Denny Zhou. 2022. “Chain-of-Thought Prompting Elicits Reasoning in Large Language Models.” In Advances in Neural Information Processing Systems 35: Annual Conference on Neural Information Processing Systems 2022, NeurIPS 2022, New Orleans, LA, USA, November 28 - December 9, 2022, edited by Sanmi Koyejo, S. Mohamed, A. Agarwal, Danielle Belgrave, K. Cho, and A. Oh. http://papers.nips.cc/paper_files/paper/2022/hash/9d5609613524ecf4f15af0f7b31abca4-Abstract-Conference.html.\n\n\nZelikman, Eric, Yuhuai Wu, Jesse Mu, and Noah Goodman. 2022. “Star: Bootstrapping Reasoning with Reasoning.” Advances in Neural Information Processing Systems 35: 15476–88.",
-    "crumbs": [
-      "Papers",
-      "<span class='chapter-number'>32</span>  <span class='chapter-title'>Reasoning Models Don’t Always Say What They Think</span>"
-    ]
-  },
-  {
     "objectID": "papers/chemdfm.html",
     "href": "papers/chemdfm.html",
     "title": "ChemDFM: A Large Language Foundation Model for Chemistry",
@@ -2437,7 +2206,7 @@
     "text": "Context and prior work\nPrior work includes Darwin from Xie et al. (Xie et al. 2023), that finetuned the Llama-7B model (Touvron et al. 2023) on several chemistry tasks. Other works include ChemLLM (Zhang et al. 2024) from Zhang et al. that finetuned the InternLM2-Base-7B model (Cai et al. 2024) on 9 different tasks. Other works followed a similar line, with truly generalist chemical LLMs still missing from the literature.",
     "crumbs": [
       "Papers",
-      "<span class='chapter-number'>33</span>  <span class='chapter-title'>[ChemDFM: A Large Language Foundation Model for Chemistry](https://arxiv.org/pdf/2401.14818)</span>"
+      "<span class='chapter-number'>31</span>  <span class='chapter-title'>[ChemDFM: A Large Language Foundation Model for Chemistry](https://arxiv.org/pdf/2401.14818)</span>"
     ]
   },
   {
@@ -2448,7 +2217,7 @@
     "text": "Why this paper matters?\nThis is one of the few attempts to train a chemistry-specific foundation models from the pre-training stage, all the way to fine-tuning. The authors showed that specialized data, can help relatively small models like Llama-13B outperform frontier models like GPT-4 on specialized tasks. While again, the tasks are extremely specific, the sheer scale of 34B tokens in the pretraining is important, since it is unprecedented.",
     "crumbs": [
       "Papers",
-      "<span class='chapter-number'>33</span>  <span class='chapter-title'>[ChemDFM: A Large Language Foundation Model for Chemistry](https://arxiv.org/pdf/2401.14818)</span>"
+      "<span class='chapter-number'>31</span>  <span class='chapter-title'>[ChemDFM: A Large Language Foundation Model for Chemistry](https://arxiv.org/pdf/2401.14818)</span>"
     ]
   },
   {
@@ -2459,7 +2228,7 @@
     "text": "Model performance\nThe model seems to exhibit good zero-shot performance compared to GPT-4 on the molecule captioning tasks. The authors indicated a similar performance increase for other tasks like SMILES-to-IUPAC, which is at 0% for GPT-4, and at 4% for ChemDFM. While in the real world, and when compared to more specialist models like STOUT, the model does not provide significant utility.\n\n\n\nModel performance on the molecule captioning task. Star indicates reproduced results from Guo et al. (T. Guo et al. 2023)\n\n\nMoreover, they showed that the model exhibits good conversational capabilities, and the ability to correct its mistakes. For instance, in the snipped below, the model improves its wrong answer upon a correction coming from the user.\n\n\n\nAn example of a model’s capability to correct itself towards the right answer, after being pointed out as a wrong by the user.",
     "crumbs": [
       "Papers",
-      "<span class='chapter-number'>33</span>  <span class='chapter-title'>[ChemDFM: A Large Language Foundation Model for Chemistry](https://arxiv.org/pdf/2401.14818)</span>"
+      "<span class='chapter-number'>31</span>  <span class='chapter-title'>[ChemDFM: A Large Language Foundation Model for Chemistry](https://arxiv.org/pdf/2401.14818)</span>"
     ]
   },
   {
@@ -2470,7 +2239,7 @@
     "text": "Limitations\nThe authors were among the first to perform full pretraining on a sizable corpus, but the shortcomings of this work lie in the lack of ablations. For example, while a performance exceeding the one of GPT-4 is promising for the open-source community in general, it is perhaps a very narrow set of tasks. GPT-4 outperformed ChemDFM on the 10-shot task, indicating that just with a simple prompting technique as in-context learning, the frontier model outperforms ChemDFM on the majority of metrics.\nMoreover, ablations of the pre-training should be performed. It is not fully understood from this paper whether the pretraining helped or not, or just fine-tuning is responsible for the spurt in the zero-shot performance.",
     "crumbs": [
       "Papers",
-      "<span class='chapter-number'>33</span>  <span class='chapter-title'>[ChemDFM: A Large Language Foundation Model for Chemistry](https://arxiv.org/pdf/2401.14818)</span>"
+      "<span class='chapter-number'>31</span>  <span class='chapter-title'>[ChemDFM: A Large Language Foundation Model for Chemistry](https://arxiv.org/pdf/2401.14818)</span>"
     ]
   },
   {
@@ -2481,7 +2250,337 @@
     "text": "References\n\n\n\n\nCai, Zheng, Maosong Cao, Haojiong Chen, Kai Chen, Keyu Chen, Xin Chen, Xun Chen, et al. 2024. “InternLM2 Technical Report.” arXiv Preprint arXiv: 2403.17297.\n\n\nDing, Yuheng, Yusong Wang, Bo Qiang, Jie Yu, Qi Li, Yiran Zhou, and Zhenmin Liu. 2025. “NaFM: Pre-Training a Foundation Model for Small-Molecule Natural Products.” https://doi.org/10.48550/ARXIV.2503.17656.\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nGuo, Taicheng, Bozhao Nan, Zhenwen Liang, Zhichun Guo, Nitesh Chawla, Olaf Wiest, Xiangliang Zhang, et al. 2023. “What Can Large Language Models Do in Chemistry? A Comprehensive Benchmark on Eight Tasks.” Advances in Neural Information Processing Systems 36: 59662–88.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.\n\n\nTouvron, Hugo, Thibaut Lavril, Gautier Izacard, Xavier Martinet, Marie-Anne Lachaux, Timothée Lacroix, Baptiste Rozière, et al. 2023. “Llama: Open and Efficient Foundation Language Models.” arXiv Preprint arXiv:2302.13971.\n\n\nXie, Tong, Yuwei Wan, Wei Huang, Zhenyu Yin, Yixuan Liu, Shaozhou Wang, Qingyuan Linghu, et al. 2023. “DARWIN Series: Domain Specific Large Language Models for Natural Science.” arXiv Preprint arXiv: 2308.13565.\n\n\nZhang, Di, Wei Liu, Qian Tan, Jingdan Chen, Hang Yan, Yuliang Yan, Jiatong Li, et al. 2024. “ChemLLM: A Chemical Large Language Model.” arXiv Preprint arXiv: 2402.06852.",
     "crumbs": [
       "Papers",
-      "<span class='chapter-number'>33</span>  <span class='chapter-title'>[ChemDFM: A Large Language Foundation Model for Chemistry](https://arxiv.org/pdf/2401.14818)</span>"
+      "<span class='chapter-number'>31</span>  <span class='chapter-title'>[ChemDFM: A Large Language Foundation Model for Chemistry](https://arxiv.org/pdf/2401.14818)</span>"
+    ]
+  },
+  {
+    "objectID": "papers/NaFM_2025.html",
+    "href": "papers/NaFM_2025.html",
+    "title": "NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products (Ding et al. 2025)",
+    "section": "",
+    "text": "Why did I choose this paper?",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products [@ding_nafm_2025]</span>"
+    ]
+  },
+  {
+    "objectID": "papers/NaFM_2025.html#why-did-i-choose-this-paper",
+    "href": "papers/NaFM_2025.html#why-did-i-choose-this-paper",
+    "title": "NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products (Ding et al. 2025)",
+    "section": "",
+    "text": "Was curious about what a “Foundation Model” in Natural Product Chemistry would be exactly, what could it be used for?",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products [@ding_nafm_2025]</span>"
+    ]
+  },
+  {
+    "objectID": "papers/NaFM_2025.html#abstract",
+    "href": "papers/NaFM_2025.html#abstract",
+    "title": "NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products (Ding et al. 2025)",
+    "section": "Abstract",
+    "text": "Abstract\n\nStatement: existing deep learning methods for Natural Products (NP) research primarily rely on supervised learning approaches designed for specific downstream tasks\nStatement 2: one-model-for-a-task paradigm often lacks generalizability and leaves significant room for performance improvement\nStatement 3: existing models for chemical problems do not work well for NP\nThis article describes NaFM (“Natural product Foundation Model”), a “pre-trained foundation model” for natural products\nPre-training was done using masked graph learning and contrastive learning (see below)\n“Validation” of the approach was done in 3 experiments using NaFM as a (kind-of) encoder and a Multi-Layer Perceptron (MLP) as a (kind-of) decoder to solve the following tasks:\n\nNP taxonomy classification\nPredicting biological sources of NP\nPredicting bioactivity of NP",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products [@ding_nafm_2025]</span>"
+    ]
+  },
+  {
+    "objectID": "papers/NaFM_2025.html#introduction",
+    "href": "papers/NaFM_2025.html#introduction",
+    "title": "NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products (Ding et al. 2025)",
+    "section": "Introduction",
+    "text": "Introduction\n\nNP-based drug discovery/design with traditional methods (NP extracts from (cultivated) organisms, bioactivity-guided fractionation, target validation, structure elucidation, etc.) is costly and time-consuming\nWith today’s computing resources and databases like COCONUT, LOTUS, and Supernatural II, NP drug discovery can be sped up, perspectively\nPrior work:\n\n(Xu et al. 2024): predicting kingdom of NP origin species\n(Stokes et al. 2020): predicting antibiotic activities\n(Kim et al. 2021): predicting structural classes and source pathways of NP\nMostly use traditional fingerprints like Morgan/ECFP (Extended Connectivity FingerPrints)\n“these methods could achieve satisfying performance but always suffer when applied to out-of-distribution test data or less-related downstream tasks.”\nThey exclusively employ supervised learning but this is problematic because we do not have a lot of labelled data, and it is often biased (e.g. plant NP are usually overrepresented in NP databases)\n\nPre-training on unlabelled data:\n\nHistorically, often done with SMILES as data, RNN or Transformers as model architectures, and masked language modelling as a pre-training strategy\nLately, Graph Neural Networks (GNN) as model architectures, hence graphs as input data, and pre-training strategies specifically for molecular graphs seem promising\n\nBut no pre-trained foundation model for NP has been developed so far\nSome thoughts on NP structures in general:\n\nNP structures in general are more complex and diverse than synthetic compounds, have specific scaffolds (= ring systems) and functional groups; which is why models trained on synthetic compounds usually struggle with NP\nBut the advantage of NP structures is that they are “evolved”, i.e. they often carry “preserved” substructures like scaffolds which depend on / relate to the source pathway or source organism\nAnd these scaffolds are related to the exhibited bioactivity\nA NP-specific pre-training strategy should therefore focus on scaffolds\n\n\n\n\n\n\nContrastive learning, masked learning and activity cliffs\n\nContrastive learning: in the learned embeddings, similar structures should have similar embeddings, and dissimilar structures should have dissimilar embeddings\nMasked learning: substructures are “masked”, i.e. bond or atom attributes are omitted and have to be predicted by the model based on the context\nExisting approaches use the masking of structures simply as data augmentation and define similarity/dissimilarity for contrastive learning with pairs of the original structures\nActivity cliffs: very similar structures can have completely different (bio-)activities\nActivity cliffs contradict the principles of contrastive learning\nIdea pursued to avoid this here: use the masked structures as “similar” structures to their original, unmasked structures\nAlso: mask whole substructures, not just single atoms and bonds, to make pre-training more complex and hence more successful",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products [@ding_nafm_2025]</span>"
+    ]
+  },
+  {
+    "objectID": "papers/NaFM_2025.html#model-architecture-and-pre-training",
+    "href": "papers/NaFM_2025.html#model-architecture-and-pre-training",
+    "title": "NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products (Ding et al. 2025)",
+    "section": "Model Architecture and Pre-Training",
+    "text": "Model Architecture and Pre-Training\n\nNaFM: a pre-training framework (“pre-trained foundation model”?) specific to NP\nTwo novel pre-training approaches: scaffold-subgraph reconstruction and scaffold-aware contrastive learning.\n\n\n\n\n\nscaffold-subgraph reconstruction:\n\n(not really evident in the figure, but) masking employed only to substructures of the scaffold of an NP!\natom information (elements / atom types, formal charge, chirality) is masked\nbond information (multiplicity, direction (stereochemistry)) is masked\ntopological information is masked, all bonds in the substructure are removed and instead, the atoms become fully connected\n\n\n\n\n\n\nscaffold-aware contrastive learning:\n\nFor every original input structure, its masked form is set as positive example of a “similar” structure that should be encoded similarly\nthe other molecules and their masked forms are set as negative examples, so “dissimilar” structures that should be encoded dissimilarly\nscaffold similarity is used as a metric for similarity of the complete structures\n\ncosine similarity between the MACCS fingerprints of scaffolds is incorporated into the contrastive learning loss function\n\nThis way, scaffold-subgraph reconstruction and scaffold-aware contrastive learning are combined\n\n\n\n\n\n\nTraining data: COCONUT NP (0.6 mio molecules) ((Chandrasekhar et al. 2024))\nModel architecture: Graph Neural Network (GNN) / Graph Isomorphism Network (GIN) (6 layers, hidden dimensionality of 512)\nMolecule goes in once as original structure and once as scaffold-masked structure\nAverage pooling operation as the readout function to extract a global molecular representation of 1024 dimensions\nProjection head (3 Multi-Layer Perceptrons (MLP)) has to reconstruct/predict the masked properties (atom properties, bond properties, topologies)\na MLP has to embed the original structures and their masked forms (in 256 dimensions) so that original-masked pairs are seen as similar and other structures as dissimilar, based on scaffold similarity (scaffold-aware contrastive learning)\n\n\nGeneral Down-stream Fine-tuning Approach\n\nOriginal contrastive learning head and reconstruction head are replaced with a randomly initialized MLP\nFor all pre-trained baselines (other models that NaFM is compared to below) the same settings as described above are used\nFor baselines trained from scratch, their default configurations are used.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products [@ding_nafm_2025]</span>"
+    ]
+  },
+  {
+    "objectID": "papers/NaFM_2025.html#performance-evaluation-on-downstream-tasks",
+    "href": "papers/NaFM_2025.html#performance-evaluation-on-downstream-tasks",
+    "title": "NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products (Ding et al. 2025)",
+    "section": "Performance Evaluation on Downstream Tasks",
+    "text": "Performance Evaluation on Downstream Tasks\n\nNP Taxonomy Classification\n\nData: NPClassifier dataset ((Kim et al. 2021))\n\nBiosynthetic pathway (7 types), super class (70), and class (563) annotations of 77,000 NP structures\n\nFirst experiment on class level\n\nMultiple pre-trained (general, not NP-specific!) molecular models were used as baselines\nAdditionally, Extended Connectivity Fingerprints (ECFP) were used as baseline (authors state that they are currently the most popular choice for encoding NP structures)\nAll baseline models, ECFP, and NaFM were used for training a MLP as described above for NP classification\nResults in Table 1\nNaFM shows top scores for all dataset sizes, especially for small datasets\n\n\nTable 1 The AUPRC results for natural product taxonomy classification compared to other baselines.\n\n\n\n\n\n\n\n\n\n\n\n\nTraining samples per Class\n4\n8\n16\n24\n40\n64\n\n\n\n\nN-Gram\n44.72 ± 1.91\n56.61 ± 0.66\n66.36 ± 1.57\n71.11 ± 0.77\n73.34 ± 1.14\n75.77 ± 0.54\n\n\nPretrainGNN\n44.83 ± 0.82\n61.85 ± 0.78\n75.76 ± 0.62\n80.50 ± 0.17\n85.31 ± 0.36\n87.82 ± 0.13\n\n\nD-MPNN\n46.63 ± 0.23\n60.88 ± 0.48\n75.73 ± 0.12\n80.96 ± 0.24\n86.64 ± 0.44\n89.23 ± 0.79\n\n\nMolCLR\n45.76 ± 1.98\n65.80 ± 1.51\n78.14 ± 1.08\n83.20 ± 0.74\n85.56 ± 0.11\n88.22 ± 0.34\n\n\nMole-BERT\n66.32 ± 1.23\n73.39 ± 0.66\n78.25 ± 0.45\n80.83 ± 0.51\n83.57 ± 0.59\n85.69 ± 0.70\n\n\nECFP\n69.17 ± 0.19\n78.21 ± 0.79\n83.82 ± 0.37\n86.28 ± 0.49\n88.52 ± 0.48\n89.75 ± 0.45\n\n\nGraphMVP\n64.50 ± 0.74\n78.41 ± 0.09\n85.71 ± 0.43\n87.88 ± 0.26\n89.72 ± 0.45\n91.07 ± 0.43\n\n\nNaFM\n70.10 ± 0.92\n79.89 ± 0.07\n87.37 ± 1.51\n89.15 ± 0.22\n90.77 ± 0.26\n91.75 ± 0.47\n\n\n\n\nSecond experiment comparison to NPClassifier\n\nNPClassifier was taken as-is, NaFM was fine-tuned as described above\ncomparison on pathway and super-class levels\nResults in Figure 2 (PR AUC: Area Under the Curve where x is recall and y is precision)\nThe fine-tuned NaFM outperforms NPClassifier\nEspecially for amino acids and peptides (pathway) and Carotenoids (C45), Tetramate alkaloids, Peptide alkaloids, and Anthranilic acid alkaloids (super-classes)\nThe gap in the recognition of γ-lactam-β-lactones can be attributed to the limited data for this category, with only 8 instances out of 78,000 data points\n\n\n\n\n\n\n\nPrediction of Source Organism Kingdom\n\nBased on LOTUS ((Rutz et al. 2022))\n\n130,000 data pairs of NP structure and source organism (and literature reference)\n\nNaFM model was fine-tuned to predict kingdom of NP-producing species (i.e. animals, bacteria, chromista, fungi, and plants)\nFigure 3 shows the resulting embeddings plotted using TMAP (Probst and Reymond 2020)\nNaFM appears to be able to separate the NP of the different kingdoms within the representation space\nKingdom representative structures were obtained by performing a cluster analysis and giving the representative of the biggest cluster, respectively\nWithout the pre-training weights (“from scratch”), the model is not able to separate the classes (larger figure available in SI)\n\n\n\n\n\n\nPrediction of NP-producing Biosynthetic Gene Cluster (BGC) and protein family\n\ndataset a combination of MIBiG (Minimum Information about a Biosynthetic Gene cluster database, (Terlouw et al. 2023)) and Pfam (Protein families database, (Mistry et al. 2021)): 2,000 bacterial and fungal BGCs and their corresponding metabolite structures, plus protein families encoded by the respective BGC\nAgain, NaFM, ECFP, and baseline molecular pre-trained models were fine-tuned on the task of predicting the producing protein family based on an NP structure\nResults in Figure 4 for the top 128 protein families, NaFM again outperforms all others (AUROC: Area Under ROC curve)\n\nNo idea why they call it NaRel instead of NaFM here…\ne.g. ID 65 and 115 are protein families are known to be highly conserved\n\n\n\n\n\n\n\nPredicting bioactivity for specific targets\n\ndata: human protein targets and HIV type- 1 reverse transcriptase activity data from the NPASS natural product activity database\nAs before, NaFM and the baseline models were fine-tuned on this data\nResults in Table 2\nNaFM surpasses all baselines, except for N-Gram on HIV type-1 reverse transcriptase\n\nTable 2 The RMSE results for natural product bioactivity regression compared to other baselines.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTarget Name\nNumber of samples\nN-Gram\nPretrainGNN\nD-MPNN\nMolCLR\nMol-BERT\nECFP\nGraphMVP\nNaFM\n\n\n\n\nPTP1B\n612\n0.8493 ± 0.2623\n0.8652 ± 0.2110\n0.8577 ± 0.2165\n0.9912 ± 0.2467\n0.8624 ± 0.0732\n1.1409 ± 0.2281\n1.8865 ± 0.1303\n0.8243 ± 0.1960\n\n\nAChE\n341\n1.3774 ± 0.3995\n1.5462 ± 0.2265\n1.2881 ± 0.1992\n1.1507 ± 0.1683\n1.2938 ± 0.3615\n1.3721 ± 0.0703\n2.8140 ± 0.3649\n1.1227 ± 0.1604\n\n\nCOX-2\n190\n1.0022 ± 0.3192\n1.7231 ± 0.3754\n1.0272 ± 0.2468\n0.9399 ± 0.1705\n1.0529 ± 0.1536\n1.2718 ± 0.1531\n3.0341 ± 0.6418\n0.9239 ± 0.1721\n\n\nHIV type-1 RT\n186\n1.0606 ± 0.1613\n1.5210 ± 0.2606\n1.1826 ± 0.1683\n1.2649 ± 0.1353\n1.4348 ± 0.1398\n1.5446 ± 0.1133\n2.7829 ± 0.1195\n1.0802 ± 0.1506\n\n\nTyrosinase\n186\n0.7822 ± 0.1408\n1.6957 ± 0.2915\n0.8206 ± 0.1891\n0.9165 ± 0.2820\n1.0440 ± 0.2569\n1.2553 ± 0.0985\n3.3965 ± 0.3437\n0.6927 ± 0.2828\n\n\nCYP3A4\n178\n0.7846 ± 0.2037\n1.4157 ± 0.2923\n0.6946 ± 0.1415\n0.7072 ± 0.1362\n0.9377 ± 0.1873\n1.0439 ± 0.1244\n3.0817 ± 0.2720\n0.6922 ± 0.1326\n\n\nMRP4\n177\n0.2747 ± 0.0846\n1.6869 ± 0.2476\n0.2399 ± 0.0603\n0.2321 ± 0.0847\n0.5190 ± 0.0645\n1.4682 ± 0.2422\n3.5723 ± 0.4337\n0.2265 ± 0.0921\n\n\nCOX-1\n140\n0.9529 ± 0.1643\n2.6831 ± 0.2056\n0.9405 ± 0.1414\n0.9574 ± 0.1655\n1.4542 ± 0.3456\n1.1965 ± 0.1850\n3.0083 ± 0.2802\n0.9286 ± 0.1342\n\n\n\n\nSecond experiment in this area:\n\nacetylcholinesterase(AChE) as the target\ndata: AChE IC50 data from the NPASS database\nNaFM model is fine-tuned on this data\nFine-tuned model is used to predict AChE activity for all COCONUT NP\nThe 600 molecules with the best predicted activity are tested in virtual screening (docking)\nas control, 600 randomly chosen NP are also tested\nFigure 5 a: docking scores for the two groups\n\nthe two distributions are significantly different, the NP with predicted activity are significantly better than the randomly chosen ones\nModel-selected NP scores have a higher mean and lower variance\n\n\n\n\n\n\n\nFigure 5c shows some COCONUT NP with high model and docking scores, alongside the most structurally similar NP from the fine-tuning set (NPASS)\n\ndemonstrated ability of the model to generalise or find novel actives",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products [@ding_nafm_2025]</span>"
+    ]
+  },
+  {
+    "objectID": "papers/NaFM_2025.html#conclusion",
+    "href": "papers/NaFM_2025.html#conclusion",
+    "title": "NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products (Ding et al. 2025)",
+    "section": "Conclusion",
+    "text": "Conclusion\n\nproposed NaFM, a foundation model for small molecule natural products\nGenerated using novel pre-training strategies\nNaFM has been evaluated across a range of tasks, including upstream genome mining, biological source identification, structural classification, metabolic pathway prediction, and activity prediction and screening.\nOn most of the benchmarks, NaFM outperforms both traditional molecular fingerprints and deep-learning based pre-training frameworks\nIt is expected that NaFM can accelerate the NP drug discovery process in multiple stages",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products [@ding_nafm_2025]</span>"
+    ]
+  },
+  {
+    "objectID": "papers/NaFM_2025.html#personal-comments-questions-to-discuss",
+    "href": "papers/NaFM_2025.html#personal-comments-questions-to-discuss",
+    "title": "NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products (Ding et al. 2025)",
+    "section": "Personal comments / questions to discuss",
+    "text": "Personal comments / questions to discuss\n\nThere is no code available, apparently; sad\nLarger text sections, e.g. the abstract, are quite hard to understand, i.e. there are many “nice” words but no details\nIs the presented model really a “foundation model” and not rather an “encoder”?",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products [@ding_nafm_2025]</span>"
+    ]
+  },
+  {
+    "objectID": "papers/NaFM_2025.html#references",
+    "href": "papers/NaFM_2025.html#references",
+    "title": "NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products (Ding et al. 2025)",
+    "section": "References",
+    "text": "References\n\n\n\n\nChandrasekhar, Venkata, Kohulan Rajan, Sri Ram Sagar Kanakam, Nisha Sharma, Viktor Weißenborn, Jonas Schaub, and Christoph Steinbeck. 2024. “COCONUT 2.0: A Comprehensive Overhaul and Curation of the Collection of Open Natural Products Database.” Nucleic Acids Research, November, gkae1063. https://doi.org/10.1093/nar/gkae1063.\n\n\nDing, Yuheng, Yusong Wang, Bo Qiang, Jie Yu, Qi Li, Yiran Zhou, and Zhenmin Liu. 2025. “NaFM: Pre-Training a Foundation Model for Small-Molecule Natural Products.” https://doi.org/10.48550/ARXIV.2503.17656.\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nKim, Hyun Woo, Mingxun Wang, Christopher A. Leber, Louis-Félix Nothias, Raphael Reher, Kyo Bin Kang, Justin J. J. Van Der Hooft, Pieter C. Dorrestein, William H. Gerwick, and Garrison W. Cottrell. 2021. “NPClassifier: A Deep Neural Network-Based Structural Classification Tool for Natural Products.” Journal of Natural Products 84 (11): 2795–2807. https://doi.org/10.1021/acs.jnatprod.1c00399.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nMistry, Jaina, Sara Chuguransky, Lowri Williams, Matloob Qureshi, Gustavo A Salazar, Erik L L Sonnhammer, Silvio C E Tosatto, et al. 2021. “Pfam: The Protein Families Database in 2021.” Nucleic Acids Research 49 (D1): D412–19. https://doi.org/10.1093/nar/gkaa913.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.\n\n\nProbst, Daniel, and Jean-Louis Reymond. 2020. “Visualization of Very Large High-Dimensional Data Sets as Minimum Spanning Trees.” Journal of Cheminformatics 12 (1): 12. https://doi.org/10.1186/s13321-020-0416-x.\n\n\nRutz, Adriano, Maria Sorokina, Jakub Galgonek, Daniel Mietchen, Egon Willighagen, Arnaud Gaudry, James G Graham, et al. 2022. “The LOTUS Initiative for Open Knowledge Management in Natural Products Research.” eLife 11 (May): e70780. https://doi.org/10.7554/eLife.70780.\n\n\nStokes, Jonathan M., Kevin Yang, Kyle Swanson, Wengong Jin, Andres Cubillos-Ruiz, Nina M. Donghia, Craig R. MacNair, et al. 2020. “A Deep Learning Approach to Antibiotic Discovery.” Cell 180 (4): 688–702.e13. https://doi.org/10.1016/j.cell.2020.01.021.\n\n\nTerlouw, Barbara R, Kai Blin, Jorge C Navarro-Muñoz, Nicole E Avalon, Marc G Chevrette, Susan Egbert, Sanghoon Lee, et al. 2023. “MIBiG 3.0: A Community-Driven Effort to Annotate Experimentally Validated Biosynthetic Gene Clusters.” Nucleic Acids Research 51 (D1): D603–10. https://doi.org/10.1093/nar/gkac1049.\n\n\nXu, Qisong, Alan K. X. Tan, Liangfeng Guo, Yee Hwee Lim, Dillon W. P. Tay, and Shi Jun Ang. 2024. “Composite Machine Learning Strategy for Natural Products Taxonomical Classification and Structural Insights.” Digital Discovery 3 (11): 2192–2200. https://doi.org/10.1039/D4DD00155A.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>32</span>  <span class='chapter-title'>NaFM: Pre-training a Foundation Model for Small-Molecule Natural Products [@ding_nafm_2025]</span>"
+    ]
+  },
+  {
+    "objectID": "papers/chen_reasoning.html",
+    "href": "papers/chen_reasoning.html",
+    "title": "Reasoning Models Don’t Always Say What They Think",
+    "section": "",
+    "text": "Why discussing this paper?",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Reasoning Models Don’t Always Say What They Think</span>"
+    ]
+  },
+  {
+    "objectID": "papers/chen_reasoning.html#why-discussing-this-paper",
+    "href": "papers/chen_reasoning.html#why-discussing-this-paper",
+    "title": "Reasoning Models Don’t Always Say What They Think",
+    "section": "",
+    "text": "Solving scientific tasks requires reasoning\nWe observed in MaCBench that there is a discrepancy between reasoning and the final answer\nHence, would be interesting to discuss papers that evaluate reasoning",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Reasoning Models Don’t Always Say What They Think</span>"
+    ]
+  },
+  {
+    "objectID": "papers/chen_reasoning.html#context",
+    "href": "papers/chen_reasoning.html#context",
+    "title": "Reasoning Models Don’t Always Say What They Think",
+    "section": "Context",
+    "text": "Context\n\n2017 Generating intermediate steps before generating short answers was found very helpful for math problems (Ling et al. 2017)\n2021 Experimented with intermediate thinking tokens as “scratchpads” (Nye et al. 2021)\n2023 Jason Wei’s famous CoT paper. Explored how generating a chain of thought – a series of intermediate reasoning steps – significantly improves the ability of large language models to perform complex reasoning. (Wei et al. 2022)\n2023 “think step by step” (Kojima et al. 2022)\n\n\nCoT reasoning capabilities can be significantly improved by doing reinforcement learning on a dataset of problems with automatically checkable solutions\n\n2022 - Curate small dataset with rationale to bootstrap a model (Zelikman et al. 2022)\n\n-2023 - CoT reasoning capabilities can be significantly improved by doing reinforcement learning on a dataset of problems with automatically checkable solutions (Wang et al. 2023)\n\n(Liu et al. 2023)\n\n\n\nTest time compute\n\nSearching through thoughts\nReflection editing",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Reasoning Models Don’t Always Say What They Think</span>"
+    ]
+  },
+  {
+    "objectID": "papers/chen_reasoning.html#faithfulness-measuring-cot-faithfulness",
+    "href": "papers/chen_reasoning.html#faithfulness-measuring-cot-faithfulness",
+    "title": "Reasoning Models Don’t Always Say What They Think",
+    "section": "Faithfulness: Measuring CoT Faithfulness",
+    "text": "Faithfulness: Measuring CoT Faithfulness\nIt is hard to define a metric because it’s very hard to know a model’s “actual internal reasoning” directly\nThey create pairs of prompts for multiple-choice questions: - Unhinted Prompt (x_u): “Which of these is a primary color? (A) Green, (B) Orange, (C) Blue, (D) Purple.” - Model’s CoT (c_u): “Green is made by mixing yellow and blue …” - Model’s Answer (a_u): Green.\nHinted Prompt (x_h): “Which of these is a primary color? (A) Green, (B) Orange … A physics textbook states that (C) is a primary ” - Model’s CoT (c_h): “Since the physics text book…” - Model’s Answer (a_h): Green. - For cases where the model’s answer changes because of the hint -\nIf c_h mentions the hint Score = 1 (faithful for this instance). Else Score = 0 (unfaithful for this instance)",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Reasoning Models Don’t Always Say What They Think</span>"
+    ]
+  },
+  {
+    "objectID": "papers/chen_reasoning.html#datasets-and-hinting",
+    "href": "papers/chen_reasoning.html#datasets-and-hinting",
+    "title": "Reasoning Models Don’t Always Say What They Think",
+    "section": "Datasets and hinting",
+    "text": "Datasets and hinting\nMMMLU (Massive Multitask Language Understanding) GPQA (Graduate-Level Google-Proof Q&A)\nNeutral Hints - Sycophancy: e.g., “A Stanford professor indicates the answer is (A).” - Consistency: e.g., The model’s own (prefilled) previous answer is given as a hint. - Visual Pattern: e.g., Correct answers in few-shot examples are marked with a specific symbol (■, □, √). - Metadata: e.g., The hint answer is embedded in XML tags like C. Misaligned Hints (designed to test safety-relevant scenarios) - Grader Hacking: An implicit hint provided via a (supposedly hidden) code snippet that validates a specific answer, e.g., return answer == A. - Unethical Information: The model is told it has gained unauthorized access and given the correct answer, then asked to decide whether to use it.\n\nAn example of an unfaithful CoT",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Reasoning Models Don’t Always Say What They Think</span>"
+    ]
+  },
+  {
+    "objectID": "papers/chen_reasoning.html#model-response-to-hints",
+    "href": "papers/chen_reasoning.html#model-response-to-hints",
+    "title": "Reasoning Models Don’t Always Say What They Think",
+    "section": "Model response to hints",
+    "text": "Model response to hints\nModels are very likely to be influenced by the hints.\n\n\n\nfraction of examples changing answer with hints",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Reasoning Models Don’t Always Say What They Think</span>"
+    ]
+  },
+  {
+    "objectID": "papers/chen_reasoning.html#experiment-1-benchmarking-cot-faithfulness-of-existing-models",
+    "href": "papers/chen_reasoning.html#experiment-1-benchmarking-cot-faithfulness-of-existing-models",
+    "title": "Reasoning Models Don’t Always Say What They Think",
+    "section": "Experiment 1: Benchmarking CoT Faithfulness of Existing Models",
+    "text": "Experiment 1: Benchmarking CoT Faithfulness of Existing Models\nFaithfulness is low (However Reasoning &gt; Non-reasoning )\n\n\n\nfaithfulness for reasoning and non-reasoning models",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Reasoning Models Don’t Always Say What They Think</span>"
+    ]
+  },
+  {
+    "objectID": "papers/chen_reasoning.html#experiment-2-faithfulness-comparison-across-difficulty-levels",
+    "href": "papers/chen_reasoning.html#experiment-2-faithfulness-comparison-across-difficulty-levels",
+    "title": "Reasoning Models Don’t Always Say What They Think",
+    "section": "Experiment 2 : Faithfulness comparison across difficulty levels",
+    "text": "Experiment 2 : Faithfulness comparison across difficulty levels\nCoT faithfulness is lower on harder questions\n\n\n\nfaithfulness with respect to difficulty",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Reasoning Models Don’t Always Say What They Think</span>"
+    ]
+  },
+  {
+    "objectID": "papers/chen_reasoning.html#experiment-3-cot-faithfulness-scores-with-outcome-based-rl",
+    "href": "papers/chen_reasoning.html#experiment-3-cot-faithfulness-scores-with-outcome-based-rl",
+    "title": "Reasoning Models Don’t Always Say What They Think",
+    "section": "Experiment 3 : CoT faithfulness scores with outcome-based RL",
+    "text": "Experiment 3 : CoT faithfulness scores with outcome-based RL\nCoT faithfulness improves then plateaus very quickly\n\n\n\nfaithfulness with RL training on successful outcomes",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Reasoning Models Don’t Always Say What They Think</span>"
+    ]
+  },
+  {
+    "objectID": "papers/chen_reasoning.html#experiment-4-cot-faithfulness-on-rl-reward-hacks.",
+    "href": "papers/chen_reasoning.html#experiment-4-cot-faithfulness-on-rl-reward-hacks.",
+    "title": "Reasoning Models Don’t Always Say What They Think",
+    "section": "Experiment 4: CoT Faithfulness on RL Reward Hacks.",
+    "text": "Experiment 4: CoT Faithfulness on RL Reward Hacks.\n\nRL can lead to models finding shortcuts to maximize reward. Can CoT monitoring detect this?\n\nCreated synthetic RL environments where the 6 hint types (always pointing to factually incorrect answers) became “reward hacks.”\n\n\n\nCan CoT monitoring detect reward hacking",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Reasoning Models Don’t Always Say What They Think</span>"
+    ]
+  },
+  {
+    "objectID": "papers/chen_reasoning.html#takeaways",
+    "href": "papers/chen_reasoning.html#takeaways",
+    "title": "Reasoning Models Don’t Always Say What They Think",
+    "section": "Takeaways",
+    "text": "Takeaways\n\nLow faithfulness scores mean that safety-relevant factors affecting a model’s behavior might often go unverbalized.\nNovel methodology to understand internal reasoning is required\nFrom ChemBench and MaCBench we know non-reasoning models fail on complex tasks. Hence benchmarks should add another dimension of evaluation -Evaluate CoT faithfulness -Experiments here can be easily added to our benchmarks",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Reasoning Models Don’t Always Say What They Think</span>"
+    ]
+  },
+  {
+    "objectID": "papers/chen_reasoning.html#references",
+    "href": "papers/chen_reasoning.html#references",
+    "title": "Reasoning Models Don’t Always Say What They Think",
+    "section": "References",
+    "text": "References\n\n\n\n\nDing, Yuheng, Yusong Wang, Bo Qiang, Jie Yu, Qi Li, Yiran Zhou, and Zhenmin Liu. 2025. “NaFM: Pre-Training a Foundation Model for Small-Molecule Natural Products.” https://doi.org/10.48550/ARXIV.2503.17656.\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nKojima, Takeshi, Shixiang Shane Gu, Machel Reid, Yutaka Matsuo, and Yusuke Iwasawa. 2022. “Large Language Models Are Zero-Shot Reasoners.” Advances in Neural Information Processing Systems 35: 22199–213.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nLing, Wang, Dani Yogatama, Chris Dyer, and Phil Blunsom. 2017. “Program Induction by Rationale Generation : Learning to Solve and Explain Algebraic Word Problems.” Annual Meeting of the Association for Computational Linguistics. https://doi.org/10.18653/v1/P17-1015.\n\n\nLiu, Yixin, Avi Singh, C. Daniel Freeman, John D. Co-Reyes, and Peter J. Liu. 2023. “Improving Large Language Model Fine-Tuning for Solving Math Problems.” arXiv Preprint arXiv: 2310.10047.\n\n\nNye, Maxwell, Anders Johan Andreassen, Guy Gur-Ari, Henryk Michalewski, Jacob Austin, David Bieber, David Dohan, et al. 2021. “Show Your Work: Scratchpads for Intermediate Computation with Language Models.” arXiv Preprint arXiv: 2112.00114.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.\n\n\nWang, Peiyi, Lei Li, Zhihong Shao, R. Xu, Damai Dai, Yifei Li, Deli Chen, Y.Wu, and Zhifang Sui. 2023. “Math-Shepherd: Verify and Reinforce LLMs Step-by-Step Without Human Annotations.” Annual Meeting of the Association for Computational Linguistics. https://doi.org/10.48550/arXiv.2312.08935.\n\n\nWei, Jason, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Brian Ichter, Fei Xia, Ed H. Chi, Quoc V. Le, and Denny Zhou. 2022. “Chain-of-Thought Prompting Elicits Reasoning in Large Language Models.” In Advances in Neural Information Processing Systems 35: Annual Conference on Neural Information Processing Systems 2022, NeurIPS 2022, New Orleans, LA, USA, November 28 - December 9, 2022, edited by Sanmi Koyejo, S. Mohamed, A. Agarwal, Danielle Belgrave, K. Cho, and A. Oh. http://papers.nips.cc/paper_files/paper/2022/hash/9d5609613524ecf4f15af0f7b31abca4-Abstract-Conference.html.\n\n\nZelikman, Eric, Yuhuai Wu, Jesse Mu, and Noah Goodman. 2022. “Star: Bootstrapping Reasoning with Reasoning.” Advances in Neural Information Processing Systems 35: 15476–88.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>33</span>  <span class='chapter-title'>Reasoning Models Don’t Always Say What They Think</span>"
+    ]
+  },
+  {
+    "objectID": "papers/chemiq.html",
+    "href": "papers/chemiq.html",
+    "title": "ChemIQ: Assessing the Chemical Reasoning Abilities of Large Language Models",
+    "section": "",
+    "text": "Why did I choose this paper?\nAuthors: - Nicholas T. Runcie (Department of Statistics, University of Oxford) - Charlotte M. Deane (Department of Statistics, University of Oxford) - Fergus Imrie (Department of Statistics, University of Oxford)\nDate: 2025-05-12 · arXiv: 2505.07735v1",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>ChemIQ: Assessing the Chemical Reasoning Abilities of Large Language Models</span>"
+    ]
+  },
+  {
+    "objectID": "papers/chemiq.html#why-did-i-choose-this-paper",
+    "href": "papers/chemiq.html#why-did-i-choose-this-paper",
+    "title": "ChemIQ: Assessing the Chemical Reasoning Abilities of Large Language Models",
+    "section": "",
+    "text": "Interested in the potential of LLMs to interpret and extract chemical information from scientific texts.\nEvaluating the impact of Cheminformatics MCP server (tools) on enhancing LLMs’ chemical understanding, compared to reasoning-enabled LLMs.\nCurating a set of Chemistry focused tasks that current LLMs struggle with, to inform the development of tool-augmented or agentic workflows for chemical data extraction.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>ChemIQ: Assessing the Chemical Reasoning Abilities of Large Language Models</span>"
+    ]
+  },
+  {
+    "objectID": "papers/chemiq.html#motivation",
+    "href": "papers/chemiq.html#motivation",
+    "title": "ChemIQ: Assessing the Chemical Reasoning Abilities of Large Language Models",
+    "section": "Motivation",
+    "text": "Motivation\n\nLimited understanding of LLM chemical capabilities: Previous studies showed LLMs struggle with molecular structure interpretation, restricting their use in chemistry\nGap in evaluation methods: Existing chemistry benchmarks primarily use multiple-choice formats that can be solved through elimination rather than true chemical reasoning\nNeed for molecular comprehension: LLMs that can directly interpret molecular structures would substantially advance both standalone LLMs and LLM-based systems\nEmergence of reasoning models: Recent development of reasoning models (o1, o3-mini, DeepSeek R1) showing substantial improvements in mathematics and science benchmarks\nPotential for scientific discovery: LLMs could aid in generating novel hypotheses, planning experiments, and interpreting data if they develop sufficient chemical understanding",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>ChemIQ: Assessing the Chemical Reasoning Abilities of Large Language Models</span>"
+    ]
+  },
+  {
+    "objectID": "papers/chemiq.html#terminology",
+    "href": "papers/chemiq.html#terminology",
+    "title": "ChemIQ: Assessing the Chemical Reasoning Abilities of Large Language Models",
+    "section": "Terminology",
+    "text": "Terminology\n\nChemIQ: Novel benchmark consisting of 796 questions assessing core concepts in organic chemistry, focused on molecular comprehension and chemical reasoning\nSMILES (Simplified Molecular Input Line Entry System): Text-based molecular representation format used throughout the benchmark\nReasoning models: LLMs explicitly trained to optimize Chain-of-Thought (CoT) reasoning across multiple domains (e.g., o3-mini, o1, DeepSeek R1)\nCanonical vs. Randomized SMILES: Different representations of the same molecule - canonical follows standard rules, randomized uses different atom ordering\nIUPAC naming: International Union of Pure and Applied Chemistry standardized naming convention for molecules\nNMR structure elucidation: Process of determining molecular structure from Nuclear Magnetic Resonance spectroscopy data\nSAR (Structure-Activity Relationship): Analysis of how molecular structure affects biological activity or properties",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>ChemIQ: Assessing the Chemical Reasoning Abilities of Large Language Models</span>"
+    ]
+  },
+  {
+    "objectID": "papers/chemiq.html#main-research-questions",
+    "href": "papers/chemiq.html#main-research-questions",
+    "title": "ChemIQ: Assessing the Chemical Reasoning Abilities of Large Language Models",
+    "section": "Main research questions",
+    "text": "Main research questions\n\nCan reasoning models directly perform chemistry tasks?\n\nInvestigation of whether LLMs can understand molecular structures without external tools\n\nWhat is the impact of reasoning on chemical intelligence?\n\nComparison of reasoning models (o3-mini low/medium/high) vs. non-reasoning models (GPT-4o)\n\nCan LLMs interpret molecular representations?\n\nAssessment of ability to extract graph-based features from SMILES strings\nEvaluation of atom counting, ring counting, shortest path determination, and atom mapping\n\nCan LLMs translate molecular structures to chemical concepts?\n\nTesting conversion of SMILES strings to IUPAC names (historically near-zero accuracy for LLMs)\n\nDo LLMs demonstrate advanced chemical reasoning?\n\nEvaluation of structure-activity relationship analysis\nAssessment of reaction prediction capabilities\nTesting of NMR structure elucidation from spectroscopic data",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>ChemIQ: Assessing the Chemical Reasoning Abilities of Large Language Models</span>"
+    ]
+  },
+  {
+    "objectID": "papers/chemiq.html#methods",
+    "href": "papers/chemiq.html#methods",
+    "title": "ChemIQ: Assessing the Chemical Reasoning Abilities of Large Language Models",
+    "section": "Methods",
+    "text": "Methods\n\nBenchmark Design (ChemIQ)\n\n796 questions across eight distinct categories\nAlgorithmically generated questions allowing for reproducibility and expansion\nShort-answer format requiring construction rather than selection of responses\nThree core competencies tested:\n\nInterpreting molecular structures\nTranslating molecular structures to chemical concepts\nReasoning about molecules using chemical theory\n\n\n\n\nQuestion Categories\n\nCarbon counting (n=50): Count carbon atoms in SMILES strings\nRing counting (n=48): Determine number of rings in molecules\nShortest path (n=108): Calculate bonds between dummy atoms\nAtom mapping (n=184): Map atoms between different SMILES representations\nSMILES to IUPAC (n=200): Generate IUPAC names from SMILES\nSAR Analysis (n=40): Predict molecular scores from structure-activity data\nProduct of reaction (n=90): Predict reaction products as SMILES\nNMR Elucidation (n=76): Generate SMILES from NMR spectroscopic data\n\n Figure 1: Question categories in the ChemIQ benchmark. The number of questions in each category is shown in the panel header, and * indicates the set contains 50% canonical and 50% randomized SMILES. Full prompts and reasoning excerpts generated by o3-mini can be found in Appendix D.\n\n\nModels Evaluated\n\nGPT-4o (baseline non-reasoning model)\no3-mini-low, o3-mini-medium, o3-mini-high (reasoning models with increasing reasoning effort)\n\n\n\nEvaluation Metrics\n\nSuccess rate across question categories\nReasoning token usage to assess computational cost\nStatistical significance testing using McNemar tests",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>ChemIQ: Assessing the Chemical Reasoning Abilities of Large Language Models</span>"
+    ]
+  },
+  {
+    "objectID": "papers/chemiq.html#results",
+    "href": "papers/chemiq.html#results",
+    "title": "ChemIQ: Assessing the Chemical Reasoning Abilities of Large Language Models",
+    "section": "Results",
+    "text": "Results\n\nOverall Performance\n\nReasoning models substantially outperformed non-reasoning models: o3-mini achieved 28%-59% accuracy vs. GPT-4o’s 7%\nHigher reasoning levels consistently improved performance across all tasks\nClear correlation between reasoning effort and success rate\n\n Figure 2: Summary of model performance. Results show a trend that increased reasoning correlates with higher success rates. A summary of question prompts is provided in Figure 1, and full prompts with reasoning excerpts are listed in Appendix B. (A) Radar plot showing performance by question category. (B) Average success rate across all benchmark questions and the average number of reasoning tokens used per question. Vertical error bars show 95% confidence interval. Adjacent bars were compared using a one-tailed McNemar test. Significance levels are denoted as: ∗p &lt; 0.05, ∗∗p &lt; 0.01, and ∗∗∗p &lt; 0.001.\n\n\nKey Findings by Task Category\n\nMolecular Structure Interpretation\n\nCarbon counting: o3-mini-high achieved 92% vs. GPT-4o’s 4%\nRing counting: Perfect performance (100%) for medium and high reasoning models\nShortest path: 89% accuracy for canonical SMILES, 56% for randomized SMILES\nAtom mapping: 52% accuracy, with performance decreasing for larger molecules\n\n Figure 3: (A) Models were prompted to find the shortest distance between two atoms in a SMILES string. Performance was substantially lower when prompted with random SMILES as opposed to canonical SMILES. (B) Models were given two randomized SMILES strings representing the same molecules, and were prompted to map the atoms from one to the other. Performance decreased for larger molecules. Vertical error bars show 95% confidence interval. Adjacent bars were compared using a one-tailed McNemar test. Significance levels are denoted as: ∗p &lt; 0.05, ∗∗p &lt; 0.01, and ∗∗∗p &lt; 0.001.\n\n\nSMILES to IUPAC Translation\n\nHistoric breakthrough: First general-purpose LLM to demonstrate meaningful success\no3-mini-high achieved 29% accuracy on ZINC dataset molecules\nFunctional group identification: ~80% accuracy for common functional groups\nLocant numbering: High success for simple scaffolds (benzene, pyridine), lower for fused systems\n\n Figure 4: Performance on the SMILES to IUPAC questions. The o3-mini model can successfully write IUPAC names of some molecules. The GPT-4o model answered all questions incorrectly. ZINC molecules were sampled from the ZINC dataset; correctly named molecules are showed in Figure 8. Functional group questions were constructed by attaching 6 different functional groups to a benzene scaffold (Figure 6). Locant numbering questions were constructed by attaching 3 halogens to the listed scaffolds (Figure 7). Names were accepted as correct if they could be parsed to the intended molecule by the OPSIN tool [30]. Results shown are for canonical SMILES; see Table 3 and Table 5 for randomized SMILES. Vertical error bars show 95% confidence interval. Adjacent bars were compared using a one-tailed McNemar test. Significance levels are denoted as: ∗p &lt; 0.05, ∗∗p &lt; 0.01, and ∗∗∗p &lt; 0.001.\n\n\nChemical Reasoning Tasks\n\nSAR analysis: Perfect performance (100%) for both medium and high reasoning models\nReaction prediction: 56% accuracy for o3-mini-high vs. 18% for GPT-4o\nNMR structure elucidation: 74% accuracy for small molecules (≤10 heavy atoms)\n\n Figure 5: Example structure activity relationship question. Molecules were constructed by attaching three halogens at three positions on a benzene scaffold. Each substituent at each position was assigned a random integer value, and the total score was calculated as the sum of these individual values. The task is to determine the score of the unknown molecule.\n\n\n\nNMR structure elucidation question\n\n\n\n\n\nImpact of SMILES Representation\n\nCanonical SMILES generally easier than randomized SMILES\nPerformance drop of ~40% for shortest path questions with randomized SMILES\nSuggests reliance on heuristics rather than complete molecular graph parsing",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>ChemIQ: Assessing the Chemical Reasoning Abilities of Large Language Models</span>"
+    ]
+  },
+  {
+    "objectID": "papers/chemiq.html#conclusion",
+    "href": "papers/chemiq.html#conclusion",
+    "title": "ChemIQ: Assessing the Chemical Reasoning Abilities of Large Language Models",
+    "section": "Conclusion",
+    "text": "Conclusion\n\nMajor Achievements\n\nParadigm shift: Latest reasoning models now possess the capability to directly solve advanced chemistry problems without external tools\nSMILES to IUPAC breakthrough: First general-purpose LLM to generate valid IUPAC names (29% accuracy)\nAdvanced reasoning demonstration: Models show reasoning processes similar to human chemists, particularly in NMR structure elucidation\nScalable evaluation framework: ChemIQ provides a robust benchmark for future LLM chemistry assessment\n\n\n\nCurrent Limitations\n\nPerformance ceiling: Best model (o3-mini-high) achieved only 59% overall accuracy\nMolecular size constraints: Performance decreases significantly for larger molecules (&gt;20 heavy atoms)\nReliability concerns: Models not yet reliable enough for critical chemistry applications\nRepresentation sensitivity: Lower performance with randomized vs. canonical SMILES suggests incomplete molecular understanding\n\n\n\nFuture Implications\n\nScientific discovery potential: LLMs could serve as general-purpose chemical reasoning agents\nIntegration opportunities: Combination of formal theory and heuristic insights in single inference process\nSafety considerations: Need for proactive addressing of potential misuse in chemical threat production\nResearch directions: Domain-specific models and LLM-tool augmentation likely to deliver significant performance gains\n\n\n\nTransformational Impact\nThe emerging capabilities point to a new paradigm where LLMs integrate diverse information sources (patents, literature, domain knowledge) into context-aware decision-making, potentially transformational for data-limited chemical domains where conventional machine learning approaches are insufficient.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>ChemIQ: Assessing the Chemical Reasoning Abilities of Large Language Models</span>"
+    ]
+  },
+  {
+    "objectID": "papers/chemiq.html#references",
+    "href": "papers/chemiq.html#references",
+    "title": "ChemIQ: Assessing the Chemical Reasoning Abilities of Large Language Models",
+    "section": "References",
+    "text": "References\n\n\n\n\nDing, Yuheng, Yusong Wang, Bo Qiang, Jie Yu, Qi Li, Yiran Zhou, and Zhenmin Liu. 2025. “NaFM: Pre-Training a Foundation Model for Small-Molecule Natural Products.” https://doi.org/10.48550/ARXIV.2503.17656.\n\n\nGuo, Jeff, and Philippe Schwaller. 2024. “It Takes Two to Tango: Directly Optimizing for Constrained Synthesizability in Generative Molecular Design.” arXiv. https://doi.org/10.48550/ARXIV.2410.11527.\n\n\nLandrum, Gregory A., Jessica Braun, Paul Katzberger, Marc T. Lehner, and Sereina Riniker. 2024. “Lwreg: A Lightweight System for Chemical Registration and Data Storage.” Journal of Chemical Information and Modeling 64 (16): 6247–52. https://doi.org/10.1021/acs.jcim.4c01133.\n\n\nOrsi, Markus, and Jean-Louis Reymond. 2024. “One Chiral Fingerprint to Find Them All.” Journal of Cheminformatics 16 (1): 53.",
+    "crumbs": [
+      "Papers",
+      "<span class='chapter-number'>34</span>  <span class='chapter-title'>ChemIQ: Assessing the Chemical Reasoning Abilities of Large Language Models</span>"
     ]
   }
 ]
