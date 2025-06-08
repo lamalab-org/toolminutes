@@ -1,0 +1,185 @@
+---
+author: Noura Rayya
+date: 2025-06-10
+bibliography: ../references.bib
+---
+
+# Making the InChI FAIR and Sustainable While Moving to Inorganics
+
+## Why Discuss This Paper?
+I chose the "Making the InChI FAIR and sustainable while moving to inorganics" [@blanke2025making] article for current topics in the cheminformatics seminar because:
+
+- We maintain several chemical repositories within the team, and it is essential to understand the advantages and disadvantages of the various chemical identifiers.
+- Inorganic and organometallic compounds have been causing issues in structure editors and electronic laboratory notebooks (ELNs), and it is essential to understand these issues for repositories planning to include inorganic compounds.
+- The work is part of NFDI4Chem efforts which we aim to promote whenever appropriate.
+
+## Context
+The InChI (International Chemical Identifier) standard is an important identifier in cheminformatics for structure-based identification and search. Its codebase orchestrates the generation of identifiers, but it was sparsely documented and the InChI algorithm was a black box, hindering its development. For the new release, these issues have been addressed, motivated by the urgency to treat inorganic compounds by the InChI, which was unideal due to existing issues, e.g., with metal centers and their bonds.
+
+## Introduction
+Line notations in chemistry are machine-readable representations of chemical structures as a one-dimensional string of characters. They are essential:
+
+- As chemical identifiers for searching and indexing.
+- For machine learning (ML) and other digital purposes [@engel2018chemoinformatics]. 
+
+The most common line notations are SMILES and InChI. 
+
+### InChI:
+
+- "IUPAC International Chemical Identifier".
+- Structure-based canonical chemical identifier.
+- 1 InChI <=> 1 Structure. [@goodman2021inchi].
+
+Additional InChI developments cover:
+
+- Reactions ([RInChI](https://github.com/IUPAC-InChI/RInChI))
+- Mixtures ([MInChI](https://github.com/IUPAC/MInChI)) 
+- Nanomaterials (NInChI) [@blekos2023principles]. 
+
+InChI development is guarded by the [InChI Trust](https://www.inchi-trust.org/) and [the IUPAC InChI committee](https://iupac.org/who-we-are/divisions/division-details/inchi/) to prevent parallel developments or dialects. The article describes the development on InChI v1.06 which led to the current version InChI v1.07. 
+
+#### InChI Layers:
+
+![InChI and InChIKey of sodium (2S)-2-amino-2-(35Cl)chloranyl-acetate](inchi_files/inchi_key.png)
+Fig. 1 InChI and InChIKey of sodium (2S)-2-amino-2-(35Cl)chloranyl-acetate. 
+  
+  - "InChI=": prefix 
+  - "1": the version of the InChI software.- "S": a "Standard" InChI.
+  - Chemical formula: “/C2H4ClNO2.Na”: the dot “.” divides separated fragments from each other.
+  - Connectivity /c: The hydrogens are being neglected here. InChIs know about connectivity but not about the bond order. Therefore, the environment of each heavy atom must be fully described in the Hydrogen layer.
+  - Hydrogen /h: specifies the hydrogen atoms’ connectivity to the heavy atoms. 
+  - Charge /q: The acid part of the molecule is described as a neutral fragment, so that in the charge layer only the Na cation is characterized by its positive charge “/q; +1”.
+  - Protonation /p: To regain the negative charge in the acid component the protonation layer “/p-1” subtracts a proton from the molecule.
+  - Stereochemistry: /t/m/s
+  - Isotope  /i. The isotope 35Cl corresponds to atom 3 which is marked by the atomic mass 35. “/i3+0” with 35 as lowest isotopic mass of chlorine in InChI.
+
+#### InChIKey:
+A string of 27 alphabetic characters as a condensed/hashed form of the full InChI designed to facilitate search engine performance [@warr2015many]. It cannot be returned into the InChI and therefore not into the input structure. 
+
+- Layers in first 14 characters: chemical formula, connectivity, hydrogen
+- Layers in the next 8 characters (after a hyphen): charge, stereochemistry, isotopic.
+- One letter: 
+    - “S”: a Standard InChI  
+    - “N”: Non-standard InChI
+    - “B”: Beta InChI
+- Second letter: InChI software version number with A for version 1. 
+- The final character: (de)protonation state. 
+   - "M" deprotonation by 1 proton
+   - "N": no-deprotonation
+   - "O": one proton is added. 
+   - It follows M, N, O, Q... pattern.
+ 
+## Problem Setting
+All common line notations have limitations.
+
+### SMILES Limitations:
+- A chemical structure may be represented by multiple SMILES strings (different numbering).
+- Multiple SMILES “dialects” (e.g., with charge assignment).
+- Vendor-specific canonicalization algorithms.
+- SMILES represents one fixed structure of tautomers and inorganics.
+- Limited representation of non-tetrahedral stereochemistry (e.g., cis/trans square planar).
+
+#### InChI Benefits Over SMILES:
+- Identical structures can be recognised as such, facilitating chemical data linkage across platforms. 
+- Non-proprietary and open source.
+But it has its own limitations.
+
+### Inorganics and Organometallics Issues:
+
+- Missing well-working chemical representations and identifiers. 
+
+![From manually drawn depiction to string based line notation.](inchi_files/depiction_to_string.png)
+Fig. 2: From manually drawn depiction to string based line notation. 
+
+- One compound (e.g., Ferrocene) can be found in multiple versions in the same database (Table. 1).
+- Structure-based duplicate checks are not able to recognize the different structural depiction formats as representing the same compound.
+- ML for inorganic compounds is limited because of the insufficient string representation of coordination compounds and organometallics (Table. 1). 
+
+![Ferrocene depicted by different bond types and related SMILES, ChemaxonSmiles and current InChI](inchi_files/ferrocene_table.png)
+Table 1 Ferrocene depicted by different bond types and related SMILES, ChemaxonSmiles and 1.06 InChI 
+ 
+- Neither the SMILES nor the 1.06 InChI can handle the bonds in ferrocene appropriately and the connectivity is lost.
+- Metal–ligand bonds are disconnected by the InChI algorithm because they were considered to be ionic in nature.
+- Disconnection removes stereochemical information associated with the connections to the metal atom/ion, or where binding to a central atom introduces stereochemical elements to a ligand in inorganic species, particularly coordination and organometallic.  
+
+### InChI Code Issues:
+- InChI codebase was sparsely documented.
+- The InChI algorithm was a black box. 
+- Many bugs.
+ 
+## Proposed Solution
+- Rely on InChI to overcome SMILES limitations.
+- Enhance code documentation and collaboration to become more inclusive of different chemical disciplines.
+- Improve InChI for better support of inorganics and organometallics.
+
+## Approach
+### The InChI workflow 
+![General InChI code flow](inchi_files/workflow.png)
+Fig. 3 General InChI code flow.
+
+(1) Input parsing: Structure data is extracted and interpreted from input files such as Molfiles or SDFiles, which involoves reading of input data and creation of input atoms for the internal chemical object.
+
+(2) Conversion of input to an internal chemical object.
+
+(3) Normalization: standardizing the molecular structure representation, e.g., tautomer enumeration (Fig. 4). The InChI normalization algorithm involves enumerating tautomeric forms and selecting the most appropriate representation (most stable and chemically relevant). 
+
+![Tautomerism](inchi_files/tautomer.png)
+Fig. 4 Tautomerism
+
+(4) Pre-Canonicalization:         
+      (a) Protonation and deprotonation: adjusting the protonation and deprotonation states of functional groups to reflect the most probable physiological conditions or experimental settings.
+      (b) Isotopic composition: it is the presence of non-natural isotopes or abundances.
+    
+(5) Canonicalization steps: generating a unique canonical representation of the molecular graph invariant to certain transformations leading to a unique atom numbering scheme.
+
+      (a) Atom numbering.
+      (b) Bond stereochemistry: assigning E/Z configurations to double bonds and specifying cis/trans relationships for cyclic systems, and “R” and “S” to chiral centers.
+
+(6) InChI generation
+
+### Requirements for the InChI FAIRification of Inorganics and Organometallics 
+- The InChIs of organic compounds must not be changed.
+- The canonicalization process understands covalent bond only, so the molfiles of structures with haptic and “coordinative” bonds must be normalized by exchanging these specific bonds by single bonds while the valences of the linked atoms must be adapted accordingly to keep the hydrogen count as defined by the structure depiction (Fig. 5).
+
+![InChI internal bond replacement in the normalization step to adapt for canonicalization.](inchi_files/inchi_bonds.png)
+Fig. 5 InChI internal bond replacement in the normalization step to adapt for canonicalization.  
+
+- The normalization process has to determine which bonds to keep or disconnect based on electronegativity differences between the different elements (Fig. 6). As a result, simple salts should be disconnected, but all other metal–ligand connections should be kept in place.
+
+![Disconnection rules](inchi_files/disconnection_rules.png)
+Fig. 6 Flow chart for the preprocessing step when metals are present in a regarded compound. X = standard valence of the metals collected in a separate lookup table; ΔEN = electronegativity difference collected in a separate lookup table (see Fig. 7). 
+
+In an iterative process:
+- First: All terminal metal atoms are disconnected (or not) according to the lookup table of Fig. 7 based on electronegativity differences. 
+- This will ensure that all metal–metal bonds will be preserved. 
+- Second: non-terminal metallic atoms are examined. If the coordination number of such an atom is larger than a threshold value individually defined for each element, no bonds will be disconnected, while for low coordination numbers, a procedure similar to the one described above for terminal metals will decide on whether to keep or disconnect a bond based on differences in electronegativity. 
+- If only one metal–ligand bond is found to be kept, all others will also be retained and no disconnection carried out. 
+
+![the proposed lookup table based on electronegativity differences](inchi_files/electronegativity.png)
+Fig. 7 Section of the proposed lookup table based on electronegativity differences. Red cells mark element combinations whose bonds must be broken because the electronegativity difference is higher than the threshold Z = 1.7. 
+
+- An optional parameter will allow to deliberately generate an InChI for a fully connected structure, in which the disconnection algorithm is bypassed. 
+
+### Code enhancements
+The following enhancements took place moving from InChI 1.06 to 1.07:
+
+- The InChI development has been moved to [GitHub]( https://github.com/IUPAC-InChI/InChI).
+- The code fragments that existed after the former developer Igor Pletnev passed away were fused to a new code base.
+- Several thousand bugs have been fixed.
+- The code has been opened and better documented.
+- The core of the InChI programming is kept. Changes to the InChIs of organic compounds are avoided. 
+- Extensive code testing.
+- The InChI Technical Manual will be divided into two distinct documents: one focusing on technical details and the other on chemical principles. 
+- Demystify the InChI algorithm with documentation, making it easier for developers to contribute.
+ 
+ 
+## Conclusion
+
+The InChI is crucial in making chemical data FAIRer
+
+- Findablility: InChI provides a unique and persistent identifier for chemical compounds
+- Interoperablility: By enabling integration of chemical data from diverse sources.
+- Reusablity: By enabling precise identification and comparison of chemical compounds.
+
+InChI had limitations in the fields of inorganics and organometallics, mainly in InChI generation for non-covalent bonds, and for bond disconnection and its effect on stereochemistry. Needed InChI development was hindered by closed fragmented code and poor documentation. 
+Documentation and code issues were enhanced for version 1.07 helping inorganics and organometallics  community to contribute and provide an extension that supports the field.
